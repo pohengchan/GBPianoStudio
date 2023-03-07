@@ -7,7 +7,7 @@ footer{
   justify-content: flex-end;
   padding : 1rem;
 }
-p{
+.footer{
     font-family: 'Lexend', sans-serif;
     color: var(--light-pink);
     text-shadow:
