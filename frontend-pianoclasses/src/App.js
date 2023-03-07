@@ -6,9 +6,8 @@ import Contactbutton from './components/Contactbutton';
 function App() {
   return (
     <>
-      <Contactbutton/>
+    <Contactbutton/>
       <Footer/>
-    
     </>
   );
 }
