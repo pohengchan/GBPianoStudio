@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Footer from '../components/Footer';
 
 function ExamsBooks() {
   return (
-    <div>E</div>
+    <>
+    <Footer/>
+   </>
   )
 }
 

@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Footer from '../components/Footer';
 
 function Admin() {
   return (
-    <div>A</div>
+    <>
+     <Footer/>
+    </>
   )
 }
 
