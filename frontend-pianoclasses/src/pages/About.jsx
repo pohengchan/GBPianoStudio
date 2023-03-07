@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Footer from '../components/Footer';
 
 function About() {
   return (
-    <div>A</div>
+    <>
+    <Footer/>
+   </>
   )
 }
 
