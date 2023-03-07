@@ -1,0 +1,19 @@
+#container-h1{
+    
+    display: flex;
+    justify-content: center;
+    padding : 1rem;
+  }
+  #piano-h1{
+    
+      color: rgb(81, 81, 221);
+      text-shadow:
+      0 0 5px var(--dark-blue),
+      0 0 10px var(--dark-blue),
+      0 0 20px var(--dark-blue),
+      0 0 40px var(--dark-blue),
+      0 0 80px var(--dark-blue),
+      0 0 90px var(--dark-blue),
+      0 0 100px var(--dark-blue),
+      0 0 150px var(--dark-blue);
+  }
