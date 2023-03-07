@@ -1,13 +1,13 @@
 .button-container {
     display:flex;
     justify-content: flex-end;
-    flex-wrap: wrap;
-    align-content: flex-end;
- 
+    align-items: flex-end;
     text-align: center;
 }
 button {
     margin: 2rem;
+    margin-top: 15rem;
+
   }
   .custom-btn {
     color: #fff;

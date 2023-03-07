@@ -6,7 +6,7 @@ function Footer() {
   return (
     <>
     <footer>
-        <p>© 2023 FemCoders. All rights reserved.</p>
+        <p className='footer'>© 2023 FemCoders. All rights reserved.</p>
     </footer>
     </>
   )

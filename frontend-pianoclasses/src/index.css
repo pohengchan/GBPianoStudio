@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Oswald&display=swap');
 @import './styles/footer.css';
 @import './styles/contactbutton.css';
+@import './styles/textborder.css';
+@import './styles/piano.css';
 
   *{
       margin: 0;
