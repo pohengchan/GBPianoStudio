@@ -3,6 +3,7 @@
 @import './styles/contactbutton.css';
 @import './styles/textborder.css';
 @import './styles/piano.css';
+@import './styles/NavbarStyle.css';
 
   *{
       margin: 0;
