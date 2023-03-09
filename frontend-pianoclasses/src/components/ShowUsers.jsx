@@ -27,7 +27,6 @@ const ShowUsers = () => {
     <div>
         <div className='d-grid gap-2'>
             <Link to = '/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Create</Link>
-
         </div>
         <table className='table table-striped'> 
             <thead className='bg-primary text-white'>
