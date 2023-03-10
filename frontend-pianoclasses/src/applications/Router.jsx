@@ -10,6 +10,7 @@ import Register from '../pages/Register';
 import Tips from '../pages/Tips';
 import User from '../pages/User';
 import Login from '../pages/Login';
+import ShowUsers from '../components/ShowUsers';
 
 
 function Router() { 
@@ -28,6 +29,7 @@ function Router() {
             <Route path= '/Register' element={<Register/>}/>
             <Route path= '/Tips' element={<Tips/>}/>
             <Route path= '/User' element={<User/>}/>
+            <Route path= '/show' element={<ShowUsers/>}/>
             
             
         </Routes>
