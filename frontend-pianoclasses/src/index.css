@@ -4,6 +4,8 @@
 @import './styles/textborder.css';
 @import './styles/piano.css';
 
+/* @import '../styles/main.css'; */
+@import './styles/formSignUp.css';
   *{
       margin: 0;
       padding: 0;
