@@ -5,10 +5,19 @@
     height: 80px;
     padding: 0 50px;
   }
-  
-  .logo {
+  .nameLogo{
+    color:  var(--light-pink);
+    padding: 1.80rem;
+  }
+  .logo{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .piano {
     height: 50px;
-    width: 100px;
+    width: 50px;
+    margin-top: 0.95rem;
   }
   
   .toggle-icon {

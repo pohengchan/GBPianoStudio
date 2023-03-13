@@ -3,7 +3,7 @@ import "../styles/NavbarStyle.css";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
-import logo from "../assets/images/Logo1.png";
+import logo from "../assets/images/Logo3.png";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -20,9 +20,15 @@ export const Navbar = () => {
 
   return (
     <nav className={toggle ? "navbar expanded" : "navbar"}>
-      <Link className="logo" to="/">
-        <img className="logo" src={logo} alt="tribe.fly" />
+     <div className="logo">
+      <Link className="piano" to="/">
+        <img className="piano" src={logo} alt="Logo" />
       </Link>
+      <div className="nameLogo"> 
+        <h3> GILLIAN BETCKWITH</h3>
+        <h4>PIANO STUDIO</h4>
+      </div>
+      </div>
       <div className="toggle-icon" onClick={handleToggle}>
         {toggleIcon}
         
