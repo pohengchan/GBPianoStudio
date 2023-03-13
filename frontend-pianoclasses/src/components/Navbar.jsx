@@ -6,6 +6,7 @@ import { x } from "react-icons-kit/feather/x";
 import logo from "../assets/images/Logo1.png";
 import { Link } from "react-router-dom";
 
+
 export const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const toggleIcon = toggle ? (
