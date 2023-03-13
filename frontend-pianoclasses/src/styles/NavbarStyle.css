@@ -4,6 +4,7 @@
     align-items: center;
     height: 80px;
     padding: 0 50px;
+  
   }
   .nameLogo{
     color:  white;
@@ -15,7 +16,8 @@
     justify-content: space-between;
     
   }
-.title{
+.title {
+  font-family: 'Oswald', sans-serif;
   color:  var(--light-pink);
   text-shadow:
   0 0 5px var(--light-pink),
@@ -30,11 +32,35 @@
     
   
 }
+.title1 {
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  justify-content: center;
+  color:  var(--light-pink);
+  text-shadow:
+  0 0 5px var(--light-pink),
+  0 0 10px var(--light-pink),
+  0 0 20px var(--light-pink),
+  0 0 40px var(--light-pink),
+  0 0 80px var(--light-pink),
+  0 0 90px var(--light-pink),
+  0 0 100px var(--light-pink),
+  0 0 150px var(--light-pink);
+  
+  
+    
+    
+  
+}
+
+
 
   .piano {
-    height: 60px;
-    width: 60px;
-    margin-top: 0.95rem
+    filter: invert(79%) sepia(56%) saturate(6660%) hue-rotate(246deg) brightness(91%) contrast(85%);
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    
   }
   
   .toggle-icon {
@@ -64,8 +90,12 @@
     color: var(--light-pink);color: var(--light-pink);
   }
   
-  .links li {
+  .link li {
+    color: white;
+    text-decoration: none !important;
     margin-left: 20px;
+    font-family: 'Oswald', sans-serif;
+ 
   }
   @media(max-width: 768px){
     .navbar{

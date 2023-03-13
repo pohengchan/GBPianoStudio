@@ -3,7 +3,7 @@ import "../styles/NavbarStyle.css";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
-import logo from "../assets/images/Logo3.png";
+import logo from "../assets/images/Logo2.png";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -25,8 +25,8 @@ export const Navbar = () => {
         <img className="piano" src={logo} alt="Logo" />
       </Link>
       <div className="nameLogo"> 
-        <h3 className="title"> GILLIAN BETCKWITH</h3>
-        <h4 className="title">PIANO STUDIO</h4>
+        <h5 className="title"> GILLIAN BETCKWITH</h5>
+        <h6 className="title1">PIANO STUDIO</h6>
       </div>
       </div>
       <div className="toggle-icon" onClick={handleToggle}>
