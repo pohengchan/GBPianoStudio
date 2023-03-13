@@ -21,12 +21,12 @@ export const Navbar = () => {
   return (
     <nav className={toggle ? "navbar expanded" : "navbar"}>
      <div className="logo">
-      <Link className="piano" to="/">
+      <Link to="/">
         <img className="piano" src={logo} alt="Logo" />
       </Link>
       <div className="nameLogo"> 
-        <h3> GILLIAN BETCKWITH</h3>
-        <h4>PIANO STUDIO</h4>
+        <h3 className="title"> GILLIAN BETCKWITH</h3>
+        <h4 className="title">PIANO STUDIO</h4>
       </div>
       </div>
       <div className="toggle-icon" onClick={handleToggle}>
