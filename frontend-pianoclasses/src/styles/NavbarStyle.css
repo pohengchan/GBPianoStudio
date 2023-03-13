@@ -4,27 +4,81 @@
     align-items: center;
     height: 80px;
     padding: 0 50px;
-  }
   
-  .logo {
-    height: 50px;
+  }
+  .nameLogo{
+    color:  white;
+    padding: 1.90rem;
+  
+  }
+  .logo{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+.title {
+  font-family: 'Oswald', sans-serif;
+  color:  var(--light-pink);
+  text-shadow:
+  0 0 5px var(--light-pink),
+  0 0 10px var(--light-pink),
+  0 0 20px var(--light-pink),
+  0 0 40px var(--light-pink),
+  0 0 80px var(--light-pink),
+  0 0 90px var(--light-pink),
+  0 0 100px var(--light-pink),
+  0 0 150px var(--light-pink);
+    
+    
+  
+}
+.title1 {
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  justify-content: center;
+  color:  var(--light-pink);
+  text-shadow:
+  0 0 5px var(--light-pink),
+  0 0 10px var(--light-pink),
+  0 0 20px var(--light-pink),
+  0 0 40px var(--light-pink),
+  0 0 80px var(--light-pink),
+  0 0 90px var(--light-pink),
+  0 0 100px var(--light-pink),
+  0 0 150px var(--light-pink);
+  
+  
+    
+    
+  
+}
+
+
+
+  .piano {
+    filter: invert(79%) sepia(56%) saturate(6660%) hue-rotate(246deg) brightness(91%) contrast(85%);
+    height: 3rem;
+    width: 3rem;
+    margin-top: 2rem;
+    
   }
   
   .toggle-icon {
-    display: none;
-    color:  var(--light-pink);
-    box-shadow: 0 0 5px 0 var(--light-pink),
-    inset 0 0 5px 0 var(--light-pink),
-    0 0 20px 0 var(--light-pink),
-    inset 0 0 5px 0 var(--light-pink),
-    0 0 20px 2px var(--light-pink),
-    inset 0 0 20px 2px var(--light-pink)
+  display: none;
+  color:  var(--light-pink);
+  box-shadow: 0 0 5px 0 var(--light-pink),
+  inset 0 0 5px 0 var(--light-pink),
+  0 0 20px 0 var(--light-pink),
+  inset 0 0 5px 0 var(--light-pink),
+  0 0 20px 2px var(--light-pink),
+  inset 0 0 20px 2px var(--light-pink)
+  }
    
     
     
     
    /* ocultar el botón de hamburguesa por defecto */
-  }
+  
   
   .links {
     display: flex;
@@ -33,10 +87,15 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    color: var(--light-pink);color: var(--light-pink);
   }
   
-  .links li {
+  .link li {
+    color: white;
+    text-decoration: none !important;
     margin-left: 20px;
+    font-family: 'Oswald', sans-serif;
+ 
   }
   @media(max-width: 768px){
     .navbar{
