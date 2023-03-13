@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+ import FormSignUp from '../components/FormSignUp'
+import { Link } from 'react-router-dom';
 
-function Register() {
+function App() {
   return (
-    <div>register</div>
-  )
+    <div className="container">
+    
+    <FormSignUp/>
+    
+    </div>
+  );
 }
-
-export default Register
+export default App;
