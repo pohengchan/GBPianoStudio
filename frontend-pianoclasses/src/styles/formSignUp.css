@@ -1,0 +1,83 @@
+ 
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      color: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+    }
+     .container {  
+      border-radius: 2px;  
+      overflow: hidden;
+      width: 400px;
+      max-width: 100%;
+    }
+    #form-react {
+      padding: 30px 20px;  
+    }
+    .form-control {    
+      margin-bottom: 7px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .form-control label {
+      display: inline-block;
+      margin-bottom: 5px;
+      font-family: 'Lexend', sans-serif;
+      font:weight 200px;
+      font-size: 15px;
+    }
+    .form-control input {
+      border-radius: 6px; 
+      background-color: #f0f0f0;
+      display: block;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px;
+      width: 100%;    
+    }
+    .form-control, input:focus {
+      outline: none;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;  
+    }
+     h2 {
+      text-align: center;
+      margin-bottom: 20px; 
+    }
+    p {
+      color: var(--light-blue);
+    }
+    .buttons{
+      display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    
+
+    }
+    .form-react button {
+      background-color: #282c34;
+      border:1px solid #f2317f;
+      border-radius: 10px;
+      color: #f6f6e9;
+      width: 100%;
+      padding: 6px;
+      font-size: 16px;
+      
+    }
+    
+    .form-react button:hover {
+      background-color: #bf1650;
+    }
+    .fail {
+      color: #f2317f;
+    }
