@@ -10,9 +10,9 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const toggleIcon = toggle ? (
-    <Icon icon={x} size={28} />
+    <Icon icon={x} size={26} />
   ) : (
-    <Icon icon={menu} size={28} />
+    <Icon icon={menu} size={26} />
   );
 
   const handleToggle = () => {
