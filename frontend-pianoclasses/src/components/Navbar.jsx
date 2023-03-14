@@ -21,7 +21,7 @@ export const Navbar = () => {
 
   return (
     <nav className={toggle ? "navbar expanded" : "navbar"}>
-     <div className="logo">
+    <div className="logo">
       <Link to="/">
         <img className="piano" src={logo} alt="Logo" />
       </Link>
