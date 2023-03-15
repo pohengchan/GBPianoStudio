@@ -24,7 +24,7 @@ export const Navbar = () => {
   return (
     <nav className={toggle ? "navbar expanded" : "navbar"}>
     <div className="logo">
-      <Link to="">
+      <Link to="/">
         <img className="piano" src={logo} alt="Logo" />
       </Link>
       <div className="nameLogo"> 
@@ -36,23 +36,23 @@ export const Navbar = () => {
         {toggleIcon} 
       </div>
       <ul className="links">
-        <Link to="/" className="link">
+        <Link to="/Login" className="link">
           <li>LOGIN</li>
         </Link>
         <Link to="/" className="link">
           <li>BOOK A CLASS</li>
         </Link>
 
-        <Link to="/" className="link">
+        <Link to="/Tips" className="link">
           <li>TIPS ON HOW TO PRACTICE</li>
         </Link>
-        <Link to="/" className="link">
+        <Link to="/ExamsBooks" className="link">
           <li>EXAMS</li>
         </Link>
-        <Link to="/" className="link">
+        <Link to="/About" className="link">
           <li>ABOUT</li>
         </Link>
-        <Link to="/" className="link">
+        <Link to="/Contact" className="link">
           <li>CONTACT</li>
         </Link>
       </ul>
