@@ -6,7 +6,7 @@ function Contactbutton() {
   return (
     <>
     <div className='button-container'>
-        <Link to='/Contact'><button className='custom-btn btn-15'>CONTACT ME</button></Link>
+        <Link to='/Register'><button className='custom-btn btn-15'>CONTACT ME</button></Link>
 
     </div>
     </>

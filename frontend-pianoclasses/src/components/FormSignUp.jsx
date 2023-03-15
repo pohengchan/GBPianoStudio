@@ -11,7 +11,7 @@ import '../index.css';
 
     return <div>
         
-        
+        <h1 className='h1-register'>REGISTER</h1>
         <form onSubmit={handleSubmit(onSubmit)}className='form-react'>
         <div className='form-control'>
                 <label>Contact's name/ Parent's name *</label>
@@ -62,7 +62,7 @@ import '../index.css';
                 })} />
                 {errors.password?.type === 'required' && <p>Password is required</p>}
                 {errors.password?.type === 'maxLength' && 
-    <p>Password cannot less than 8 characters</p>}
+    <p>Password cannot have less than 8 characters</p>}
             </div>
             <div className = 'form-control'>
                 <label>Confirm password *</label>
@@ -74,8 +74,8 @@ import '../index.css';
                 {errors.confirmpwd?.type === 'required' && <p>Confirm password</p>}
             </div>
             <div className="buttons">
-            <button type='submit'>Cancel</button>
-            <button type='submit'>Save</button>
+            <button type='submit'>CANCEL</button>
+            <button type='submit'>SAVE</button>
             </div>
         </form>
     </div>

@@ -1,45 +1,62 @@
- 
-     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+ /*  
     body {
       color: #f0f0f0;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 90vh;
-    }
-     .container {  
+    } */
+     /* .container {  
       border-radius: 2px;  
       overflow: hidden;
       width: 400px;
       max-width: 100%;
-    }
-    #form-react {
-      padding: 30px 20px;  
+    } */
+    .form-react {
+      padding: 2rem 3rem;  
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
     }
     .form-control {    
       margin-bottom: 7px;
       padding-bottom: 10px;
       position: relative;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: var(--background);
+      border-style: none;
     }
-    .form-control label {
+    label {
       display: inline-block;
       margin-bottom: 5px;
       font-family: 'Lexend', sans-serif;
       font:weight 200px;
       font-size: 15px;
+      background-color: var(--background);
+      color: white;
     }
-    .form-control input {
+    input {
+      width: 100%;
       border-radius: 6px; 
       background-color: #f0f0f0;
       display: block;
       font-family: inherit;
       font-size: 14px;
       padding: 10px;
-      width: 100%;    
+      /* width: 100%;     */
+      border: 1px solid var(--light-pink);
+      box-shadow: 0 0 3px 0 var(--light-pink),
+    inset 0 0 3px 0 var(--light-pink),
+    0 0 7px 0 var(--light-pink),
+    inset 0 0 3px 0 var(--light-pink),
+    0 0 7px 1px var(--light-pink),
+    inset 0 0 7px 1px var(--light-pink);
     }
     .form-control, input:focus {
       outline: none;
@@ -56,28 +73,50 @@
       color: var(--light-blue);
     }
     .buttons{
-      display: flex;
+    margin: 1.5em;
+    display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 30px;
-    
-
+    justify-content: space-around;
+    gap: 5rem; 
+ 
     }
-    .form-react button {
-      background-color: #282c34;
-      border:1px solid #f2317f;
-      border-radius: 10px;
-      color: #f6f6e9;
+
+    button {
+
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      background: transparent;
+      cursor: pointer;
+      color: var(--light-blue);
       width: 100%;
-      padding: 6px;
+      padding: 1rem 2.5rem;
       font-size: 16px;
+      border: 2px solid var(--light-blue);
+      border-radius: 20px;
+      box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
       
     }
     
-    .form-react button:hover {
-      background-color: #bf1650;
+    button:hover {
+      background-color: var(--light-blue);
+      color:white;
     }
     .fail {
       color: #f2317f;
+    }
+    
+    .h1-register {
+      margin: 2rem; 
+      font-size: 2rem;
+      color: rgb(237, 160, 173);
+      text-shadow:
+      0 0 5px var(--dark-pink),
+      0 0 10px var(--dark-pink),
+      0 0 20px var(--dark-pink),
+      0 0 40px var(--dark-pink),
+      0 0 80px var(--dark-pink),
+      0 0 90px var(--dark-pink),
+      0 0 100px var(--dark-pink),
+      0 0 150px var(--dark-pink);
     }
