@@ -47,7 +47,7 @@ export const Navbar = () => {
           <li>TIPS ON HOW TO PRACTICE</li>
         </Link>
         <Link to="/" className="link">
-          <li>EXAMS, BOOKS ETC. </li>
+          <li>EXAMS</li>
         </Link>
         <Link to="/" className="link">
           <li>ABOUT</li>
