@@ -28,7 +28,7 @@ export const Navbar = () => {
         <img className="piano" src={logo} alt="Logo" />
       </Link>
       <div className="nameLogo"> 
-        <h5 className="title"> GILLIAN BETCKWITH</h5>
+        <h5 className="title"> GILLIAN BECKWITH</h5>
         <h6 className="title1">PIANO STUDIO</h6>
       </div>
       </div>

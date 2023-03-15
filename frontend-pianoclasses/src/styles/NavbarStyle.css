@@ -105,7 +105,8 @@
       font-size: 12px ;
     }
     .piano {
-      height: 70%;
+      height: 50%;
+      width: auto;
     }
     .links{
       top: -300px; 
