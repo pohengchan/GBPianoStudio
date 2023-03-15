@@ -1,7 +1,7 @@
-:root {
---numDays: 5;
+/* :root {
+--numDays: 6;
 --numHours: 13;
---timeHeight: 60px;
+--timeHeight: 35px;
 --calBgColor: #white;
 --eventBorderColor: lightgreen;
 --available: green;
@@ -9,19 +9,11 @@
 --pending:orange;
 }
 
-.container {
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    display: flex;
-    justify-content: center;
-}
-
 .calendar {
 display: grid;
 gap: 10px;
 grid-template-columns: auto 1fr;
-margin: 2rem;
-width:80%;
+margin: 0.5rem;
 }
 
 .timeline {
@@ -33,8 +25,9 @@ color:white;
 .days {
 display: grid;
 grid-column: 2;
-gap: 5px;
+grid-gap: 5px;
 grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+
 padding:5px;
 }
 
@@ -45,7 +38,7 @@ border-radius: 5px;
 background: var(--calBgColor);
 }
 
-/* Place on Timeline */
+
 .start-9 {
 grid-row-start: 1;
 }
@@ -58,14 +51,31 @@ grid-row-start: 3;
 .start-12 {
 grid-row-start: 4;
 }
-
 .start-1 {
 grid-row-start: 5;
 }
-
 .start-2 {
 grid-row-start: 6;
 }
+.start-3 {
+grid-row-start: 7;
+}
+.start-4 {
+grid-row-start: 8;
+}
+.start-5 {
+grid-row-start: 9;
+}
+.start-6 {
+grid-row-start: 10;
+}
+.start-7 {
+grid-row-start: 11;
+}
+.start-8 {
+grid-row-start: 12;
+}
+
 
 .end-10 {
 grid-row-end: 2;
@@ -76,7 +86,6 @@ grid-row-end: 3;
 .end-12 {
 grid-row-end: 4;
 }
-
 .end-1 {
 grid-row-end: 5;
 }
@@ -86,19 +95,26 @@ grid-row-end: 6;
 .end-3 {
 grid-row-end: 7;
 }
-
 .end-4 {
 grid-row-end: 8;
 }
-
 .end-5 {
 grid-row-end: 9;
 }
 .end-6 {
 grid-row-end: 10;
 }
+.end-7 {
+grid-row-end: 11;
+}
+.end-8 {
+grid-row-end: 12;
+}
+.end-9 {
+grid-row-end: 13;
+}
 
-/* Event */
+
 
 .event {
 border: 1px solid var(--eventBorderColor);
@@ -108,12 +124,12 @@ margin: 0 0.5rem;
 background: white;
 }
 
-.space,
+.spacer,
 .date {
-height: 60px
+height: 40px
 }
 
-/* Global, Etc */
+
 
 
 .available {
@@ -131,6 +147,9 @@ background: var(--available);
     cursor: pointer;
 }
 
+.unavailable {
+    background: var(--unavailable);
+}
 .date {
 display: flex;
 justify-content: space-around;
@@ -153,4 +172,23 @@ padding: 0 0 0 0;
 .book {
     padding: 0 0 0 0;
 }
+ */
 
+ .row {
+    display: flex;
+}
+
+.col {
+    flex: 1 1 0%;
+    min-width: 0;
+    max-width: 100%;
+}
+.calendar_default_event_inner {
+    background: #2e78d6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 10pt;
+    padding: 5px;
+    opacity: 0.8;
+}
