@@ -135,17 +135,14 @@
     .navbar.expanded .links li{
       margin: 12px 0;
       font-size: 15px;
-    
     }
-    .navbar .toggle-icon{
-      /* display: block; */
-      position: absolute;
+    .toggle-icon{
+      display: block;
+      position: absolute; 
       top: 28px;
       right: 20px;
     }
-  
-    .navbar .links{
-      position: absolute;
+    .links{
       top: -300px; 
       left: 0;
       width: 100%; 
