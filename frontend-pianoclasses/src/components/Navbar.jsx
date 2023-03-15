@@ -3,7 +3,7 @@ import "../styles/NavbarStyle.css";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
-import logo from "../assets/images/Logo2.png";
+import logo from "../assets/images/Logo3.png";
 import { Link } from "react-router-dom";
 
 
