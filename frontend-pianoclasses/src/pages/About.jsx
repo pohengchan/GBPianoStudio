@@ -1,12 +1,13 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
 
 function About() {
   return (
     <>
-    <Footer/>
     <Navbar/>
+    <Footer/>  
    </>
   )
 }
