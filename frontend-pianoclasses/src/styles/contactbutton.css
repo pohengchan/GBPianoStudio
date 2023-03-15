@@ -4,11 +4,7 @@
     align-items: flex-end;
     text-align: center;
 }
-button {
-    margin: 2rem;
-    margin-top: 15rem;
 
-  }
   .custom-btn {
     color: #fff;
     width: 10rem;
@@ -21,6 +17,9 @@ button {
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
+    margin: 2rem;
+    margin-top: 15rem;
+
   }
   
   .btn-15 {
