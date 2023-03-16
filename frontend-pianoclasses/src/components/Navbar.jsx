@@ -39,14 +39,18 @@ export const Navbar = () => {
         <Link to="/Login" className="link">
           <li>LOGIN</li>
         </Link>
-        <Link to="/" className="link">
+        <Link to="/Register" className="link">
+          <li>REGISTER</li>
+        </Link>
+
+        <Link to="/Calendar" className="link">
           <li>BOOK A CLASS</li>
         </Link>
 
         <Link to="/Tips" className="link">
           <li>TIPS ON HOW TO PRACTICE</li>
         </Link>
-        <Link to="/ExamsBooks" className="link">
+        <Link to="/Exams" className="link">
           <li>EXAMS</li>
         </Link>
         <Link to="/About" className="link">
