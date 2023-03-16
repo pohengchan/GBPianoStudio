@@ -6,6 +6,7 @@
 @import './styles/NavbarStyle.css';
 @import './styles/formSignUp.css';
 @import './styles/loginForm.css';
+@import './styles/contactForm.css';
 
   *{
       margin: 0;
