@@ -41,7 +41,7 @@ import '../index.css';
                     required: true ,
                     pattern:/^[^\s@]+@[^\s@]+\.[^\s@]+$/i
                 })} />
-                {errors.email?.type === 'pattern' && <p>Please type your message</p>}
+                {errors.message?.type === 'pattern' && <p>Please type your message</p>}
             </div>
     
             <div className="buttons">
