@@ -5,7 +5,7 @@ import About from '../pages/About';
 import Admin from '../pages/Admin';
 import Calendar from '../pages/Calendar';
 import Contact from '../pages/Contact';
-import ExamsBooks from '../pages/ExamsBooks';
+import Exams from '../pages/Exams';
 import Register from '../pages/Register';
 import Tips from '../pages/Tips';
 import User from '../pages/User';
@@ -25,7 +25,7 @@ function Router() {
             <Route path= '/Admin' element={<Admin/>}/> 
             <Route path= '/Calendar' element={<Calendar/>}/> 
             <Route path= '/Contact' element={<Contact/>}/>
-            <Route path= '/ExamsBook' element={<ExamsBooks/>}/>
+            <Route path= '/Exams' element={<Exams/>}/>
             <Route path= '/Register' element={<Register/>}/>
             <Route path= '/Tips' element={<Tips/>}/>
             <Route path= '/User' element={<User/>}/>
