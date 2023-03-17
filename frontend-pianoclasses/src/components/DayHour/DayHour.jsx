@@ -51,9 +51,6 @@ function DayHour() {
   
     // calendar.render();
 
-
-    
-
         return (
             
           <div>

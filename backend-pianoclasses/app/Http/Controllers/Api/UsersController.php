@@ -26,7 +26,7 @@ class UsersController extends Controller
 	    $user->update($request->all());
 	    return response()->json($user, 200);
 	}
-	public function delete(User $product)
+	public function delete(User $user)
 	{
 	    $user->delete();
 	    return response()->json(null, 204);

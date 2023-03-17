@@ -39,7 +39,7 @@ const ShowUsers = () => {
             <tbody>
                 { users.map( (user) => (
                     <tr key={user.id}>
-                        <td> {user.name} </td>
+                        <td><p>{user.name}</p>  </td>
                         <td> {user.email} </td>
                         <td> {user.is_authorised} </td>
                         <td>
