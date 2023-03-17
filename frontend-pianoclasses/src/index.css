@@ -5,9 +5,10 @@
 @import './styles/piano.css';
 @import './components/DayHour/DayHour.css';
 @import './styles/NavbarStyle.css';
-
-/* @import '../styles/main.css'; */
 @import './styles/formSignUp.css';
+@import './styles/loginForm.css';
+@import './styles/contactForm.css';
+
   *{
       margin: 0;
       padding: 0;

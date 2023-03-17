@@ -1,12 +1,14 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-function ExamsBooks() {
+function Exams() {
   return (
     <>
+    <Navbar/>
     <Footer/>
-   </>
+    </>
   )
 }
 
-export default ExamsBooks
+export default Exams

@@ -1,13 +1,16 @@
-import React from 'react';
+import React from 'react'
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
  import FormSignUp from '../components/FormSignUp'
-import { Link } from 'react-router-dom';
+
 
 function App() {
   return (
     <>
+    <Navbar/>
     <FormSignUp/>
     <Footer/>
+
     </>
   )
 }
