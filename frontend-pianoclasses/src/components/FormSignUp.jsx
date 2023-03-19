@@ -1,80 +1,104 @@
-// import { edadValidator } from "./validators";
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, {useState} from 'react';
 import '../index.css';
+import axios from 'axios';
+import swal from 'sweetalert';
+import {useNavigate} from 'react-router-dom';
 
-    const Form = () => {
 
-        const { register, handleSubmit, formState: { errors } } = useForm();
-        const onSubmit = data => console.log(data);
-        console.log(errors);
+
+    function Form() {
+
+   const navigate = useNavigate()
+   const [registerInput,setRegisterInput] = useState({
+    contact_name: '',
+    student_name: '', 
+    date_of_birth: '', 
+    email: '',
+    phone_number: '', 
+    password: '', 
+    error_list: [],
+   
+
+   });
+
+   const handleInput = (e) => {
+    e.persist();
+    setRegisterInput({...registerInput, [e.target.name]: e.target.value });
+   }
+   const registerSubmit = (e) => {
+    e.preventDefault();
+
+        const data = {
+            
+            contact: registerInput.contact_name,
+            name: registerInput.student_name, 
+            date: registerInput.date_of_birth, 
+            email: registerInput.email,
+            phone: registerInput.phone_number, 
+            password: registerInput.password, 
+           
+
+        }
+        axios.get('/sanctum/csrf-cookie').then(response => {
+        axios.post('/api/register', data).then(res => {
+            if(res.data.status === 200)
+            {
+                localStorage.setItem('auth_token', res.data.token);
+                localStorage.setItem('auth_name', res.data.username);
+                swal("Success",res.data.message,"success");
+                navigate('/');
+            }
+            else
+            {
+                setRegisterInput({...registerInput, error_list: res.data.validation_errors});
+            }
+        });
+    });
+}
+
 
     return <div>
         
         <h1 className='h1-register'>REGISTER</h1>
-        <form onSubmit={handleSubmit(onSubmit)}className='form-react'>
+        <form onSubmit={registerSubmit} className='form-react'>
         <div className='form-control'>
                 <label>Contact's name/ Parent's name *</label>
-                <input type="text" placeholder="Contact's name/ Parent's name" {...register('nombre', {
-                    required: true,
-                    maxLength: 10,
-                    pattern: /^[A-Za-z]+$/i 
-
-                })} />
-                {errors.nombre?.type === 'required' && <p>The name field is required</p>}
-                {errors.nombre?.type === 'maxLength' && <p>The name field must be less than 10 characters</p>}
+                <input type="text" name="contact_name" onChange={handleInput} value={registerInput.contact_name} placeholder="Contact's name/ Parent's name"/>
+                <span>{registerInput.error_list.contact_name}</span>
             </div>  
         <div className='form-control'>
                 <label> Student’s name *</label>
-                <input type="text" placeholder=" Student’s name" {...register(' Student’s name', {
-                    required: true,
-                    maxLength: 10
-                })} />
-                {errors.nombre?.type === 'required' && <p>The name field is required</p>}
-                {errors.nombre?.type === 'maxLength' && <p>The name field must be less than 10 characters</p>}
+                <input type="text" name="student_name" onChange={handleInput} value={registerInput.student_name} placeholder=" Student’s name"/>
+                <span>{registerInput.error_list.student_name}</span>
             </div>
             <div className='form-control'>
                 <label>Student’s date of birth *</label>
-                <input type="text"placeholder="Student’s date of birth" {...register('text')} />
-                {errors.text?.type ==='required' && <p></p>}
+                <input type="date" name="date_of_birth" onChange={handleInput} value={registerInput.date_of_birth} placeholder="Student’s date of birth"/>
+                <span>{registerInput.error_list.date_of_birth}</span>
             </div>
             <div className='form-control'>
                 <label>Email *</label>
-                <input type="text"placeholder="emailExample@example.com" {...register('email', {
-                    required: true ,
-                    pattern:/^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-                })} />
-                {errors.email?.type === 'pattern' && <p>This is not a valid email</p>}
+                <input type="text" name="email" onChange={handleInput} value={registerInput.email} placeholder="emailExample@example.com"/>
+                <span>{registerInput.error_list.email}</span>
             </div>
             <div className = 'form-control'>
                 <label>Phone number *</label>
-                <input type = "tel" placeholder = "Phone number" {...register('Phone number',{
-                    required: true,
-                //    pattern:/^[0-9]+$/i
-                })} />
-                {errors.password?.type === 'required' && <p>Phone number is required</p>}
+                <input type = "tel" name="phone_number" onChange={handleInput} value={registerInput.phone_number} placeholder = "Phone number" />
+                <span>{registerInput.error_list.phone_number}</span>
             </div>
             <div className='form-control'>
                 <label>Password *</label>
-                <input type="password"placeholder="..............." {...register('password',{
-                    required: true, 
-                    maxLength: 8
-                })} />
-                {errors.password?.type === 'required' && <p>Password is required</p>}
-                {errors.password?.type === 'maxLength' && 
-    <p>Password cannot have less than 8 characters</p>}
+                <input type="password" name="password" onChange={handleInput} value={registerInput.password} placeholder="..............." />
+                <span>{registerInput.error_list.student_name}</span>
+               
             </div>
-            <div className = 'form-control'>
+            {/* <div className = 'form-control'>
                 <label>Confirm password *</label>
-                <input type = "password"placeholder = ".............." {...register('comfirm password', {
-                    required: true,
-                      
-                })} />
+                <input type = "password" name="password2" onChange={handleInput} value={registerInput.password2} placeholder = ".............." />
                 
-                {errors.confirmpwd?.type === 'required' && <p>Confirm password</p>}
-            </div>
+            </div> */}
             <div className="buttons">
-            <button type='submit'>CANCEL</button>
+            <button type=''>CANCEL</button>
             <button type='submit'>SAVE</button>
             </div>
         </form>
