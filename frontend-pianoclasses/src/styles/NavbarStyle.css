@@ -118,7 +118,7 @@
       }
     .toggle-icon {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: flex-end;
       margin-right: 10px;
       z-index: 2;
