@@ -3,7 +3,7 @@ import '../index.css';
 import swal from 'sweetalert';
 import {useNavigate} from 'react-router-dom';
 import { getAxiosInstance } from '../services/functions';
-
+// import axios from 'axios';
 
 
 
@@ -31,27 +31,33 @@ import { getAxiosInstance } from '../services/functions';
 
         const data = {
             
-            contact: registerInput.contact_name,
-            name: registerInput.student_name, 
-            date: registerInput.date_of_birth, 
+            contact_name: registerInput.contact_name,
+            student_name: registerInput.student_name, 
+            date_of_birth: registerInput.date_of_birth, 
             email: registerInput.email,
-            phone: registerInput.phone_number, 
+            phone_number: registerInput.phone_number, 
             password: registerInput.password, 
            
-
+        
         }
+        console.log(data);
+        
         instance.get('/sanctum/csrf-cookie').then(response => {
-        instance.post('/api/register', data).then(res => {
+        instance.post('/api/users', data).then(res => {
+            
             if(res.data.status === 200)
             {
+                console.log(res.data);
+            
                 localStorage.setItem('auth_token', res.data.token);
-                localStorage.setItem('auth_name', res.data.username);
+                localStorage.setItem('auth_name', res.data.contact_name);
                 swal("Success",res.data.message,"success");
                 navigate('/');
             }
             else
-            {
+            { console.log(res.data);
                 setRegisterInput({...registerInput, error_list: res.data.validation_errors});
+                
             }
         });
     });
