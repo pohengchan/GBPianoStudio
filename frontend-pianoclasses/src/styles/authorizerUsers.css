@@ -5,9 +5,10 @@
 
 }
 .container {
+    
     border: 1px solid var(--dark-pink);
     border-radius: 25px;
-    width: 80%;
+    width: 90%;
     display: flex; 
     justify-content: center;
     margin: 2rem;
@@ -26,5 +27,11 @@
 .p-landing {
     color: white;
     padding: 2rem; 
+   
+}
+
+th {
+    padding: 12px;
+    font-size: 15px;
    
 }
