@@ -43,6 +43,10 @@
   }
 
   table {
-    color: var(--dark-pink);
+    color: var(--light-pink);
     font-family: 'Lexend', sans-serif;
+  }
+
+  td {
+    color: var(--light-pink);
   }

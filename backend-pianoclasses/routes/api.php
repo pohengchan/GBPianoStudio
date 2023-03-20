@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UsersController;
-
+use App\Http\Controllers\Api\LessonController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +24,11 @@ Route::get('users/{user}', 'App\Http\Controllers\Api\UsersController@show');
 Route::post('users','App\Http\Controllers\Api\UsersController@store');
 Route::put('users/{user}','App\Http\Controllers\Api\UsersController@update');
 Route::delete('users/{user}', 'App\Http\Controllers\Api\UsersController@delete');
+
+Route::controller(LessonController::class)->group(function(){
+    Route::get('lessons', 'App\Http\Controllers\Api\LessonController@index');
+    Route::get('lesson/{id}', 'App\Http\Controllers\Api\LessonController@show');
+    Route::post('lessons','App\Http\Controllers\Api\LessonController@store');
+    Route::put('lesson/{id}','App\Http\Controllers\Api\LessonController@update');
+    
+});
