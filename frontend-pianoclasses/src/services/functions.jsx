@@ -12,13 +12,23 @@ axios.defaults.withCredentials = true;
 
 function getAxiosInstance(endpoint = "http://127.0.0.1:8000") {
     console.log(endpoint);
-    return axios.create({
+    const instance = axios.create({
         withCredentials: true,
         baseURL: endpoint
     });
+
+    instance.interceptors.request.use(function (config) {
+        const token = localStorage.getItem("auth_token");
+        config.headers.Authorization = token ? `Bearer ${token}` : "";
+        return config;
+      });
+
+    return instance
 }
 
 export {
 
     getAxiosInstance
+
+    
 };

@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import '../index.css';
 // import axios from 'axios';
 import { getAxiosInstance } from '../services/functions';
-import { useNavigate } from "react-router-dom";
+// // import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 
 function Login() {
   const instance = getAxiosInstance();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [loginInput, setLoginInput] = useState({
     email: "",
     password: "",
@@ -34,7 +34,7 @@ function Login() {
           localStorage.setItem("auth_token", res.data.token);
           localStorage.setItem("auth_name", res.data.username);
           swal("Success", res.data.message, "success");
-          res.data.role === "admin" ? navigate("/admin") : navigate("/");
+          // res.data.role === "admin" ? navigate("/admin") : navigate("/");
         } else if (res.data.status === 401) {
           swal("Warning", res.data.message, "warning");
         } else {
