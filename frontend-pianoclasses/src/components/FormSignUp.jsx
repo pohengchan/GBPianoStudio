@@ -43,8 +43,8 @@ import { getAxiosInstance } from '../services/functions';
         console.log(data);
         
         instance.get('/sanctum/csrf-cookie').then(response => { 
-        instance.post('http://localhost:8000/api/users', data).then(res => {
-            console.log(res.data);  
+        instance.post('http://localhost:8000/api/register', data).then(res => {
+            console.log(res.data.status);  
             if(res.data.status === 200)
             {
                 console.log(res.data);
@@ -56,11 +56,14 @@ import { getAxiosInstance } from '../services/functions';
             }
             else
             { 
+                console.log(res.data.validation_errors);
                 setRegisterInput({...registerInput, error_list: res.data.validation_errors});
                 
             }
+
         });
     });
+    console.log(registerInput);
 }
 
 
@@ -70,33 +73,33 @@ import { getAxiosInstance } from '../services/functions';
         <form onSubmit={registerSubmit} className='form-react'>
         <div className='form-control'>
                 <label>Contact's name/ Parent's name *</label>
-                <input type="text" name="contact_name" required onChange={handleInput} value={registerInput.contact_name} placeholder="Contact's name/ Parent's name"/>
-                {/* <span>{registerInput.error_list}</span>  */}
+                <input type="text" name="contact_name" onChange={handleInput} value={registerInput.contact_name} placeholder="Contact's name/ Parent's name"/>
+                <span>{registerInput.error_list.contact_name}</span> 
             </div>  
         <div className='form-control'>
                 <label> Student’s name *</label>
-                <input type="text" name="student_name" required onChange={handleInput} value={registerInput.student_name} placeholder=" Student’s name"/>
-                {/* <span>{registerInput.error_list.student_name}</span> */}
+                <input type="text" name="student_name" onChange={handleInput} value={registerInput.student_name} placeholder=" Student’s name"/>
+                <span>{registerInput.error_list.student_name}</span>
             </div>
             <div className='form-control'>
                 <label>Student’s date of birth *</label>
-                <input type="date" name="date_of_birth" required onChange={handleInput} value={registerInput.date_of_birth} placeholder="Student’s date of birth"/>
-                {/* <span>{registerInput.error_list.date_of_birth}</span> */}
+                <input type="date" name="date_of_birth" onChange={handleInput} value={registerInput.date_of_birth} placeholder="Student’s date of birth"/>
+                <span>{registerInput.error_list.date_of_birth}</span>
             </div>
             <div className='form-control'>
                 <label>Email *</label>
                 <input type="text" name="email" onChange={handleInput} value={registerInput.email} placeholder="emailExample@example.com"/>
-                {/* <span>{registerInput.error_list.email}</span> */}
+                <span>{registerInput.error_list.email}</span>
             </div>
             <div className = 'form-control'>
                 <label>Phone number *</label>
                 <input type = "tel" name="phone_number" onChange={handleInput} value={registerInput.phone_number} placeholder = "Phone number" />
-                {/* <span>{registerInput.error_list.phone_number}</span> */}
+                <span>{registerInput.error_list.phone_number}</span>
             </div>
             <div className='form-control'>
                 <label>Password *</label>
                 <input type="password" name="password" onChange={handleInput} value={registerInput.password} placeholder="..............." />
-                {/* <span>{registerInput.error_list.student_name}</span> */}
+                <span>{registerInput.error_list.student_name}</span>
                
             </div>
             {/* <div className = 'form-control'>
