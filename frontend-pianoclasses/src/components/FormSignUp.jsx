@@ -99,7 +99,7 @@ import { getAxiosInstance } from '../services/functions';
             <div className='form-control'>
                 <label>Password *</label>
                 <input type="password" name="password" onChange={handleInput} value={registerInput.password} placeholder="..............." />
-                <span>{registerInput.error_list.student_name}</span>
+                <span>{registerInput.error_list.password}</span>
                
             </div>
             {/* <div className = 'form-control'>
