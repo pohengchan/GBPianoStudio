@@ -14,7 +14,7 @@ class AuthController extends Controller
    {
     $validator = Validator::make($request->all(),[
         'contact_name' => 'required',
-        'email' => 'required| max:191',
+        'email' => 'required| max:191 |unique:users,email',
         'phone_number' => 'required',
         'student_name' => 'required',
         'date_of_birth' => 'required',
@@ -38,7 +38,7 @@ class AuthController extends Controller
 
        
     ]);
-    $token = $user->createToken($user->email.'_Token ')->plainTextToken;
+    $token = $user->createToken($user->email.'_Token')->plainTextToken;
 
     return response()->json([
         'status'=>200,
