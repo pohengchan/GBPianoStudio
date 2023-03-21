@@ -34,7 +34,7 @@ function Login() {
           localStorage.setItem("auth_token", res.data.token);
           localStorage.setItem("auth_name", res.data.username);
           swal("Success", res.data.message, "success");
-          // res.data.role === "admin" ? navigate("/admin") : navigate("/");
+          window.location = "/";
         } else if (res.data.status === 401) {
           swal("Warning", res.data.message, "warning");
         } else {
@@ -66,7 +66,7 @@ function Login() {
                 <span>{loginInput.error_list.password}</span>
             </div>
             <div className="buttons">
-            <button type='submit'>CANCEL</button>
+          
             <button type='submit'>ENTER</button>
             </div>
         </form>

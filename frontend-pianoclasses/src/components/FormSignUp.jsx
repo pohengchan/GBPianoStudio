@@ -108,7 +108,6 @@ import { getAxiosInstance } from '../services/functions';
                 
             </div> */}
             <div className="buttons">
-            <button type=''>CANCEL</button>
             <button type='submit'>SAVE</button>
             </div>
         </form>
