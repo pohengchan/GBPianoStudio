@@ -12,13 +12,15 @@ const ShowUsers = () => {
         getAllUsers()
     }, [])
 
+    
+
     const getAllUsers = async() => {
         const response = await axios.get(`${endpoint}/users`)
         setUsers(response.data)
     }
 
     const deleteUser = async(id) => {
-        await axios.delete(`${endpoint}/users/{id}`)
+        await axios.delete(`${endpoint}/users/${id}`)
         getAllUsers()
     }
 
@@ -39,7 +41,7 @@ const ShowUsers = () => {
             <tbody>
                 { users.map( (user) => (
                     <tr key={user.id}>
-                        <td> {user.name} </td>
+                        <td> {user.contact_name} </td>
                         <td> {user.email} </td>
                         <td> {user.is_authorised} </td>
                         <td>

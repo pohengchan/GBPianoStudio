@@ -28,7 +28,7 @@
       height: 100vh;
       width: 100%;
       font-size: 62.5%;
-      background-color: var(--background);
+      background-color: white;
   }
   p {
     font-family: 'Lexend', sans-serif;
@@ -40,4 +40,12 @@
   table {
     color: white;
     font-family: 'Lexend', sans-serif;
+  }
+  table {
+    color: var(--light-pink);
+    font-family: 'Lexend', sans-serif;
+  }
+
+  td {
+    color: var(--light-pink);
   }
