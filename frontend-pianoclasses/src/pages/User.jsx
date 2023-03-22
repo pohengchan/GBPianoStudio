@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import AuthorizerUser from '../components/AuthorizerUser';
+import ShowUsers from '../components/ShowUsers';
 
 function User() {
     return (
         <>
         <Navbar/>
-        <AuthorizerUser/>
+        <ShowUsers />
         <Footer/>
         </>
     )

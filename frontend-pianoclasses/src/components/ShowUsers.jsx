@@ -1,6 +1,8 @@
 import React, {useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import axios from 'axios'
+import '../styles/showUsers.css'
 
 const endpoint = 'http://localhost:8000/api'
 
@@ -23,35 +25,54 @@ const ShowUsers = () => {
     }
 
   return (
+<div>
+    { <h1 className='h1-users'>Users</h1> }
+    
+    <div className='container'>
+    <div className='tableUsers'>
+        {/* { <div className='create'>
+        <Link to='/create' className='custom-btn btn-15'>Create</Link>
+        </div> } */}
+        <table className='table'>
+    
+        <thead className='head'>
+            <tr>
+                <th>Name Parent´s</th>
+                <th>Student</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Authorized User</th>
+            </tr>
+        </thead>
 
-    <div>
-        <div className='d-grid gap-2'>
-            <Link to = '/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Create</Link>
-        </div>
-        <table className='table table-striped'> 
-            <thead className='bg-primary text-white'>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Authorised User</th>
+        <tbody>
+            {users.map((user) => (
+                <tr key={user.id}>
+                    <td><p>{user.contact_name}</p></td>
+                    <td><p>{user.student_name}</p></td>
+                    <td><p>{user.email}</p></td>
+                    <td><p>{user.phone_number}</p></td>
+                    <td>
+                        <input type="checkbox" className='Checkbox' id={`user-${user.id}`} />
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                { users.map( (user) => (
-                    <tr key={user.id}>
-                        <td> {user.name} </td>
-                        <td> {user.email} </td>
-                        <td> {user.is_authorised} </td>
-                        <td>
-                            <Link to={`/edit/${user.id}`} className= 'btn btn-warning'>Edit</Link>
-                            <button onClick={ ()=>deleteUser(user.id)} className='btn btn-danger'>Delete</button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
+            ))}
+        </tbody>
+    </table>
 
-        </table>
+    <div className='button-container'>
+        {users.map((user) => (
+            <div key={user.id} className='button-group'>
+            {/* { <Link to={`/edit/${user.id}`} className='btnedit'>Edit</Link> } */}
+            <button as={Link} to={`/edit/${user.id}`} className='btnedit'>Edit</button>
+            <button onClick={() => deleteUser(user.id)} className='btndelete'>Delete</button>
+            </div>
+        ))}
     </div>
+</div>
+</div>
+</div>
+
   )
 }
 
