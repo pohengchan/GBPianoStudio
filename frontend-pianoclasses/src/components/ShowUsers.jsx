@@ -6,6 +6,7 @@ import '../styles/showUsers.css';
 
 const endpoint = 'http://localhost:8000/api';
 
+
 const ShowUsers = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
@@ -34,12 +35,6 @@ const ShowUsers = () => {
     setNewEmail(user.email);
   };
 
-  const handleCancel = () => {
-    setEditingUser(null);
-    setNewName('');
-    setNewEmail('');
-  };
-
   const handleSave = async () => {
     await axios.put(`${endpoint}/users/${editingUser.id}`, {
       contact_name: newName,
@@ -51,10 +46,17 @@ const ShowUsers = () => {
     setNewEmail('');
     getAllUsers();
   };
-  const getUserDetails = async (id) => {
-    const response = await axios.get(`${endpoint}/users/${id}`);
-    setSelectedUser(response.data);
-    setShowModal(true);
+  
+  const handleCancel = () => {
+    setEditingUser(null);
+    setNewName('');
+    setNewEmail('');
+  };
+
+const getUserDetails = async (id) => {
+  const response = await axios.get(`${endpoint}/users/${id}`);
+  setSelectedUser(response.data);
+  setShowModal(true);
 };
 
 const closeModal = () => {
@@ -62,7 +64,7 @@ const closeModal = () => {
     setShowModal(false);
 };
 
-  return (
+return (
     <div>
       <h1 className="h1-users">Users</h1>
       
@@ -140,13 +142,13 @@ const closeModal = () => {
                 ) : (
                   <div>
                     <button
-                      className="btn btn-warning me-2"
+                      // className="btn btn-warning me-2"
                       onClick={() => handleEdit(user)}
                     >
                       Edit
                     </button>
                     <button
-                      className="btn btn-danger"
+                      // className="btn btn-danger"
                       onClick={() => deleteUser(user.id)}
                     >
                       Delete
@@ -164,15 +166,15 @@ const closeModal = () => {
         </tbody>
       </table>
       </div>
-      </div>
+     
   
-    // {showModal && (
-    //     <div className="modal">
-    //     <div className="modal-content">
-    //         <span className="close" onClick={closeModal}>
+     {showModal && (
+         <div className="modal">
+         <div className="modal-content">
+             <span className="close" onClick={closeModal}>
     //         &times;
-    //         </span>
-    //         <div>
+             </span>
+             <div>
     //         <h2>User Details</h2>
     //         <p>Name parent's: {selectedUser.contact_name}</p>
     //         <p>Student: {selectedUser.student_name}</p>
@@ -180,12 +182,12 @@ const closeModal = () => {
     //         <p>Phone: {selectedUser.phone_number}</p>
     //         <p>Date of birth: {selectedUser.date_of_birth}</p>
     //         <p>Candidate number: {selectedUser.candidate_number}</p>
-    //         </div>
-    //     </div>
-    //     </div>
-    // )}  
+             </div>
+         </div>
+         </div>
+     )}  
 
-    // </div>
+    </div>
   );
 };
 
