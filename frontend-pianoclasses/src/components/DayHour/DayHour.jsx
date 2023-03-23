@@ -12,18 +12,33 @@ import moment from "moment";
 import axios from 'axios';
 
 
+let isCalendarLoaded = false;
 
  function DayHour () {
     const [modalOpen, setModalOpen] = useState(false);
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
+    const [newInfo, setNewInfo] = useState([]);
 
     const onEventAdded = event => {
-      let calendarApi = calendarRef.current.getApi()
-      calendarApi.addEvent({
-        event
-      });
+      console.log(`dayhour: ${event.start}`);
+
+      event.start=moment(event.start).format("YYYY-MM-DD HH:mm:ss");
+      event.end=moment(event.end).format("YYYY-MM-DD HH:mm:ss");
+
+      axios.post("http://localhost:8000/api/lessons", event);
+      //handleEventAdd(event);
+
+      // let calendarApi = calendarRef.current.getApi()
+      // calendarApi.addEvent({
+      //   event
+      // });
+
+      isCalendarLoaded = false;
+
     };
+
+
     
     async function handleEventAdd(data) {
       console.log(data)
@@ -31,8 +46,13 @@ import axios from 'axios';
     };
 
     async function handleDatesSet(data) {
-      const response = await axios.get("http://localhost:8000/api/lessons");
-      setEvents(response.data);
+      if (isCalendarLoaded===false) {
+        const response = await axios.get("http://localhost:8000/api/lessons");
+        setEvents(response.data);
+        isCalendarLoaded = true;
+      }
+
+      console.log("get data");
     }
     
 const handleSelect = (info) => {
@@ -70,7 +90,10 @@ const openModal  = (info) => {
   setModalOpen();
 
 }
-
+const parentToChild = () => {
+  setNewInfo({user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"});
+  console.log(`new info: ${newInfo}`);
+}
         return (
             
           <div className='calendar-container'>
@@ -108,7 +131,7 @@ const openModal  = (info) => {
               datesSet={(date) => handleDatesSet(date)}
             />
             </div>
-            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} />
+            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} onOpen={() => parentToChild()} parentToChild={{user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"}} />
           </div>
         );
             };
