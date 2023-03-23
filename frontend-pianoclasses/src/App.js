@@ -20,7 +20,7 @@ function App() {
     <>
     <Navbar/>
     <Textborder/>
-    <ShowUsers/>
+    <ShowUsers />
     <Contactbutton/>
     <Piano/>
     <Footer/>

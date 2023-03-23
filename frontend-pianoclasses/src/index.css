@@ -3,6 +3,7 @@
 @import './styles/contactbutton.css';
 @import './styles/textborder.css';
 @import './styles/piano.css';
+@import './components/DayHour/DayHour.css';
 @import './styles/NavbarStyle.css';
 @import './styles/formSignUp.css';
 @import './styles/loginForm.css';
@@ -25,19 +26,28 @@
   }
   
   body {  
-      height: 100vh;
-      width: 100%;
-      font-size: 62.5%;
-      background-color: var(--background);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    font-size: 82.5%;
+    background-color: var(--background);
   }
+
   p {
     font-family: 'Lexend', sans-serif;
   }
 
-  h1 {
+  h1, h2{
     font-family: 'Oswald', sans-serif;
   }
+
   table {
-    color: white;
+    color: var(--light-pink);
     font-family: 'Lexend', sans-serif;
+  }
+
+  td {
+    color: var(--light-pink);
   }

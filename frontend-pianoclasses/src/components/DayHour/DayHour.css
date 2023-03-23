@@ -1,0 +1,40 @@
+ .row {
+    display: flex;
+}
+
+.col {
+    flex: 1 1 0%;
+    min-width: 0;
+    max-width: 100%;
+}
+.calendar_default_event_inner {
+    background: #2e78d6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 10pt;
+    padding: 5px;
+    opacity: 0.8;
+}
+
+.calendar-container {
+    color: #fff;
+}
+
+.add-event-modal {
+    background-color: black;
+    padding: 5%;
+    
+}
+
+cal-input {
+    height: 1rem;
+    padding: 0.25rem;
+    margin:0.5rem;
+}
+
+.modal-buttons {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;  
+}

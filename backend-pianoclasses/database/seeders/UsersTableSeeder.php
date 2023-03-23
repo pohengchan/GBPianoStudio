@@ -14,8 +14,11 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Alex',
+            'contact_name' => 'Alex',
             'email' => 'alex@alex.com',
+            'phone_number' => '6688555222',
+            'student_name' => 'cris',
+            'date_of_birth' => '2000-03-14',
             'password' => 'password',
             'is_authorised' => 1
         ]);

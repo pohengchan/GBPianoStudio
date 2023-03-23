@@ -39,9 +39,9 @@ const ShowUsers = () => {
             <tbody>
                 { users.map( (user) => (
                     <tr key={user.id}>
-                        <td> {user.name} </td>
-                        <td> {user.email} </td>
-                        <td> {user.is_authorised} </td>
+                        <td><p>{user.contact_name}</p>  </td>
+                        <td><p>{user.email}</p>  </td>
+                        <td><p> {user.is_authorised}</p></td>
                         <td>
                             <Link to={`/edit/${user.id}`} className= 'btn btn-warning'>Edit</Link>
                             <button onClick={ ()=>deleteUser(user.id)} className='btn btn-danger'>Delete</button>
