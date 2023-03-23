@@ -1,23 +1,22 @@
 import React, {useState} from "react";
 import Modal from "react-modal";
-// import Datetime from "react-datetime"
+import Datetime from "react-datetime"
 import './DayHour.css';
 
-export default function AddEventModal ({isOpen, onClose, onEventAdded, info}) {
+export default function AddEventModal ({isOpen, onClose, onEventAdded}) {
     
     const [title, setTitle] = useState("");
-    let [start, setStart] = useState(new Date());
+    const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date());
-    
-    start="12:15:00";
+    const [calDate, setCalDate] = useState(new Date());
 
     const onSubmit = (event) => {
         event.preventDefault();
 
         onEventAdded({
-            title: "Mary",
-            start: "2023-03-24 15:00:00",
-            end: "2023-03-24 16:00:00"
+            title,
+            start ,
+            end 
         })
         onClose();
     }
@@ -33,13 +32,14 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, info}) {
         <Modal style={customStyles} isOpen={isOpen} onRequestClose={onClose}>
             <form  className="add-event-modal" onSubmit={onSubmit}>
                 <label>Student's name</label>
-                <input placeholder={title} value="Anna" onChange={e => setTitle(e.target.value)} />
+                <input placeholder="Anna" value={title} onChange={e => setTitle(e.target.value)} />
                 <div>
                     <label>Start Date</label>
-                    <input type="date" id="lessonDate"
-                    value = "2023-03-25" readonly />
+                    <Datetime value={start} onChange={date => setStart(date)} />
+
+                    {/* <input type="date" id="calDate" value = {calDate} onChange={e => setCalDate(e.target.value)} />
                     <label>Start Time</label>
-                    <input type="time" id="sTime" value={start} readonly/>
+                    <input type="time" id="sTime" min="09:00" max="20:30" value={start} onChange={e => setStart(`2023-03-25 {e.target.value}`)} /> */}
                     {/* <input type="time" value={start} onChange={e => setStart(e.target.value)} /> */}
                     {/* <Datetime value={start} onChange={date => setStart(date)} /> */}
                 </div>
@@ -55,13 +55,14 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, info}) {
                 </div>
                 <div>
                     <label>End Time</label>
-                    <input type="time" id="eTime" value="13:00:00" onChange={e => setEnd(e.target.value)}readonly/>
+                    <Datetime value={end} onChange={date => setEnd(date)} />
+                    {/* <input type="time" id="eTime" value={end} onChange={e => setEnd(`2023-03-25 {e.target.value}`)}/> */}
                     {/* <input type="time" value={end} onChange={e => setEnd(e.target.value)} />
                     <Datetime value={end} onChange={date => setEnd(date)} /> */}
                 </div>
                 <div className="modal-buttons">
-                    <button>Cancel</button>
-                    <button>Add Lesson</button>                    
+                    {/* <button >Cancel</button> */}
+                    <button type="submit" >Add Lesson</button>                    
                 </div>
 
             </form>

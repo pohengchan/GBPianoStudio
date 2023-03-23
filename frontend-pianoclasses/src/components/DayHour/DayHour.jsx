@@ -12,6 +12,7 @@ import moment from "moment";
 import axios from 'axios';
 
 
+
  function DayHour () {
     const [modalOpen, setModalOpen] = useState(false);
     const calendarRef = useRef(null);
@@ -20,9 +21,7 @@ import axios from 'axios';
     const onEventAdded = event => {
       let calendarApi = calendarRef.current.getApi()
       calendarApi.addEvent({
-        start:moment(event.start).toDate(),
-        end: moment(event.end).toDate(),
-        title: "baby mozart's lesson"
+        event
       });
     };
     
@@ -57,6 +56,20 @@ const handleSelect = (info) => {
 //need to get user Name
 };
 
+const openModal  = (info) => {
+  const { start, end } = info;
+  setEvents([
+    ...events,
+    {
+      start,
+      end,
+      title: "Debussy",
+      // id: uuid(),
+    },
+  ]);
+  setModalOpen();
+
+}
 
         return (
             
@@ -66,8 +79,9 @@ const handleSelect = (info) => {
             <FullCalendar
             editable
             selectable
-           select={handleSelect}
-          // select={setModalOpen}
+          //  select={handleSelect}
+          select={setModalOpen}
+          // select={openModal} //new function
           ref={calendarRef}
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
               // plugins= {[ 'interaction', 'dayGrid', 'timeGrid' ]}
