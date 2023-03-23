@@ -16,50 +16,52 @@
     
   }
 .title {
+  font-size: 16px;
   font-family: 'Oswald', sans-serif;
   color:  var(--light-pink);
   text-shadow:
   /* 0 0 5px var(--light-pink), */
-  0 0 10px var(--light-pink),
+  /* 0 0 10px var(--light-pink), */
   0 0 20px var(--light-pink),
-  0 0 40px var(--light-pink),
+  /* 0 0 40px var(--light-pink), */
   0 0 80px var(--light-pink),
-  0 0 90px var(--light-pink),
+  /* 0 0 90px var(--light-pink), */
   0 0 100px var(--light-pink),
   0 0 150px var(--light-pink);
 
 }
 .title1 {
+  font-size:14px;
   font-family: 'Oswald', sans-serif;
   display: flex;
   justify-content: center;
   color:  var(--light-pink);
   text-shadow:
   /* 0 0 5px var(--light-pink), */
-  0 0 10px var(--light-pink),
+  /* 0 0 10px var(--light-pink), */
   0 0 20px var(--light-pink),
-  0 0 40px var(--light-pink),
+  /* 0 0 40px var(--light-pink), */
   0 0 80px var(--light-pink),
-  0 0 90px var(--light-pink),
+  /* 0 0 90px var(--light-pink), */
   0 0 100px var(--light-pink),
   0 0 150px var(--light-pink);
   
 }
   .piano {
     border-radius: 9%;
-    height: 3rem;
-    width: 3rem;
+    height: 2rem;
+    width: 2rem;
     margin-top: 2rem;  
   box-shadow: 0 0 5px 0 var(--light-pink),
-  /* 0 0 5px var(--light-pink),
-  0 0 10px var(--light-pink),
-  0 0 20px var(--light-pink), */
+  /* 0 0 5px var(--light-pink), */
+  /* 0 0 10px var(--light-pink), */
+  /* 0 0 20px var(--light-pink),  */
   /* 0 0 40px var(--light-pink), */
-  0 0 80px var(--light-pink),
+  /* 0 0 80px var(--light-pink),  */
   0 0 90px var(--light-pink),
-  0 0 100px var(--light-pink),
-  0 0 150px var(--light-pink); 
-  }
+  /* 0 0 100px var(--light-pink), */
+   0 0 150px var(--light-pink); 
+  } 
   
   .toggle-icon {
   margin-top: 1rem;
@@ -68,10 +70,10 @@
   box-shadow: 0 0 5px 0 var(--light-pink),
   /* inset 0 0 5px 0 var(--light-pink),
   0 0 20px 0 var(--light-pink), */
-  inset 0 0 5px 0 var(--light-pink),
-  0 0 20px 2px var(--light-pink),
-  inset 0 0 20px 2px var(--light-pink)
-  }
+  inset 0 0 10px 0 var(--light-pink),
+   0 0 40px var(--light-pink),
+  inset 0 0 7px 0 var(--light-pink);
+  border-radius: 5px;}
   
   
   .links {
@@ -112,10 +114,10 @@
       left: 20px;
     }
     .title {
-      font-size: 15px;
+      font-size: 16px;
     }
     .title1{
-      font-size: 12px ;
+      font-size: 14px ;
     }
     .piano {
       height: 50%;
@@ -151,10 +153,11 @@
       background-color: #1A1515;
       border-radius: 10px;
       padding: 1rem;
+      z-index: 2;
     }
     .navbar.expanded .links li{
       margin: 12px 0;
-      font-size: 15px;
+      font-size: 16px;
     }
     .toggle-icon{
       display: block;
