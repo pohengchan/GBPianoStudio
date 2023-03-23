@@ -89,6 +89,9 @@ return (
             <p>Date of birth: {selectedUser.date_of_birth}</p>
             <p>Candidate number: {selectedUser.candidate_number}</p>
             </div>
+            <div>  <button className='btn-edit' value="edit">
+                    Edit
+                    </button></div>
         </div>
         </div>
     )}

@@ -10,10 +10,10 @@
 .container {
     border: 1px solid var(--dark-pink);
     border-radius: 25px;
-    width: 90%;
+    /* width: 90%; */
     display: flex; 
     justify-content: center;
-    margin: 6rem;
+    margin: 5rem;
     box-shadow: 0 0 5px 0 var(--dark-pink),
     inset 0 0 5px 0 var(--dark-pink),
     0 0 20px 0 var(--dark-pink),
@@ -22,7 +22,7 @@
     inset 0 0 20px 2px var(--dark-pink);
 }
 .h1-users{
-    margin: 2rem; 
+    margin: 4rem; 
     font-size: 2rem;
     color: rgb(237, 160, 173);
     text-shadow:
@@ -86,7 +86,7 @@ button{
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 80%;
+    width: 85%;
     max-width: 40rem;
     padding: 1.25rem;
     background-color: var(--background); 
@@ -104,12 +104,12 @@ button{
     padding: 3px;
 }
 p{
-    font-size: 1.1rem;
+    font-size: 1rem;
  } 
 h2{
-
-    margin: 2rem; 
-    font-size: 1.2rem;
+    text-align: left;
+    margin: 1rem; 
+    font-size: 1.5rem;
     color: rgb(237, 160, 173);
     text-shadow:
     0 0 5px var(--dark-pink),
@@ -152,8 +152,11 @@ h2{
     
 .container{
     width: 98%;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-left: 1%;
+    margin-right: 0%;
+}
+btn-edit{
+    margin-left: 60%;
 }
 .modal {
     display: flex;
