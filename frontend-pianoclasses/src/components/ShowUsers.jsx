@@ -82,12 +82,12 @@ return (
             </span>
             <div>
             <h2>User Details</h2>
-            <p>Name: {selectedUser.contact_name}</p>
+            <p>Name parent´s: {selectedUser.contact_name}</p>
             <p>Student: {selectedUser.student_name}</p>
             <p>Email: {selectedUser.email}</p>
             <p>Phone: {selectedUser.phone_number}</p>
-            <p>Phone: {selectedUser.date_of_birth}</p>
-            <p>Phone: {selectedUser.candidate_number}</p>
+            <p>Date of birth: {selectedUser.date_of_birth}</p>
+            <p>Candidate number: {selectedUser.candidate_number}</p>
             </div>
         </div>
         </div>
