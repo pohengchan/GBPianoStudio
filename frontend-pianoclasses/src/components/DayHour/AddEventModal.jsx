@@ -33,7 +33,7 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, info}) {
         <Modal style={customStyles} isOpen={isOpen} onRequestClose={onClose}>
             <form  className="add-event-modal" onSubmit={onSubmit}>
                 <label>Student's name</label>
-                <input placeholder={title} value="Anna" onChange={e => setTitle(e.target.value)} />
+                <input className="cal-input" placeholder={title} value="Anna" onChange={e => setTitle(e.target.value)} />
                 <div>
                     <label>Start Date</label>
                     <input type="date" id="lessonDate"
