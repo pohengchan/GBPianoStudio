@@ -59,7 +59,7 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
   };
 
   return (
-    <nav className={toggle ? "navbar expanded" : "navbar"}>
+    <nav className={toggle ? "navbar-expanded" : "navbar-desktop"}>
     <div className="logo">
       <Link to="/">
         <img className="piano" src={logo} alt="Logo" />

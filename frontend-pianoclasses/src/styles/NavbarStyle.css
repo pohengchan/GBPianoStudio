@@ -1,4 +1,4 @@
-.navbar {
+.navbar-desktop {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -119,9 +119,22 @@
     .title1{
       font-size: 14px ;
     }
-    .piano {
-      height: 50%;
-      width: auto;
+    
+      .piano {
+        border-radius: 9%;
+        height: 2rem;
+        width: 2rem;
+        margin-top: 2rem;  
+      box-shadow: 0 0 5px 0 var(--light-pink),
+      /* 0 0 5px var(--light-pink), */
+      /* 0 0 10px var(--light-pink), */
+      /* 0 0 20px var(--light-pink),  */
+      /* 0 0 40px var(--light-pink), */
+      /* 0 0 80px var(--light-pink),  */
+      0 0 90px var(--light-pink),
+      /* 0 0 100px var(--light-pink), */
+       0 0 150px var(--light-pink); 
+      
     }
     .links{
       top: -300px; 
@@ -138,13 +151,13 @@
       margin-right: 10px;
       z-index: 2;
     }
-    .navbar .logo{
+    .navbar-expanded .logo{
       margin-top: -2%; 
       padding: 0;
       text-align: center; 
       height: 60px;
     }
-      .navbar.expanded .links{
+      .navbar-expanded .links{
       position: absolute;
       top: 80px;
       display: flex;
@@ -155,9 +168,20 @@
       padding: 1rem;
       z-index: 2;
     }
-    .navbar.expanded .links li{
+
+  .navbar-desktop .links li .link{
+    visibility: hidden;
+  }
+   a  .links{
+    visibility: hidden;
+   }
+    .navbar-expanded .links li{
       margin: 12px 0;
       font-size: 16px;
+    }
+    .navbar-expanded{
+      height: 1rem;
+         margin-bottom: 5rem;
     }
     .toggle-icon{
       display: block;
