@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import '../styles/showUsers.css';
 
 
 const endpoint = 'http://localhost:8000/api';
@@ -10,6 +11,8 @@ const ShowUsers = () => {
   const [editingUser, setEditingUser] = useState(null);
   const [newName, setNewName] = useState('');
   const [newEmail, setNewEmail] = useState('');
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     getAllUsers();
@@ -48,29 +51,43 @@ const ShowUsers = () => {
     setNewEmail('');
     getAllUsers();
   };
+  const getUserDetails = async (id) => {
+    const response = await axios.get(`${endpoint}/users/${id}`);
+    setSelectedUser(response.data);
+    setShowModal(true);
+};
+
+const closeModal = () => {
+    setSelectedUser(null);
+    setShowModal(false);
+};
 
   return (
     <div>
-      <div className="d-grid gap-2">
-        <Link
-          to="/create"
-          className="btn btn-success btn-lg mt-2 mb-2 text-white"
-        >
-          Create
-        </Link>
-      </div>
-      <table className="table table-striped">
-        <thead className="bg-primary text-white">
+      <h1 className="h1-users">Users</h1>
+      
+
+      <div className="container">
+
+      <div className="tableUsers"></div>
+
+      <table className="table">
+        <thead className="head">
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Authorised User</th>
+              {/* <th>Name Parent´s</th> */}
+              <th>Student</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Authorized User</th>
+                <th>Management</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
+
               <td>
+              <p>
                 {editingUser && editingUser.id === user.id ? (
                   <input
                     type="text"
@@ -80,8 +97,9 @@ const ShowUsers = () => {
                 ) : (
                   user.contact_name
                 )}
+              </p>
               </td>
-              <td>
+              <td><p>
               {editingUser && editingUser.id === user.id ? (
                   <input
                     type="text"
@@ -92,20 +110,28 @@ const ShowUsers = () => {
                   user.email
                 )}
               
-              
+              </p>
               </td>
-              <td>{user.is_authorised ? 'Yes' : 'No'}</td>
+              <td>
+                    <p>{user.phone_number}</p>
+                </td>
+              <td>
+                <p>{user.is_authorised ? 'Yes' : 'No'}</p>
+              </td>
+              {/* <td>
+                    <input type="checkbox" className="Checkbox" id={`user-${user.id}`} />
+                </td> */}
               <td>
                 {editingUser && editingUser.id === user.id ? (
                   <div>
                     <button
-                      className="btn btn-success me-2"
+
                       onClick={handleSave}
                     >
                       Save
                     </button>
                     <button
-                      className="btn btn-secondary"
+
                       onClick={handleCancel}
                     >
                       Cancel
@@ -128,11 +154,38 @@ const ShowUsers = () => {
                   </div>
                 )}
               </td>
+              <td>
+                    <button value="details" onClick={() => getUserDetails(user.id)}>
+                    Details
+                    </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+      </div>
+      </div>
+  
+    // {showModal && (
+    //     <div className="modal">
+    //     <div className="modal-content">
+    //         <span className="close" onClick={closeModal}>
+    //         &times;
+    //         </span>
+    //         <div>
+    //         <h2>User Details</h2>
+    //         <p>Name parent's: {selectedUser.contact_name}</p>
+    //         <p>Student: {selectedUser.student_name}</p>
+    //         <p>Email: {selectedUser.email}</p>
+    //         <p>Phone: {selectedUser.phone_number}</p>
+    //         <p>Date of birth: {selectedUser.date_of_birth}</p>
+    //         <p>Candidate number: {selectedUser.candidate_number}</p>
+    //         </div>
+    //     </div>
+    //     </div>
+    // )}  
+
+    // </div>
   );
 };
 
