@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->string('student_name');
-            $table->datetime('start_time');
-            $table->datetime('end_time');
+            $table->string('title');
+            $table->datetime('start');
+            $table->datetime('end');
             $table->timestamps();
         });
     }

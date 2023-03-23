@@ -25,9 +25,9 @@ class LessonController extends Controller
         //
         $lesson = new Lesson();
         $lesson -> user_id = $request -> user_id;
-        $lesson -> student_name = $request -> student_name;
-        $lesson -> start_time = $request -> start_time;
-        $lesson -> end_time = $request -> end_time;
+        $lesson -> title = $request -> title;
+        $lesson -> start = $request -> start;
+        $lesson -> end = $request -> end;
         $lesson -> save();
     }
 
@@ -49,9 +49,9 @@ class LessonController extends Controller
         //
         $lesson = Lesson::findOrFail($request -> id);
         $lesson -> user_id = $request -> user_id;
-        $lesson -> student_name = $request -> student_name;
-        $lesson -> start_time = $request -> start_time;
-        $lesson -> end_time = $request -> end_time;
+        $lesson -> title = $request -> title;
+        $lesson -> start = $request -> start;
+        $lesson -> end = $request -> end;
         $lesson -> save();
         return $lesson;
     }
