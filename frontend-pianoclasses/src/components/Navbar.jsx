@@ -31,12 +31,14 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
     {
       
       AuthButtons = (
-      <ul className="navbar">
         
+      <div className="login-out">
+       
         <Link to="/Login" className="link"><li>LOGIN</li></Link>
       
         <Link to="/Register" className="link"><li>REGISTER</li></Link>
-      </ul>);
+        </div> 
+     );
     } else{
       AuthButtons = (
       <li>
@@ -57,7 +59,7 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
   };
 
   return (
-    <nav className={toggle ? "navbar expanded" : "navbar"}>
+    <nav className={toggle ? "navbar-expanded" : "navbar-desktop"}>
     <div className="logo">
       <Link to="/">
         <img className="piano" src={logo} alt="Logo" />
@@ -71,7 +73,6 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
         {toggleIcon} 
       </div>
       <ul className="links">
-      
 
         <Link to="/Calendar" className="link">
           <li>BOOK A CLASS</li>
