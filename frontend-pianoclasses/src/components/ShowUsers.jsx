@@ -172,7 +172,7 @@ return (
          <div className="modal">
          <div className="modal-content">
              <span className="close" onClick={closeModal}>
-    //         &times;
+             &times;
              </span>
              <div>
              <h2>User Details</h2>
