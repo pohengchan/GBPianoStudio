@@ -1,9 +1,10 @@
-.navbar {
+.navbar-desktop {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
     padding: 0 50px;
+    margin-bottom: 5rem;
   }
   .nameLogo{
     color:  white;
@@ -15,50 +16,52 @@
     
   }
 .title {
+  font-size: 16px;
   font-family: 'Oswald', sans-serif;
   color:  var(--light-pink);
   text-shadow:
   /* 0 0 5px var(--light-pink), */
-  0 0 10px var(--light-pink),
+  /* 0 0 10px var(--light-pink), */
   0 0 20px var(--light-pink),
-  0 0 40px var(--light-pink),
+  /* 0 0 40px var(--light-pink), */
   0 0 80px var(--light-pink),
-  0 0 90px var(--light-pink),
+  /* 0 0 90px var(--light-pink), */
   0 0 100px var(--light-pink),
   0 0 150px var(--light-pink);
 
 }
 .title1 {
+  font-size:14px;
   font-family: 'Oswald', sans-serif;
   display: flex;
   justify-content: center;
   color:  var(--light-pink);
   text-shadow:
   /* 0 0 5px var(--light-pink), */
-  0 0 10px var(--light-pink),
+  /* 0 0 10px var(--light-pink), */
   0 0 20px var(--light-pink),
-  0 0 40px var(--light-pink),
+  /* 0 0 40px var(--light-pink), */
   0 0 80px var(--light-pink),
-  0 0 90px var(--light-pink),
+  /* 0 0 90px var(--light-pink), */
   0 0 100px var(--light-pink),
   0 0 150px var(--light-pink);
   
 }
   .piano {
     border-radius: 9%;
-    height: 3rem;
-    width: 3rem;
+    height: 2rem;
+    width: 2rem;
     margin-top: 2rem;  
   box-shadow: 0 0 5px 0 var(--light-pink),
-  /* 0 0 5px var(--light-pink),
-  0 0 10px var(--light-pink),
-  0 0 20px var(--light-pink), */
+  /* 0 0 5px var(--light-pink), */
+  /* 0 0 10px var(--light-pink), */
+  /* 0 0 20px var(--light-pink),  */
   /* 0 0 40px var(--light-pink), */
-  0 0 80px var(--light-pink),
+  /* 0 0 80px var(--light-pink),  */
   0 0 90px var(--light-pink),
-  0 0 100px var(--light-pink),
-  0 0 150px var(--light-pink); 
-  }
+  /* 0 0 100px var(--light-pink), */
+   0 0 150px var(--light-pink); 
+  } 
   
   .toggle-icon {
   margin-top: 1rem;
@@ -67,10 +70,10 @@
   box-shadow: 0 0 5px 0 var(--light-pink),
   /* inset 0 0 5px 0 var(--light-pink),
   0 0 20px 0 var(--light-pink), */
-  inset 0 0 5px 0 var(--light-pink),
-  0 0 20px 2px var(--light-pink),
-  inset 0 0 20px 2px var(--light-pink)
-  }
+  inset 0 0 10px 0 var(--light-pink),
+   0 0 40px var(--light-pink),
+  inset 0 0 7px 0 var(--light-pink);
+  border-radius: 5px;}
   
   
   .links {
@@ -79,6 +82,14 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
+    align-content: center;
+  }
+
+  .login-out {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   a {
@@ -91,6 +102,10 @@
     font-family: 'Oswald', sans-serif;
     font-size: larger;
   }
+
+  li {
+    list-style-type:none;
+  }
   
   @media(max-width: 768px){
 
@@ -99,14 +114,27 @@
       left: 20px;
     }
     .title {
-      font-size: 15px;
+      font-size: 16px;
     }
     .title1{
-      font-size: 12px ;
+      font-size: 14px ;
     }
-    .piano {
-      height: 50%;
-      width: auto;
+    
+      .piano {
+        border-radius: 9%;
+        height: 2rem;
+        width: 2rem;
+        margin-top: 2rem;  
+      box-shadow: 0 0 5px 0 var(--light-pink),
+      /* 0 0 5px var(--light-pink), */
+      /* 0 0 10px var(--light-pink), */
+      /* 0 0 20px var(--light-pink),  */
+      /* 0 0 40px var(--light-pink), */
+      /* 0 0 80px var(--light-pink),  */
+      0 0 90px var(--light-pink),
+      /* 0 0 100px var(--light-pink), */
+       0 0 150px var(--light-pink); 
+      
     }
     .links{
       top: -300px; 
@@ -123,28 +151,48 @@
       margin-right: 10px;
       z-index: 2;
     }
-    .navbar .logo{
+    .navbar-expanded .logo{
       margin-top: -2%; 
       padding: 0;
       text-align: center; 
       height: 60px;
     }
-      .navbar.expanded .links{
+      .navbar-expanded .links{
       position: absolute;
       top: 80px;
       display: flex;
       flex-direction: column;
       opacity: 1;
+      background-color: #1A1515;
+      border-radius: 10px;
+      padding: 1rem;
+      z-index: 2;
     }
-    .navbar.expanded .links li{
+
+  .navbar-desktop .links li .link{
+    visibility: hidden;
+  }
+   a  .links{
+    visibility: hidden;
+   }
+    .navbar-expanded .links li{
       margin: 12px 0;
-      font-size: 15px;
+      font-size: 16px;
+    }
+    .navbar-expanded{
+      height: 1rem;
+         margin-bottom: 5rem;
     }
     .toggle-icon{
       display: block;
       position: absolute; 
       top: 28px;
       right: 20px;
+    }
+    .login-out {
+      display: flex; 
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 

@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
  import FormSignUp from '../components/FormSignUp'
 
 
-function App() {
+function Register() {
   return (
     <>
     <Navbar/>
@@ -14,4 +14,4 @@ function App() {
     </>
   )
 }
-export default App;
+export default Register;

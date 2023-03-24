@@ -120,3 +120,9 @@
       0 0 100px var(--dark-pink),
       0 0 150px var(--dark-pink);
     }
+
+    span {
+      padding-top: 0.5rem;
+      color: var(--light-blue);
+      font-size: 0.8rem;
+    }
