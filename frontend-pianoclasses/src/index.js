@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import { createRoot } from 'react-dom/client';
 import Router from './applications/Router';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const container =document.getElementById('root');
