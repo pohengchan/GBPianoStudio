@@ -2,6 +2,7 @@ import React, {useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
 import axios from 'axios';
 import '../styles/showUsers.css';
+import Authorizer from './AuthorizerUser';
 
 
 const endpoint = 'http://localhost:8000/api';
@@ -63,6 +64,9 @@ const closeModal = () => {
     setSelectedUser(null);
     setShowModal(false);
 };
+const user = {
+  id: 1, // este sería el id que necesitas para el checkbox
+};
 
 return (
     <div>
@@ -118,11 +122,8 @@ return (
                     <p>{user.phone_number}</p>
                 </td>
               <td>
-                <p>{user.is_authorised ? 'Yes' : 'No'}</p>
+              <Authorizer user={user} />
               </td>
-              {/* <td>
-                    <input type="checkbox" className="Checkbox" id={`user-${user.id}`} />
-                </td> */}
               <td>
                 {editingUser && editingUser.id === user.id ? (
                   <div>
