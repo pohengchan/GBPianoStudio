@@ -37,5 +37,4 @@ return grantAccess;
 
 export default Authorizer;
   
-   {/* <label htmlFor={`user-${user.id}`}></label>
-        {isChecked && <DayHour />} */}
+   

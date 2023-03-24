@@ -82,16 +82,27 @@ return (
           <tr>
               {/* <th>Name Parent´s</th> */}
               <th>Student</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Authorized User</th>
+                <th>Contact</th>
+                <th>AU</th>
                 <th>Management</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-
+               <td>
+              <p>
+              {editingUser && editingUser.id === user.id ? (
+                  <input
+                    type="text"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                  />
+                ) : (
+                  user.student_name
+                )}
+              </p>
+              </td>
               <td>
               <p>
                 {editingUser && editingUser.id === user.id ? (
@@ -105,22 +116,6 @@ return (
                 )}
               </p>
               </td>
-              <td><p>
-              {editingUser && editingUser.id === user.id ? (
-                  <input
-                    type="text"
-                    value={newEmail}
-                    onChange={(e) => setNewEmail(e.target.value)}
-                  />
-                ) : (
-                  user.email
-                )}
-              
-              </p>
-              </td>
-              <td>
-                    <p>{user.phone_number}</p>
-                </td>
               <td>
               <Authorizer user={user} />
               </td>
