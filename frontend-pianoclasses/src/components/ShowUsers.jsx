@@ -66,7 +66,7 @@ const closeModal = () => {
 
 return (
     <div>
-      <h1 className="users">Users</h1>
+      <h1 className="users">USERS</h1>
       
 
       <div className="container">
@@ -126,13 +126,13 @@ return (
               <td>
                 {editingUser && editingUser.id === user.id ? (
                   <div>
-                    <button
+                    <button className='btnNav'
 
                       onClick={handleSave}
                     >
                       Save
                     </button>
-                    <button
+                    <button className='btnNav'
 
                       onClick={handleCancel}
                     >
@@ -141,13 +141,13 @@ return (
                   </div>
                 ) : (
                   <div>
-                    <button
+                    <button className='btnNav'
                       // className="btn btn-warning me-2"
                       onClick={() => handleEdit(user)}
                     >
                       Edit
                     </button>
-                    <button
+                    <button className='btnNav'
                       // className="btn btn-danger"
                       onClick={() => deleteUser(user.id)}
                     >
@@ -157,7 +157,7 @@ return (
                 )}
               </td>
               <td>
-                    <button value="details" onClick={() => getUserDetails(user.id)}>
+                    <button className='btnNav' value="details" onClick={() => getUserDetails(user.id)}>
                     Details
                     </button>
               </td>
