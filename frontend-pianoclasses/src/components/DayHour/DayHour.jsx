@@ -83,10 +83,11 @@ const openModal  = (info) => {
     {
       start,
       end,
-      title: "Debussy",
-      // id: uuid(),
+      title:"",
+
     },
   ]);
+  parentToChild();
   setModalOpen();
 
 }
