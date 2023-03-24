@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import axios from 'axios';
 import '../styles/showUsers.css';
 
@@ -66,7 +66,7 @@ const closeModal = () => {
 
 return (
     <div>
-      <h1 className="h1-users">Users</h1>
+      <h1 className="users">Users</h1>
       
 
       <div className="container">
@@ -175,13 +175,13 @@ return (
     //         &times;
              </span>
              <div>
-    //         <h2>User Details</h2>
-    //         <p>Name parent's: {selectedUser.contact_name}</p>
-    //         <p>Student: {selectedUser.student_name}</p>
-    //         <p>Email: {selectedUser.email}</p>
-    //         <p>Phone: {selectedUser.phone_number}</p>
-    //         <p>Date of birth: {selectedUser.date_of_birth}</p>
-    //         <p>Candidate number: {selectedUser.candidate_number}</p>
+             <h2>User Details</h2>
+             <p>Name parent's: {selectedUser.contact_name}</p>
+             <p>Student: {selectedUser.student_name}</p>
+             <p>Email: {selectedUser.email}</p>
+             <p>Phone: {selectedUser.phone_number}</p>
+             <p>Date of birth: {selectedUser.date_of_birth}</p>
+             <p>Candidate number: {selectedUser.candidate_number}</p>
              </div>
          </div>
          </div>
