@@ -12,6 +12,7 @@ import moment from "moment";
 import axios from 'axios';
 
 
+
 let isCalendarLoaded = false;
 
  function DayHour () {
@@ -91,9 +92,21 @@ const openModal  = (info) => {
   setModalOpen();
 
 }
-const parentToChild = () => {
-  setNewInfo({user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"});
+const parentToChild = (info) => {
+  const { start, end } = info;
+  setNewInfo([
+    ...events,
+    {
+      id: 1,
+      start,
+      end,
+      title:"",
+    },
+  ]);
+  //setNewInfo({user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"});
   console.log(`new info: ${newInfo}`);
+  console.log(newInfo);
+  setModalOpen();
 }
         return (
             
@@ -104,7 +117,7 @@ const parentToChild = () => {
             editable
             selectable
           //  select={handleSelect}
-          select={setModalOpen}
+          select={parentToChild}
           // select={openModal} //new function
           ref={calendarRef}
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
@@ -132,7 +145,8 @@ const parentToChild = () => {
               datesSet={(date) => handleDatesSet(date)}
             />
             </div>
-            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} onOpen={() => parentToChild()} parentToChild={{user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"}} />
+            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} onOpen={ parentToChild} parentToChild={{user_id:1, title: events.title,start:events.start,end:events.end}} data={{user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"}} />
+            {/* <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} onOpen={() => parentToChild()} parentToChild={{user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"}} /> */}
           </div>
         );
             };

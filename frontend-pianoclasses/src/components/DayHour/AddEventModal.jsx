@@ -5,9 +5,11 @@ import './DayHour.css';
 
 // import moment from "moment";
 
-export default function AddEventModal ({isOpen, onClose, onEventAdded, onOpen, parentToChild}) {
+export default function AddEventModal ({isOpen, onClose, onEventAdded, onOpen, parentToChild, data}) {
     console.log(parentToChild.start);
-    console.log(`onOpen: ${onOpen}`);
+    console.log(onOpen.start);
+    console.log(`data: ${data.start}`);
+     console.log(`parentToChild: ${parentToChild.start}`);
     
     const [title, setTitle] = useState("");
     const [start, setStart] = useState(parentToChild.start);
