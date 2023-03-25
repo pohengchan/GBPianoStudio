@@ -1,22 +1,30 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import Datetime from "react-datetime"
 import './DayHour.css';
 
 // import moment from "moment";
 
-export default function AddEventModal ({isOpen, onClose, onEventAdded, onOpen, parentToChild, data}) {
-    console.log(parentToChild.start);
-    console.log(onOpen.start);
-    console.log(`data: ${data.start}`);
-     console.log(`parentToChild: ${parentToChild.start}`);
+export default function AddEventModal ({isOpen, onClose, onEventAdded, parentToChild}) {
+    console.log(`start: ${parentToChild.start}`);
+    // console.log(data.start);
+    // console.log(`data: ${data.start}`);
+     console.log(`end: ${parentToChild.end}`);
     
-    const [title, setTitle] = useState("");
-    const [start, setStart] = useState(parentToChild.start);
-    const [end, setEnd] = useState(parentToChild.end);
+    const [title, setTitle] = useState();
+    const [start, setStart] = useState();
+    const [end, setEnd] = useState();
     // const [calDate, setCalDate] = useState(new Date());
 
+     // effect runs on component mount
+     useEffect(() => {
+        // simulate async api call with set timeout
+        setTimeout(() => setStart(parentToChild.start), 1000);
+        setTimeout(() => setEnd(parentToChild.end), 1000);
+    });
+
     const onSubmit = (event) => {
+        console.log(`add class: ${event.start}`);
         event.preventDefault();
         onEventAdded({
             user_id:1,
@@ -26,7 +34,7 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, onOpen, p
         })
 
         console.log(`wtf3: ${start}`);
-        console.log(event);
+        console.log(event.start);
         onClose();
     }
 
@@ -45,7 +53,7 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, onOpen, p
                 <div>
                     <label>Start Date</label>
                     {/* <Datetime value={parentToChild.start} onChange={date => setStart(date)} /> */}
-                    <Datetime value={parentToChild.start} onChange={date => setStart(date)} />
+                    <Datetime initialValue={parentToChild.start} value={start} onChange={date => setStart(date)}/>
 
                     {/* <input type="date" id="calDate" value = {calDate} onChange={e => setCalDate(e.target.value)} />
                     <label>Start Time</label>
@@ -65,7 +73,7 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, onOpen, p
                 </div>
                 <div>
                     <label>End Time</label>
-                    <Datetime value={parentToChild.end} onChange={date => setEnd(date)} />
+                    <Datetime initialValue={parentToChild.end} value={end} onChange={date => setEnd(date)} />
                     {/* <input type="time" id="eTime" value={end} onChange={e => setEnd(`2023-03-25 {e.target.value}`)}/> */}
                     {/* <input type="time" value={end} onChange={e => setEnd(e.target.value)} />
                     <Datetime value={end} onChange={date => setEnd(date)} /> */}
