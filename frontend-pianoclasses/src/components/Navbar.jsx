@@ -45,7 +45,7 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
       Calendar =  (
         <div className="calendar-navbar">
            <Link to="/Calendar" className="link">
-          <li>CALENDAR</li>
+          <li>BOOK A CLASS</li>
         </Link>
         </div>
       );
@@ -56,7 +56,7 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
       </li>
     )}
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState();
   const toggleIcon = toggle ? (
     <Icon icon={x} size={26} />
   ) : (
@@ -84,10 +84,7 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
         {toggleIcon} 
       </div>
       <ul className="links">
-      {Calendar}
-        {/* <Link to="/Calendar" className="link">
-          <li>BOOK A CLASS</li>
-        </Link> */}
+        {Calendar}
 
         <Link to="/Tips" className="link">
           <li>TIPS ON HOW TO PRACTICE</li>
