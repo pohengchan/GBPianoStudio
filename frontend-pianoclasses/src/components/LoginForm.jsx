@@ -74,7 +74,7 @@ function Login() {
             </div>
             <div className="buttons">
           
-            <button type='submit'>ENTER</button>
+            <button type='submit' className='button-save'>ENTER</button>
             </div>
         </form>
     </div>

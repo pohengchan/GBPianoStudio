@@ -52,7 +52,7 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
 
       AuthButtons = (
       <li>
-        <button type="button" onClick={logoutSubmit} className="linkbtn btn-secondary btn btn-sm">LOGOUT</button>
+        <button type="button" onClick={logoutSubmit} className="logout-button">LOGOUT</button>
       </li>
     )}
 
