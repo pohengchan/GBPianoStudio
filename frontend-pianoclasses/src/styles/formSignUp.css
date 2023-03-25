@@ -54,9 +54,9 @@
       box-shadow: 0 0 3px 0 var(--light-pink),
     inset 0 0 3px 0 var(--light-pink),
     0 0 7px 0 var(--light-pink),
-    inset 0 0 3px 0 var(--light-pink),
+    /* inset 0 0 3px 0 var(--light-pink),
     0 0 7px 1px var(--light-pink),
-    inset 0 0 7px 1px var(--light-pink);
+    inset 0 0 7px 1px var(--light-pink); */
     }
     .form-control, input:focus {
       outline: none;

@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Contactbutton from './components/Contactbutton';
 import Textborder from './components/Textborder';
 import Piano from './components/Piano';
-import ShowUsers from './components/ShowUsers';
+// import ShowUsers from './components/ShowUsers';
 // import axios from 'axios';
 
 // axios.default.baseURL= "http://127.0.0.1:8000/";
@@ -20,7 +20,7 @@ function App() {
     <>
     <Navbar/>
     <Textborder/>
-    <ShowUsers/>
+    {/* <ShowUsers /> */}
     <Contactbutton/>
     <Piano/>
     <Footer/>
