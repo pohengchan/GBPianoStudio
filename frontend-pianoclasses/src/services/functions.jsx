@@ -10,7 +10,7 @@ axios.defaults.withCredentials = true;
 // axios.defaults.xsrfHeaderName = "X-CSRF-TOKEN";
 
 
-function getAxiosInstance(endpoint = "http://127.0.0.1:8000") {
+function getAxiosInstance(endpoint = "http://localhost:8000") {
     console.log(endpoint);
     const instance = axios.create({
         withCredentials: true,
