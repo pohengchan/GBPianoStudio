@@ -25,7 +25,8 @@ function Router() {
             {/* <Route path= '/Login' element={<Login/>}/> */}
             <Route path= '/Login' element={localStorage.getItem('auth_token') ? <Navigate to="/" /> : <Login/>} />
             <Route path= '/Admin' element={<Admin/>}/> 
-            <Route path= '/Calendar' element={<Calendar/>}/> 
+            {/* <Route path= '/Calendar' element={<Calendar/>}/>  */}
+            <Route path= '/Calendar' element={localStorage.getItem('auth_token') ? <Navigate to="/" /> : <Calendar/>} />
             <Route path= '/Contact' element={<Contact/>}/>
             <Route path= '/Exams' element={<Exams/>}/>
             {/* <Route path= '/register' element={ <Register/>} /> */}

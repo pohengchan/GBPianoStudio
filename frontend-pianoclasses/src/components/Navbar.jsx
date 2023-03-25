@@ -26,10 +26,12 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
 }
   const Navbar = () => {
     var AuthButtons = '';
+    var Calendar = '';
     if(!localStorage.getItem('auth_token')) 
     
     {
-      
+      Calendar = '';
+
       AuthButtons = (
         
       <div className="login-out">
@@ -40,6 +42,14 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
         </div> 
      );
     } else{
+      Calendar =  (
+        <div className="calendar-navbar">
+           <Link to="/Calendar" className="link">
+          <li>CALENDAR</li>
+        </Link>
+        </div>
+      );
+
       AuthButtons = (
       <li>
         <button type="button" onClick={logoutSubmit} className="linkbtn btn-secondary btn btn-sm">LOGOUT</button>
@@ -59,6 +69,7 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
   };
 
   return (
+
     <nav className={toggle ? "navbar-expanded" : "navbar-desktop"}>
     <div className="logo">
       <Link to="/">
@@ -73,10 +84,10 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
         {toggleIcon} 
       </div>
       <ul className="links">
-
-        <Link to="/Calendar" className="link">
+      {Calendar}
+        {/* <Link to="/Calendar" className="link">
           <li>BOOK A CLASS</li>
-        </Link>
+        </Link> */}
 
         <Link to="/Tips" className="link">
           <li>TIPS ON HOW TO PRACTICE</li>
