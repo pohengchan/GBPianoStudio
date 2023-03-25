@@ -29,22 +29,29 @@ function Login() {
     };
 
     instance.get('/sanctum/csrf-cookie').then((response) => {
+      console.log("die");
       instance.post('http://localhost:8000/api/login', data).then((res) => {
         if (res.data.status === 200) {
           localStorage.setItem("auth_token", res.data.token);
+          console.log("should work");
           localStorage.setItem("auth_name", res.data.username);
           swal("Success", res.data.message, "success");
           window.location = "/";
         } else if (res.data.status === 401) {
+          console.log(res.data.status)
           swal("Warning", res.data.message, "warning");
         } else {
+          console.log(res.data.status)
+          swal("Warning", res.data.message, "something else");
           setLoginInput({
             ...loginInput,
             error_list: res.data.validation_errors,
           });
         }
       });
-    });
+    }
+    
+    );
   };
 
 
