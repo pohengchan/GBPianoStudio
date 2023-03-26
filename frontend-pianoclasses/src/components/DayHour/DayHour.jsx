@@ -20,21 +20,18 @@ var passArray = {id:1, title: "", start:"", end:""};
     const [modalOpen, setModalOpen] = useState(false);
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
-    const [newInfo, setNewInfo] = useState([]);
 
     const onEventAdded = event => {
-      console.log(`adding a new lesson: ${event.start}`);
-      console.log(event.start);
+
       event.start=moment(event.start).format("YYYY-MM-DD HH:mm:ss");
       event.end=moment(event.end).format("YYYY-MM-DD HH:mm:ss");
-      console.log(event);
-      axios.post("http://localhost:8000/api/lessons", event);
-      //handleEventAdd(event);
+      // axios.post("http://localhost:8000/api/lessons", event);
+      handleEventAdd(event);
 
-      // let calendarApi = calendarRef.current.getApi()
-      // calendarApi.addEvent({
-      //   event
-      // });
+      let calendarApi = calendarRef.current.getApi()
+      calendarApi.addEvent({
+        event
+      });
 
       isCalendarLoaded = false;
 
@@ -56,28 +53,28 @@ var passArray = {id:1, title: "", start:"", end:""};
 
       console.log("get calendar");
     }
-    
-const handleSelect = (info) => {
-  const { start, end } = info;
-  const eventNamePrompt = prompt( "Piano lesson: " + moment(info.start).format("ddd") + " " + moment(info.start).format("Do MMM YYYY") + ", from " + moment(info.start).format("HH:mm") + " to " + moment(info.end).format("HH:mm"), "Chopin");
-  if (eventNamePrompt) {
-    setEvents([
-      ...events,
-      {
-        start,
-        end,
-        title: eventNamePrompt,
-        // id: uuid(),
-      },
-    ]);
-  }
-  handleEventAdd({user_id:1, title: eventNamePrompt, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")});
-  console.log(moment(info.start).format("YYYY-MM-DD hh:mm:ss"));
-  console.log(moment(info.end).format("YYYY-MM-DD hh:mm:ss"));
-//need to get user ID
-//need to get user Name
-};
+//opens prompt with lesson details
+// const handleSelect = (info) => {
+//   const { start, end } = info;
+//   const eventNamePrompt = prompt( "Piano lesson: " + moment(info.start).format("ddd") + " " + moment(info.start).format("Do MMM YYYY") + ", from " + moment(info.start).format("HH:mm") + " to " + moment(info.end).format("HH:mm"), "Chopin");
+//   if (eventNamePrompt) {
+//     setEvents([
+//       ...events,
+//       {
+//         start,
+//         end,
+//         title: eventNamePrompt,
+//       },
+//     ]);
+//   }
+//   handleEventAdd({user_id:1, title: eventNamePrompt, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")});
+//   console.log(moment(info.start).format("YYYY-MM-DD hh:mm:ss"));
+//   console.log(moment(info.end).format("YYYY-MM-DD hh:mm:ss"));
+// //need to get user ID
+// //need to get user Name
+// };
 
+//this function opens the modal to add the lesson
 const openModal  = (info) => {
   const { start, end } = info;
   setEvents([
@@ -88,33 +85,12 @@ const openModal  = (info) => {
       title:"",
     },
   ]);
-  // parentToChild();ç
+
 
   setModalOpen(true);
-  console.log(`ìnfo is ${info}`);
-  console.log(moment(info.start).format("YYYY-MM-DD hh:mm:ss"));
-
   passArray= {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")}
-
-  return {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD hh:mm:ss"), end: moment(info.end).format("YYYY-MM-DD hh:mm:ss")};
-
 }
-// const parentToChild = (info) => {
-//   const { start, end } = info;
-//   setEvents([
-//     ...events,
-//     {
-//       id: 1,
-//       start,
-//       end,
-//       title:"",
-//     },
-//   ]);
-//   //setNewInfo({user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"});
-//   console.log(`new info: ${events}`);
-//   console.log(events);
-//   setModalOpen(true);
-// }
+
         return (
             
           <div className='calendar-container'>
@@ -124,7 +100,6 @@ const openModal  = (info) => {
             editable
             selectable
           //  select={handleSelect}
-          // select={parentToChild}
           select={openModal} //new function
           ref={calendarRef}
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
@@ -152,8 +127,8 @@ const openModal  = (info) => {
               datesSet={(date) => handleDatesSet(date)}
             />
             </div>
-            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} parentToChild={passArray}  />
-            {/* <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} onOpen={() => parentToChild()} parentToChild={{user_id:1, title:"title",start:"2023-03-24 14:00:00",end:"2023-03-24 15:00:00"}} /> */}
+            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray}  />
+
           </div>
         );
             };
