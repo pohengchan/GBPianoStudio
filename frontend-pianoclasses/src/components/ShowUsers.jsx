@@ -83,14 +83,14 @@ return (
               {/* <th>Name Parent´s</th> */}
               <th>Student</th>
                 <th>Contact</th>
-                <th>AU</th>
-                <th>Management</th>
+                <th className='AU'>AU</th>
+                <th className='Mgn'>Management</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-               <td>
+              <td>
               <p>
               {editingUser && editingUser.id === user.id ? (
                   <input
@@ -119,7 +119,7 @@ return (
               <td>
               <Authorizer user={user} />
               </td>
-              <td>
+              {/* <td>
                 {editingUser && editingUser.id === user.id ? (
                   <div>
                     <button className='btnNav'
@@ -151,7 +151,7 @@ return (
                     </button>
                   </div>
                 )}
-              </td>
+              </td> */}
               <td>
                     <button className='btnNav' value="details" onClick={() => getUserDetails(user.id)}>
                     Details
