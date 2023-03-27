@@ -119,7 +119,7 @@ return (
               <td>
               <Authorizer user={user} />
               </td>
-              {/* <td>
+              <td>
                 {editingUser && editingUser.id === user.id ? (
                   <div>
                     <button className='btnNav'
@@ -151,7 +151,7 @@ return (
                     </button>
                   </div>
                 )}
-              </td> */}
+              </td>
               <td>
                     <button className='btnNav' value="details" onClick={() => getUserDetails(user.id)}>
                     Details
