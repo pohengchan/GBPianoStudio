@@ -55,6 +55,7 @@
     inset 0 0 3px 0 var(--light-pink),
     0 0 7px 0 var(--light-pink),
     inset 0 0 3px 0 var(--light-pink),
+
     0 0 7px 1px var(--light-pink),
     inset 0 0 7px 1px var(--light-pink);
     }
@@ -82,7 +83,7 @@
  
     }
 
-    button {
+    .button-save {
 
       font-family: 'Oswald', sans-serif;
       font-weight: 500;
@@ -98,7 +99,7 @@
       
     }
     
-    button:hover {
+    .button-save:hover {
       background-color: var(--light-blue);
       color:white;
     }
