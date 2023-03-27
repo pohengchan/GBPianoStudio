@@ -1,54 +1,40 @@
 import React from 'react';
-import '../index.css';
 import '../styles/authorizerUsers.css'
 import { useState } from "react";
+import DayHour from './DayHour/DayHour';
 
-function Authorizer() {
-    const [tableData, setTableData] = useState([]);
+function Authorizer({ user }) {
+    const [isChecked, setIsChecked] = useState(false);
+  
+    const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+    }
 
-    function addRow() {
-    const newRow = {
-        id: tableData.length + 1,
-        column1: '',
-        column2: '',
-        column3: '',
-        column4: ''
-    };
-    setTableData([...tableData, newRow]);
+    if (!user) {
+    return null; 
     }
 
     return (
-    <>
-        <div id='container-father'>
-            <div className='container'>
-            <table>
-            <thead>
-                <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Authorized</th>
-                </tr>
-            </thead>
-            <tbody>
-                {tableData.map(row => (
-                    <tr key={row.id}>
-                    <td>{row.id}</td>
-                    <td>{row.column1}</td>
-                    <td>{row.column2}</td>
-                    <td>{row.column3}</td>
-                    <td>{row.column4}</td>
-                </tr>
-                ))}
-            </tbody>
-            </table>
-            {/* <button onClick={addRow}>Agregar fila</button> */}
-        </div>
-        </div>
-    </>
-    )
-  }
+    <div>
+        <input 
+        type="checkbox" 
+        className="Checkbox" 
+        id={`user-${user.id}`} 
+        onChange={handleCheckboxChange} 
+        />
+        {isChecked && <AccessDayHour />}
+    </div>
+  );
+}
+
+function AccessDayHour() {
+    const grantAccess = () => {
+        return <DayHour />;
+    }
+return grantAccess;
+
+}
+
+export default Authorizer;
   
-  export default Authorizer;
-  
+   
