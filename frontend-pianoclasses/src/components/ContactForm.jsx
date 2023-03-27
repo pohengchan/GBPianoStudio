@@ -45,8 +45,8 @@ import '../index.css';
             </div>
     
             <div className="buttons">
-            <button type='submit'> CANCEL</button>
-            <button type='submit'>SEND</button>
+            <button type='cancel' className='button-save'> CANCEL</button>
+            <button type='submit' className='button-save'>SEND</button>
             </div>
         </form>
     </div>
