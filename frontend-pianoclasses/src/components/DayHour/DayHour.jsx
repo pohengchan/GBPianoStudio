@@ -10,11 +10,13 @@ import AddEventModal from './AddEventModal';
 import { useRef } from 'react';
 import moment from "moment";
 import axios from 'axios';
+import swal from "sweetalert";
 
 
 
 let isCalendarLoaded = false;
 var passArray = {id:1, title: "", start:"", end:""};
+
 
  function DayHour () {
     const [modalOpen, setModalOpen] = useState(false);
@@ -36,12 +38,13 @@ var passArray = {id:1, title: "", start:"", end:""};
       isCalendarLoaded = false;
 
     };
-
-
     
     async function handleEventAdd(data) {
       console.log(data)
       await axios.post("http://localhost:8000/api/lessons", data);
+      passArray={id:1, title: "", start:"", end:""};
+      swal("Success", "You have added a lesson to the calendar successfully!", "success");
+      
     };
 
     async function handleDatesSet(data) {
@@ -49,9 +52,8 @@ var passArray = {id:1, title: "", start:"", end:""};
         const response = await axios.get("http://localhost:8000/api/lessons");
         setEvents(response.data);
         isCalendarLoaded = true;
+        console.log("get calendar");
       }
-
-      console.log("get calendar");
     }
 //opens prompt with lesson details
 // const handleSelect = (info) => {
@@ -86,9 +88,9 @@ const openModal  = (info) => {
     },
   ]);
 
-
   setModalOpen(true);
   passArray= {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")}
+
 }
 
         return (
@@ -98,6 +100,7 @@ const openModal  = (info) => {
             <div>
             <FullCalendar
             editable
+            eventOverlap={false}
             selectable
           //  select={handleSelect}
           select={openModal} //new function
@@ -127,7 +130,7 @@ const openModal  = (info) => {
               datesSet={(date) => handleDatesSet(date)}
             />
             </div>
-            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray}  />
+            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
 
           </div>
         );
