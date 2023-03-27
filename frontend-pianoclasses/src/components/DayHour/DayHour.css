@@ -39,3 +39,28 @@
     margin: 0 auto;
     display: flex;  
 }
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 85%;
+    max-width: 40rem;
+    padding: 1.25rem;
+    background-color: var(--background); 
+    border-radius: 0.313rem;
+}

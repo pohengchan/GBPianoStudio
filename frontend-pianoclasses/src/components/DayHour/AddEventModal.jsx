@@ -11,6 +11,11 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
     const [end, setEnd] = useState();
     const [show, setShow] = useState();
 
+    const [confirm, setConfirm] = useState(false);
+    const handleConfirm = () => {
+        setConfirm(!confirm);
+      }
+
     useEffect(() => {
         // simulate async api call with set timeout
         setTimeout(() => setStart(calValues.start), 1000);
@@ -26,7 +31,8 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
             user_id:1,
             title,
             start ,
-            end 
+            end, 
+            confirmed: confirm
         })
         onClose();
     }
@@ -69,6 +75,10 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
                 <div>
                     <label>End Time</label>
                     {end && <input placeholder="" className="lesson-input"  value={end} readOnly />}
+                </div>
+                <div>
+                    <label>Confirmed:</label>
+                    <input type="checkbox" checked={confirm} onChange={handleConfirm} />
                 </div>
                 <div className="modal-buttons">
                     <button onClick={handleClose}>Cancel❌</button>

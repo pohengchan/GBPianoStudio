@@ -12,8 +12,6 @@ import moment from "moment";
 import axios from 'axios';
 import swal from "sweetalert";
 
-
-
 let isCalendarLoaded = false;
 var passArray = {id:1, title: "", start:"", end:""};
 
@@ -22,6 +20,7 @@ var passArray = {id:1, title: "", start:"", end:""};
     const [modalOpen, setModalOpen] = useState(false);
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
+    const [isOpen, setIsOpen] = useState(false); //confirm pop up
 
     const onEventAdded = event => {
 
@@ -44,7 +43,6 @@ var passArray = {id:1, title: "", start:"", end:""};
       await axios.post("http://localhost:8000/api/lessons", data);
       passArray={id:1, title: "", start:"", end:""};
       swal("Success", "You have added a lesson to the calendar successfully!", "success");
-      
     };
 
     async function handleDatesSet(data) {
@@ -55,26 +53,26 @@ var passArray = {id:1, title: "", start:"", end:""};
         console.log("get calendar");
       }
     }
+
+
 //opens prompt with lesson details
-// const handleSelect = (info) => {
-//   const { start, end } = info;
-//   const eventNamePrompt = prompt( "Piano lesson: " + moment(info.start).format("ddd") + " " + moment(info.start).format("Do MMM YYYY") + ", from " + moment(info.start).format("HH:mm") + " to " + moment(info.end).format("HH:mm"), "Chopin");
-//   if (eventNamePrompt) {
-//     setEvents([
-//       ...events,
-//       {
-//         start,
-//         end,
-//         title: eventNamePrompt,
-//       },
-//     ]);
-//   }
-//   handleEventAdd({user_id:1, title: eventNamePrompt, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")});
-//   console.log(moment(info.start).format("YYYY-MM-DD hh:mm:ss"));
-//   console.log(moment(info.end).format("YYYY-MM-DD hh:mm:ss"));
-// //need to get user ID
-// //need to get user Name
-// };
+const handleSelect = (info) => {
+
+  passArray= {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")};
+  console.log(info.start);
+
+  setIsOpen(true);
+  // const eventNamePrompt = prompt( 
+  //   "Piano lesson: " + info.title  \n  "Date: " + moment(info.start).format("ddd") + " " + moment(info.start).format("Do MMM YYYY") 
+  //   + "Start time: " + moment(info.start).format("HH:mm") 
+  //   + "End time: " + moment(info.end).format("HH:mm") + "Chopin" + 
+  //    "Click OK to confirm this lesson"
+  //   );
+
+  // if (eventNamePrompt) {
+  //  console.log("Need to set is_confirmed to true");
+  // }
+};
 
 //this function opens the modal to add the lesson
 const openModal  = (info) => {
@@ -92,11 +90,11 @@ const openModal  = (info) => {
   passArray= {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")}
 
 }
+console.log(isOpen);
+
 
         return (
-            
           <div className='calendar-container'>
-            <div><p>Calendar</p></div>
             <div>
             <FullCalendar
             editable
@@ -126,14 +124,38 @@ const openModal  = (info) => {
               //   this.state.events
               //   // { title: 'unavailable', start: '2023-03-13T10:00:00' , end: '2023-03-13T15:00:00', backgroundColor: 'grey'},
               // ]}
+              eventClick={(e) => handleSelect(e)}
               eventAdd={event => handleEventAdd(event)}
               datesSet={(date) => handleDatesSet(date)}
             />
             </div>
             <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
 
+            {isOpen && (
+            <div className="modal">
+            <div className="modal-content">
+              <h1>Lesson details</h1>
+              <div>Student: {passArray.title}</div>
+              <div>Date: {passArray.start}</div>
+              <div>Start Time: {passArray.start}</div>
+              <div>End Time: {passArray.end}</div>
+              <div>
+                  <div>Do you want to confirm this class?</div>
+                  <button onClick={() => setIsOpen(false)}>
+                  No
+                  </button> 
+                  <button onClick={() => setIsOpen(false)}>
+                  Yes
+                  </button> 
+              </div>
+            </div>
+            </div>
+            )}
+
           </div>
         );
-            };
-    // };
+        };
+
+
+        
 export default DayHour;
