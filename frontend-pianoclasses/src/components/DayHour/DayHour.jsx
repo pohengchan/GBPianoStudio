@@ -57,9 +57,10 @@ var passArray = {id:1, title: "", start:"", end:""};
 
 //opens prompt with lesson details
 const handleSelect = (info) => {
-
-  passArray= {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")};
-  console.log(info.start);
+  console.log(info.event);
+  console.log(info.event.start);
+  passArray= {id:1, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
+  console.log(passArray);
 
   setIsOpen(true);
   // const eventNamePrompt = prompt( 
@@ -124,7 +125,7 @@ console.log(isOpen);
               //   this.state.events
               //   // { title: 'unavailable', start: '2023-03-13T10:00:00' , end: '2023-03-13T15:00:00', backgroundColor: 'grey'},
               // ]}
-              eventClick={(e) => handleSelect(e)}
+              eventClick={(event) => handleSelect(event)}
               eventAdd={event => handleEventAdd(event)}
               datesSet={(date) => handleDatesSet(date)}
             />
@@ -136,9 +137,9 @@ console.log(isOpen);
             <div className="modal-content">
               <h1>Lesson details</h1>
               <div>Student: {passArray.title}</div>
-              <div>Date: {passArray.start}</div>
-              <div>Start Time: {passArray.start}</div>
-              <div>End Time: {passArray.end}</div>
+              <div>Date: {moment(passArray.start).format("ddd")} {moment(passArray.start).format("Do MMM YYYY")} </div>
+              <div>Start Time: {moment(passArray.start).format("HH:mm")}</div>
+              <div>End Time: {moment(passArray.end).format("HH:mm")}</div>
               <div>
                   <div>Do you want to confirm this class?</div>
                   <button onClick={() => setIsOpen(false)}>
