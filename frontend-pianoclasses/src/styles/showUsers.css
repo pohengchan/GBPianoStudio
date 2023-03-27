@@ -81,9 +81,18 @@ table, th, td {
     padding: 0;
 }
 .btnNav{
-    padding: 0.4rem;
     font-size: 0.7rem;
-    width: 4rem;    
+    width: 5rem;
+    height: 2rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    position: relative;
+    margin: 0.5rem;
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    border-radius: 25px;
+    box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
 }
 
 h2{
@@ -91,9 +100,6 @@ h2{
     font-size: 2rem;
     color: rgb(237, 160, 173);
     text-shadow:
-    /* 0 0 5px var(--dark-pink),
-    0 0 10px var(--dark-pink), */
-    /* 0 0 20px var(--dark-pink), */
     0 0 40px var(--dark-pink),
     0 0 80px var(--dark-pink),
     0 0 90px var(--dark-pink),

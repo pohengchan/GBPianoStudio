@@ -1,38 +1,46 @@
-import React from 'react';
-import '../styles/authorizerUsers.css'
-import { useState } from "react";
-import DayHour from './DayHour/DayHour';
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../styles/authorizerUsers.css';
 
 function Authorizer({ user }) {
-    const [isChecked, setIsChecked] = useState(false);
-  
-    const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
-    }
+const [isChecked, setIsChecked] = useState(user.authorized);
+const [showLogin, setShowLogin] = useState(false);
 
-    if (!user) {
+const handleCheckboxChange = async (event) => {
+    const authorized = event.target.checked;
+    setIsChecked(authorized);
+    setShowLogin(false);
+    try {
+    await updateAuthorization(user.id, authorized);
+    } catch (error) {
+    console.log(error);
+    }
+}
+
+const updateAuthorization = async (userId, authorized) => {
+    try {
+    await axios.put(`/api/users/${userId}/authorization`, { authorized });
+    } catch (error) {
+    console.log(error);
+    }
+}
+
+if (!user) {
     return null; 
-    }
+}
 
-    return (
+return (
     <div>
-        <input 
+    <input 
         type="checkbox" 
         className="Checkbox" 
         id={`user-${user.id}`} 
+        checked={isChecked}
         onChange={handleCheckboxChange} 
-        />
-        {isChecked && <AccessDayHour />}
+    />
+    {showLogin && <p>Inició sesión</p>}
     </div>
-  );
-}
-
-function AccessDayHour() {
-    const grantAccess = () => {
-        return <DayHour />;
-    }
-return grantAccess;
-
+);
 }
 
 export default Authorizer;
