@@ -1,7 +1,9 @@
 import React, {useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom'
+
 import axios from 'axios';
 import '../styles/showUsers.css';
+import Authorizer from './AuthorizerUser';
 
 
 const endpoint = 'http://localhost:8000/api';
@@ -63,10 +65,13 @@ const closeModal = () => {
     setSelectedUser(null);
     setShowModal(false);
 };
+const user = {
+  id: 1, // este sería el id que necesitas para el checkbox
+};
 
 return (
     <div>
-      <h1 className="h1-users">Users</h1>
+      <h1 className="users">USERS</h1>
       
 
       <div className="container">
@@ -78,16 +83,27 @@ return (
           <tr>
               {/* <th>Name Parent´s</th> */}
               <th>Student</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Authorized User</th>
-                <th>Management</th>
+                <th>Contact</th>
+                <th className='AU'>AU</th>
+                <th className='Mgn'>Management</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-
+              <td>
+              <p>
+              {editingUser && editingUser.id === user.id ? (
+                  <input
+                    type="text"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                  />
+                ) : (
+                  user.student_name
+                )}
+              </p>
+              </td>
               <td>
               <p>
                 {editingUser && editingUser.id === user.id ? (
@@ -101,38 +117,19 @@ return (
                 )}
               </p>
               </td>
-              <td><p>
-              {editingUser && editingUser.id === user.id ? (
-                  <input
-                    type="text"
-                    value={newEmail}
-                    onChange={(e) => setNewEmail(e.target.value)}
-                  />
-                ) : (
-                  user.email
-                )}
-              
-              </p>
-              </td>
               <td>
-                    <p>{user.phone_number}</p>
-                </td>
-              <td>
-                <p>{user.is_authorised ? 'Yes' : 'No'}</p>
+              <Authorizer user={user} />
               </td>
-              {/* <td>
-                    <input type="checkbox" className="Checkbox" id={`user-${user.id}`} />
-                </td> */}
               <td>
                 {editingUser && editingUser.id === user.id ? (
                   <div>
-                    <button
+                    <button className='btnNav'
 
                       onClick={handleSave}
                     >
                       Save
                     </button>
-                    <button
+                    <button className='btnNav'
 
                       onClick={handleCancel}
                     >
@@ -141,13 +138,13 @@ return (
                   </div>
                 ) : (
                   <div>
-                    <button
+                    <button className='btnNav'
                       // className="btn btn-warning me-2"
                       onClick={() => handleEdit(user)}
                     >
                       Edit
                     </button>
-                    <button
+                    <button className='btnNav'
                       // className="btn btn-danger"
                       onClick={() => deleteUser(user.id)}
                     >
@@ -157,7 +154,7 @@ return (
                 )}
               </td>
               <td>
-                    <button value="details" onClick={() => getUserDetails(user.id)}>
+                    <button className='btnNav' value="details" onClick={() => getUserDetails(user.id)}>
                     Details
                     </button>
               </td>

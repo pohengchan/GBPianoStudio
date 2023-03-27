@@ -21,7 +21,7 @@
     0 0 20px 2px var(--dark-pink),
     inset 0 0 20px 2px var(--dark-pink);
 }
-.h1-users{
+.users{
     margin: 4rem; 
     font-size: 2rem;
     color: rgb(237, 160, 173);
@@ -37,20 +37,37 @@
 }
 
 th {
+    font-family: 'Lexend', sans-serif;
     font-size: 1rem;
+    color: white;
     align-items: center;
-    text-align: center ;
+    /* text-align: center ; */
 }
+.AU:hover::before {
+    content: "Authorizer User";
+    position: absolute;
+    top: 20px;
+    margin-top: 13rem;
+    background-color: var(--background);
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    border-radius: 25px;
+    box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
+}
+.AU {
+    text-align: center;
+
+}
+
 td {
     font-size: 1rem;
 }
 
-tbody{
+/* tbody{
 margin: 0%; 
-}
-.head{
-    background-color: var(--light-pink);
-}
+} */
 
 .table{
     /* display: flex;
@@ -59,12 +76,29 @@ margin: 0%;
     height: 90%;
     border-radius: 50%;
 }
-button{
+table, th, td {
+    border: none;
+    padding: 0;
+}
+.btnNav{
     padding: 0.4rem;
     font-size: 0.7rem;
-    width: 4rem;
-    
-    
+    width: 4rem;    
+}
+
+h2{
+    margin: 4rem; 
+    font-size: 2rem;
+    color: rgb(237, 160, 173);
+    text-shadow:
+    /* 0 0 5px var(--dark-pink),
+    0 0 10px var(--dark-pink), */
+    /* 0 0 20px var(--dark-pink), */
+    0 0 40px var(--dark-pink),
+    0 0 80px var(--dark-pink),
+    0 0 90px var(--dark-pink),
+    0 0 100px var(--dark-pink),
+    0 0 150px var(--dark-pink);
 }
 
 
@@ -105,22 +139,12 @@ button{
 }
 p{
     font-size: 1rem;
- } 
-h2{
-    text-align: left;
-    margin: 1rem; 
-    font-size: 1.5rem;
-    color: rgb(237, 160, 173);
-    text-shadow:
-    0 0 5px var(--dark-pink),
-    0 0 10px var(--dark-pink),
-    0 0 20px var(--dark-pink),
-    0 0 40px var(--dark-pink),
-    0 0 80px var(--dark-pink),
-    0 0 90px var(--dark-pink),
-    0 0 100px var(--dark-pink),
-    0 0 150px var(--dark-pink);
-}
+    color: white;
+} 
+/* .Mgn {
+    align-items: center;
+} */
+
 @media(max-width: 768px){
     button{
         padding: 1%;
