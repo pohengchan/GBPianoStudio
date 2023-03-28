@@ -1,57 +1,83 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, ValidationError } from '@formspree/react';
 import '../index.css';
+import Swal from 'sweetalert2'
 
 
+const ContactForm = () =>{
+  const [state, handleSubmit] = useForm("mrgvaaln");
+if (state.succeeded) {
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'E-mail send',
+        showConfirmButton: false,
+        timer: 1500
+      }) 
 
-    const ContactForm = () => {
-
-        const { register, handleSubmit, formState: { errors } } = useForm();
-        const onSubmit = data => console.log(data);
-        console.log(errors);
-
-    return <div>
+}
         
-        <h1 className='h1-register'>CONTACT ME</h1>
-        <form onSubmit={handleSubmit(onSubmit)}className='form-react'>   
-        <div className='form-control'>
-                <label>Contact's name/ Parent's name *</label>
-                <input type="text" placeholder="Contact's name/ Parent's name" {...register('nombre', {
-                    required: true,
-                    maxLength: 10,
-                    pattern: /^[A-Za-z]+$/i 
+    return (
+    <>
+    <h1 className='h1-contact'>CONTACT ME</h1>
+        <form onSubmit={handleSubmit} className='contact-form'>
+                <div className='contact-form'>
+                    <label htmlFor="nombre">
+                    Contact's name/ Parent's name *
+                    </label>
+                    <input
+                        id="nombre"
+                        type="nombre" 
+                        name="nombre"
+                        placeholder="Name"
+                    />
+                    <ValidationError 
+                        prefix="Nombre" 
+                        field="nombre"
+                        errors={state.errors}
+                    />
+                </div>
 
-                })} />
-                {errors.nombre?.type === 'required' && <p>The name field is required</p>}
-                {errors.nombre?.type === 'maxLength' && <p>The name field must be less than 10 characters</p>}
-            </div> 
-
-            <div className='form-control'>
-                <label>Email *</label>
-                <input type="text"placeholder="emailExample@example.com" {...register('email', {
-                    required: true ,
-                    pattern:/^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-                })} />
-                {errors.email?.type === 'pattern' && <p>This is not a valid email</p>}
-            </div>
-
-            <div className='form-control'>
+                <div className='contact-form'>
+                    <label htmlFor="email">
+                        Email *
+                    </label>
+                    <input
+                        id="email"
+                        type="email" 
+                        name="email"
+                        placeholder="Email"
+                    />
+                    <ValidationError 
+                        prefix="Email" 
+                        field="email"
+                        errors={state.errors}
+                    />
+                </div>
+            
+                <div className='contact-form'>
                 <label>Message *</label>
-                <textarea rows="9" placeholder="Type your message here..." {...register('message', {
-                    required: true ,
-                    pattern:/^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-                })} />
-                {errors.message?.type === 'pattern' && <p>Please type your message</p>}
-            </div>
-    
-            <div className="buttons">
-            <button type='cancel' className='button-save'> CANCEL</button>
-            <button type='submit' className='button-save'>SEND</button>
-            </div>
+                    <textarea 
+                        rows="9"
+                        id="message"
+                        name="message"
+                        placeholder='Write your message here...'
+                        />
+                    <ValidationError 
+                    prefix="Message" 
+                    field="message"
+                    errors={state.errors}
+                    />
+                </div>
+
+                <div className="buttons">
+                    <button type='reset'>CANCEL</button>
+                    <button type='submit'>SEND</button>
+                </div>
         </form>
-    </div>
-
-    }
-
+    </>
+    );
+}
 
 export default ContactForm
+
