@@ -38,7 +38,7 @@ return (
         checked={isChecked}
         onChange={handleCheckboxChange} 
     />
-    {showLogin && <p>Inició sesión</p>}
+    {showLogin && <p></p>}
     </div>
 );
 }
