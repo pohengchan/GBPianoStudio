@@ -61,6 +61,21 @@ class LessonController extends Controller
      */
     public function destroy(string $id)
     {
-        // don't allow user to delete lessons
+        // only the teacher can delete lessons. This happens in the confirm lesson modal
+        $lesson = Lesson::findOrFail($id);
+        $lesson->delete();
+	    return response()->json(null, 204);
     }
+
+        /**
+     * Update the specified resource in storage.
+     */
+    // public function confirm(Request $request, string $id)
+    // {
+    //     //
+    //     $lesson = Lesson::findOrFail($request -> id);
+    //     $lesson -> is_confirmed = $request -> is_confirmed;
+    //     $lesson -> save();
+    //     return $lesson;
+    // }
 }

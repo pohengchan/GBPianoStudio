@@ -11,17 +11,20 @@ import swal from 'sweetalert';
 var instance = getAxiosInstance();
 
 const logoutSubmit = (e) =>{
-  e.preventDefault();
-    
-
-instance.post('http://localhost:8000/api/logout').then(res=> {
-    if(res.data.status === 200){
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('auth_name');
-    swal("Success",res.data.message,"success");
-    window.location = "/";
-    }
-});
+    e.preventDefault();
+    instance.post('http://localhost:8000/api/logout').then(res=> {
+        if(res.data.status === 200){
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('auth_name');
+        localStorage.clear();
+        swal("Success",res.data.message,"success");
+        window.location = "/";
+        // } else {
+        //   console.log(res.data.status);
+        //   console.log("logout failed");
+        //   localStorage.clear();
+        }
+      });
 }
   const Navbar = () => {
     var AuthButtons = '';

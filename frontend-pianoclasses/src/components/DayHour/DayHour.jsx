@@ -7,6 +7,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from "@fullcalendar/interaction";
 import { useState } from "react";
 import AddEventModal from './AddEventModal';
+import ConfirmLesson from './ConfirmLesson';
 import { useRef } from 'react';
 import moment from "moment";
 import axios from 'axios';
@@ -16,15 +17,19 @@ import { getAxiosInstance } from '../../services/functions';
 var instance = getAxiosInstance();
 
 let isCalendarLoaded = false;
-var passArray = {id:1, title: "", start:"", end:""};
+var passArray = {id:0, title: "", start:"", end:""};
 
 
- function DayHour () {
+
+function DayHour () {
     const [modalOpen, setModalOpen] = useState(false);
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
     const [isOpen, setIsOpen] = useState(false); //confirm pop up
+    // const [objectData, setObjectData] = useState(null); //get selected event's data
 
+
+   
     const onEventAdded = event => {
 
       event.start=moment(event.start).format("YYYY-MM-DD HH:mm:ss");
@@ -50,7 +55,7 @@ var passArray = {id:1, title: "", start:"", end:""};
 
     //     // swal("Success",res.data.message,"success");
         swal("Success", "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.", "success");
-        passArray={id:1, title: "", start:"", end:""};
+        passArray={id:0, title: "", start:"", end:""};
     //     } else {
     //       console.log("something didn't happen");
     //     }
@@ -70,21 +75,51 @@ var passArray = {id:1, title: "", start:"", end:""};
     }
 
 
-//opens prompt with lesson details
+//shows lesson details, allows teacher to confirm classes
 const handleSelect = (info) => {
-  console.log(info.event);
-  console.log(info.event.start);
-  passArray= {id:1, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
-  console.log(passArray);
+  // const objectData = getObjectDataById(info.event.id);
+  // console.log(objectData);
+
+  passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
 
   setIsOpen(true);
 };
 
-//need to get event ID
+//using event id "info.event.id" get is_confirmed value    
+// function getObjectDataById(id) {
+//     // useEffect(() => {
+//     async function fetchData() {
+//       try {
+//         // const response = await axios.get(`/api/objects/${id}`);
+//         const response = await instance.get(`http://localhost:8000/api/lesson/${id}`);
+//         setObjectData(response.data);
+//         console.log(response.data)//this works
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     }
+//     fetchData();
+//   // }, [id]);
+//   // console.log(objectData);
+//   // console.log( objectData.is_confirmed);
+//   // console.log( selectID);
+//    return objectData.is_confirmed;
+// }
 
-// need to get is_confirmed value
 
 // need to set is confirmed value
+function handleConfirm() {
+  // do something when the user confirms
+  //set the is_confirmed field to 1 in the lessons table
+  setIsOpen(false);
+}
+
+function handleCancelConfirm() {
+  // do something when the teacher cancels instead of confirms the lesson
+  //delete the lesson and send an email to the user of the action taken.
+
+  setIsOpen(false);
+}
 
 //this function opens the modal to add the lesson
 const openModal  = (info) => {
@@ -94,13 +129,17 @@ const openModal  = (info) => {
     {
       start,
       end,
-      title:"",
     },
   ]);
 
   setModalOpen(true);
-  passArray= {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")}
-
+  passArray= {
+    id: localStorage.getItem('id'), 
+    title: localStorage.getItem('sname'), 
+    start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), 
+    end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")
+  }
+console.log(passArray);
 }
 // console.log(isOpen);
 
@@ -143,30 +182,10 @@ const openModal  = (info) => {
             </div>
             <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
 
+            {/** show details of selected event */}
             {isOpen && (
-            <div className="modal">
-            <div className="modal-content">
-              <h1>Lesson details</h1>
-              <div>Student: {passArray.title}</div>
-              <div>Date: {moment(passArray.start).format("ddd")} {moment(passArray.start).format("Do MMM YYYY")} </div>
-              <div>Start Time: {moment(passArray.start).format("HH:mm")}</div>
-              <div>End Time: {moment(passArray.end).format("HH:mm")}</div>
-
-              {/* if class is not confirmed  */}
-
-              <div>
-                  <div>Do you want to confirm this class?</div>
-                  <button onClick={() => setIsOpen(false)}>
-                  No
-                  </button> 
-                  <button onClick={() => setIsOpen(false)}>
-                  Yes
-                  </button> 
-              </div>
-              {/* if class is not confirmed  */}
-
-            </div>
-            </div>
+              // <ConfirmLesson isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventUpdate={event => onEventUpdate(event)} eValues={passArray} />
+              <ConfirmLesson isOpen={isOpen} onClose={() => setIsOpen(false)} eValues={passArray} />
             )}
 
           </div>

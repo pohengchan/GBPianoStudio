@@ -33,8 +33,12 @@ function Login() {
       instance.post('http://localhost:8000/api/login', data).then((res) => {
         if (res.data.status === 200) {
           localStorage.setItem("auth_token", res.data.token);
-          console.log("should work");
+          // console.log("should work");
+          // console.log(res.data);
           localStorage.setItem("auth_name", res.data.username);
+          localStorage.setItem("id", res.data.userid);
+          localStorage.setItem("sname", res.data.studentname);
+          localStorage.setItem("role", res.data.role);
           swal("Success", res.data.message, "success");
           window.location = "/";
         } else if (res.data.status === 401) {

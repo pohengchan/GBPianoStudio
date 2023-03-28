@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import './DayHour.css';
-
 import moment from "moment";
 
 export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues}) {
@@ -20,9 +19,10 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
         // simulate async api call with set timeout
         setTimeout(() => setStart(calValues.start), 1000);
         setTimeout(() => setEnd(calValues.end), 1000);
+        setTimeout(() => setTitle(calValues.title), 1000);
 
         // console.log(`end value passed is ${end}`);
-    }, [calValues.start,calValues.end]); // pass an empty array as the second argument to useEffect to run it only once on mount
+    }, [calValues.start,calValues.end, calValues.title]); // pass an empty array as the second argument to useEffect to run it only once on mount
    
     function onSubmit(event) {
         event.preventDefault(); // Prevents the default behavior of form submission
@@ -30,7 +30,7 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
         // console.log(username)
         // Your logic for handling form submission goes here
         onEventAdded({
-            user_id:1,
+            user_id: localStorage.getItem('id'),
             title,
             start ,
             end
