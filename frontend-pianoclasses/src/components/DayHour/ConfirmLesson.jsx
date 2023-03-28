@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from "react";
-import './DayHour.css';
+import React, {useEffect} from "react";
+import '../../index.css';
 import moment from "moment";
 import { getAxiosInstance } from '../../services/functions';
 
 var instance = getAxiosInstance();
 var showConfirmed = 0;
+var userID = 0;
 
 export default function ConfirmLesson ({isOpen, onClose, eValues}) {
 
-    const [objectData, setObjectData] = useState(null); //get selected event's data
+    // const [objectData, setObjectData] = useState(null); //get selected event's data
     // const [show, setShow] = useState();
     // console.log(eValues);
     // const objectDataID = getObjectDataById(eValues.id);
@@ -20,8 +21,9 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
         try {
             // const response = await axios.get(`/api/objects/${id}`);
             const response = await instance.get(`http://localhost:8000/api/lesson/${eValues.id}`);
-            setObjectData(response.data);
+            // setObjectData(response.data);
             showConfirmed = response.data.is_confirmed;
+            userID = response.data.user_id;
             // console.log(objectData.is_confirmed)//this works
             // const objectDataID = objectData.is_confirmed;
         } catch (error) {
@@ -36,14 +38,21 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
 //    const objectDataID = objectData.is_confirmed;
 // }
 
-    const handleConfirm = async () => {
-        await instance.put(`http://localhost:8000/api/lesson/${eValues.id}`, {
-        user_id: localStorage.id,
-        title:eValues.title,
-        start:eValues.start,
-        end:eValues.end,
-        is_confirmed: 1,
-        });
+    const handleConfirm = async (id) => {
+        try {
+            // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
+            const result = await instance.put(`http://localhost:8000/api/lesson/${eValues.id}`, {
+                user_id: userID,
+                title:eValues.title,
+                start:eValues.start,
+                end:eValues.end,
+                is_confirmed: 1,
+                });
+            console.log(result);
+            console.log(instance);
+          } catch (error) {
+            console.error(error);
+          }
         onClose();
     };
 
@@ -73,17 +82,16 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
               {localStorage.role === 'admin' && showConfirmed === 0 ?
 
                 <div>
-                  <div>Do you want to confirm or delete this lesson? </div>
-                  <div>--Tap outside the box to take no action--</div>
+                  <div className="modal-buttons">Do you want to confirm or delete this lesson? </div>
                   <div className="modal-buttons">
-                    <button onClick={deleteLesson}>DELETE</button> 
-                    <button onClick={handleClose}>CANCEL</button>
-                    <button onClick={handleConfirm}>CONFIRM</button> 
+                    <button className="confirm-buttons" onClick={deleteLesson}>DELETE</button> 
+                    <button  className="confirm-buttons" onClick={handleClose}>CANCEL</button>
+                    <button className="confirm-buttons" onClick={handleConfirm}>CONFIRM</button> 
                   </div>
                 </div> 
                 :
                 <div className="modal-buttons">
-                  <button onClick={handleClose}>OK</button> 
+                  <button className="confirm-buttons" onClick={handleClose}>OK</button> 
                 </div>
               }
 

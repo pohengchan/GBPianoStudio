@@ -52,6 +52,7 @@ class LessonController extends Controller
         $lesson -> title = $request -> title;
         $lesson -> start = $request -> start;
         $lesson -> end = $request -> end;
+        $lesson -> is_confirmed = $request -> is_confirmed;
         $lesson -> save();
         return $lesson;
     }

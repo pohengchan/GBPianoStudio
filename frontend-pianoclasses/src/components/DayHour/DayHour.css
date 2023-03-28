@@ -36,9 +36,15 @@
 
 .modal-buttons {
     width: 100%;
+    margin: 1rem auto;
+    display: flex;  
+    justify-content: center;
+}
+.centre-button {
+    width: 100%;
     margin: 0 auto;
     display: flex;  
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .modal {
@@ -64,4 +70,15 @@
     padding: 1.25rem;
     background-color: var(--background); 
     border-radius: 0.313rem;
+}
+
+.confirm-buttons {
+    font-size: 15px;
+    font-weight: bold;
+    width: 5rem;
+    color: var(--dark-pink);
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 0.5rem;    
+    margin: 1rem 1.5rem 0rem 1.5rem;
 }
