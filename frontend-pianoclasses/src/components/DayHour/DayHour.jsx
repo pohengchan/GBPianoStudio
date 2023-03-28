@@ -11,13 +11,14 @@ import ConfirmLesson from './ConfirmLesson';
 import { useRef } from 'react';
 import moment from "moment";
 import axios from 'axios';
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { getAxiosInstance } from '../../services/functions';
 
 var instance = getAxiosInstance();
 
 let isCalendarLoaded = false;
 var passArray = {id:0, title: "", start:"", end:""};
+var isEditable = false;
 
 
 
@@ -26,15 +27,12 @@ function DayHour () {
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
     const [isOpen, setIsOpen] = useState(false); //confirm pop up
-    // const [objectData, setObjectData] = useState(null); //get selected event's data
-
 
    
     const onEventAdded = event => {
 
       event.start=moment(event.start).format("YYYY-MM-DD HH:mm:ss");
       event.end=moment(event.end).format("YYYY-MM-DD HH:mm:ss");
-      // axios.post("http://localhost:8000/api/lessons", event);
       handleEventAdd(event);
 
       let calendarApi = calendarRef.current.getApi()
@@ -53,8 +51,13 @@ function DayHour () {
     //     console.log(`res.data.status: ${res.data}`);
     //     if(res.data.status === 200){
 
-    //     // swal("Success",res.data.message,"success");
-        swal("Success", "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.", "success");
+        Swal.fire({
+          title: "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.",
+          color: 'white',
+          background: '#676060',
+          showConfirmButton: true,
+          confirmButtonColor: '#01FDFD',
+      });
         passArray={id:0, title: "", start:"", end:""};
     //     } else {
     //       console.log("something didn't happen");
@@ -85,41 +88,6 @@ const handleSelect = (info) => {
   setIsOpen(true);
 };
 
-//using event id "info.event.id" get is_confirmed value    
-// function getObjectDataById(id) {
-//     // useEffect(() => {
-//     async function fetchData() {
-//       try {
-//         // const response = await axios.get(`/api/objects/${id}`);
-//         const response = await instance.get(`http://localhost:8000/api/lesson/${id}`);
-//         setObjectData(response.data);
-//         console.log(response.data)//this works
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     }
-//     fetchData();
-//   // }, [id]);
-//   // console.log(objectData);
-//   // console.log( objectData.is_confirmed);
-//   // console.log( selectID);
-//    return objectData.is_confirmed;
-// }
-
-
-// need to set is confirmed value
-function handleConfirm() {
-  // do something when the user confirms
-  //set the is_confirmed field to 1 in the lessons table
-  setIsOpen(false);
-}
-
-function handleCancelConfirm() {
-  // do something when the teacher cancels instead of confirms the lesson
-  //delete the lesson and send an email to the user of the action taken.
-
-  setIsOpen(false);
-}
 
 //this function opens the modal to add the lesson
 const openModal  = (info) => {
@@ -141,14 +109,12 @@ const openModal  = (info) => {
   }
 console.log(passArray);
 }
-// console.log(isOpen);
-
 
         return (
           <div className='calendar-container'>
             <div>
             <FullCalendar
-            editable
+            editable={isEditable}
             eventOverlap={false}
             selectable
           //  select={handleSelect}

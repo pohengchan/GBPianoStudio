@@ -10,10 +10,6 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
     const [end, setEnd] = useState('');
     const [show, setShow] = useState();
 
-    // const [confirm, setConfirm] = useState(false);
-    // const handleConfirm = () => {
-    //     setConfirm(!confirm);
-    //   }
 
     useEffect(() => {
         // simulate async api call with set timeout
@@ -37,20 +33,6 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
         })
         onClose();
       }
-
-    // const onSubmit = (event) => {
-    //     console.log(`add class: ${event.start}`);
-    //     console.log(event);
-    //     event.preventDefault();
-    //     onEventAdded({
-    //         user_id:1,
-    //         title,
-    //         start ,
-    //         end
-    //         // confirmed: confirm
-    //     })
-    //     onClose();
-    // }
 
     const customStyles = {
         overlay: {zIndex: 1000}

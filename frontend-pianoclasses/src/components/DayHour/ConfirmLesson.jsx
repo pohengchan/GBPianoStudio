@@ -2,19 +2,13 @@ import React, {useEffect} from "react";
 import '../../index.css';
 import moment from "moment";
 import { getAxiosInstance } from '../../services/functions';
+import Swal from "sweetalert2";
 
 var instance = getAxiosInstance();
 var showConfirmed = 0;
 var userID = 0;
 
 export default function ConfirmLesson ({isOpen, onClose, eValues}) {
-
-    // const [objectData, setObjectData] = useState(null); //get selected event's data
-    // const [show, setShow] = useState();
-    // console.log(eValues);
-    // const objectDataID = getObjectDataById(eValues.id);
-    //using event id "info.event.id" get is_confirmed value    
-    // function getObjectDataById(id) {
 
     useEffect(() => {
         async function fetchData() {
@@ -32,11 +26,7 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
         }
         fetchData();
     });
-  // console.log(objectData);
-  // console.log( objectData.is_confirmed);
-  // console.log( selectID);
-//    const objectDataID = objectData.is_confirmed;
-// }
+
 
     const handleConfirm = async (id) => {
         try {
@@ -54,11 +44,25 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
             console.error(error);
           }
         onClose();
+        Swal.fire({
+            title: "The lesson has been confirmed. The contact will be sent an email.",
+            color: 'white',
+            background: '#676060',
+            showConfirmButton: true,
+            confirmButtonColor: '#01FDFD',
+        });
     };
 
     const deleteLesson = async (id) => {
         await instance.delete(`http://localhost:8000/api/lesson/${eValues.id}`);
         onClose();
+        Swal.fire({
+            title: "You have deleted the lesson. An email will be sent to the user",
+            color: 'white',
+            background: '#676060',
+            showConfirmButton: true,
+            confirmButtonColor: '#01FDFD',
+        });
     };
 
     const handleClose = () => {
