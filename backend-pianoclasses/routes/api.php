@@ -15,7 +15,12 @@ use App\Http\Controllers\Api\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::put('/api/users/{userId}/authorization', 'AuthorizerUserController@authorizeUser');
+// Route::put('/api/users/{userId}/authorization', 'AuthorizerUserController@authorizeUser');
+// Route::put('/api/users/{userId}/authorization', 'AuthController@authorizeUser')->name('users.authorize');
+Route::post('/users/{userId}/authorization', 'AuthController@authorizeUser');
+
+
+
 
 // Route::post('/api/users/{userId}/login', function (Request $request, $userId) {
 //     $authorized = $request->input('authorized');
