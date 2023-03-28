@@ -11,7 +11,7 @@ axios.defaults.withCredentials = true;
 
 
 function getAxiosInstance(endpoint = "http://localhost:8000") {
-    console.log(endpoint);
+    // console.log(endpoint);
     const instance = axios.create({
         withCredentials: true,
         baseURL: endpoint

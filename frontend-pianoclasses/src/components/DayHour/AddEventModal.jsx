@@ -6,15 +6,15 @@ import moment from "moment";
 
 export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues}) {
     
-    const [title, setTitle] = useState();
-    const [start, setStart] = useState();
-    const [end, setEnd] = useState();
+    const [title, setTitle] = useState('');
+    const [start, setStart] = useState('');
+    const [end, setEnd] = useState('');
     const [show, setShow] = useState();
 
-    const [confirm, setConfirm] = useState(false);
-    const handleConfirm = () => {
-        setConfirm(!confirm);
-      }
+    // const [confirm, setConfirm] = useState(false);
+    // const handleConfirm = () => {
+    //     setConfirm(!confirm);
+    //   }
 
     useEffect(() => {
         // simulate async api call with set timeout
@@ -24,18 +24,33 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
         // console.log(`end value passed is ${end}`);
     }, [calValues.start,calValues.end]); // pass an empty array as the second argument to useEffect to run it only once on mount
    
-    const onSubmit = (event) => {
-        console.log(`add class: ${event.start}`);
-        event.preventDefault();
+    function onSubmit(event) {
+        event.preventDefault(); // Prevents the default behavior of form submission
+        // const username = event.target.title.value;
+        // console.log(username)
+        // Your logic for handling form submission goes here
         onEventAdded({
             user_id:1,
             title,
             start ,
-            end, 
-            confirmed: confirm
+            end
         })
         onClose();
-    }
+      }
+
+    // const onSubmit = (event) => {
+    //     console.log(`add class: ${event.start}`);
+    //     console.log(event);
+    //     event.preventDefault();
+    //     onEventAdded({
+    //         user_id:1,
+    //         title,
+    //         start ,
+    //         end
+    //         // confirmed: confirm
+    //     })
+    //     onClose();
+    // }
 
     const customStyles = {
         overlay: {zIndex: 1000}
@@ -57,7 +72,8 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
 
     return (
         <Modal show={show} style={customStyles} isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} >
-            <form  className="add-event-modal" >
+            <form  className="add-event-modal" onSubmit={onSubmit}>
+            {/* <form  className="add-event-modal" > */}
                 <label>Student's name</label>
                 <input className="lesson-input" placeholder="Student's name" value={title} onChange={e => setTitle(e.target.value)} />
                 <div>
@@ -74,15 +90,16 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
                 </div>
                 <div>
                     <label>End Time</label>
-                    {end && <input placeholder="" className="lesson-input"  value={end} readOnly />}
+                    {end && <input placeholder="" className="lesson-input"  value={end} onChange={e => setEnd(e.target.value)} />}
                 </div>
-                <div>
+                {/* <div>
                     <label>Confirmed:</label>
                     <input type="checkbox" checked={confirm} onChange={handleConfirm} />
-                </div>
+                </div> */}
                 <div className="modal-buttons">
-                    <button onClick={handleClose}>Cancel❌</button>
-                    <button type="submit" onClick={onSubmit}>Add Lesson</button>                    
+                    <button type="reset" onClick={handleClose}>Cancel❌</button>
+                    {/* <button type="submit" onClick={()=>onSubmit()}>Add Lesson</button>  */}
+                    <button type="submit" >Add Lesson</button>
                 </div>
             </form>
         </Modal>

@@ -11,6 +11,9 @@ import { useRef } from 'react';
 import moment from "moment";
 import axios from 'axios';
 import swal from "sweetalert";
+import { getAxiosInstance } from '../../services/functions';
+
+var instance = getAxiosInstance();
 
 let isCalendarLoaded = false;
 var passArray = {id:1, title: "", start:"", end:""};
@@ -38,16 +41,28 @@ var passArray = {id:1, title: "", start:"", end:""};
 
     };
     
-    async function handleEventAdd(data) {
-      console.log(data)
+     async function handleEventAdd(data) {
+      // console.log(data)
       await axios.post("http://localhost:8000/api/lessons", data);
-      passArray={id:1, title: "", start:"", end:""};
-      swal("Success", "You have added a lesson to the calendar successfully!", "success");
+    //    await instance.post('http://localhost:8000/api/lessons', data).then(res=> {
+    //     console.log(`res.data.status: ${res.data}`);
+    //     if(res.data.status === 200){
+
+    //     // swal("Success",res.data.message,"success");
+        swal("Success", "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.", "success");
+        passArray={id:1, title: "", start:"", end:""};
+    //     } else {
+    //       console.log("something didn't happen");
+    //     }
+        
+    // })
     };
 
+ 
     async function handleDatesSet(data) {
       if (isCalendarLoaded===false) {
-        const response = await axios.get("http://localhost:8000/api/lessons");
+        // const response = await axios.get("http://localhost:8000/api/lessons");
+        const response = await instance.get("http://localhost:8000/api/lessons");
         setEvents(response.data);
         isCalendarLoaded = true;
         console.log("get calendar");
@@ -63,17 +78,13 @@ const handleSelect = (info) => {
   console.log(passArray);
 
   setIsOpen(true);
-  // const eventNamePrompt = prompt( 
-  //   "Piano lesson: " + info.title  \n  "Date: " + moment(info.start).format("ddd") + " " + moment(info.start).format("Do MMM YYYY") 
-  //   + "Start time: " + moment(info.start).format("HH:mm") 
-  //   + "End time: " + moment(info.end).format("HH:mm") + "Chopin" + 
-  //    "Click OK to confirm this lesson"
-  //   );
-
-  // if (eventNamePrompt) {
-  //  console.log("Need to set is_confirmed to true");
-  // }
 };
+
+//need to get event ID
+
+// need to get is_confirmed value
+
+// need to set is confirmed value
 
 //this function opens the modal to add the lesson
 const openModal  = (info) => {
@@ -91,7 +102,7 @@ const openModal  = (info) => {
   passArray= {id:1, title: info.title, start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")}
 
 }
-console.log(isOpen);
+// console.log(isOpen);
 
 
         return (
@@ -140,6 +151,9 @@ console.log(isOpen);
               <div>Date: {moment(passArray.start).format("ddd")} {moment(passArray.start).format("Do MMM YYYY")} </div>
               <div>Start Time: {moment(passArray.start).format("HH:mm")}</div>
               <div>End Time: {moment(passArray.end).format("HH:mm")}</div>
+
+              {/* if class is not confirmed  */}
+
               <div>
                   <div>Do you want to confirm this class?</div>
                   <button onClick={() => setIsOpen(false)}>
@@ -149,6 +163,8 @@ console.log(isOpen);
                   Yes
                   </button> 
               </div>
+              {/* if class is not confirmed  */}
+
             </div>
             </div>
             )}

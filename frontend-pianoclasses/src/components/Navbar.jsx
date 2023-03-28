@@ -12,6 +12,7 @@ var instance = getAxiosInstance();
 
 const logoutSubmit = (e) =>{
   e.preventDefault();
+    
 
 instance.post('http://localhost:8000/api/logout').then(res=> {
     if(res.data.status === 200){
@@ -19,16 +20,13 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
     localStorage.removeItem('auth_name');
     swal("Success",res.data.message,"success");
     window.location = "/";
-
-    
-}
+    }
 });
 }
   const Navbar = () => {
     var AuthButtons = '';
     var Calendar = '';
     if(!localStorage.getItem('auth_token')) 
-    
     {
       Calendar = '';
 
