@@ -8,6 +8,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { useState } from "react";
 import AddEventModal from './AddEventModal';
 import ConfirmLesson from './ConfirmLesson';
+import UpdateLesson from './UpdateLesson';
 import { useRef } from 'react';
 import moment from "moment";
 import axios from 'axios';
@@ -24,7 +25,7 @@ function DayHour () {
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
     const [isOpen, setIsOpen] = useState(false); //confirm pop up
-
+    const [isUpdateOpen, setIsUpdateOpen] = useState(false); //confirm pop up
    
     const onEventAdded = event => {
 
@@ -77,11 +78,41 @@ function DayHour () {
       }
       eventState(events);
     }
+//set event colours and editable
+function eventState (events) {
 
+  for (let i = 0; i < events.length; i++) {
+    //set default values on initializing
+    events[i].editable=false;
+
+    if (localStorage.role==="admin" || events[i].user_id===parseInt(localStorage.id)) {
+      // console.log(events[i].user_id);
+      if (events[i].is_confirmed===1) {
+        events[i].editable=true;
+        events[i].backgroundColor='#24037D';//dark blue
+      };
+      if (events[i].is_confirmed===0) {
+        events[i].editable=true;
+        events[i].backgroundColor='#FA1E9A';  // pink
+      };
+    } else {
+      events[i].title=""; //hide other user info from current user unless admin
+      events[i].backgroundColor='#676060'; //grey
+    };
+
+  }
+}
 //shows lesson details, allows teacher to confirm classes
 const handleSelect = (info) => {
   passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
   setIsOpen(true);
+  isCalendarLoaded=false;
+};
+
+//shows lesson details, allows teacher to confirm classes
+const changeLesson = (info) => {
+  passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
+  setIsUpdateOpen(true);
   isCalendarLoaded=false;
 };
 
@@ -106,29 +137,7 @@ const openModal  = (info) => {
 // console.log(passArray);
 isCalendarLoaded=false
 }
-//set event colours and editable
-function eventState (events) {
 
-  for (let i = 0; i < events.length; i++) {
-    //set default values on initializing
-    events[i].editable=false;
-
-    if (localStorage.role==="admin" || events[i].user_id===parseInt(localStorage.id)) {
-      // console.log(events[i].user_id);
-      if (events[i].is_confirmed===1) {
-        events[i].editable=true;
-        events[i].backgroundColor='#24037D';//dark blue
-      };
-      if (events[i].is_confirmed===0) {
-        events[i].backgroundColor='#FA1E9A';  // pink
-      };
-    } else {
-      events[i].title=""; //hide other user info from current user unless admin
-      events[i].backgroundColor='#676060'; //grey
-    };
-
-  }
-}
 
 // function changeLesson( info ) { 
 //   alert(info.event.title + " was dropped on " + info.event.start.toISOString());
@@ -138,18 +147,18 @@ function eventState (events) {
 //   //   revertFunc()
 //   // }
 // }
-function changeLesson (info)
-{console.log(info);
-  //  var day = info.start.format("dddd"); // this will give you day 
-  //  if(day === "Saturday")
-  if(info!==null)
-   {
-      alert("You can not move this event to saturday.");
-      info.revert();
-   } else {
-      //Here is my ajax to update DB
-   }
-} 
+// function changeLesson (info)
+// {console.log(info);
+//   //  var day = info.start.format("dddd"); // this will give you day 
+//   //  if(day === "Saturday")
+//   if(info!==null)
+//    {
+//       alert("You can not move this event to saturday.");
+//       info.revert();
+//    } else {
+//       //Here is my ajax to update DB
+//    }
+// } 
         return (
           <div className='calendar-container'>
             <div>
@@ -194,6 +203,10 @@ function changeLesson (info)
             {isOpen && (
               // <ConfirmLesson isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventUpdate={event => onEventUpdate(event)} eValues={passArray} />
               <ConfirmLesson isOpen={isOpen} onClose={() => setIsOpen(false)} eValues={passArray} />
+            )}
+            {isUpdateOpen && (
+              // <ConfirmLesson isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventUpdate={event => onEventUpdate(event)} eValues={passArray} />
+              <UpdateLesson isOpen={isOpen} onClose={() => setIsOpen(false)} eValues={passArray} />
             )}
 
           </div>
