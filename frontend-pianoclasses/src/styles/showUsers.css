@@ -150,6 +150,10 @@ p{
 /* .Mgn {
     align-items: center;
 } */
+.btnmodel{
+    display: flex;
+    justify-content: space-between;
+}
 
 @media(max-width: 768px){
     button{

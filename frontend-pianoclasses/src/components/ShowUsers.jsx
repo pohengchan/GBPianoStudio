@@ -120,7 +120,7 @@ return (
               <td>
               <Authorizer user={user} />
               </td>
-              <td>
+              {/* <td>
                 {editingUser && editingUser.id === user.id ? (
                   <div>
                     <button className='btnNav'
@@ -144,15 +144,15 @@ return (
                     >
                       Edit
                     </button>
-                    <button className='btnNav'
-                      // className="btn btn-danger"
-                      onClick={() => deleteUser(user.id)}
-                    >
-                      Delete
-                    </button>
+                    // <button className='btnNav'
+                    //   // className="btn btn-danger"
+                    //   onClick={() => deleteUser(user.id)}
+                    // >
+                    //   Delete
+                    // </button>
                   </div>
                 )}
-              </td>
+              </td> */}
               <td>
                     <button className='btnNav' value="details" onClick={() => getUserDetails(user.id)}>
                     Details
@@ -180,6 +180,21 @@ return (
              <p>Date of birth: {selectedUser.date_of_birth}</p>
              <p>Candidate number: {selectedUser.candidate_number}</p>
              </div>
+             <div className='btnmodel'>
+             <button className='btnNav'
+                      // className="btn btn-warning me-2"
+                      onClick={() => handleEdit(user)}
+                    >
+                      Edit
+                    </button>
+                     <button className='btnNav'
+                    
+                       onClick={() => deleteUser(user.id)}
+                     >
+                      Delete
+                    </button>
+                    
+                    </div>
          </div>
          </div>
      )}  
