@@ -81,7 +81,11 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
               <div>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")} </div>
               <div>Start Time: {moment(eValues.start).format("HH:mm")}</div>
               <div>End Time: {moment(eValues.end).format("HH:mm")}</div>
-
+              {showConfirmed === 0 ?
+              <div>Confirmed: No</div>
+              :
+              <div>Confirmed: Yes</div>
+              }
               {/* {localStorage.role === 'admin' && objectData.is_confirmed!==1 ? */}
               {localStorage.role === 'admin' && showConfirmed === 0 ?
 

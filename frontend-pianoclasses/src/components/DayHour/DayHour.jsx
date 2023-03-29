@@ -15,11 +15,8 @@ import Swal from "sweetalert2";
 import { getAxiosInstance } from '../../services/functions';
 
 var instance = getAxiosInstance();
-
-let isCalendarLoaded = false;
+var isCalendarLoaded = false;
 var passArray = {id:0, title: "", start:"", end:""};
-var isEditable = false;
-
 
 
 function DayHour () {
@@ -57,7 +54,9 @@ function DayHour () {
           background: '#676060',
           showConfirmButton: true,
           confirmButtonColor: '#01FDFD',
+          
       });
+        isCalendarLoaded=false;
         passArray={id:0, title: "", start:"", end:""};
     //     } else {
     //       console.log("something didn't happen");
@@ -72,22 +71,19 @@ function DayHour () {
         // const response = await axios.get("http://localhost:8000/api/lessons");
         const response = await instance.get("http://localhost:8000/api/lessons");
         setEvents(response.data);
+        eventState(events);
         isCalendarLoaded = true;
-        console.log("get calendar");
+        // console.log("get calendar");
       }
+      eventState(events);
     }
-
 
 //shows lesson details, allows teacher to confirm classes
 const handleSelect = (info) => {
-  // const objectData = getObjectDataById(info.event.id);
-  // console.log(objectData);
-
   passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
-
   setIsOpen(true);
+  isCalendarLoaded=false;
 };
-
 
 //this function opens the modal to add the lesson
 const openModal  = (info) => {
@@ -107,24 +103,68 @@ const openModal  = (info) => {
     start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), 
     end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")
   }
-console.log(passArray);
+// console.log(passArray);
+isCalendarLoaded=false
+}
+//set event colours and editable
+function eventState (events) {
+
+  for (let i = 0; i < events.length; i++) {
+    //set default values on initializing
+    events[i].editable=false;
+
+    if (localStorage.role==="admin" || events[i].user_id===parseInt(localStorage.id)) {
+      // console.log(events[i].user_id);
+      if (events[i].is_confirmed===1) {
+        events[i].editable=true;
+        events[i].backgroundColor='#24037D';//dark blue
+      };
+      if (events[i].is_confirmed===0) {
+        events[i].backgroundColor='#FA1E9A';  // pink
+      };
+    } else {
+      events[i].title=""; //hide other user info from current user unless admin
+      events[i].backgroundColor='#676060'; //grey
+    };
+
+  }
 }
 
+// function changeLesson( info ) { 
+//   alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+
+//   // if (!confirm("Are you sure about this change?")) {
+//   //   info.revert();
+//   //   revertFunc()
+//   // }
+// }
+function changeLesson (info)
+{console.log(info);
+  //  var day = info.start.format("dddd"); // this will give you day 
+  //  if(day === "Saturday")
+  if(info!==null)
+   {
+      alert("You can not move this event to saturday.");
+      info.revert();
+   } else {
+      //Here is my ajax to update DB
+   }
+} 
         return (
           <div className='calendar-container'>
             <div>
             <FullCalendar
-            editable={isEditable}
+            // editable={isEditable}
             eventOverlap={false}
             selectable
-          //  select={handleSelect}
-          select={openModal} //new function
-          ref={calendarRef}
+            //  select={handleSelect}
+            select={openModal} //new function
+            ref={calendarRef}
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
               // plugins= {[ 'interaction', 'dayGrid', 'timeGrid' ]}
             defaultView= 'timeGridWeek'
             allDaySlot={false}
-            contentHeight={600}
+            contentHeight={1000}
             slotMinTime={"09:00:00"}
             slotMaxTime={"21:00:00"}
             slotDuration={"00:30:00"}
@@ -139,11 +179,13 @@ console.log(passArray);
               events={events}
               // events={[
               //   this.state.events
-              //   // { title: 'unavailable', start: '2023-03-13T10:00:00' , end: '2023-03-13T15:00:00', backgroundColor: 'grey'},
+              //   // { title: 'unavailable', start: '2023-03-30 10:00:00' , end: '2023-03-30 15:00:00', backgroundColor: 'grey'},
               // ]}
               eventClick={(event) => handleSelect(event)}
               eventAdd={event => handleEventAdd(event)}
               datesSet={(date) => handleDatesSet(date)}
+              eventDrop={(info) => changeLesson((info))}
+              
             />
             </div>
             <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
