@@ -6,7 +6,7 @@ function Piano() {
   return (
     <>
     <div id='container-h1'>
-        <h1 id='piano-h1'>GIVE IT A TRY AND TAP THE KEYS</h1>
+        <h1 id='piano-h1'>FACE-TO-FACE OR ONLINE CLASSES</h1>
     </div>
     </>
   )

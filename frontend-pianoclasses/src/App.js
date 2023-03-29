@@ -19,10 +19,9 @@ function App() {
   return (
     <>
     <Navbar/>
-    <Textborder/>
-    {/* <ShowUsers /> */}
-    <Contactbutton/>
     <Piano/>
+    <Textborder/>
+    <Contactbutton/>
     <Footer/>
     </>
   );

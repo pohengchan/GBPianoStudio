@@ -1,16 +1,17 @@
 
-#container-father {
+#container-father-box {
     display: flex; 
     justify-content: center;
+    
 
 }
-.container {
+.container-textborder { 
+ 
     border: 1px solid var(--dark-pink);
     border-radius: 25px;
-    width: 80%;
     display: flex; 
     justify-content: center;
-    margin: 2rem;
+    margin: 1rem;
     box-shadow: 0 0 5px 0 var(--dark-pink),
     inset 0 0 5px 0 var(--dark-pink),
     0 0 20px 0 var(--dark-pink),
