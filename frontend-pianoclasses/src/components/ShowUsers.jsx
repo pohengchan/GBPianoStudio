@@ -65,9 +65,9 @@ const closeModal = () => {
     setSelectedUser(null);
     setShowModal(false);
 };
-const user = {
-  id: 1, // este sería el id que necesitas para el checkbox
-};
+// const user = {
+//   id: 1, // este sería el id que necesitas para el checkbox
+// };
 
 return (
     <div>
@@ -176,7 +176,7 @@ return (
              <p>Name parent's: {selectedUser.contact_name}</p>
              <p>Student: {selectedUser.student_name}</p>
              <p>Email: {selectedUser.email}</p>
-           <p>Phone: {selectedUser.phone_number}</p>
+             <p>Phone: {selectedUser.phone_number}</p>
              <p>Date of birth: {selectedUser.date_of_birth}</p>
              <p>Candidate number: {selectedUser.candidate_number}</p>
              </div>
