@@ -88,7 +88,7 @@ const logoutSubmit = (e) =>{
         {Calendar}
 
         <Link to="/Tips" className="link">
-          <li>TIPS ON HOW TO PRACTICE</li>
+          <li>TEACHING TIPS</li>
         </Link>
         <Link to="/Exams" className="link">
           <li>EXAMS</li>
