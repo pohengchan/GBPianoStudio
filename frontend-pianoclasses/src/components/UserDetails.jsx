@@ -4,6 +4,7 @@ const UserDetails = ({ user, showModal, closeModal, handleEdit, deleteUser }) =>
   const { contact_name, student_name, email, phone_number, date_of_birth, candidate_number } = user;
 
   return showModal && (
+    
     <div className="modal">
       <div className="modal-content">
         <span className="close" onClick={closeModal}>&times;</span>
