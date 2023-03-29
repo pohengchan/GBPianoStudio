@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../styles/showUsers.css';
 import Authorizer from './AuthorizerUser';
 import UserDetails from './UserDetails';
+import ModalButton from './ModalButton';
 
 const endpoint = 'http://localhost:8000/api';
 
@@ -10,7 +11,7 @@ const ShowUsers = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [newName, setNewName] = useState('');
-  // const [newEmail, setNewEmail] = useState('');
+
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -27,29 +28,20 @@ const ShowUsers = () => {
     setEditingUser(user);
     setNewName(user.contact_name);
     // setNewEmail(user.email);
-  };
+  }
 
   const deleteUser = async (id) => {
     await axios.delete(`${endpoint}/users/${id}`);
     getAllUsers();
-  };
+  }
 
   const closeModal = () => {
     setSelectedUser(null);
     setShowModal(false);
-  };
-  // const closeModal = () => {
-  //   setShowModal(false);
-  // };
-
-  // const getUserDetails = async (id) => {
-  //   const response = await axios.get(`${endpoint}/users/${id}`);
-  //   setSelectedUser(response.data);
-  //   setShowModal(true);
-  // };
-  const getUserDetails = (userId) => {
-    const user = users.find((user) => user.id === userId);
-    setSelectedUser(user);
+  }
+  const getUserDetails = async (id) => {
+    const response = await axios.get(`${endpoint}/users/${id}`);
+    setSelectedUser(response.data);
     setShowModal(true);
   };
 
@@ -84,23 +76,14 @@ const ShowUsers = () => {
                     </p>
                   </td>
                   <td>
-                    {/* <p>
-                      {editingUser && editingUser.id === user.id ? (
-                        <input
-                          type="text"
-                          value={newName}
-                          onChange={(e) => setNewName(e.target.value)}
-                        />
-                      ) : (
-                        user.contact_name
-                      )}
-                    </p> */}
+                  
                   </td>
                   <td>
                     <Authorizer user={user} />
                   </td>
                   <td>
-                  <button className="btnNav" value="details" onClick={() => getUserDetails(user.id)}>Details</button>
+                  <ModalButton onClick={() => getUserDetails(user.id)}>Details</ModalButton>
+
 
                   </td>
                 </tr>
@@ -108,7 +91,7 @@ const ShowUsers = () => {
             </tbody>
           </table>
         </div>
-        {showModal && (
+        {selectedUser && showModal && (
           <UserDetails
             user={selectedUser}
             closeModal={closeModal}
