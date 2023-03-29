@@ -1,8 +1,9 @@
 import React from 'react';
 
+
 const UserDetails = ({ user, showModal, closeModal, handleEdit, deleteUser }) => {
   const { contact_name, student_name, email, phone_number, date_of_birth, candidate_number } = user;
-
+  
   return showModal && (
     
     <div className="modal">
