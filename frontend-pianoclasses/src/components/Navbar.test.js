@@ -1,5 +1,6 @@
 import { screen, render  } from '@testing-library/react';
 import Navbar from './Navbar';
+import '@testing-library/jest-dom';
 
 test('renders learn react link', () => {
     render(<Navbar />);

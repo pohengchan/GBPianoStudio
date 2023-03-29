@@ -16,7 +16,7 @@
 //     cleanup();
 //   });
 
-//   it('should send a message when the form is submitted', async () => {
+// it('should send a message when the form is submitted', async () => {
 //     render(<ContactForm />);
 //     const nameInput = screen.getByLabelText('Contact\'s name/ Parent\'s name *');
 //     const emailInput = screen.getByLabelText('Email *');
