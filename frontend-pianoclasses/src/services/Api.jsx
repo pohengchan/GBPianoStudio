@@ -28,3 +28,8 @@ export const deleteUser = async (id) => {
   const response = await axios.delete(`${endpoint}/users/${id}`);
   return response.data;
 };
+
+export const getUserDetails = async (id) => {
+  const response = await axios.get(`${endpoint}/users/${id}`);
+  return response.data;
+};

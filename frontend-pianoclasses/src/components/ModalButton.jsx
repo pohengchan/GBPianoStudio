@@ -6,6 +6,7 @@ const ModalButton = ({ onClick, children }) => {
     <button className="btnNav" onClick={onClick}>
       {children}
     </button>
+    
   );
 };
 

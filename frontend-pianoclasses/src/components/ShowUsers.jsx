@@ -1,51 +1,77 @@
 import React, {useEffect, useState } from 'react'
-import axios from 'axios';
-import '../styles/showUsers.css';
+import { getAllUsers, deleteUser, getUser} from '../services/Api';
 import Authorizer from './AuthorizerUser';
 import UserDetails from './UserDetails';
 import ModalButton from './ModalButton';
+import Swal from 'sweetalert2';
+import '../styles/showUsers.css';
 
-const endpoint = 'http://localhost:8000/api';
 
 const ShowUsers = () => {
   const [users, setUsers] = useState([]);
-  const [editingUser, setEditingUser] = useState(null);
-  const [newName, setNewName] = useState('');
-
+  const [errors, setErrors] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    getAllUsers();
-  }, []);
-
-  const getAllUsers = async () => {
-    const response = await axios.get(`${endpoint}/users`);
-    setUsers(response.data);
-  };
-
-  const handleEdit = (user) => {
-    setEditingUser(user);
-    setNewName(user.contact_name);
-    // setNewEmail(user.email);
-  }
-
-  const deleteUser = async (id) => {
-    await axios.delete(`${endpoint}/users/${id}`);
-    getAllUsers();
-  }
+    loadUsers();
+    }, []);
+    
+    const loadUsers = async () => {
+    const allUsers = await getAllUsers();
+    setUsers(allUsers);
+    };
 
   const closeModal = () => {
     setSelectedUser(null);
     setShowModal(false);
-  }
-  const getUserDetails = async (id) => {
-    const response = await axios.get(`${endpoint}/users/${id}`);
-    setSelectedUser(response.data);
+    };
+    
+    const getUserDetails = async (id) => {
+    const userDetails = await getUser(id);
+    setSelectedUser(userDetails);
     setShowModal(true);
+    };
+
+  const handleEdit = () => {
+       window.location.href = `/EditUsers/${selectedUser.id}`;
+    };
+
+  const handleDelete = async (id) => {
+    // await deleteUser(id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to delete this user.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel',
+      confirmButtonColor: '#01FDFD',
+      cancelButtonColor: '#676060'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const response = await deleteUser(id);
+        if (response.errors) {
+          setErrors(response.errors);
+        } else {
+          Swal.fire({
+            title: 'Success!',
+            text: 'User was successfully deleted.',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            iconColor:'white',
+            color: 'white',
+            background: '#676060',
+            confirmButtonColor: '#01FDFD',
+          });
+          setErrors('');
+          loadUsers();
+        }
+      }
+    });
   };
 
-  return (
+ return ( 
     <div>
       <h1 className="users">USERS</h1>
       <div className="container">
@@ -60,32 +86,16 @@ const ShowUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
-                  <td>
-                    <p>
-                      {editingUser && editingUser.id === user.id ? (
-                        <input
-                          type="text"
-                          value={newName}
-                          onChange={(e) => setNewName(e.target.value)}
-                        />
-                      ) : (
-                        user.student_name
-                      )}
-                    </p>
-                  </td>
-                  <td>
-                  
-                  </td>
-                  <td>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.student_name}</td>
+                <td>{user.email}</td>
+                 <td>
                     <Authorizer user={user} />
                   </td>
                   <td>
                   <ModalButton onClick={() => getUserDetails(user.id)}>Details</ModalButton>
-
-
-                  </td>
+                </td>
                 </tr>
               ))}
             </tbody>
@@ -96,7 +106,7 @@ const ShowUsers = () => {
             user={selectedUser}
             closeModal={closeModal}
             handleEdit={handleEdit}
-            deleteUser={deleteUser}
+            deleteUser={() => handleDelete()}
           />
         )}
       </div>
