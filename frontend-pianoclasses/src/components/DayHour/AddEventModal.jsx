@@ -2,6 +2,14 @@ import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import './DayHour.css';
 import moment from "moment";
+// import Datetime from "react-datetime"
+import Swal from "sweetalert2";
+
+
+const today = Date.now();
+var minStart = moment(today).add(24, 'HH').toDate();
+minStart = moment(minStart).format("YYYY-MM-DDTHH:mm");
+
 
 export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues}) {
     
@@ -25,24 +33,46 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
         // const username = event.target.title.value;
         // console.log(username)
         // Your logic for handling form submission goes here
-        onEventAdded({
-            user_id: localStorage.getItem('id'),
-            title,
-            start ,
-            end
-        })
-        onClose();
+        console.log(today);
+        console.log(minStart);
+        console.log(start);
+
+
+        if (moment(start).format("YYYY-MM-DD HH:mm:ss")>moment(minStart).format("YYYY-MM-DD HH:mm:ss")) {
+            onEventAdded({
+                user_id: localStorage.getItem('id'),
+                title,
+                start ,
+                end
+            })
+            onClose();
+        } else {
+            Swal.fire({
+                title: "You cannot book a lesson with less than 24hr notice.",
+                color: 'white',
+                background: '#676060',
+                showConfirmButton: true,
+                confirmButtonColor: '#01FDFD',
+                
+            });
+        }
       }
 
     const customStyles = {
         overlay: {zIndex: 1000}
       };
 
-  
+    const changeStart = (event) => {
+        console.log(event);
+        const value = event;        
+        setTimeout(() => setStart(value), 1000);
+
+      };
+
     const onChange = (event) => {
         const value = event.target.value;
 
-        var newEnd = moment(calValues.start).add(value, 'm').toDate();
+        var newEnd = moment(start).add(value, 'm').toDate();
         newEnd = moment(newEnd).format("YYYY-MM-DD HH:mm:ss");
         
         setTimeout(() => setEnd(newEnd), 1000);
@@ -50,17 +80,30 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
 
     const handleClose = () => {
         setShow(false);
+        onClose(true);
     };
 
     return (
         <Modal show={show} style={customStyles} isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} >
             <form  className="add-event-modal" onSubmit={onSubmit}>
-            {/* <form  className="add-event-modal" > */}
                 <label>Student's name</label>
                 <input className="lesson-input" placeholder="Student's name" value={title} onChange={e => setTitle(e.target.value)} />
-                <div>
+                <div> 
                     <label>Start Date</label>
-                    <input className="lesson-input" value={start} onChange={e => setStart(e.target.value)} />
+                    {/* <input type="hidden" input className="lesson-input" value={start} onChange={e => setStart(e.target.value)} /> */}
+                    <input type="hidden" input className="lesson-input" value={ moment(start).format("YYYY-MM-DD HH:mm:ss")} onChange={e => setStart(e.target.value)} />
+                <input
+                    id="studentsName"
+                    type="datetime-local"
+                    name="studentsName"
+                    min={minStart}
+                    // max="2023-06-30T21:00"
+                    className="lesson-input" 
+                    value={start} 
+                    step="60"
+                    onChange={e => changeStart(e.target.value)} />
+                    {/* <input className="lesson-input" value={start} onChange={e => setStart(e.target.value)} /> */}
+                     {/* <Datetime  value={start} onChange={date => setStart(date)}/> */}
                 </div>
                 <div>
                     <label>Change the class duration: </label>
@@ -73,11 +116,8 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
                 <div>
                     <label>End Time</label>
                     {end && <input placeholder="" className="lesson-input"  value={end} onChange={e => setEnd(e.target.value)} />}
+                    {/* {end && <Datetime value={end} onChange={e => setEnd(e.target.value)} inputProps={ "disabled: true" }/>}  */}
                 </div>
-                {/* <div>
-                    <label>Confirmed:</label>
-                    <input type="checkbox" checked={confirm} onChange={handleConfirm} />
-                </div> */}
                 <div className="modal-buttons">
                     <button type="reset" onClick={handleClose}>Cancel❌</button>
                     {/* <button type="submit" onClick={()=>onSubmit()}>Add Lesson</button>  */}
