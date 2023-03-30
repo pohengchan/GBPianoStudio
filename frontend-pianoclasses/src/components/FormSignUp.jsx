@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../index.css';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import {useNavigate} from 'react-router-dom';
 import { getAxiosInstance } from '../services/functions';
 // import axios from 'axios';
@@ -51,7 +51,7 @@ import { getAxiosInstance } from '../services/functions';
             
                 localStorage.setItem('auth_token', res.data.token);
                 localStorage.setItem('auth_name', res.data.contact_name);
-                swal("Success",res.data.message,"success");
+                Swal.fire({   confirmButton: 'true',  text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
                 navigate('/');
             }
             else
