@@ -228,6 +228,8 @@ function onUpdateClose () {
               eventAdd={event => handleEventAdd(event)}
               datesSet={(date) => handleDatesSet(date)}
               eventDrop={(info) => changeLesson((info))}
+              // handleWindowResize={true}
+              updateSize={true}
               
               
             />
