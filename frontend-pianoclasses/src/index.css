@@ -11,6 +11,7 @@
 @import './styles/about.css';
 @import './styles/tipstext.css';
 @import './styles/examsText.css';
+@import './styles/play.css';
 
 
 
@@ -59,3 +60,16 @@
   }
  
  
+  .h1-play {
+ 
+      margin: 2rem; 
+      font-size: 2rem;
+      color: rgb(233, 160, 237);
+      text-shadow:
+      0 0 5px rgb(182, 25, 190),
+      0 0 20px rgb(182, 25, 190),
+      0 0 80px rgb(182, 25, 190),
+      0 0 100px rgb(182, 25, 190),
+      0 0 150px rgb(182, 25, 190);
+  
+  }
