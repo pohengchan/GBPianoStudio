@@ -8,7 +8,7 @@ import Contact from '../pages/Contact';
 import Exams from '../pages/Exams';
 import Register from '../pages/Register';
 import Tips from '../pages/Tips';
-import User from '../pages/User';
+import Users from '../pages/Users';
 import Login from '../pages/Login';
 import ShowUsers from '../components/ShowUsers';
 
@@ -32,7 +32,7 @@ function Router() {
             {/* <Route path= '/register' element={ <Register/>} /> */}
             <Route path= '/Register' element={localStorage.getItem('auth_token') ? <Navigate to="/" /> : <Register/>} />
             <Route path= '/Tips' element={<Tips/>}/>
-            <Route path= '/User' element={<User/>}/>
+            <Route path= '/Users' element={<Users/>}/>
             <Route path= '/show' element={<ShowUsers/>}/>
             
             

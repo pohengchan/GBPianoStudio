@@ -1,6 +1,6 @@
 import React  from 'react';
 import '../../index.css';
-import './DayHour.css';
+import './dayHour.css';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
