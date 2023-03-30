@@ -5,6 +5,7 @@ import AboutText from '../components/AboutText';
 
 
 
+
 function About() {
   return (
     <>

@@ -5,14 +5,7 @@ import Footer from './components/Footer';
 import Contactbutton from './components/Contactbutton';
 import Textborder from './components/Textborder';
 import Piano from './components/Piano';
-// import ShowUsers from './components/ShowUsers';
-// import axios from 'axios';
-
-// axios.default.baseURL= "http://127.0.0.1:8000/";
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
-// axios.defaults.headers.post['Accept'] = 'application/json';
-
-// axios.defaults.withCredentials = true;
+import Play from './components/Play';
 
 
 function App() {
@@ -22,6 +15,8 @@ function App() {
     <Piano/>
     <Textborder/>
     <Contactbutton/>
+    <h1 className='h1-play'>GIVE IT A TRY A CLICK ON THE KEYS</h1>
+    <Play/>
     <Footer/>
     </>
   );
