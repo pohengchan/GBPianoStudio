@@ -6,7 +6,7 @@ import { x } from "react-icons-kit/feather/x";
 import logo from "../assets/images/Logo3.png";
 import { Link } from "react-router-dom";
 import { getAxiosInstance } from "../services/functions";
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 var instance = getAxiosInstance();
 
@@ -17,7 +17,7 @@ const logoutSubmit = (e) =>{
         localStorage.removeItem('auth_token');
         localStorage.removeItem('auth_name');
         localStorage.clear();
-        swal("Success",res.data.message,"success");
+        Swal.fire({ text: res.data.message,color: 'white', background: '#676060', confirmButton: 'true', confirmButtonColor: '#01FDFD', });
         window.location = "/";
         }
       });
