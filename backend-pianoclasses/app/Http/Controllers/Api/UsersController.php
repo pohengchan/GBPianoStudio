@@ -31,4 +31,11 @@ class UsersController extends Controller
 	    $user->delete();
 	    return response()->json(null, 204);
 	}
+
+	public function setIsAuthorized(Request $request, User $user)
+	{
+		User::where('id', $user->id)->update(['is_authorised' => 1]);
+		$user = User::find($user->id);
+		return response()->json($user, 200);
+	}
 }
