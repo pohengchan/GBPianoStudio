@@ -19,6 +19,10 @@ var instance = getAxiosInstance();
 var isCalendarLoaded = false;
 var passArray = {id:0, title: "", start:"", end:""};
 
+const today = Date.now();
+var minStart = moment(today).add(24, 'HH').toDate();
+minStart = moment(minStart).format("YYYY-MM-DD HH:mm:ss");
+
 
 function DayHour () {
     const [modalOpen, setModalOpen] = useState(false);
@@ -126,6 +130,11 @@ const openModal  = (info) => {
       end,
     },
   ]);
+  // check if the lesson is after 24hrs 
+
+  console.log(start);
+  console.log(minStart);
+  if (moment(start).format("YYYY-MM-DD HH:mm:ss") > minStart) {
 
   setModalOpen(true);
   passArray= {
@@ -136,6 +145,16 @@ const openModal  = (info) => {
   }
 // console.log(passArray);
 isCalendarLoaded=false
+  } else {
+    Swal.fire({
+      title: "You cannot book a lesson with less than 24hr notice.",
+      color: 'white',
+      background: '#676060',
+      showConfirmButton: true,
+      confirmButtonColor: '#01FDFD',
+      
+  });
+  }
 }
 
 
