@@ -32,7 +32,7 @@ function Router() {
             {/* <Route path= '/register' element={ <Register/>} /> */}
             <Route path= '/Register' element={localStorage.getItem('auth_token') ? <Navigate to="/" /> : <Register/>} />
             <Route path= '/Tips' element={<Tips/>}/>
-            <Route path= '/Users' element={<Users/>}/>
+            <Route path= '/Users' element={localStorage.getItem('role')==='admin' ? <Users/> : <Navigate to="/" />} />
             <Route path= '/show' element={<ShowUsers/>}/>
             
             
