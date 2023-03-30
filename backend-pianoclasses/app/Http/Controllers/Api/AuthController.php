@@ -66,6 +66,9 @@ public function login(Request $request)
  else {
 
         $user = User::where ('email', $request->email)->first();
+
+       
+
         if(! $user || ! Hash::check($request->password, $user->password))
             {
                 return response()->json([
@@ -75,6 +78,17 @@ public function login(Request $request)
             }
         else
             {
+
+
+                if($user->is_authorised === 0) //checks if user is authorised
+                {
+                    // auth()->user()->tokens()->delete();
+                    return response()->json([
+                        'status'=>401,
+                        'message'=>'You are not an authorised user yet. Please wait for the teacher to authorise your permissions.',
+                    ]);     
+                } 
+
                 if($user->is_authorised ===1) //checks if user is authorised
                 {
                     $role = 'authorised';
@@ -98,7 +112,8 @@ public function login(Request $request)
                 ]);
                 //{status: 200, username: null, token: '24|ytQkhsMsgxyg0I56wMDXALAVVWFyRXQb9Mzo6Voe', message: 'Logged In Successfully', role: ''}
             }
-      }
+         }
+      
     }
 
 
