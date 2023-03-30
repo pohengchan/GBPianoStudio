@@ -16,7 +16,7 @@ import Swal from "sweetalert2";
 import { getAxiosInstance } from '../../services/functions';
 
 var instance = getAxiosInstance();
-var isCalendarLoaded = false;
+// var isCalendarLoaded = false;
 var passArray = {id:0, title: "", start:"", end:""};
 
 const today = Date.now();
@@ -30,6 +30,7 @@ function DayHour () {
     const [events, setEvents] = useState([]);
     const [isOpen, setIsOpen] = useState(false); //confirm pop up
     const [isUpdateOpen, setIsUpdateOpen] = useState(false); //confirm pop up
+    const [loadCalendar, setLoadCalendar] = useState(true);
    
     const onEventAdded = event => {
 
@@ -42,61 +43,67 @@ function DayHour () {
         event
       });
 
-      isCalendarLoaded = false;
+      // isCalendarLoaded = false;
+      setLoadCalendar(true);
 
     };
     
-     async function handleEventAdd(data) {
-      // console.log(data)
-      await axios.post("http://localhost:8000/api/lessons", data);
-    //    await instance.post('http://localhost:8000/api/lessons', data).then(res=> {
-    //     console.log(`res.data.status: ${res.data}`);
-    //     if(res.data.status === 200){
+    async function handleEventAdd(data) {
+    // console.log(data)
+    await axios.post("http://localhost:8000/api/lessons", data);
+  //    await instance.post('http://localhost:8000/api/lessons', data).then(res=> {
+  //     console.log(`res.data.status: ${res.data}`);
+  //     if(res.data.status === 200){
 
-        Swal.fire({
-          title: "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.",
-          color: 'white',
-          background: '#676060',
-          showConfirmButton: true,
-          confirmButtonColor: '#01FDFD',
-          
-      });
-        isCalendarLoaded=false;
-        passArray={id:0, title: "", start:"", end:""};
-    //     } else {
-    //       console.log("something didn't happen");
-    //     }
+      Swal.fire({
+        title: "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.",
+        color: 'white',
+        background: '#676060',
+        showConfirmButton: true,
+        confirmButtonColor: '#01FDFD',
         
-    // })
-    };
+    });
+      // isCalendarLoaded=false;
+      setLoadCalendar(true);
+      passArray={id:0, title: "", start:"", end:""};
+  //     } else {
+  //       console.log("something didn't happen");
+  //     }
+      
+  // })
+  };
 
  
-    async function handleDatesSet(data) {
-      if (isCalendarLoaded===false) {
-        // const response = await axios.get("http://localhost:8000/api/lessons");
-        const response = await instance.get("http://localhost:8000/api/lessons");
-        setEvents(response.data);
-        eventState(events);
-        isCalendarLoaded = true;
-        // console.log("get calendar");
-      }
-      eventState(events);
-    }
+async function handleDatesSet(data) {
+  if (loadCalendar===true) {
+    // const response = await axios.get("http://localhost:8000/api/lessons");
+    const response = await instance.get("http://localhost:8000/api/lessons");
+    setEvents(response.data);
+    eventState(events);
+    // isCalendarLoaded = true;
+    setLoadCalendar(false);
+    // console.log("get calendar");
+  }
+  eventState(events);
+}
 //set event colours and editable
 function eventState (events) {
 
   for (let i = 0; i < events.length; i++) {
     //set default values on initializing
     events[i].editable=false;
+    events[i].durationEditable=false;
 
     if (localStorage.role==="admin" || events[i].user_id===parseInt(localStorage.id)) {
       // console.log(events[i].user_id);
       if (events[i].is_confirmed===1) {
         events[i].editable=true;
+        events[i].durationEditable=false;
         events[i].backgroundColor='#24037D';//dark blue
       };
       if (events[i].is_confirmed===0) {
         events[i].editable=true;
+        events[i].durationEditable=false;
         events[i].backgroundColor='#FA1E9A';  // pink
       };
     } else {
@@ -110,14 +117,16 @@ function eventState (events) {
 const handleSelect = (info) => {
   passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
   setIsOpen(true);
-  isCalendarLoaded=false;
+  // isCalendarLoaded=false;
+  setLoadCalendar(true);
 };
 
-//shows lesson details, allows teacher to confirm classes
+//shows update modal for user to change their lesson time
 const changeLesson = (info) => {
   passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
   setIsUpdateOpen(true);
-  isCalendarLoaded=false;
+  // isCalendarLoaded=false;
+  setLoadCalendar(true);
 };
 
 //this function opens the modal to add the lesson
@@ -144,7 +153,8 @@ const openModal  = (info) => {
     end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")
   }
 // console.log(passArray);
-isCalendarLoaded=false
+// isCalendarLoaded=false
+setLoadCalendar(true);
   } else {
     Swal.fire({
       title: "You cannot book a lesson with less than 24hr notice.",
@@ -157,6 +167,10 @@ isCalendarLoaded=false
   }
 }
 
+function onUpdateClose () {
+  setLoadCalendar(true);
+  setIsUpdateOpen(false);
+}
 
 // function changeLesson( info ) { 
 //   alert(info.event.title + " was dropped on " + info.event.start.toISOString());
@@ -184,6 +198,7 @@ isCalendarLoaded=false
             <FullCalendar
             // editable={isEditable}
             eventOverlap={false}
+            eventDurationEditable={false}
             selectable
             //  select={handleSelect}
             select={openModal} //new function
@@ -213,6 +228,9 @@ isCalendarLoaded=false
               eventAdd={event => handleEventAdd(event)}
               datesSet={(date) => handleDatesSet(date)}
               eventDrop={(info) => changeLesson((info))}
+              // handleWindowResize={true}
+              updateSize={true}
+              
               
             />
             </div>
@@ -225,7 +243,7 @@ isCalendarLoaded=false
             )}
             {isUpdateOpen && (
               // <ConfirmLesson isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventUpdate={event => onEventUpdate(event)} eValues={passArray} />
-              <UpdateLesson isOpen={isOpen} onClose={() => setIsOpen(false)} eValues={passArray} />
+              <UpdateLesson isOpen={isUpdateOpen} onClose={() => onUpdateClose()} eValues={passArray} />
             )}
 
           </div>
