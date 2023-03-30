@@ -1,26 +1,8 @@
 
-# Mi proyecto
-
-Aquí va una descripción breve de mi proyecto.
-
----
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>My Page</title>
-	<style>
-		body {
-    
-<p align="center"><img src="" width="300" alt="piano-classes"></p>
+<p align="center"><img src="![Captura de pantalla (151)](https://user-images.githubusercontent.com/116794919/228945060-aea46a11-1626-4ca5-8198-b502a52ae35a.png)
+" width="300" alt="piano-classes"></p>
 <p align="center">
-			background-color: #302D2D;
-		}
-	</style>
-</head>
-<body>
-</body>
-</html>
+			
 
 
 
