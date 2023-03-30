@@ -1,5 +1,5 @@
+<div style="background-color:#302D2D; padding: 20px;">
 
-	
 
 <p align="center"><img src="https://github.com/GBPianoStudio/piano-classes/blob/dev/frontend-pianoclasses/src/assets/images/Captura%20de%20pantalla%20(154).png" width="300px"></p>
 <p align="center">
@@ -89,6 +89,8 @@ Backend
 * MVC Design pattern.
 * Git version control system.
 * User stories and tasks implementation (Trello).
+	
+</div>
 
 * Communication and self-evaluation.
 
