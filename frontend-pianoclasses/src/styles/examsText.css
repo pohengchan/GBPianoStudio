@@ -1,0 +1,17 @@
+.container-text-exams {
+    padding:2rem;  
+    color:white;
+    border: 1px solid var(--dark-pink);
+    border-radius: 25px;
+    display: flex; 
+    justify-content: center;
+    flex-direction: column;
+    margin: 1rem;
+    box-shadow: 0 0 5px 0 var(--dark-pink),
+    inset 0 0 5px 0 var(--dark-pink),
+    0 0 20px 0 var(--dark-pink),
+    inset 0 0 5px 0 var(--dark-pink),
+    0 0 20px 2px var(--dark-pink),
+    inset 0 0 20px 2px var(--dark-pink);
+    font-size: 1.2rem;
+}
