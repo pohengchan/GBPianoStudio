@@ -1,0 +1,29 @@
+.p-landing {
+    color: white;
+    padding: 2rem; 
+    font-size: 1.2rem;
+   
+}
+
+.li-tips {
+list-style-type: circle; 
+font-size: 1.1rem;
+padding: 0.5rem;
+}
+
+.li-tips-bold{
+    
+    font-size: 1.1rem;
+    padding: 0.5rem;  
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: circle;  
+    margin: 0 2rem;
+padding-bottom: 1rem;
+}
+.li2 {
+    font-size: 1.1rem;
+    padding: 0.2rem;  
+}
