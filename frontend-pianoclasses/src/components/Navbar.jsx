@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/NavbarStyle.css";
+import "../styles/navbarStyle.css";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
@@ -19,16 +19,14 @@ const logoutSubmit = (e) =>{
         localStorage.clear();
         swal("Success",res.data.message,"success");
         window.location = "/";
-        // } else {
-        //   console.log(res.data.status);
-        //   console.log("logout failed");
-        //   localStorage.clear();
         }
       });
 }
   const Navbar = () => {
     var AuthButtons = '';
     var Calendar = '';
+    var ManageUsers = '';
+    
     if(!localStorage.getItem('auth_token')) 
     {
       Calendar = '';
@@ -43,6 +41,15 @@ const logoutSubmit = (e) =>{
         </div> 
      );
     } else{
+      if(localStorage.getItem('role')==='admin') {
+        ManageUsers =  (
+          <div>
+             <Link to="/Users" className="link">
+            <li>MANAGE USERS</li>
+          </Link>
+          </div>
+        );
+       }
       Calendar =  (
         <div className="calendar-navbar">
            <Link to="/Calendar" className="link">
@@ -85,6 +92,7 @@ const logoutSubmit = (e) =>{
         {toggleIcon} 
       </div>
       <ul className="links">
+        {ManageUsers}
         {Calendar}
 
         <Link to="/Tips" className="link">
