@@ -82,3 +82,18 @@
     border-radius: 0.5rem;    
     margin: 1rem 1.5rem 0rem 1.5rem;
 }
+
+/* hides event title */
+/* .fc-event-title {
+    visibility: hidden; 
+} */
+
+.fc-day-today {
+    background-color: var(--grey);;
+  }
+
+  /* // 1.5em by default */
+.fc-timegrid-slot {
+    height: 15em; 
+    border-bottom: 0 !important;
+}

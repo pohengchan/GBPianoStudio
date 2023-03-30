@@ -5,10 +5,9 @@ import { getAxiosInstance } from '../../services/functions';
 import Swal from "sweetalert2";
 
 var instance = getAxiosInstance();
-var showConfirmed = 0;
 var userID = 0;
 
-export default function ConfirmLesson ({isOpen, onClose, eValues}) {
+export default function UpdateLesson ({isUpdateOpen, onClose, eValues}) {
 
     useEffect(() => {
         async function fetchData() {
@@ -16,7 +15,6 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
             // const response = await axios.get(`/api/objects/${id}`);
             const response = await instance.get(`http://localhost:8000/api/lesson/${eValues.id}`);
             // setObjectData(response.data);
-            showConfirmed = response.data.is_confirmed;
             userID = response.data.user_id;
             // console.log(objectData.is_confirmed)//this works
             // const objectDataID = objectData.is_confirmed;
@@ -28,7 +26,7 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
     });
 
 
-    const handleConfirm = async (id) => {
+    const handleUpdate = async (id) => {
         try {
             // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
             const result = await instance.put(`http://localhost:8000/api/lesson/${eValues.id}`, {
@@ -36,7 +34,7 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
                 title:eValues.title,
                 start:eValues.start,
                 end:eValues.end,
-                is_confirmed: 1,
+                is_confirmed: 0,
                 });
             console.log(result);
             console.log(instance);
@@ -45,7 +43,7 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
           }
         onClose();
         Swal.fire({
-            title: "The lesson has been confirmed. The contact will be sent an email.",
+            title: "You have successfully changed the lesson. An email has been sent to Gillian. You will receive an email when she has confirmed the change. ",
             color: 'white',
             background: '#676060',
             showConfirmButton: true,
@@ -53,23 +51,9 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
         });
     };
 
-    const deleteLesson = async (id) => {
-        await instance.delete(`http://localhost:8000/api/lesson/${eValues.id}`);
-        onClose();
-        Swal.fire({
-            title: "You have deleted the lesson. An email will be sent to the user",
-            color: 'white',
-            background: '#676060',
-            showConfirmButton: true,
-            confirmButtonColor: '#01FDFD',
-        });
-    };
 
     const handleClose = () => {
-        console.log(localStorage.role);
-        console.log(localStorage.role);
-        // setShow(false);
-        onClose();
+        onClose(true);
     };
 
   return (
@@ -81,27 +65,14 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
               <div>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")} </div>
               <div>Start Time: {moment(eValues.start).format("HH:mm")}</div>
               <div>End Time: {moment(eValues.end).format("HH:mm")}</div>
-              {showConfirmed === 0 ?
-              <div>Confirmed: No</div>
-              :
-              <div>Confirmed: Yes</div>
-              }
-              {/* {localStorage.role === 'admin' && objectData.is_confirmed!==1 ? */}
-              {localStorage.role === 'admin' && showConfirmed === 0 ?
 
                 <div>
-                  <div className="modal-buttons">Do you want to confirm or delete this lesson? </div>
+                  <div className="modal-buttons">Are you sure you want to change this lesson? </div>
                   <div className="modal-buttons">
-                    <button className="confirm-buttons" onClick={deleteLesson}>DELETE</button> 
                     <button  className="confirm-buttons" onClick={handleClose}>CANCEL</button>
-                    <button className="confirm-buttons" onClick={handleConfirm}>CONFIRM</button> 
+                    <button className="confirm-buttons" onClick={handleUpdate}>CONFIRM</button> 
                   </div>
-                </div> 
-                :
-                <div className="modal-buttons">
-                  <button className="confirm-buttons" onClick={handleClose}>OK</button> 
                 </div>
-              }
 
             </div>
             </div>

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->string('candidate_number')->nullable();
             $table->string('password');
-            $table->tinyInteger('is_authorised')->nullable();
-            $table->tinyInteger('is_admin')->nullable();
+            $table->tinyInteger('is_authorised');
+            $table->tinyInteger('is_admin');
             $table->rememberToken();
             $table->timestamps();
         });
