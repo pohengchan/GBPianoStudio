@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react'
-import { getAllUsers, deleteUser} from '../services/Api';
+import { getAllUsers, deleteUser, getUser} from '../services/Api';
 // import Authorizer from './AuthorizerUser';
 import { getAxiosInstance } from '../services/functions';
 import UserDetails from './UserDetails';
@@ -30,8 +30,8 @@ const ShowUsers = () => {
     };
     
     const getUserDetails = async (id) => {
-    // const userDetails = await getUser(id);
-    setSelectedUser(id);
+    const userDetails = await getUser(id);
+    setSelectedUser(userDetails);
     setShowModal(true);
     };
 
