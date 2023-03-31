@@ -12,6 +12,7 @@ import User from '../pages/User';
 import Login from '../pages/Login';
 import ShowUsers from '../components/ShowUsers';
 import AuthorizerUser from '../components/AuthorizerUser'
+import EditUser from '../components/EditUser';
 
 function Router() { 
 
@@ -31,7 +32,7 @@ function Router() {
             <Route path='/User' element={<User/>}/>
             <Route path='/show' element={<ShowUsers/>}/>
             <Route path='/users/:userId/authorization' element={() => <AuthorizerUser user={{ id: ':userId', authorized: false }} />} />
-
+            <Route path= '/ToUpdate/:id' element={<EditUser/>}/>
         </Routes>
     </BrowserRouter>   
     )

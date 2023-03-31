@@ -34,7 +34,7 @@ const ShowUsers = () => {
     };
 
   const handleEdit = () => {
-       window.location.href = `/EditUsers/${selectedUser.id}`;
+       window.location.href = `/ToUpdate/${selectedUser.id}`;
     };
 
   const handleDelete = async (id) => {
