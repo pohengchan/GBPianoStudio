@@ -39,7 +39,7 @@ label {
     0 0 100px var(--dark-pink),
     0 0 150px var(--dark-pink);
   }
-  .contact-form {
+  .contact-form-contact {
     padding: 2rem 3rem;  
     color:#f0f0f0;
     display: flex;

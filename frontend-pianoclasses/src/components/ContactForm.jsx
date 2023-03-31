@@ -21,7 +21,7 @@ if (state.succeeded) {
     return (
     <>
     <h1 className='h1-contact'>CONTACT ME</h1>
-        <form onSubmit={handleSubmit} className='contact-form'>
+        <form onSubmit={handleSubmit} className='contact-form-contact'>
                 <div className='contact-form'>
                     <label htmlFor="nombre">
                     Contact's name/ Parent's name *
@@ -56,7 +56,7 @@ if (state.succeeded) {
                     />
                 </div>
             
-                <div className='contact-form'>
+                <div className='contact-form-contact'>
                 <label>Message *</label>
                     <textarea 
                         rows="9"
@@ -71,9 +71,10 @@ if (state.succeeded) {
                     />
                 </div>
 
-                <div className="buttons">
-                    <button type='reset'>CANCEL</button>
-                    <button type='submit'>SEND</button>
+                <div className="contact-btn">
+                    <button className='contact-form-button' type='reset'>CANCEL</button>
+                    <button className='contact-form-button' type='submit'>SEND</button>
+
                 </div>
         </form>
     </>
