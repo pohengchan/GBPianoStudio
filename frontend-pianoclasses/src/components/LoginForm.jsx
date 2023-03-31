@@ -3,7 +3,7 @@ import '../index.css';
 // import axios from 'axios';
 import { getAxiosInstance } from '../services/functions';
 // // import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 
 function Login() {
@@ -33,16 +33,20 @@ function Login() {
       instance.post('http://localhost:8000/api/login', data).then((res) => {
         if (res.data.status === 200) {
           localStorage.setItem("auth_token", res.data.token);
-          console.log("should work");
+          // console.log("should work");
+          // console.log(res.data);
           localStorage.setItem("auth_name", res.data.username);
-          swal("Success", res.data.message, "success");
+          localStorage.setItem("id", res.data.userid);
+          localStorage.setItem("sname", res.data.studentname);
+          localStorage.setItem("role", res.data.role);
+          Swal.fire({   confirmButton: 'true', text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
           window.location = "/";
         } else if (res.data.status === 401) {
           console.log(res.data.status)
-          swal("Warning", res.data.message, "warning");
+          Swal.fire({  confirmButton: 'true', text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
         } else {
           console.log(res.data.status)
-          swal("Warning", res.data.message, "something else");
+          Swal.fire({  confirmButton: 'true', text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
           setLoginInput({
             ...loginInput,
             error_list: res.data.validation_errors,

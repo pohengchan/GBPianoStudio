@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import '../styles/authorizerUsers.css';
+import React from 'react';
+import '../styles/authorizerUsers.css'
+import { useState } from "react";
+import DayHour from './DayHour/DayHour';
+import { getAxiosInstance } from '../services/functions';
+var instance = getAxiosInstance();
 
 function Authorizer({ user }) {
-const [isChecked, setIsChecked] = useState(user.authorized);
-const [showLogin, setShowLogin] = useState(false);
-
-const handleCheckboxChange = async (event) => {
-    const authorized = event.target.checked;
-    setIsChecked(authorized);
-    setShowLogin(false);
-    try {
-    await updateAuthorization(user.id, authorized);
-    } catch (error) {
-    console.log(error);
+    const [isChecked, setIsChecked] = useState(false);
+  
+    const handleCheckboxChange = (event) => {
+    handleAuthorise(user);    
+    setIsChecked(event.target.checked);
     }
-}
+    const handleAuthorise = async (id) => {
+        try {
+            // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
+            const result = await instance.put(`http://localhost:8000/api/users/${user}/authorize`, {
+                });
+            console.log(result);
+            console.log(instance);
+          } catch (error) {
+            console.error(error);
+          }
 
-const updateAuthorization = async (userId, authorized) => {
-    try {
-    await axios.put(`/api/users/${userId}/authorization`, { authorized });
-    } catch (error) {
-    console.log(error);
-    }
-}
+    };
 
 if (!user) {
     return null; 

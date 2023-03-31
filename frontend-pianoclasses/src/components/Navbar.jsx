@@ -1,34 +1,33 @@
 import React, { useState } from "react";
-import "../styles/NavbarStyle.css";
+import "../styles/navbarStyle.css";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
 import logo from "../assets/images/Logo3.png";
 import { Link } from "react-router-dom";
 import { getAxiosInstance } from "../services/functions";
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 
 var instance = getAxiosInstance();
 
 const logoutSubmit = (e) =>{
-  e.preventDefault();
-
-instance.post('http://localhost:8000/api/logout').then(res=> {
-    if(res.data.status === 200){
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('auth_name');
-    swal("Success",res.data.message,"success");
-    window.location = "/";
-
-    
-}
-});
+    e.preventDefault();
+    instance.post('http://localhost:8000/api/logout').then(res=> {
+        if(res.data.status === 200){
+        localStorage.removeItem('auth_token');
+        localStorage.removeItem('auth_name');
+        localStorage.clear();
+        Swal.fire({ text: res.data.message,color: 'white', background: '#676060', confirmButton: 'true', confirmButtonColor: '#01FDFD', });
+        window.location = "/";
+        }
+      });
 }
   const Navbar = () => {
     var AuthButtons = '';
     var Calendar = '';
-    if(!localStorage.getItem('auth_token')) 
+    var ManageUsers = '';
     
+    if(!localStorage.getItem('auth_token')) 
     {
       Calendar = '';
 
@@ -42,6 +41,15 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
         </div> 
      );
     } else{
+      if(localStorage.getItem('role')==='admin') {
+        ManageUsers =  (
+          <div>
+             <Link to="/Users" className="link">
+            <li>MANAGE USERS</li>
+          </Link>
+          </div>
+        );
+       }
       Calendar =  (
         <div className="calendar-navbar">
            <Link to="/Calendar" className="link">
@@ -84,10 +92,11 @@ instance.post('http://localhost:8000/api/logout').then(res=> {
         {toggleIcon} 
       </div>
       <ul className="links">
+        {ManageUsers}
         {Calendar}
 
         <Link to="/Tips" className="link">
-          <li>TIPS ON HOW TO PRACTICE</li>
+          <li>TEACHING TIPS</li>
         </Link>
         <Link to="/Exams" className="link">
           <li>EXAMS</li>

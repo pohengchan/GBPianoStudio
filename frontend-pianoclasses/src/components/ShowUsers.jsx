@@ -1,17 +1,19 @@
 import React, {useEffect, useState } from 'react'
-import { getAllUsers, deleteUser, getUser} from '../services/Api';
-import Authorizer from './AuthorizerUser';
+import { getAllUsers, deleteUser} from '../services/Api';
+// import Authorizer from './AuthorizerUser';
+import { getAxiosInstance } from '../services/functions';
 import UserDetails from './UserDetails';
 import ModalButton from './ModalButton';
 import Swal from 'sweetalert2';
 import '../styles/showUsers.css';
 
-
+var instance = getAxiosInstance();
 const ShowUsers = () => {
   const [users, setUsers] = useState([]);
-  const [errors, setErrors] = useState('');
+  // const [errors, setErrors] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     loadUsers();
@@ -28,13 +30,13 @@ const ShowUsers = () => {
     };
     
     const getUserDetails = async (id) => {
-    const userDetails = await getUser(id);
-    setSelectedUser(userDetails);
+    // const userDetails = await getUser(id);
+    setSelectedUser(id);
     setShowModal(true);
     };
 
   const handleEdit = () => {
-       window.location.href = `/ToUpdate/${selectedUser.id}`;
+//        window.location.href = `/ToUpdate/${selectedUser.id}`;
     };
 
   const handleDelete = async (id) => {
@@ -52,7 +54,7 @@ const ShowUsers = () => {
       if (result.isConfirmed) {
         const response = await deleteUser(id);
         if (response.errors) {
-          setErrors(response.errors);
+          // setErrors(response.errors);
         } else {
           Swal.fire({
             title: 'Success!',
@@ -64,13 +66,32 @@ const ShowUsers = () => {
             background: '#676060',
             confirmButtonColor: '#01FDFD',
           });
-          setErrors('');
+          // setErrors('');
           loadUsers();
         }
       }
     });
   };
 
+const handleCheckboxChange = (id) => {
+  console.log(id)
+  handleAuthorise(id);    
+  // setIsChecked(event.target.checked);
+  getAllUsers();
+}
+const handleAuthorise = async (id) => {
+    try {
+        // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
+        const result = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
+            });
+        console.log(result);
+        console.log(instance);
+      } catch (error) {
+        console.error(error);
+      }
+
+};
+  
  return ( 
     <div>
       <h1 className="users">USERS</h1>
@@ -91,7 +112,28 @@ const ShowUsers = () => {
                 <td>{user.student_name}</td>
                 <td>{user.email}</td>
                  <td>
-                    <Authorizer user={user} />
+                    {/* <Authorizer user={user} /> */}
+                { user.is_authorised === 1 ?
+                // <input 
+                // type="checkbox" 
+                // className="Checkbox" 
+                // value={user.is_authorised}
+                // id={user.id} 
+                // defaultChecked={true}
+                // disabled={true}
+                // />
+                <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckCheckedDisabled" checked disabled />
+                :
+                // <input 
+                // type="checkbox" 
+                // className="Checkbox" 
+                // value="0"
+                // id={user.id} 
+                // onChange={e=>handleCheckboxChange(user.id)} 
+                // />
+                <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckDefault" onChange={e=>handleCheckboxChange(user.id)} ></input>
+                }
+              
                   </td>
                   <td>
                   <ModalButton onClick={() => getUserDetails(user.id)}>Details</ModalButton>
@@ -105,7 +147,7 @@ const ShowUsers = () => {
           <UserDetails
             user={selectedUser}
             closeModal={closeModal}
-            handleEdit={handleEdit}
+              handleEdit={handleEdit}
             deleteUser={() => handleDelete()}
           />
         )}

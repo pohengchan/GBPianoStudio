@@ -1,13 +1,14 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import UserDetails from '../components/UserDetails';
+import Examstext from '../components/Examstext';
 
 function Exams() {
   return (
     <>
     <Navbar/>
-    <UserDetails />
+    <h1 className='h1-register'>EXAMS</h1>
+    <Examstext/>
     <Footer/>
     </>
   )

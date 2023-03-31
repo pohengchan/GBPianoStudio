@@ -155,6 +155,8 @@ p{
     justify-content: space-between;
 }
 
+
+
 @media(max-width: 768px){
     button{
         padding: 1%;
@@ -168,18 +170,31 @@ p{
     padding: 0%;
     margin: 0%;
       }
-    th:first-child, td:first-child {
+
+/* 
+POR FAVOR, no toques th ni td - 
+Si tienes que tocarlo, pon un class!
+Si no, va a romper el calendario
+*/
+
+/* th:first-child, td:first-child {
       display: flex;
-    }
-   
-    th, td {
+} */
+/*    
+th, td { */
       
       /* width: 100%; */
-      text-align: center;
+/* text-align: center;
       font-size: 8px;
       padding: 0%;
       margin: 0%;
-    } 
+}  */
+
+/* 
+POR FAVOR, no toques th ni td - 
+Si tienes que tocarlo, pon un class!
+Si no, va a romper el calendario
+*/
     p{
         font-size: 8px;
     }

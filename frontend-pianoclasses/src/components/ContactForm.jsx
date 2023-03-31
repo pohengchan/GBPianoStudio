@@ -9,11 +9,12 @@ const ContactForm = () =>{
 if (state.succeeded) {
     Swal.fire({
         position: 'center',
-        icon: 'success',
-        title: 'E-mail send',
-        showConfirmButton: false,
-        timer: 1500
-      }) 
+        text:'Your message was sent succesfully',
+        color: 'white', 
+        background: '#676060', 
+        confirmButtonColor: '#01FDFD',
+        confirmButton: 'true', });
+      
 
 }
         

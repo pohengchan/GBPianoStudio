@@ -27,14 +27,73 @@
     
 }
 
-cal-input {
+.lesson-input {
     height: 1rem;
     padding: 0.25rem;
     margin:0.5rem;
+    background-color: white;
 }
 
 .modal-buttons {
     width: 100%;
+    margin: 1rem auto;
+    display: flex;  
+    justify-content: center;
+}
+.centre-button {
+    width: 100%;
     margin: 0 auto;
     display: flex;  
+    justify-content: center;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 85%;
+    max-width: 40rem;
+    padding: 1.25rem;
+    background-color: var(--background); 
+    border-radius: 0.313rem;
+}
+
+.confirm-buttons {
+    font-size: 15px;
+    font-weight: bold;
+    width: 5rem;
+    color: var(--dark-pink);
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 0.5rem;    
+    margin: 1rem 1.5rem 0rem 1.5rem;
+}
+
+/* hides event title */
+/* .fc-event-title {
+    visibility: hidden; 
+} */
+
+.fc-day-today {
+    background-color: var(--grey);;
+  }
+
+  /* // 1.5em by default */
+.fc-timegrid-slot {
+    height: 15em; 
+    border-bottom: 0 !important;
 }
