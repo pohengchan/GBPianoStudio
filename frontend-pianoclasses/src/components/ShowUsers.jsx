@@ -3,7 +3,10 @@ import React, {useEffect, useState } from 'react'
 
 import axios from 'axios';
 import '../styles/showUsers.css';
-import Authorizer from './AuthorizerUser';
+// import Authorizer from './AuthorizerUser';
+import { getAxiosInstance } from '../services/functions';
+
+var instance = getAxiosInstance();
 
 
 const endpoint = 'http://localhost:8000/api';
@@ -16,6 +19,7 @@ const ShowUsers = () => {
   const [newEmail, setNewEmail] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     getAllUsers();
@@ -69,6 +73,25 @@ const closeModal = () => {
 //   id: 1, // este sería el id que necesitas para el checkbox
 // };
 
+const handleCheckboxChange = (id) => {
+  console.log(id)
+  handleAuthorise(id);    
+  // setIsChecked(event.target.checked);
+  getAllUsers();
+}
+const handleAuthorise = async (id) => {
+    try {
+        // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
+        const result = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
+            });
+        console.log(result);
+        console.log(instance);
+      } catch (error) {
+        console.error(error);
+      }
+
+};
+
 return (
     <div>
       <h1 className="users">USERS</h1>
@@ -118,7 +141,28 @@ return (
               </p>
               </td>
               <td>
-              <Authorizer user={user} />
+              {/* <Authorizer user={user} /> */}
+                { user.is_authorised === 1 ?
+                // <input 
+                // type="checkbox" 
+                // className="Checkbox" 
+                // value={user.is_authorised}
+                // id={user.id} 
+                // defaultChecked={true}
+                // disabled={true}
+                // />
+                <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckCheckedDisabled" checked disabled />
+                :
+                // <input 
+                // type="checkbox" 
+                // className="Checkbox" 
+                // value="0"
+                // id={user.id} 
+                // onChange={e=>handleCheckboxChange(user.id)} 
+                // />
+                <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckDefault" onChange={e=>handleCheckboxChange(user.id)} ></input>
+                }
+              
               </td>
               <td>
                 {editingUser && editingUser.id === user.id ? (
