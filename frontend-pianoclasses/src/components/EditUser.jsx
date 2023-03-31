@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { updateUser, getUser } from '../services/Api';
+import { updateUser, getUser, } from '../services/Api';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Swal from 'sweetalert2';

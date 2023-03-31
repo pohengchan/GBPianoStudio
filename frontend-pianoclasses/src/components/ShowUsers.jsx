@@ -39,38 +39,38 @@ const ShowUsers = () => {
        window.location.href = `/ToUpdate/${selectedUser.id}`;
     };
 
-  const handleDelete = async (id) => {
-    await deleteUser(id);
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'You are about to delete this user.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel',
-      confirmButtonColor: '#01FDFD',
-      cancelButtonColor: '#676060'
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        const response = await deleteUser(id);
-        if (response.errors) {
-          setErrors(response.errors);
-        } else {
-          Swal.fire({
-            title: 'Success!',
-            text: 'User was successfully deleted.',
-            icon: 'success',
-            confirmButtonText: 'OK',
-            iconColor:'white',
-            color: 'white',
-            background: '#676060',
-            confirmButtonColor: '#01FDFD',
-          });
-          setErrors('');
-          loadUsers();
+    const handleDelete = async (id) => {
+      // await deleteUser(id);
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You are about to delete this user.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel',
+        confirmButtonColor: '#01FDFD',
+        cancelButtonColor: '#676060'
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await deleteUser(id);
+          if (response.errors) {
+            setErrors(response.errors);
+          } else {
+            Swal.fire({
+              title: 'Success!',
+              text: 'User was successfully deleted.',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              iconColor:'white',
+              color: 'white',
+              background: '#676060',
+              confirmButtonColor: '#01FDFD',
+            });
+            setErrors('');
+            loadUsers();
+          }
         }
-      }
-    });
+      });
   };
 
 const handleCheckboxChange = (id) => {
@@ -148,7 +148,7 @@ const handleAuthorise = async (id) => {
             user={selectedUser}
             closeModal={closeModal}
               handleEdit={handleEdit}
-            deleteUser={() => handleDelete()}
+            deleteUser={() => handleDelete(selectedUser.id)}
           />
         )}
       </div>
