@@ -35,16 +35,16 @@ const logoutSubmit = (e) =>{
         
       <div className="login-out">
        
-        <NavLink to="/Login" className="link" activeClassName="active"><li>LOGIN</li></NavLink>
+        <NavLink to="/Login" className="link" activeclassname="active"><li>LOGIN</li></NavLink>
       
-        <NavLink to="/Register" className="link" activeClassName="active"><li>REGISTER</li></NavLink>
+        <NavLink to="/Register" className="link" activeclassname="active"><li>REGISTER</li></NavLink>
         </div> 
      );
     } else{
       if(localStorage.getItem('role')==='admin') {
         ManageUsers =  (
           <div>  <ul className="links">
-             <NavLink to="/Users" className="link" activeClassName="active">
+             <NavLink to="/Users" className="link" activeclassname="active">
             <li>MANAGE USERS</li>
           </NavLink>
           </ul>
@@ -54,7 +54,7 @@ const logoutSubmit = (e) =>{
       Calendar =  (
         <div className="calendar-navbar">  
         <ul className="links">
-           <NavLink to="/Calendar" className="link" activeClassName="active">
+           <NavLink to="/Calendar" className="link" activeclassname="active">
           <li>BOOK A CLASS</li>
         </NavLink>
         </ul>
@@ -98,16 +98,16 @@ const logoutSubmit = (e) =>{
         {ManageUsers}
         {Calendar}
 
-        <NavLink to="/Tips" className="link" activeClassName="active">
+        <NavLink to="/Tips" className="link" activeclassname="active">
           <li>TEACHING TIPS</li>
         </NavLink>
-        <NavLink to="/Exams" className="link" activeClassName="active">
+        <NavLink to="/Exams" className="link" activeclassname="active">
           <li>EXAMS</li>
         </NavLink>
-        <NavLink to="/About" className="link" activeClassName="active">
+        <NavLink to="/About" className="link" activeclassname="active">
           <li>ABOUT</li>
         </NavLink>
-        <NavLink to="/Contact" className="link" activeClassName="active">
+        <NavLink to="/Contact" className="link" activeclassname="active">
           <li>CONTACT</li>
         </NavLink>
         {AuthButtons}
