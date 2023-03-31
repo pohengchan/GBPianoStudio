@@ -17,7 +17,7 @@ use App\Http\Controllers\Api\AuthController;
 */
 // Route::put('/api/users/{userId}/authorization', 'AuthorizerUserController@authorizeUser');
 // Route::put('/api/users/{userId}/authorization', 'AuthController@authorizeUser')->name('users.authorize');
-Route::post('/users/{userId}/authorization', 'AuthController@authorizeUser');
+// Route::post('/users/{userId}/authorization', 'AuthController@authorizeUser');
 
 
 

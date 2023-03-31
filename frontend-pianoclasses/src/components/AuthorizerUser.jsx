@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/authorizerUsers.css'
 import { useState } from "react";
-import DayHour from './DayHour/DayHour';
+// import DayHour from './DayHour/DayHour';
 import { getAxiosInstance } from '../services/functions';
 var instance = getAxiosInstance();
 
@@ -38,7 +38,7 @@ return (
         checked={isChecked}
         onChange={handleCheckboxChange} 
     />
-    {showLogin && <p></p>}
+    {/* {showLogin && <p></p>} */}
     </div>
 );
 }

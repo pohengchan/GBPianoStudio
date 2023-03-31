@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; 
 use Illuminate\Support\Facades\Validator;
-namespace App\Http\Controllers;
+use App\Http\Controllers;
 
 
 class AuthController extends Controller
@@ -117,38 +117,38 @@ public function login(Request $request)
          }
       
     }
-    public function authorizeUser(Request $request, $userId)
-    {
-        // Verifica si el usuario existe
-        $user = User::find($userId);
-        if (!$user) {
-            return response()->json([
-                'success' => false,
-                'message' => 'User not found'
-            ], 403);
-        }
+    // public function authorizeUser(Request $request, $userId)
+    // {
+    //     // Verifica si el usuario existe
+    //     $user = User::find($userId);
+    //     if (!$user) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'User not found'
+    //         ], 403);
+    //     }
 
-        // Valida los datos de entrada
-        $validator = Validator::make($request->all(), [
-            'authorized' => 'required|boolean'
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'User not found'
-            ], 403);
-        }
+    //     // Valida los datos de entrada
+    //     $validator = Validator::make($request->all(), [
+    //         'authorized' => 'required|boolean'
+    //     ]);
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'User not found'
+    //         ], 403);
+    //     }
 
-        // Actualiza la información del usuario
-        $authorized = $request->input('authorized');
-        $user->is_authorised = $authorized;
-        $user->save();
+    //     // Actualiza la información del usuario
+    //     $authorized = $request->input('authorized');
+    //     $user->is_authorised = $authorized;
+    //     $user->save();
 
-        return response()->json([
-            'success' => true,
-            'message' => $authorized ? 'User has been authorized' : 'User has been deauthorized'
-        ]);
-    }    
+    //     return response()->json([
+    //         'success' => true,
+    //         'message' => $authorized ? 'User has been authorized' : 'User has been deauthorized'
+    //     ]);
+    // }    
 
 
 
