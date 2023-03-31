@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react'
-import { getAllUsers, deleteUser} from '../services/Api';
+import { getAllUsers,getUser, deleteUser} from '../services/Api';
 // import Authorizer from './AuthorizerUser';
 import { getAxiosInstance } from '../services/functions';
 import UserDetails from './UserDetails';
@@ -10,7 +10,7 @@ import '../styles/showUsers.css';
 var instance = getAxiosInstance();
 const ShowUsers = () => {
   const [users, setUsers] = useState([]);
-  // const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
   // const [isChecked, setIsChecked] = useState(false);
@@ -30,13 +30,13 @@ const ShowUsers = () => {
     };
     
     const getUserDetails = async (id) => {
-    // const userDetails = await getUser(id);
+    const userDetails = await getUser(id);
     setSelectedUser(id);
     setShowModal(true);
     };
 
   const handleEdit = () => {
-//        window.location.href = `/ToUpdate/${selectedUser.id}`;
+       window.location.href = `/ToUpdate/${selectedUser.id}`;
     };
 
   const handleDelete = async (id) => {
@@ -54,7 +54,7 @@ const ShowUsers = () => {
       if (result.isConfirmed) {
         const response = await deleteUser(id);
         if (response.errors) {
-          // setErrors(response.errors);
+          setErrors(response.errors);
         } else {
           Swal.fire({
             title: 'Success!',
@@ -66,7 +66,7 @@ const ShowUsers = () => {
             background: '#676060',
             confirmButtonColor: '#01FDFD',
           });
-          // setErrors('');
+          setErrors('');
           loadUsers();
         }
       }
@@ -152,6 +152,7 @@ const handleAuthorise = async (id) => {
           />
         )}
       </div>
+      {errors && <p>{errors}</p>}
     </div>
   );
 };

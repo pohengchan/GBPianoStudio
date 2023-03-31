@@ -31,6 +31,7 @@ function Login() {
     instance.get('/sanctum/csrf-cookie').then((response) => {
       console.log("die");
       instance.post('http://localhost:8000/api/login', data).then((res) => {
+        console.log(res);
         if (res.data.status === 200) {
           localStorage.setItem("auth_token", res.data.token);
           // console.log("should work");

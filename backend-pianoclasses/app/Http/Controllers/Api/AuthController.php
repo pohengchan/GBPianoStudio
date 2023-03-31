@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers;
+
+
 class AuthController extends Controller
 {
   public function register(Request $request)
@@ -54,47 +57,58 @@ public function login(Request $request)
   ]);
  }
  else {
-    $user = User::where ('email', $request->email)->first();
-    if(! $user || ! Hash::check($request->password, $user->password))
-      {
-        return response()->json([
-          'status'=>401,
-          'message'=>'Invalid Credentials',
-        ]);
-      }
-    else
-      {
-        if($user->is_authorised === 0) //checks if user is authorised
-        {
-          // auth()->user()->tokens()->delete();
-          return response()->json([
-            'status'=>401,
-            'message'=>'You are not an authorised user yet. Please wait for the teacher to authorise your permissions.',
-          ]);
-        }
-        if($user->is_authorised ===1) //checks if user is authorised
-        {
-          $role = 'authorised';
-          $token = $user->createToken($user->email.'_Token', [''])->plainTextToken;
-        }
-        if($user->is_admin === 1) //1= Admin
-        {
-          $role = 'admin';
-          $token = $user->createToken($user->email.'_AdminToken', ['server:admin'])->plainTextToken;
-        }
-        return response()->json([
-          'status'=>200,
-          'username'=>$user->contact_name,
-          'token'=>$token,
-          'message'=>'Logged In Successfully',
-          'role'=>$role,
-          'studentname'=>$user->student_name,
-          'userid'=>$user->id,
-        ]);
-        //{status: 200, username: null, token: '24|ytQkhsMsgxyg0I56wMDXALAVVWFyRXQb9Mzo6Voe', message: 'Logged In Successfully', role: ''}
-      }
-     }
-  }
+
+        $user = User::where ('email', $request->email)->first();
+
+       
+
+        if(! $user || ! Hash::check($request->password, $user->password))
+            {
+                return response()->json([
+                    'status'=>401,
+                    'message'=>'Invalid Credentials',
+                ]);
+            }
+        else
+            {
+
+
+                if($user->is_authorised === 0) //checks if user is authorised
+                {
+                    // auth()->user()->tokens()->delete();
+                    return response()->json([
+                        'status'=>401,
+                        'message'=>'You are not an authorised user yet. Please wait for the teacher to authorise your permissions.',
+                    ]);     
+                } 
+
+                if($user->is_authorised ===1) //checks if user is authorised
+                {
+                    $role = 'authorised';
+                    $token = $user->createToken($user->email.'_Token', [''])->plainTextToken;
+                }
+
+                if($user->is_admin === 1) //1= Admin
+                {
+                    $role = 'admin';
+                    $token = $user->createToken($user->email.'_AdminToken', ['server:admin'])->plainTextToken;
+                }
+
+                return response()->json([
+                    'status'=>200,
+                    'username'=>$user->contact_name,
+                    'token'=>$token,
+                    'message'=>'Logged In Successfully',
+                    'role'=>$role,
+                    'studentname'=>$user->student_name,
+                    'userid'=>$user->id,
+                ]);
+                //{status: 200, username: null, token: '24|ytQkhsMsgxyg0I56wMDXALAVVWFyRXQb9Mzo6Voe', message: 'Logged In Successfully', role: ''}
+            }
+         }
+      
+    }
+
 public function logout()
 {
   auth()->user()->tokens()->delete();

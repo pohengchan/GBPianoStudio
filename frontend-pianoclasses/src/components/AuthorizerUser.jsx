@@ -1,9 +1,9 @@
-// import React from 'react';
-// import '../styles/authorizerUsers.css'
-// import { useState } from "react";
+import React from 'react';
+import '../styles/authorizerUsers.css'
+import { useState } from "react";
 // import DayHour from './DayHour/DayHour';
-// import { getAxiosInstance } from '../services/functions';
-// var instance = getAxiosInstance();
+import { getAxiosInstance } from '../services/functions';
+var instance = getAxiosInstance();
 
 // function Authorizer({ user }) {
 //     const [isChecked, setIsChecked] = useState(false);
@@ -29,19 +29,19 @@
 //     return null; 
 // }
 
-// return (
-//     <div>
-//     <input 
-//         type="checkbox" 
-//         className="Checkbox" 
-//         id={`user-${user.id}`} 
-//         checked={isChecked}
-//         onChange={handleCheckboxChange} 
-//     />
-//     {showLogin && <p></p>}
-//     </div>
-// );
-// }
+return (
+    <div>
+    <input 
+        type="checkbox" 
+        className="Checkbox" 
+        id={`user-${user.id}`} 
+        checked={isChecked}
+        onChange={handleCheckboxChange} 
+    />
+    {/* {showLogin && <p></p>} */}
+    </div>
+);
+}
 
 // export default Authorizer;
   
