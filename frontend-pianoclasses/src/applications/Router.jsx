@@ -11,7 +11,6 @@ import Tips from '../pages/Tips';
 import Users from '../pages/Users';
 import Login from '../pages/Login';
 import ShowUsers from '../components/ShowUsers';
-import AuthorizerUser from '../components/AuthorizerUser'
 import EditUser from '../components/EditUser';
 
 function Router() { 
