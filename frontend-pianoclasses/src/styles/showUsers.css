@@ -145,6 +145,8 @@ p{
     align-items: center;
 } */
 
+
+
 @media(max-width: 768px){
     button{
         padding: 1%;

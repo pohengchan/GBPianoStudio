@@ -32,6 +32,7 @@ Route::get('users/{user}', 'App\Http\Controllers\Api\UsersController@show');
 Route::post('users','App\Http\Controllers\Api\UsersController@store');
 Route::put('users/{user}','App\Http\Controllers\Api\UsersController@update');
 Route::delete('users/{user}', 'App\Http\Controllers\Api\UsersController@delete');
+Route::put('/users/{user}/authorize', [UsersController::class, 'setIsAuthorized']);
 
 Route::controller(LessonController::class)->group(function(){
     Route::get('lessons', 'App\Http\Controllers\Api\LessonController@index');

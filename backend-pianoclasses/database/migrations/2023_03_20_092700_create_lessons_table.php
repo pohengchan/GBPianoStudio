@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->datetime('start');
             $table->datetime('end');
+            $table->tinyInteger('is_confirmed')->default(0);
             $table->timestamps();
         });
     }
