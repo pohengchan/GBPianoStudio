@@ -80,7 +80,7 @@ inset 0 0 7px 1px var(--light-pink);
   
   .contact-form-button:hover {
     background-color: var(--light-blue);
-    color:white;
+    color:black;
   }
   .contact-form-contact {
     padding: 2rem 3rem;  
@@ -124,3 +124,17 @@ inset 0 0 7px 1px var(--light-pink);
       background-color: var(--light-blue);
       color:white;
     }
+
+    #btn-cancel {
+      color:#F15A5A;
+      border: 2px solid #F15A5A;
+      border-radius: 20px;
+      box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
+    }
+
+    #btn-cancel:hover {
+      background-color:#F15A5A;
+      color: black;
+    }
+
+    
