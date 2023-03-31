@@ -30,4 +30,3 @@ const UserDetails = ({ user, closeModal, handleEdit, deleteUser }) => {
 };
 
 export default UserDetails;
-

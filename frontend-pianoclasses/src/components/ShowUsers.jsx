@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react'
-import { getAllUsers,getUser, deleteUser} from '../services/Api';
+import { getAllUsers, deleteUser, getUser} from '../services/Api';
 // import Authorizer from './AuthorizerUser';
 import { getAxiosInstance } from '../services/functions';
 import UserDetails from './UserDetails';
@@ -31,7 +31,7 @@ const ShowUsers = () => {
     
     const getUserDetails = async (id) => {
     const userDetails = await getUser(id);
-    setSelectedUser(id);
+    setSelectedUser(userDetails);
     setShowModal(true);
     };
 
@@ -40,7 +40,7 @@ const ShowUsers = () => {
     };
 
   const handleDelete = async (id) => {
-    // await deleteUser(id);
+    await deleteUser(id);
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to delete this user.',
