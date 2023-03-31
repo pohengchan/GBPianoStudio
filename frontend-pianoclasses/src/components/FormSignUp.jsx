@@ -49,7 +49,7 @@ import { getAxiosInstance } from '../services/functions';
             {
                 console.log(res.data);
             
-                localStorage.setItem('auth_token', res.data.token);
+                // localStorage.setItem('auth_token', res.data.token);
                 localStorage.setItem('auth_name', res.data.contact_name);
                 Swal.fire({   confirmButton: 'true',  text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
                 navigate('/');
