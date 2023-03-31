@@ -36,11 +36,11 @@ const ShowUsers = () => {
     };
 
   const handleEdit = () => {
-//        window.location.href = `/ToUpdate/${selectedUser.id}`;
+       window.location.href = `/ToUpdate/${selectedUser.id}`;
     };
 
   const handleDelete = async (id) => {
-    // await deleteUser(id);
+    await deleteUser(id);
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to delete this user.',
