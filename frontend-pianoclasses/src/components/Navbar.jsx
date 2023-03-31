@@ -4,7 +4,7 @@ import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
 import logo from "../assets/images/Logo3.png";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { getAxiosInstance } from "../services/functions";
 import Swal from 'sweetalert2';
 
@@ -35,26 +35,29 @@ const logoutSubmit = (e) =>{
         
       <div className="login-out">
        
-        <Link to="/Login" className="link"><li>LOGIN</li></Link>
+        <NavLink to="/Login" className="link" activeClassName="active"><li>LOGIN</li></NavLink>
       
-        <Link to="/Register" className="link"><li>REGISTER</li></Link>
+        <NavLink to="/Register" className="link" activeClassName="active"><li>REGISTER</li></NavLink>
         </div> 
      );
     } else{
       if(localStorage.getItem('role')==='admin') {
         ManageUsers =  (
-          <div>
-             <Link to="/Users" className="link">
+          <div>  <ul className="links">
+             <NavLink to="/Users" className="link" activeClassName="active">
             <li>MANAGE USERS</li>
-          </Link>
+          </NavLink>
+          </ul>
           </div>
         );
        }
       Calendar =  (
-        <div className="calendar-navbar">
-           <Link to="/Calendar" className="link">
+        <div className="calendar-navbar">  
+        <ul className="links">
+           <NavLink to="/Calendar" className="link" activeClassName="active">
           <li>BOOK A CLASS</li>
-        </Link>
+        </NavLink>
+        </ul>
         </div>
       );
 
@@ -95,18 +98,18 @@ const logoutSubmit = (e) =>{
         {ManageUsers}
         {Calendar}
 
-        <Link to="/Tips" className="link">
+        <NavLink to="/Tips" className="link" activeClassName="active">
           <li>TEACHING TIPS</li>
-        </Link>
-        <Link to="/Exams" className="link">
+        </NavLink>
+        <NavLink to="/Exams" className="link" activeClassName="active">
           <li>EXAMS</li>
-        </Link>
-        <Link to="/About" className="link">
+        </NavLink>
+        <NavLink to="/About" className="link" activeClassName="active">
           <li>ABOUT</li>
-        </Link>
-        <Link to="/Contact" className="link">
+        </NavLink>
+        <NavLink to="/Contact" className="link" activeClassName="active">
           <li>CONTACT</li>
-        </Link>
+        </NavLink>
         {AuthButtons}
       </ul>
     </nav>

@@ -103,7 +103,7 @@
   .link li {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
+    padding:0.7rem;
     font-family: 'Oswald', sans-serif;
     font-size: larger;
   }
@@ -114,8 +114,7 @@
 
   .logout-button {
     display: flex;
-    margin-left: 20px;
-    padding: 0;
+    padding:0.7rem;
     list-style: none;
     align-content: center;
     color: white;
@@ -124,8 +123,16 @@
     border: none;
     font-size: larger;
     background-color: var(--background-color);
+
+    
   }
-  
+
+  .active {
+    
+    background-color: grey;
+    color: var(--background-color);
+    border-radius: 10px;
+  }
   @media(max-width: 768px){
 
     .logo{
