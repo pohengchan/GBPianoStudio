@@ -97,3 +97,7 @@
     height: 15em; 
     border-bottom: 0 !important;
 }
+
+.legend-title {
+    font-size: 16px;
+}
