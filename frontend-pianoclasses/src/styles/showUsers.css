@@ -231,15 +231,10 @@ Si no, va a romper el calendario
     border-radius: 0.313rem;
     background-color: var(--background);
 }
-.my-confirm-btn-class, .my-cancel-btn-class {
-    width: 150px;
+
+
 }
-}
-@media screen and (max-width: 480px) {
-    .my-confirm-btn-class, .my-cancel-btn-class {
-    width: 100px;
-    }
-}
+
 /* .button-group {
     width: 100%;
     height: 100%;

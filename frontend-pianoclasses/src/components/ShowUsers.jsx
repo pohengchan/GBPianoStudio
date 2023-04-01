@@ -80,20 +80,38 @@ const ShowUsers = () => {
 const handleCheckboxChange = async(id) => {
   try {
 
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'You are about to authorise this user.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, authorise!',
+    // Swal.fire({
+    //   title: 'Are you sure?',
+    //   text: 'You are about to authorise this user.',
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   cancelButtonText: 'No, cancel.',
+    //   confirmButtonText: 'Yes, authorise!',
+    //   confirmButtonColor: '#01FDFD',
+    //   cancelButtonColor: '#676060',
+    //   // customClass: {
+    //   //   confirmButton: 'my-confirm-btn-class',
+    //   //   cancelButton: 'my-cancel-btn-class'
+    //   // }
+    //   })
+      Swal.fire({
+        title: 'Authorise User',
+        text: "Are you sure you want to authorise this user?", 
+        showCancelButton: true, 
+        confirmButton: 'true', 
       cancelButtonText: 'No, cancel.',
-      confirmButtonColor: '#01FDFD',
-      cancelButtonColor: '#676060',
-      customClass: {
-        confirmButton: 'my-confirm-btn-class',
-        cancelButton: 'my-cancel-btn-class'
-      }
-      }).then(async (result) => {
+      confirmButtonText: 'Yes, authorise!',
+        color: 'white', 
+        background: '#676060', 
+        confirmButtonColor: 'black', 
+        cancelButtonColor:'#F15A5A',
+        customClass: {
+          confirmButton: 'custom-button-class confirm-button',
+          cancelButton: 'custom-button-class cancel-button'
+        },
+        buttonsStyling: false,
+    })
+      .then(async (result) => {
       if (result.isConfirmed) {
         // const response = await handleAuthorise(id);
         const response = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
@@ -112,18 +130,20 @@ const handleCheckboxChange = async(id) => {
             color: 'white',
             background: '#676060',
             confirmButtonColor: '#01FDFD',
-            customClass: {
-              confirmButton: 'my-confirm-btn-class'
-            }
+            // customClass: {
+            //   confirmButton: 'my-confirm-btn-class'
+            // }
           });
         } else {
           console.log(response);
+          loadUsers();
         }
-
+        loadUsers();
       }
     });
     loadUsers();
   } catch (error) {
+    loadUsers();
     console.error(error);
   }
   loadUsers();
