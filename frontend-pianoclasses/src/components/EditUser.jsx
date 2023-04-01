@@ -35,7 +35,15 @@ import '../styles/editUser.css';
           title: 'Error!',
           text: 'Failed to load user data.',
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          position: 'center',
+          color: 'white', 
+          background: '#676060', 
+          confirmButtonColor: 'black', 
+          customClass: {
+          confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
         });
       }
       setLoading(false);
@@ -49,16 +57,22 @@ import '../styles/editUser.css';
   console.log(user);
   const userData = { contact_name, email, student_name, candidate_number, phone_number, date_of_birth };
   console.log(userData);
-Swal.fire({
-  title: 'Success!',
-  text: 'User has been updated.',
-  icon: 'success',
-  confirmButtonText: 'OK',
-  iconColor:'white',
-  color: 'white',
-  background: '#676060',
-  confirmButtonColor: '#01FDFD',
-});
+  Swal.fire({
+    title: 'Success!',
+    text: 'User has been updated.',
+    icon: 'success',
+    confirmButtonText: 'OK',
+    // iconColor:'white',
+    color: 'white',
+    background: '#676060',
+    // confirmButtonColor: '#01FDFD',
+    position: 'center',
+    confirmButtonColor: 'black', 
+    customClass: {
+    confirmButton: 'custom-button-class confirm-button'
+    },
+    buttonsStyling: false,
+  });
     const response = await updateUser(id, userData);
     if (response.errors) {
       setErrors(response.errors);
@@ -87,7 +101,7 @@ return (
         )}
         {!loading && (
           <form>
-            <input value={user.contact_name} onChange={ev => setUser({...user, contact_name: ev.target.value})} placeholder="Name"/>
+            <input value={user.contact_name} onChange={ev => setUser({...user, contact_name: ev.target.value})} placeholder="Name" />
             <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
             <input value={user.student_name} onChange={ev => setUser({...user, student_name: ev.target.value})} placeholder="Student's name"/>
             <input onChange={ev => setUser({...user, candidate_number: ev.target.value})} placeholder="Candidate's number"/>
@@ -96,8 +110,8 @@ return (
             <button className="button" type="button" onClick={handleUpdateUser}>Save
               </button>
               <button className="button" type="button" onClick={() => window.history.back()}>
-  Cancel
-</button>
+                Cancel
+              </button>
           </form>
         )}
       </div>

@@ -81,7 +81,8 @@ table, th, td {
     padding: 0;
 }
 .btnNav{
-    font-size: 0.7rem;
+    /* font-size: 0.7rem; */
+    font-size: 14px;
     width: 5rem;
     height: 2rem;
     font-family: 'Oswald', sans-serif;
@@ -159,7 +160,7 @@ p{
 @media(max-width: 768px){
     button{
         padding: 1%;
-        font-size: 7px;
+        font-size: 14px;
         height: auto;
         width: 2rem;
         
@@ -195,7 +196,7 @@ Si tienes que tocarlo, pon un class!
 Si no, va a romper el calendario
 */
     p{
-        font-size: 8px;
+        font-size: 14px;
     }
     
 .container{
