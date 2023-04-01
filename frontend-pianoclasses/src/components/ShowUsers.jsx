@@ -1,147 +1,180 @@
 import React, {useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
-
-import axios from 'axios';
-import '../styles/showUsers.css';
+import { getAllUsers, deleteUser, getUser} from '../services/Api';
 // import Authorizer from './AuthorizerUser';
 import { getAxiosInstance } from '../services/functions';
+import UserDetails from './UserDetails';
+import ModalButton from './ModalButton';
+import Swal from 'sweetalert2';
+import '../../src/styles/showUsers.css';
 
 var instance = getAxiosInstance();
-
-
-const endpoint = 'http://localhost:8000/api';
-
-
 const ShowUsers = () => {
   const [users, setUsers] = useState([]);
-  const [editingUser, setEditingUser] = useState(null);
-  const [newName, setNewName] = useState('');
-  const [newEmail, setNewEmail] = useState('');
+  // const [errors, setErrors] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
   // const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    getAllUsers();
-  }, []);
+    loadUsers();
+    }, []);
+    
+    const loadUsers = async () => {
+      const allUsers = await getAllUsers();
+      setUsers(allUsers);
+    };
 
-  const getAllUsers = async () => {
-    const response = await axios.get(`${endpoint}/users`);
-    setUsers(response.data);
-  };
-
-  const deleteUser = async (id) => {
-    await axios.delete(`${endpoint}/users/${id}`);
-    getAllUsers();
-  };
-
-  const handleEdit = (user) => {
-    setEditingUser(user);
-    setNewName(user.contact_name);
-    setNewEmail(user.email);
-  };
-
-  const handleSave = async () => {
-    await axios.put(`${endpoint}/users/${editingUser.id}`, {
-      contact_name: newName,
-      email:newEmail,
-      is_authorised: editingUser.is_authorised,
-    });
-    setEditingUser(null);
-    setNewName('');
-    setNewEmail('');
-    getAllUsers();
-  };
-  
-  const handleCancel = () => {
-    setEditingUser(null);
-    setNewName('');
-    setNewEmail('');
-  };
-
-const getUserDetails = async (id) => {
-  const response = await axios.get(`${endpoint}/users/${id}`);
-  setSelectedUser(response.data);
-  setShowModal(true);
-};
-
-const closeModal = () => {
+  const closeModal = () => {
     setSelectedUser(null);
     setShowModal(false);
-};
-// const user = {
-//   id: 1, // este sería el id que necesitas para el checkbox
-// };
+    };
+    
+    const getUserDetails = async (id) => {
+    const userDetails = await getUser(id);
+    setSelectedUser(userDetails);
+    setShowModal(true);
+    };
 
-const handleCheckboxChange = (id) => {
-  console.log(id)
-  handleAuthorise(id);    
-  // setIsChecked(event.target.checked);
-  getAllUsers();
-}
-const handleAuthorise = async (id) => {
-    try {
-        // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
-        const result = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
-            });
-        console.log(result);
-        console.log(instance);
-      } catch (error) {
-        console.error(error);
+  const handleEdit = () => {
+       window.location.href = `/ToUpdate/${selectedUser.id}`;
+    };
+
+  const handleDelete = async (id) => {
+    // await deleteUser(id);
+    Swal.fire({
+
+      title: 'Delete User',
+      text: "Are you sure you want to delete this user?", 
+      showCancelButton: true, 
+      // confirmButton: 'true', 
+      cancelButtonText: 'No, cancel.',
+      confirmButtonText: 'Yes, delete!',
+      color: 'white', 
+      background: '#676060', 
+      confirmButtonColor: 'black', 
+      cancelButtonColor:'#F15A5A',
+      customClass: {
+        confirmButton: 'custom-button-class confirm-button',
+        cancelButton: 'custom-button-class cancel-button'
+      },
+      buttonsStyling: false,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const response = await deleteUser(id);
+        if (response.errors) {
+          // setErrors(response.errors);
+        } else {
+          Swal.fire({
+            title: 'Success!',
+            text: 'User was successfully deleted.',
+            confirmButtonText: 'OK',
+            color: 'white',
+            background: '#676060',
+            confirmButtonColor: 'black',
+            customClass: {
+              confirmButton: 'custom-button-class confirm-button'
+            },
+            buttonsStyling: false,
+          });
+          // setErrors('');
+          loadUsers();
+        }
       }
+    });
+  };
 
-};
+const handleCheckboxChange = async(id) => {
+  try {
 
-return (
+      Swal.fire({
+        title: 'Authorise User',
+        text: "Are you sure you want to authorise this user?", 
+        showCancelButton: true, 
+        // confirmButton: 'true', 
+        cancelButtonText: 'No, cancel.',
+        confirmButtonText: 'Yes, authorise!',
+        color: 'white', 
+        background: '#676060', 
+        confirmButtonColor: 'black', 
+        cancelButtonColor:'#F15A5A',
+        customClass: {
+          confirmButton: 'custom-button-class confirm-button',
+          cancelButton: 'custom-button-class cancel-button'
+        },
+        buttonsStyling: false,
+    })
+      .then(async (result) => {
+      if (result.isConfirmed) {
+        // const response = await handleAuthorise(id);
+        const response = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
+        });
+        console.log(response.data);
+        console.log(response.status);
+        if (response.status === 200) {
+          // setErrors(response.errors);
+          loadUsers();
+          Swal.fire({
+            title: 'Success!',
+            text: 'User was successfully authorised.',
+            // icon: 'success',
+            confirmButtonText: 'OK',
+            // iconColor:'white',
+            color: 'white',
+            background: '#676060',
+            confirmButtonColor: 'black',
+            customClass: {
+              confirmButton: 'custom-button-class confirm-button'
+            },
+            buttonsStyling: false,
+          });
+        } else {
+          console.log(response);
+          loadUsers();
+        }
+        loadUsers();
+      }
+    });
+    loadUsers();
+  } catch (error) {
+    loadUsers();
+    console.error(error);
+  }
+  loadUsers();
+}
+// const handleAuthorise = async (id) => {
+//     try {
+//         // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
+//         const result = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
+//             });
+//         console.log(result);
+//         console.log(instance);
+//       } catch (error) {
+//         console.error(error);
+//       }
+
+// };
+  
+ return ( 
     <div>
       <h1 className="users">USERS</h1>
-      
-
       <div className="container">
-
-      <div className="tableUsers"></div>
-
-      <table className="table">
-        <thead className="head">
-          <tr>
-              {/* <th>Name Parent´s</th> */}
-              <th>Student</th>
+        <div className="tableUsers">
+          <table className="table">
+            <thead className="head">
+              <tr>
+                <th>Student</th>
                 <th>Contact</th>
                 <th className='AU'>AU</th>
                 <th className='Mgn'>Management</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>
-              <p>
-              {editingUser && editingUser.id === user.id ? (
-                  <input
-                    type="text"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                  />
-                ) : (
-                  user.student_name
-                )}
-              </p>
-              </td>
-              <td>
-              <p>
-                {editingUser && editingUser.id === user.id ? (
-                  <input
-                    type="text"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                  />
-                ) : (
-                  user.contact_name
-                )}
-              </p>
-              </td>
-              <td>
-              {/* <Authorizer user={user} /> */}
+              </tr>
+            </thead>
+            <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.student_name}</td>
+                <td>{user.email}</td>
+                 <td>
+                    {/* <Authorizer user={user} /> */}
                 { user.is_authorised === 1 ?
                 // <input 
                 // type="checkbox" 
@@ -163,71 +196,24 @@ return (
                 <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckDefault" onChange={e=>handleCheckboxChange(user.id)} ></input>
                 }
               
-              </td>
-              <td>
-                {editingUser && editingUser.id === user.id ? (
-                  <div>
-                    <button className='btnNav'
-
-                      onClick={handleSave}
-                    >
-                      Save
-                    </button>
-                    <button className='btnNav'
-
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <button className='btnNav'
-                      // className="btn btn-warning me-2"
-                      onClick={() => handleEdit(user)}
-                    >
-                      Edit
-                    </button>
-                    <button className='btnNav'
-                      // className="btn btn-danger"
-                      onClick={() => deleteUser(user.id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                )}
-              </td>
-              <td>
-                    <button className='btnNav' value="details" onClick={() => getUserDetails(user.id)}>
-                    Details
-                    </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                  </td>
+                  <td>
+                  <ModalButton onClick={() => getUserDetails(user.id)}>Details</ModalButton>
+                </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {selectedUser && showModal && (
+          <UserDetails
+            user={selectedUser}
+            closeModal={closeModal}
+              handleEdit={handleEdit}
+            deleteUser={() => handleDelete(selectedUser.id)}
+          />
+        )}
       </div>
-     
-  
-     {showModal && (
-         <div className="modal">
-         <div className="modal-content">
-             <span className="close" onClick={closeModal}>
-             &times;
-             </span>
-             <div>
-             <h2>User Details</h2>
-             <p>Name parent's: {selectedUser.contact_name}</p>
-             <p>Student: {selectedUser.student_name}</p>
-             <p>Email: {selectedUser.email}</p>
-             <p>Phone: {selectedUser.phone_number}</p>
-             <p>Date of birth: {selectedUser.date_of_birth}</p>
-             <p>Candidate number: {selectedUser.candidate_number}</p>
-             </div>
-         </div>
-         </div>
-     )}  
-
     </div>
   );
 };

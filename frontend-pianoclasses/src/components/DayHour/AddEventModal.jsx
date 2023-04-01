@@ -47,14 +47,27 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
             })
             onClose();
         } else {
-            Swal.fire({
-                title: "You cannot book a lesson with less than 24hr notice.",
-                color: 'white',
-                background: '#676060',
-                showConfirmButton: true,
-                confirmButtonColor: '#01FDFD',
+            // Swal.fire({
+            //     title: "You cannot book a lesson with less than 24hr notice.",
+            //     color: 'white',
+            //     background: '#676060',
+            //     showConfirmButton: true,
+            //     confirmButtonColor: '#01FDFD',
                 
-            });
+            // });
+            Swal.fire({
+                position: 'center',
+                title: 'Lesson not booked',
+                text: 'Sorry! You cannot book a lesson with less than 24hr notice.',
+                confirmButtonText: 'OK',
+                color: 'white', 
+                background: '#676060', 
+                confirmButtonColor: 'black', 
+                customClass: {
+                  confirmButton: 'custom-button-class confirm-button'
+                },
+                buttonsStyling: false,
+              }) 
         }
       }
 

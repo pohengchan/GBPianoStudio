@@ -17,8 +17,27 @@ const logoutSubmit = (e) =>{
         localStorage.removeItem('auth_token');
         localStorage.removeItem('auth_name');
         localStorage.clear();
-        Swal.fire({ text: res.data.message,color: 'white', background: '#676060', confirmButton: 'true', confirmButtonColor: '#01FDFD', });
-        window.location = "/";
+
+        Swal.fire({  
+          confirmButton: true, 
+          text: res.data.message, 
+          color: 'white', 
+          background: '#676060', 
+          position: 'center',
+          title: 'Logout',
+          confirmButtonText: 'OK',
+          confirmButtonColor: 'black', 
+          customClass: {
+            confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
+        })
+        .then(async (result) => {
+          if (result.isConfirmed) {
+            window.location = "/";
+            }
+          }
+        );
         }
       });
 }

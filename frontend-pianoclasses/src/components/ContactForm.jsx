@@ -9,10 +9,16 @@ const ContactForm = () =>{
 if (state.succeeded) {
     Swal.fire({
         position: 'center',
-        icon: 'success',
-        title: 'E-mail send',
-        showConfirmButton: false,
-        timer: 1500
+        title: 'Email sent',
+        text: 'Thank you! Please wait for Gillian to contact you.',
+        confirmButtonText: 'OK',
+        color: 'white', 
+        background: '#676060', 
+        confirmButtonColor: 'black', 
+        customClass: {
+          confirmButton: 'custom-button-class confirm-button'
+        },
+        buttonsStyling: false,
       }) 
 
 }

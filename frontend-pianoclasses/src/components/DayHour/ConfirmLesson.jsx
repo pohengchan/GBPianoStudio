@@ -45,24 +45,36 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
           }
         onClose();
         Swal.fire({
-            title: "The lesson has been confirmed. The contact will be sent an email.",
-            color: 'white',
-            background: '#676060',
-            showConfirmButton: true,
-            confirmButtonColor: '#01FDFD',
-        });
+          position: 'center',
+          title: 'Lesson confirmed',
+          text: 'You have successfully confirmed the lesson.',
+          confirmButtonText: 'OK',
+          color: 'white', 
+          background: '#676060', 
+          confirmButtonColor: 'black', 
+          customClass: {
+            confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
+        }) 
     };
 
     const deleteLesson = async (id) => {
         await instance.delete(`http://localhost:8000/api/lesson/${eValues.id}`);
         onClose();
         Swal.fire({
-            title: "You have deleted the lesson. An email will be sent to the user",
-            color: 'white',
-            background: '#676060',
-            showConfirmButton: true,
-            confirmButtonColor: '#01FDFD',
-        });
+          position: 'center',
+          title: 'Lesson deleted',
+          text: 'You have successfully deleted the lesson.',
+          confirmButtonText: 'OK',
+          color: 'white', 
+          background: '#676060', 
+          confirmButtonColor: 'black', 
+          customClass: {
+            confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
+        }) 
     };
 
     const handleClose = () => {

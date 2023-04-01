@@ -51,7 +51,21 @@ import { getAxiosInstance } from '../services/functions';
             
                 // localStorage.setItem('auth_token', res.data.token);
                 localStorage.setItem('auth_name', res.data.contact_name);
-                Swal.fire({   confirmButton: 'true',  text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
+                Swal.fire({   
+                    confirmButton: true,  
+                    text: res.data.message, 
+                    color: 'white', 
+                    background: '#676060', 
+                    // confirmButtonColor: '#01FDFD', 
+                    position: 'center',
+                    title: 'Register',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: 'black', 
+                    customClass: {
+                      confirmButton: 'custom-button-class confirm-button'
+                    },
+                    buttonsStyling: false,
+                });
                 navigate('/');
             }
             else
