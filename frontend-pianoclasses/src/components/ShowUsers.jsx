@@ -105,20 +105,16 @@ const handleCheckboxChange = async(id) => {
     })
       .then(async (result) => {
       if (result.isConfirmed) {
-        // const response = await handleAuthorise(id);
-        const response = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
+        const response = await instance.put(`/api/users/${id}/authorize`, {
         });
         console.log(response.data);
         console.log(response.status);
         if (response.status === 200) {
-          // setErrors(response.errors);
           loadUsers();
           Swal.fire({
             title: 'Success!',
             text: 'User was successfully authorised.',
-            // icon: 'success',
             confirmButtonText: 'OK',
-            // iconColor:'white',
             color: 'white',
             background: '#676060',
             confirmButtonColor: 'black',
@@ -141,18 +137,6 @@ const handleCheckboxChange = async(id) => {
   }
   loadUsers();
 }
-// const handleAuthorise = async (id) => {
-//     try {
-//         // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
-//         const result = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
-//             });
-//         console.log(result);
-//         console.log(instance);
-//       } catch (error) {
-//         console.error(error);
-//       }
-
-// };
   
  return ( 
     <div>

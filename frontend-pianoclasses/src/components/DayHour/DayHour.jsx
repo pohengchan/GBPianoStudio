@@ -1,6 +1,5 @@
 import React  from 'react';
 import '../../index.css';
-// import './dayHour.css';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -11,12 +10,11 @@ import ConfirmLesson from './ConfirmLesson';
 import UpdateLesson from './UpdateLesson';
 import { useRef } from 'react';
 import moment from "moment";
-import axios from 'axios';
 import Swal from "sweetalert2";
 import { getAxiosInstance } from '../../services/functions';
 
 var instance = getAxiosInstance();
-// var isCalendarLoaded = false;
+
 var passArray = {id:0, title: "", start:"", end:""};
 
 const today = Date.now();
@@ -43,25 +41,13 @@ function DayHour () {
         event
       });
 
-      // isCalendarLoaded = false;
       setLoadCalendar(true);
-
     };
     
     async function handleEventAdd(data) {
-    // console.log(data)
-    await axios.post("http://localhost:8000/api/lessons", data);
+      await instance.post(`/api/lessons`, data);
   //    await instance.post('http://localhost:8000/api/lessons', data).then(res=> {
-  //     console.log(`res.data.status: ${res.data}`);
-  //     if(res.data.status === 200){
 
-    //   Swal.fire({
-    //     title: "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.",
-    //     color: 'white',
-    //     background: '#676060',
-    //     showConfirmButton: true,
-    //     confirmButtonColor: '#01FDFD',
-    // });
       Swal.fire({
         position: 'center',
         title: 'Lesson added',
@@ -84,7 +70,7 @@ function DayHour () {
  
 async function handleDatesSet(data) {
   if (loadCalendar===true) {
-    const response = await instance.get("http://localhost:8000/api/lessons");
+    const response = await instance.get(`/api/lessons`);
     setEvents(response.data);
     eventState(events);
     setLoadCalendar(false);

@@ -13,13 +13,10 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
     useEffect(() => {
         async function fetchData() {
         try {
-            // const response = await axios.get(`/api/objects/${id}`);
-            const response = await instance.get(`http://localhost:8000/api/lesson/${eValues.id}`);
-            // setObjectData(response.data);
+            // const response = await axios.get(`/api/objects/${id}`);`/api/login`
+            const response = await instance.get(`/api/lesson/${eValues.id}`);
             showConfirmed = response.data.is_confirmed;
             userID = response.data.user_id;
-            // console.log(objectData.is_confirmed)//this works
-            // const objectDataID = objectData.is_confirmed;
         } catch (error) {
             console.error(error);
         }
@@ -30,8 +27,7 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
 
     const handleConfirm = async (id) => {
         try {
-            // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
-            const result = await instance.put(`http://localhost:8000/api/lesson/${eValues.id}`, {
+            const result = await instance.put(`/api/lesson/${eValues.id}`, {
                 user_id: userID,
                 title:eValues.title,
                 start:eValues.start,
@@ -60,7 +56,7 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
     };
 
     const deleteLesson = async (id) => {
-        await instance.delete(`http://localhost:8000/api/lesson/${eValues.id}`);
+        await instance.delete(`/api/lesson/${eValues.id}`);
         onClose();
         Swal.fire({
           position: 'center',
@@ -78,14 +74,10 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
     };
 
     const handleClose = () => {
-        console.log(localStorage.role);
-        console.log(localStorage.role);
-        // setShow(false);
         onClose();
     };
 
   return (
-    // <Modal show={show} style={customStyles} isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} >
         <div className="modal">
             <div className="modal-content">
               <h1>Lesson details</h1>
@@ -98,7 +90,6 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
               :
               <div>Confirmed: Yes</div>
               }
-              {/* {localStorage.role === 'admin' && objectData.is_confirmed!==1 ? */}
               {localStorage.role === 'admin' && showConfirmed === 0 ?
 
                 <div>
@@ -117,6 +108,5 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
 
             </div>
             </div>
-    // </Modal>
   )
 }

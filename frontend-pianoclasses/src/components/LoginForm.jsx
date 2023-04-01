@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import '../index.css';
-// import axios from 'axios';
 import { getAxiosInstance } from '../services/functions';
-// // import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 function Login() {
   const instance = getAxiosInstance();
-  // const navigate = useNavigate();
   const [loginInput, setLoginInput] = useState({
     email: "",
     password: "",
@@ -30,34 +27,15 @@ function Login() {
 
     instance.get('/sanctum/csrf-cookie').then((response) => {
       console.log("logging in");
-      instance.post('http://localhost:8000/api/login', data).then((res) => {
+      instance.post(`/api/login`, data).then((res) => {
         console.log(res);
         if (res.data.status === 200) {
           localStorage.setItem("auth_token", res.data.token);
-          // console.log("should work");
-          // console.log(res.data);
           localStorage.setItem("auth_name", res.data.username);
           localStorage.setItem("id", res.data.userid);
           localStorage.setItem("sname", res.data.studentname);
           localStorage.setItem("role", res.data.role);
           
-        //   Swal.fire({   
-        //     position: 'center',
-        //     title: 'Login',
-        //     text: res.data.message, 
-        //     confirmButtonText: 'OK',
-        //     // confirmButton: true,  
-        //     color: 'white', 
-        //     background: '#676060', 
-        //     // confirmButtonColor: '#01FDFD',
-        //     confirmButtonColor: 'black', 
-        //     customClass: {
-        //       confirmButton: 'custom-button-class confirm-button'
-        //     },
-        //     buttonsStyling: false,
-        // });
-
-          // window.location = "/";
         } else if (res.data.status === 401) {
           console.log(res.data.status);
 
