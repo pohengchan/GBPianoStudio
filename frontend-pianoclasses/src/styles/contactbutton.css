@@ -45,7 +45,8 @@
     border-radius: 25px;
   }
   .btn-15:hover {
-    color: #fff;
+    color:black;
+      
   }
   .btn-15:hover:after {
     left: 0;

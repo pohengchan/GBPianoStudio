@@ -101,7 +101,8 @@
     
     .button-save:hover {
       background-color: var(--light-blue);
-      color:white;
+      color:black;
+      
     }
     .fail {
       color: #f2317f;
