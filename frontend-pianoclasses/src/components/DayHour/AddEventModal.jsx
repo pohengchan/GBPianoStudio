@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
-import './dayHour.css';
+import '../../index.css';
+// import './dayHour.css';
 import moment from "moment";
 // import Datetime from "react-datetime"
 import Swal from "sweetalert2";
