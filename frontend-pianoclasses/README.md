@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+<p align="center"><img src="![Captura de pantalla (174)](https://user-images.githubusercontent.com/116794919/229284925-8a0ca4df-5b49-41fb-885e-4b22ff19e6e8.png)
+" width="400" alt=""></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Table of Contents
+1. [Description](#description)
+2. [Members](#members) 
+3. [Design](#design)
+4. [Technologies](#technologies)
+5. [Tools](#tools)
+6. [To-install-project](#to-install-project)
+7. [Tests](#tests)
+8. [Methodology](#methodology)
+9. [Core-skills](#core-skills)
 
-In the project directory, you can run:
+ 
+## Description  
 
-### `npm start`
+<p>GILLIAN BECKWITH Piano Studio is a project adapted to the needs of renowned piano teacher GILLIAN BECKWITH. On this website, available for mobile and desktop devices, her students can book their classes and select the desired duration based on availability reflected on the calendar. Within 24 hours, the request is confirmed or declined.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The website is designed to give users a feeling of being in a study, with a dark background and highlighted elements in neon colors. To provide a complete experience, the main page features a piano that users can play to start practicing..</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ ## Members  
+  
+- [Magda Wernik](https://github.com/magswer) - SCRUM Master
 
-### `npm test`
+- [Po Heng Chan](https://github.com/pohengchan) - Product Owner
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Natalia Vorobyeva](https://github.com/NataliaVorobyeva) - Developer
 
-### `npm run build`
+- [Silvina Lucero](https://github.com/SILLUCERO) - Developer
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Jasmina Marín](https://github.com/JasMarin) - Developer
+	
+## Design
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ <p align="center">
+ 
+ <img src= ""></img>
+ <img src= ""></img>
+ <img src= ""></img>
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  <img src= "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"></img>
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) 
+![fullcalendar](https://img.shields.io/badge/fullcalendar-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Tools
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) <img src= "https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white"> 
+![visualstudiocode](https://img.shields.io/badge/VSC-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) <img src= "https://img.shields.io/badge/Github-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white"> 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## To-install-project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Clone git https://github.com/GBPianoStudio/piano-classes
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+*
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Tests 
 
-### Making a Progressive Web App
+* npm test
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Methodology
 
-### Advanced Configuration
+* Agile and SCRUM.
+* Mob programming.
+* Pair programming.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Core skills
+* Client server view
+* Git version control system.
+* User stories and tasks implementation (Trello).
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
