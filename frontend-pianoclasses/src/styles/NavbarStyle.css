@@ -205,6 +205,9 @@
   .navbar-desktop .links li .link{
     visibility: hidden;
   }
+  .navbar-desktop {
+    margin-bottom: 2rem;/*reducing the space under the navbar - Calendar*/
+  }
      .links{
    z-index: -2;
    }
