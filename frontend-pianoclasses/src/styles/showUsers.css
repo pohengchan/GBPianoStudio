@@ -156,7 +156,6 @@ p{
 }
 
 
-
 @media(max-width: 768px){
     button{
         padding: 1%;
@@ -204,7 +203,7 @@ Si no, va a romper el calendario
     margin-left: 1%;
     margin-right: 0%;
 }
-btn-edit{
+.btn-edit{
     margin-left: 60%;
 }
 .modal {
@@ -232,8 +231,15 @@ btn-edit{
     border-radius: 0.313rem;
     background-color: var(--background);
 }
+.my-confirm-btn-class, .my-cancel-btn-class {
+    width: 150px;
 }
-
+}
+@media screen and (max-width: 480px) {
+    .my-confirm-btn-class, .my-cancel-btn-class {
+    width: 100px;
+    }
+}
 /* .button-group {
     width: 100%;
     height: 100%;

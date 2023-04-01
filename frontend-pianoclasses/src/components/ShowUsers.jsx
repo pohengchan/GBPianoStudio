@@ -5,7 +5,7 @@ import { getAxiosInstance } from '../services/functions';
 import UserDetails from './UserDetails';
 import ModalButton from './ModalButton';
 import Swal from 'sweetalert2';
-import '../styles/showUsers.css';
+import '../../src/styles/showUsers.css';
 
 var instance = getAxiosInstance();
 const ShowUsers = () => {
@@ -20,8 +20,8 @@ const ShowUsers = () => {
     }, []);
     
     const loadUsers = async () => {
-    const allUsers = await getAllUsers();
-    setUsers(allUsers);
+      const allUsers = await getAllUsers();
+      setUsers(allUsers);
     };
 
   const closeModal = () => {
@@ -49,7 +49,11 @@ const ShowUsers = () => {
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, cancel',
       confirmButtonColor: '#01FDFD',
-      cancelButtonColor: '#676060'
+      cancelButtonColor: '#676060',
+      customClass: {
+        confirmButton: 'my-confirm-btn-class',
+        cancelButton: 'my-cancel-btn-class'
+      }
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await deleteUser(id);
@@ -73,24 +77,69 @@ const ShowUsers = () => {
     });
   };
 
-const handleCheckboxChange = (id) => {
-  console.log(id)
-  handleAuthorise(id);    
-  // setIsChecked(event.target.checked);
-  getAllUsers();
-}
-const handleAuthorise = async (id) => {
-    try {
-        // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
-        const result = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
-            });
-        console.log(result);
-        console.log(instance);
-      } catch (error) {
-        console.error(error);
-      }
+const handleCheckboxChange = async(id) => {
+  try {
 
-};
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to authorise this user.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, authorise!',
+      cancelButtonText: 'No, cancel.',
+      confirmButtonColor: '#01FDFD',
+      cancelButtonColor: '#676060',
+      customClass: {
+        confirmButton: 'my-confirm-btn-class',
+        cancelButton: 'my-cancel-btn-class'
+      }
+      }).then(async (result) => {
+      if (result.isConfirmed) {
+        // const response = await handleAuthorise(id);
+        const response = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
+        });
+        console.log(response.data);
+        console.log(response.status);
+        if (response.status === 200) {
+          // setErrors(response.errors);
+          loadUsers();
+          Swal.fire({
+            title: 'Success!',
+            text: 'User was successfully authorised.',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            iconColor:'white',
+            color: 'white',
+            background: '#676060',
+            confirmButtonColor: '#01FDFD',
+            customClass: {
+              confirmButton: 'my-confirm-btn-class'
+            }
+          });
+        } else {
+          console.log(response);
+        }
+
+      }
+    });
+    loadUsers();
+  } catch (error) {
+    console.error(error);
+  }
+  loadUsers();
+}
+// const handleAuthorise = async (id) => {
+//     try {
+//         // const result = await axios.post(`YOUR_URL`, {<Your JSON payload>});
+//         const result = await instance.put(`http://localhost:8000/api/users/${id}/authorize`, {
+//             });
+//         console.log(result);
+//         console.log(instance);
+//       } catch (error) {
+//         console.error(error);
+//       }
+
+// };
   
  return ( 
     <div>
