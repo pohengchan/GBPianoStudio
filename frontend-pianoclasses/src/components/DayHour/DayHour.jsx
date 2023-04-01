@@ -99,7 +99,7 @@ function eventState (events) {
       if (events[i].is_confirmed===1) {
         events[i].editable=true;
         events[i].durationEditable=false;
-        events[i].backgroundColor='#24037D';//dark blue
+        events[i].backgroundColor='rgb(71, 71, 251)';//dark blue
       };
       if (events[i].is_confirmed===0) {
         events[i].editable=true;

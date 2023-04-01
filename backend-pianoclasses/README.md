@@ -1,66 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><img src="![Captura de pantalla (174)](https://user-images.githubusercontent.com/116794919/229284925-8a0ca4df-5b49-41fb-885e-4b22ff19e6e8.png)
+" width="400" alt=""></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+
+## Table of Contents
+1. [Description](#description)
+2. [Members](#members) 
+3. [Technologies](#technologies)
+4. [Tools](#tools)
+5. [To-install-project](#to-install-project)
+6. [Tests](#tests)
+7. [Methodology](#methodology)
+8. [Core-skills](#core-skills)
+
+ 
+## Description  
+
+<p>
+GILLIAN BECKWITH Piano Studio is a project adapted to the needs of renowned piano teacher GILLIAN BECKWITH. Gillian manages the studio from her mobile device  or PC, allowing her to grant her students access to the calendar to book their lessons. Within 24 hours, she commits to confirming or rejecting the request,  and the student is notified by email. Gillian also has full control of the calendar, allowing her to decide which days and hours are available for her      students to book their classes.
+The administrative part is designed for easy management of student data, where she can give them access to book their classes, edit user information, and delete it..
 </p>
 
-## About Laravel
+ ## Members  
+  
+- [Magda Wernik](https://github.com/magswer) - SCRUM Master
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Po Heng Chan](https://github.com/pohengchan) - Product Owner
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Natalia Vorobyeva](https://github.com/NataliaVorobyeva) - Developer
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Silvina Lucero](https://github.com/SILLUCERO) - Developer
 
-## Learning Laravel
+- [Jasmina Marín](https://github.com/JasMarin) - Developer
+	
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Technologies
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+ ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)   ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) 
+![fullcalendar](https://img.shields.io/badge/fullcalendar-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
+<img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
+	
+## Tools
 
-## Laravel Sponsors
+![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)  ![visualstudiocode](https://img.shields.io/badge/VSC-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) <a href=""><img src= "https://img.shields.io/badge/Github-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white"></a> 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## To-install-project
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+* Clone git https://github.com/GBPianoStudio/piano-classes
 
-## Contributing
+Backend
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+*composer create-project --prefer-dist laravel/laravel my-laravel-app
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Tests 
 
-## Security Vulnerabilities
+* php artisan test
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Methodology
 
-## License
+* Agile and SCRUM.
+* Mob programming.
+* Pair programming.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Core skills
+* Api rest.
+* Git version control system.
+* User stories and tasks implementation (Trello).
+	
+</div>
+

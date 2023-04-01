@@ -9,12 +9,11 @@ const ContactForm = () =>{
 if (state.succeeded) {
     Swal.fire({
         position: 'center',
-        text:'Your message was sent succesfully',
-        color: 'white', 
-        background: '#676060', 
-        confirmButtonColor: '#01FDFD',
-        confirmButton: 'true', });
-      
+        icon: 'success',
+        title: 'E-mail send',
+        showConfirmButton: false,
+        timer: 1500
+      }) 
 
 }
         
@@ -22,8 +21,8 @@ if (state.succeeded) {
     <>
     <h1 className='h1-contact'>CONTACT ME</h1>
         <form onSubmit={handleSubmit} className='contact-form'>
-                <div className='contact-form'>
-                    <label htmlFor="nombre">
+                <div className='contact-form-contact'>
+                    <label className="contact-label" htmlFor="nombre">
                     Contact's name/ Parent's name *
                     </label>
                     <input
@@ -39,7 +38,7 @@ if (state.succeeded) {
                     />
                 </div>
 
-                <div className='contact-form'>
+                <div className='contact-form-contact'>
                     <label htmlFor="email">
                         Email *
                     </label>
@@ -56,7 +55,7 @@ if (state.succeeded) {
                     />
                 </div>
             
-                <div className='contact-form'>
+                <div className='contact-form-contact'>
                 <label>Message *</label>
                     <textarea 
                         rows="9"
@@ -71,9 +70,9 @@ if (state.succeeded) {
                     />
                 </div>
 
-                <div className="buttons">
-                    <button type='reset'>CANCEL</button>
-                    <button type='submit'>SEND</button>
+                <div className="contact-btn">
+                    <button className='contact-form-button' type='reset'>CANCEL</button>
+                    <button className='contact-form-button' type='submit'>SEND</button>
                 </div>
         </form>
     </>
@@ -81,4 +80,5 @@ if (state.succeeded) {
 }
 
 export default ContactForm
+
 
