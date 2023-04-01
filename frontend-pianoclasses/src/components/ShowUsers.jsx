@@ -40,20 +40,24 @@ const ShowUsers = () => {
     };
 
   const handleDelete = async (id) => {
-    await deleteUser(id);
+    // await deleteUser(id);
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You are about to delete this user.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel',
-      confirmButtonColor: '#01FDFD',
-      cancelButtonColor: '#676060',
+
+      title: 'Delete User',
+      text: "Are you sure you want to delete this user?", 
+      showCancelButton: true, 
+      // confirmButton: 'true', 
+      cancelButtonText: 'No, cancel.',
+      confirmButtonText: 'Yes, delete!',
+      color: 'white', 
+      background: '#676060', 
+      confirmButtonColor: 'black', 
+      cancelButtonColor:'#F15A5A',
       customClass: {
-        confirmButton: 'my-confirm-btn-class',
-        cancelButton: 'my-cancel-btn-class'
-      }
+        confirmButton: 'custom-button-class confirm-button',
+        cancelButton: 'custom-button-class cancel-button'
+      },
+      buttonsStyling: false,
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await deleteUser(id);
@@ -63,12 +67,14 @@ const ShowUsers = () => {
           Swal.fire({
             title: 'Success!',
             text: 'User was successfully deleted.',
-            icon: 'success',
             confirmButtonText: 'OK',
-            iconColor:'white',
             color: 'white',
             background: '#676060',
-            confirmButtonColor: '#01FDFD',
+            confirmButtonColor: 'black',
+            customClass: {
+              confirmButton: 'custom-button-class confirm-button'
+            },
+            buttonsStyling: false,
           });
           // setErrors('');
           loadUsers();
@@ -80,20 +86,6 @@ const ShowUsers = () => {
 const handleCheckboxChange = async(id) => {
   try {
 
-    // Swal.fire({
-    //   title: 'Are you sure?',
-    //   text: 'You are about to authorise this user.',
-    //   icon: 'warning',
-    //   showCancelButton: true,
-    //   cancelButtonText: 'No, cancel.',
-    //   confirmButtonText: 'Yes, authorise!',
-    //   confirmButtonColor: '#01FDFD',
-    //   cancelButtonColor: '#676060',
-    //   // customClass: {
-    //   //   confirmButton: 'my-confirm-btn-class',
-    //   //   cancelButton: 'my-cancel-btn-class'
-    //   // }
-    //   })
       Swal.fire({
         title: 'Authorise User',
         text: "Are you sure you want to authorise this user?", 
@@ -124,15 +116,16 @@ const handleCheckboxChange = async(id) => {
           Swal.fire({
             title: 'Success!',
             text: 'User was successfully authorised.',
-            icon: 'success',
+            // icon: 'success',
             confirmButtonText: 'OK',
-            iconColor:'white',
+            // iconColor:'white',
             color: 'white',
             background: '#676060',
-            confirmButtonColor: '#01FDFD',
-            // customClass: {
-            //   confirmButton: 'my-confirm-btn-class'
-            // }
+            confirmButtonColor: 'black',
+            customClass: {
+              confirmButton: 'custom-button-class confirm-button'
+            },
+            buttonsStyling: false,
           });
         } else {
           console.log(response);
@@ -217,7 +210,7 @@ const handleCheckboxChange = async(id) => {
             user={selectedUser}
             closeModal={closeModal}
               handleEdit={handleEdit}
-            deleteUser={() => handleDelete()}
+            deleteUser={() => handleDelete(selectedUser.id)}
           />
         )}
       </div>

@@ -40,6 +40,7 @@ function Login() {
           localStorage.setItem("id", res.data.userid);
           localStorage.setItem("sname", res.data.studentname);
           localStorage.setItem("role", res.data.role);
+          
         //   Swal.fire({   
         //     position: 'center',
         //     title: 'Login',
@@ -58,42 +59,16 @@ function Login() {
 
           // window.location = "/";
         } else if (res.data.status === 401) {
-          console.log(res.data.status)
-          // Swal.fire({  
-          //   confirmButton: true, 
-          //    text: res.data.message, 
-          //    color: 'white', 
-          //    background: '#676060', 
-          //    position: 'center',
-          //    title: 'Login',
-          //    confirmButtonText: 'OK',
-          //    confirmButtonColor: 'black', 
-          //    customClass: {
-          //      confirmButton: 'custom-button-class confirm-button'
-          //    },
-          //    buttonsStyling: false,
-          // });
+          console.log(res.data.status);
+
         } else {
-          console.log(res.data.status)
-          // Swal.fire({  
-          //   confirmButton: true, 
-          //   text: res.data.message, 
-          //   color: 'white', 
-          //   background: '#676060', 
-          //   position: 'center',
-          //   title: 'Login',
-          //   confirmButtonText: 'OK',
-          //   confirmButtonColor: 'black', 
-          //   customClass: {
-          //     confirmButton: 'custom-button-class confirm-button'
-          //   },
-          //   buttonsStyling: false,
-          // });
+          console.log(res.data.status);
           setLoginInput({
             ...loginInput,
             error_list: res.data.validation_errors,
           });
         }
+
         Swal.fire({  
           confirmButton: true, 
           text: res.data.message, 
@@ -107,7 +82,14 @@ function Login() {
             confirmButton: 'custom-button-class confirm-button'
           },
           buttonsStyling: false,
-        });
+        })
+        .then(async (result) => {
+          if (result.isConfirmed && res.data.status === 200) {
+            window.location = "/";
+            }
+          }
+        );
+
       });
     }
     
