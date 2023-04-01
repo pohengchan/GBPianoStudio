@@ -19,7 +19,12 @@ if (state.succeeded) {
           confirmButton: 'custom-button-class confirm-button'
         },
         buttonsStyling: false,
-      }) 
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          window.location = "/";
+          }
+        }
+      ); 
 
 }
         
