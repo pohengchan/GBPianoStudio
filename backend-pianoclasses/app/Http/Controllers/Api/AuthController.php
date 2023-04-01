@@ -46,7 +46,7 @@ class AuthController extends Controller
         'status'=>200,
         'contact_name'=>$user->contact_name,
         'token'=>$token,
-        'message'=>'Registered successfully, please check your email for the confirmation.',
+        'message'=>'Thank you for registering! Please wait for Gillian to contact you.',
         ]);
  }  
 }
@@ -75,7 +75,7 @@ public function login(Request $request)
             {
                 return response()->json([
                     'status'=>401,
-                    'message'=>'Invalid Credentials',
+                    'message'=>'Your email or password is incorrect. Please try again.',
                 ]);
             }
         else
@@ -107,7 +107,7 @@ public function login(Request $request)
                     'status'=>200,
                     'username'=>$user->contact_name,
                     'token'=>$token,
-                    'message'=>'Logged In Successfully',
+                    'message'=>'Logged in successfully',
                     'role'=>$role,
                     'studentname'=>$user->student_name,
                     'userid'=>$user->id,
@@ -123,7 +123,7 @@ public function logout()
     auth()->user()->tokens()->delete();
     return response()->json([
         'status'=> 200,
-        'message' => 'Logged Out Successfully'
+        'message' => 'Logged out successfully!'
     ]);
 }
 }

@@ -29,7 +29,7 @@ function Login() {
     };
 
     instance.get('/sanctum/csrf-cookie').then((response) => {
-      console.log("die");
+      console.log("logging in");
       instance.post('http://localhost:8000/api/login', data).then((res) => {
         console.log(res);
         if (res.data.status === 200) {
@@ -40,19 +40,74 @@ function Login() {
           localStorage.setItem("id", res.data.userid);
           localStorage.setItem("sname", res.data.studentname);
           localStorage.setItem("role", res.data.role);
-          Swal.fire({   confirmButton: 'true', text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
-          window.location = "/";
+        //   Swal.fire({   
+        //     position: 'center',
+        //     title: 'Login',
+        //     text: res.data.message, 
+        //     confirmButtonText: 'OK',
+        //     // confirmButton: true,  
+        //     color: 'white', 
+        //     background: '#676060', 
+        //     // confirmButtonColor: '#01FDFD',
+        //     confirmButtonColor: 'black', 
+        //     customClass: {
+        //       confirmButton: 'custom-button-class confirm-button'
+        //     },
+        //     buttonsStyling: false,
+        // });
+
+          // window.location = "/";
         } else if (res.data.status === 401) {
           console.log(res.data.status)
-          Swal.fire({  confirmButton: 'true', text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
+          // Swal.fire({  
+          //   confirmButton: true, 
+          //    text: res.data.message, 
+          //    color: 'white', 
+          //    background: '#676060', 
+          //    position: 'center',
+          //    title: 'Login',
+          //    confirmButtonText: 'OK',
+          //    confirmButtonColor: 'black', 
+          //    customClass: {
+          //      confirmButton: 'custom-button-class confirm-button'
+          //    },
+          //    buttonsStyling: false,
+          // });
         } else {
           console.log(res.data.status)
-          Swal.fire({  confirmButton: 'true', text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
+          // Swal.fire({  
+          //   confirmButton: true, 
+          //   text: res.data.message, 
+          //   color: 'white', 
+          //   background: '#676060', 
+          //   position: 'center',
+          //   title: 'Login',
+          //   confirmButtonText: 'OK',
+          //   confirmButtonColor: 'black', 
+          //   customClass: {
+          //     confirmButton: 'custom-button-class confirm-button'
+          //   },
+          //   buttonsStyling: false,
+          // });
           setLoginInput({
             ...loginInput,
             error_list: res.data.validation_errors,
           });
         }
+        Swal.fire({  
+          confirmButton: true, 
+          text: res.data.message, 
+          color: 'white', 
+          background: '#676060', 
+          position: 'center',
+          title: 'Login',
+          confirmButtonText: 'OK',
+          confirmButtonColor: 'black', 
+          customClass: {
+            confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
+        });
       });
     }
     

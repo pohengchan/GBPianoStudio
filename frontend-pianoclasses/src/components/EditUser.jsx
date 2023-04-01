@@ -5,7 +5,7 @@ import { updateUser, getUser } from '../services/Api';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Swal from 'sweetalert2';
-import '../styles/editUser.css';
+import '../index.css';
 
   const UpdateUser = () => {
   const [loading, setLoading] = useState(false);
