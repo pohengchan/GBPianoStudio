@@ -43,22 +43,23 @@ const logoutSubmit = (e) =>{
     } else{
       if(localStorage.getItem('role')==='admin') {
         ManageUsers =  (
-          <div>  <ul className="links">
+          <>  
+            {/* <ul className="links"> */}
              <NavLink to="/Users" className="link" activeclassname="active">
             <li>MANAGE USERS</li>
           </NavLink>
-          </ul>
-          </div>
+          {/* </ul> */}
+          </>
         );
        }
       Calendar =  (
-        <div className="calendar-navbar">  
-        <ul className="links">
+        <>  
+        {/* <ul className="links"> */}
            <NavLink to="/Calendar" className="link" activeclassname="active">
           <li>BOOK A CLASS</li>
         </NavLink>
-        </ul>
-        </div>
+        {/* </ul> */}
+        </>
       );
 
       AuthButtons = (
