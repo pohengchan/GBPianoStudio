@@ -55,34 +55,39 @@ function DayHour () {
   //     console.log(`res.data.status: ${res.data}`);
   //     if(res.data.status === 200){
 
+    //   Swal.fire({
+    //     title: "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.",
+    //     color: 'white',
+    //     background: '#676060',
+    //     showConfirmButton: true,
+    //     confirmButtonColor: '#01FDFD',
+    // });
       Swal.fire({
-        title: "Thank you for adding a lesson! An email has been sent to Gillian. You will receive an email when she has confirmed the lesson.",
-        color: 'white',
-        background: '#676060',
-        showConfirmButton: true,
-        confirmButtonColor: '#01FDFD',
-        
-    });
-      // isCalendarLoaded=false;
+        position: 'center',
+        title: 'Lesson added',
+        text: 'Thank you for adding a lesson! Please check your calendar in 24hrs to see if Gillian has confirmed the lesson.',
+        confirmButtonText: 'OK',
+        color: 'white', 
+        background: '#676060', 
+        confirmButtonColor: 'black', 
+        customClass: {
+          confirmButton: 'custom-button-class confirm-button'
+        },
+        buttonsStyling: false,
+      }) 
+
       setLoadCalendar(true);
       passArray={id:0, title: "", start:"", end:""};
-  //     } else {
-  //       console.log("something didn't happen");
-  //     }
-      
-  // })
+
   };
 
  
 async function handleDatesSet(data) {
   if (loadCalendar===true) {
-    // const response = await axios.get("http://localhost:8000/api/lessons");
     const response = await instance.get("http://localhost:8000/api/lessons");
     setEvents(response.data);
     eventState(events);
-    // isCalendarLoaded = true;
     setLoadCalendar(false);
-    // console.log("get calendar");
   }
   eventState(events);
 }
@@ -95,7 +100,6 @@ function eventState (events) {
     events[i].durationEditable=false;
 
     if (localStorage.role==="admin" || events[i].user_id===parseInt(localStorage.id)) {
-      // console.log(events[i].user_id);
       if (events[i].is_confirmed===1) {
         events[i].editable=true;
         events[i].durationEditable=false;
@@ -117,7 +121,6 @@ function eventState (events) {
 const handleSelect = (info) => {
   passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
   setIsOpen(true);
-  // isCalendarLoaded=false;
   setLoadCalendar(true);
 };
 
@@ -125,7 +128,6 @@ const handleSelect = (info) => {
 const changeLesson = (info) => {
   passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
   setIsUpdateOpen(true);
-  // isCalendarLoaded=false;
   setLoadCalendar(true);
 };
 
@@ -140,30 +142,32 @@ const openModal  = (info) => {
     },
   ]);
   // check if the lesson is after 24hrs 
-
-  console.log(start);
-  console.log(minStart);
   if (moment(start).format("YYYY-MM-DD HH:mm:ss") > minStart) {
 
-  setModalOpen(true);
-  passArray= {
-    id: localStorage.getItem('id'), 
-    title: localStorage.getItem('sname'), 
-    start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), 
-    end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")
-  }
-// console.log(passArray);
-// isCalendarLoaded=false
-setLoadCalendar(true);
+    setModalOpen(true);
+    passArray= {
+      id: localStorage.getItem('id'), 
+      title: localStorage.getItem('sname'), 
+      start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), 
+      end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")
+    }
+
+    setLoadCalendar(true);
   } else {
-    Swal.fire({
-      title: "You cannot book a lesson with less than 24hr notice.",
-      color: 'white',
-      background: '#676060',
-      showConfirmButton: true,
-      confirmButtonColor: '#01FDFD',
-      
-  });
+
+  Swal.fire({
+    position: 'center',
+    title: 'Lesson not booked',
+    text: 'Sorry! You cannot book a lesson with less than 24hr notice.',
+    confirmButtonText: 'OK',
+    color: 'white', 
+    background: '#676060', 
+    confirmButtonColor: 'black', 
+    customClass: {
+      confirmButton: 'custom-button-class confirm-button'
+    },
+    buttonsStyling: false,
+  }) 
   }
 }
 
@@ -172,39 +176,16 @@ function onUpdateClose () {
   setIsUpdateOpen(false);
 }
 
-// function changeLesson( info ) { 
-//   alert(info.event.title + " was dropped on " + info.event.start.toISOString());
-
-//   // if (!confirm("Are you sure about this change?")) {
-//   //   info.revert();
-//   //   revertFunc()
-//   // }
-// }
-// function changeLesson (info)
-// {console.log(info);
-//   //  var day = info.start.format("dddd"); // this will give you day 
-//   //  if(day === "Saturday")
-//   if(info!==null)
-//    {
-//       alert("You can not move this event to saturday.");
-//       info.revert();
-//    } else {
-//       //Here is my ajax to update DB
-//    }
-// } 
         return (
           <div className='calendar-container'>
             <div>
             <FullCalendar
-            // editable={isEditable}
             eventOverlap={false}
             eventDurationEditable={false}
             selectable
-            //  select={handleSelect}
             select={openModal} //new function
             ref={calendarRef}
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
-              // plugins= {[ 'interaction', 'dayGrid', 'timeGrid' ]}
             defaultView= 'timeGridWeek'
             allDaySlot={false}
             contentHeight={1000}
@@ -212,7 +193,6 @@ function onUpdateClose () {
             slotMaxTime={"21:00:00"}
             slotDuration={"00:30:00"}
             hiddenDays={[0]} //hide Sunday
-              // defaultDate= '2019-08-15'
             slotEventOverlap={false}
               headerToolbar= {{
                 left: 'prev,next,today',
@@ -220,15 +200,10 @@ function onUpdateClose () {
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
               }}
               events={events}
-              // events={[
-              //   this.state.events
-              //   // { title: 'unavailable', start: '2023-03-30 10:00:00' , end: '2023-03-30 15:00:00', backgroundColor: 'grey'},
-              // ]}
               eventClick={(event) => handleSelect(event)}
               eventAdd={event => handleEventAdd(event)}
               datesSet={(date) => handleDatesSet(date)}
               eventDrop={(info) => changeLesson((info))}
-              // handleWindowResize={true}
               updateSize={true}
               
               
@@ -237,12 +212,10 @@ function onUpdateClose () {
             <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
 
             {/** show details of selected event */}
-            {isOpen && (
-              // <ConfirmLesson isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventUpdate={event => onEventUpdate(event)} eValues={passArray} />
+            {isOpen && (           
               <ConfirmLesson isOpen={isOpen} onClose={() => setIsOpen(false)} eValues={passArray} />
             )}
             {isUpdateOpen && (
-              // <ConfirmLesson isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventUpdate={event => onEventUpdate(event)} eValues={passArray} />
               <UpdateLesson isOpen={isUpdateOpen} onClose={() => onUpdateClose()} eValues={passArray} />
             )}
 

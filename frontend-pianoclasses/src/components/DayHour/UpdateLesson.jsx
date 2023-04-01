@@ -42,13 +42,20 @@ export default function UpdateLesson ({isUpdateOpen, onClose, eValues}) {
             console.error(error);
           }
         onClose();
+
         Swal.fire({
-            title: "You have successfully changed the lesson. An email has been sent to Gillian. You will receive an email when she has confirmed the change. ",
-            color: 'white',
-            background: '#676060',
-            showConfirmButton: true,
-            confirmButtonColor: '#01FDFD',
-        });
+          position: 'center',
+          title: 'Lesson added',
+          text: 'You have successfully changed the lesson! Please check your calendar in 24hrs to see if Gillian has confirmed the lesson.',
+          confirmButtonText: 'OK',
+          color: 'white', 
+          background: '#676060', 
+          confirmButtonColor: 'black', 
+          customClass: {
+            confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
+        }) 
     };
 
 
@@ -57,7 +64,7 @@ export default function UpdateLesson ({isUpdateOpen, onClose, eValues}) {
     };
 
   return (
-    // <Modal show={show} style={customStyles} isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} >
+    
         <div className="modal">
             <div className="modal-content">
               <h1>Lesson details</h1>
@@ -76,6 +83,6 @@ export default function UpdateLesson ({isUpdateOpen, onClose, eValues}) {
 
             </div>
             </div>
-    // </Modal>
+
   )
 }
