@@ -10,7 +10,7 @@ import '../../src/styles/showUsers.css';
 var instance = getAxiosInstance();
 const ShowUsers = () => {
   const [users, setUsers] = useState([]);
-  // const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
   // const [isChecked, setIsChecked] = useState(false);
@@ -181,6 +181,7 @@ const handleCheckboxChange = async(id) => {
           />
         )}
       </div>
+      {errors && <p>{errors}</p>}
     </div>
   );
 };
