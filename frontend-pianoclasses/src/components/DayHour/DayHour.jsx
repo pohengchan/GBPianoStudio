@@ -14,18 +14,16 @@ import Swal from "sweetalert2";
 import { getAxiosInstance } from '../../services/functions';
 
 var instance = getAxiosInstance();
-
 var passArray = {id:0, title: "", start:"", end:""};
 
 const today = Date.now();
 var minStart = moment(today).add(24, 'HH').toDate();
 minStart = moment(minStart).format("YYYY-MM-DD HH:mm:ss");
 
-
 function DayHour () {
-    const [isAddOpen, setIsAddOpen] = useState(false);
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
+    const [isAddOpen, setIsAddOpen] = useState(false);//add modal
     const [isConfirmOpen, setIsConfirmOpen] = useState(false); //confirm modal
     const [isUpdateOpen, setIsUpdateOpen] = useState(false); //update modal
     const [loadCalendar, setLoadCalendar] = useState(true);
@@ -68,7 +66,7 @@ function DayHour () {
   };
 
  
-async function handleDatesSet(data) {
+async function handleDatesSet() {
   if (loadCalendar===true) {
     const response = await instance.get(`/api/lessons`);
     setEvents(response.data);
@@ -162,6 +160,14 @@ function onUpdateClose () {
   setLoadCalendar(true);
   setIsUpdateOpen(false);
 }
+function onConfirmClose () {
+  setLoadCalendar(true);
+  setIsConfirmOpen(false);
+}
+function onAddClose () {
+  setLoadCalendar(true);
+  setIsAddOpen(false);
+}
 
         return (
           <div className='calendar-container'>
@@ -189,7 +195,7 @@ function onUpdateClose () {
               events={events}
               eventClick={(event) => handleSelect(event)}
               eventAdd={event => handleEventAdd(event)}
-              datesSet={(date) => handleDatesSet(date)}
+              datesSet={() => handleDatesSet()}
               eventDrop={(info) => changeLesson((info))}
               updateSize={true}
               
@@ -197,10 +203,10 @@ function onUpdateClose () {
             />
             </div>
             {isAddOpen && (
-              <AddLesson isOpen={isAddOpen} onClose={() => setIsAddOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
+              <AddLesson isOpen={isAddOpen} onClose={() => onAddClose()} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
             )}
             {isConfirmOpen && (           
-              <ConfirmLesson isOpen={isConfirmOpen} onClose={() => setIsConfirmOpen(false)} eValues={passArray} />
+              <ConfirmLesson isOpen={isConfirmOpen} onClose={() => onConfirmClose()} eValues={passArray} />
             )}
             {isUpdateOpen && (
               <UpdateLesson isOpen={isUpdateOpen} onClose={() => onUpdateClose()} eValues={passArray} />
@@ -208,7 +214,7 @@ function onUpdateClose () {
 
           </div>
         );
-        };
+      };
 
 
         
