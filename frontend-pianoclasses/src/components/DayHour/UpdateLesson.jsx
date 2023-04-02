@@ -62,19 +62,31 @@ export default function UpdateLesson ({isUpdateOpen, onClose, eValues}) {
     
         <div className="modal">
             <div className="modal-content">
-              <span className="close" onClick={handleClose}>&times;</span>
+              <span className="span-modal-close" onClick={handleClose}>&times;</span>
               <h2>Lesson details</h2>
               <div>
-                <p>Student: {eValues.title}</p>
-                <p>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")}</p> 
-                <p>Start Time: {moment(eValues.start).format("HH:mm")}</p>
-                <p>End Time: {moment(eValues.end).format("HH:mm")}</p>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">Student:</p>
+                  <p> {eValues.title}</p>
+                </div>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">Date:</p>
+                  <p> {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")}</p>
+                </div>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">New Start Time:</p>
+                  <p> {moment(eValues.start).format("HH:mm")}</p>
+                </div>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">New End Time:</p>
+                  <p> {moment(eValues.end).format("HH:mm")}</p>
+                </div>
               </div>
               <div>
                 <p>Are you sure you want to change this lesson? </p>
-                <div className="btnmodal">
-                  <button className="btnNav" onClick={handleUpdate}>CONFIRM</button> 
-                  <button  className="btnNav" onClick={handleClose}>CANCEL</button>
+                <div className="modal-button-container">
+                  <button className="btn-modal" onClick={handleUpdate}>CONFIRM</button> 
+                  <button  className="btn-modal btn-cancel" onClick={handleClose}>CANCEL</button>
                 </div>
               </div>
             </div>

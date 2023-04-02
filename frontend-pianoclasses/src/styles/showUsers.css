@@ -80,7 +80,7 @@ table, th, td {
     border: none;
     padding: 0;
 }
-.btnNav{
+.btn-modal{
     /* font-size: 0.7rem; */
     font-size: 14px;
     width: 5rem;
@@ -94,6 +94,30 @@ table, th, td {
     border: 1px solid var(--light-blue);
     border-radius: 25px;
     box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
+}
+.btn-modal:hover {
+    background-color: var(--light-blue);
+    color:black;
+  }
+.btn-delete{
+    color:#F15A5A;
+      border: 2px solid #F15A5A;
+      border-radius: 20px;
+      box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
+}
+.btn-delete:hover {
+    background-color:#F15A5A;
+    color: black;
+}
+.btn-cancel{
+    color:#F15A5A;
+      border: 2px solid #F15A5A;
+      border-radius: 20px;
+      box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
+}
+.btn-cancel:hover {
+    background-color:#F15A5A;
+    color: black;
 }
 
 h2{
@@ -134,10 +158,10 @@ h2{
     border-radius: 0.313rem;
 }
 
-.close {
+.span-modal-close {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 1rem;
     font-size: 25px;
     font-weight: bold;
     color: var(--dark-pink);
@@ -151,11 +175,17 @@ p{
 /* .Mgn {
     align-items: center;
 } */
-.btnmodal{
+.modal-button-container{
     display: flex;
     justify-content: space-between;
+    width:90%;
 }
-
+.div-modal-text {
+    display: flex;
+}
+.p-modal-text {
+    width:125px;
+}
 
 @media(max-width: 768px){
     button{
@@ -235,52 +265,3 @@ Si no, va a romper el calendario
 
 
 }
-
-/* .button-group {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    
-} */
-
-/* .button-container {
-    display: flex;
-    flex-direction: row;
-    
-} */
-/* .btndelete{
-    display: flex;
-        align-items: center;
-        color: #fff;
-        width: 5rem;
-        height: 3rem;
-        padding: 1rem 2rem;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 500;
-        background: transparent;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        display: inline-block;
-        margin: 1rem;
-        margin-top: 1rem;   
-}  */
-/* .btnedit{
-    display: flex;
-    align-items: center;
-    color: #fff;
-    width: 5rem;
-    height: 3rem;
-    padding: 1rem 2rem;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    margin: 1rem;
-    margin-top: 1rem; 
-} */
-

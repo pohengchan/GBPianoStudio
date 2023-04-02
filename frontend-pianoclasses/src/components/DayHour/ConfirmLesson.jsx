@@ -57,21 +57,67 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
     };
 
     const deleteLesson = async (id) => {
-        await instance.delete(`/api/lesson/${eValues.id}`);
-        onClose();
-        Swal.fire({
-          position: 'center',
-          title: 'Lesson deleted',
-          text: 'You have successfully deleted the lesson.',
-          confirmButtonText: 'OK',
-          color: 'white', 
-          background: '#676060', 
-          confirmButtonColor: 'black', 
-          customClass: {
-            confirmButton: 'custom-button-class confirm-button'
-          },
-          buttonsStyling: false,
-        }) 
+      Swal.fire({
+        title: 'Delete Lesson',
+        text: "Are you sure you want to delete this lesson?", 
+        showCancelButton: true, 
+        // confirmButton: 'true', 
+        cancelButtonText: 'NO, CANCEL',
+        confirmButtonText: 'YES, DELETE!',
+        color: 'white', 
+        background: '#676060', 
+        confirmButtonColor: 'black', 
+        cancelButtonColor:'#F15A5A',
+        customClass: {
+          confirmButton: 'custom-button-class confirm-button',
+          cancelButton: 'custom-button-class cancel-button'
+        },
+        buttonsStyling: false,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await instance.delete(`/api/lesson/${eValues.id}`);
+          if (response.errors) {
+            // setErrors(response.errors);
+          } else {
+              onClose();
+              Swal.fire({
+                    position: 'center',
+                    title: 'Lesson deleted',
+                    text: 'You have successfully deleted the lesson.',
+                    confirmButtonText: 'OK',
+                    color: 'white', 
+                    background: '#676060', 
+                    confirmButtonColor: 'black', 
+                    customClass: {
+                      confirmButton: 'custom-button-class confirm-button'
+                    },
+                    buttonsStyling: false,
+                  }) 
+
+          }
+        }
+      });
+
+
+
+
+
+        // await instance.delete(`/api/lesson/${eValues.id}`);
+        // onClose();
+        // Swal.fire({
+        //   position: 'center',
+        //   title: 'Lesson deleted',
+        //   text: 'You have successfully deleted the lesson.',
+        //   confirmButtonText: 'OK',
+        //   color: 'white', 
+        //   background: '#676060', 
+        //   confirmButtonColor: 'black', 
+        //   customClass: {
+        //     confirmButton: 'custom-button-class confirm-button'
+        //   },
+        //   buttonsStyling: false,
+        // }) 
+
     };
 
     const handleClose = () => {
@@ -81,17 +127,40 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
   return (
         <div className="modal">
             <div className="modal-content">
-              <span className="close" onClick={handleClose}>&times;</span>
+              <span className="span-modal-close" onClick={handleClose}>&times;</span>
               <h2>Lesson details</h2>
               <div>
-                <p>Student: {eValues.title}</p>
-                <p>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")}</p>
-                <p>Start Time: {moment(eValues.start).format("HH:mm")}</p>
-                <p>End Time: {moment(eValues.end).format("HH:mm")}</p>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">Student:</p>
+                  <p> {eValues.title}</p>
+                </div>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">Date:</p>
+                  <p> {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")}</p>
+                </div>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">Start Time:</p>
+                  <p>{moment(eValues.start).format("HH:mm")}</p>
+                </div>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">End Time:</p>
+                  <p> {moment(eValues.end).format("HH:mm")}</p>
+                </div>
+                <div className="div-modal-text">
+                  <p className="p-modal-text">Student:</p>
+                  <p> {eValues.title}</p>
+                </div>
+
                 {showConfirmed === 0 ?
-                <p>Confirmed: No</p>
+                <div className="div-modal-text">
+                <p className="p-modal-text">Confirmed:</p>
+                <p>No</p>
+                </div>
                 :
-                <p>Confirmed: Yes</p>
+                <div className="div-modal-text">
+                <p className="p-modal-text">Confirmed: </p>
+                <p>Yes</p>
+                </div>
                 }
               </div>             
 
@@ -99,14 +168,14 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
 
                 <div>
                   <p>Do you want to confirm or delete this lesson? </p>
-                  <div className="btnmodal">
-                    <button className="btnNav" onClick={handleConfirm}>CONFIRM</button> 
-                    <button className="btnNav" onClick={deleteLesson}>DELETE</button> 
+                  <div className="modal-button-container">
+                    <button className="btn-modal" onClick={handleConfirm}>CONFIRM</button> 
+                    <button className="btn-modal btn-delete" onClick={deleteLesson}>DELETE</button> 
                   </div>
                 </div> 
                 :
-                <div className="btnmodal">
-                  <button className="btnNav" onClick={handleClose}>OK</button> 
+                <div className="modal-button-container">
+                  <button className="btn-modal" onClick={handleClose}>OK</button> 
                 </div>
               }
 
