@@ -78,6 +78,7 @@ const ShowUsers = () => {
           });
           // setErrors('');
           loadUsers();
+          closeModal();
         }
       }
     });
@@ -125,19 +126,15 @@ const handleCheckboxChange = async(id) => {
           });
         } else {
           console.log(response);
-          loadUsers();
         }
-        loadUsers();
       }
     });
-    loadUsers();
   } catch (error) {
-    loadUsers();
     console.error(error);
   }
   loadUsers();
 }
-  
+  loadUsers();
  return ( 
     <div>
       <h1 className="users">USERS</h1>
