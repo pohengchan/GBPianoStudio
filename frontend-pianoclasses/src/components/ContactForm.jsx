@@ -82,8 +82,8 @@ if (state.succeeded) {
                 </div>
 
                 <div className="contact-btn">
-                    <button className='contact-form-button' type='reset'>CANCEL</button>
                     <button className='contact-form-button' type='submit'>SEND</button>
+                    <button className='contact-form-button btn-cancel'  type='reset'>CANCEL</button>
                 </div>
         </form>
     </>
