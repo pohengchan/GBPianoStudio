@@ -147,7 +147,7 @@ const handleAuthorise = async (id) => {
           <UserDetails
             user={selectedUser}
             closeModal={closeModal}
-              handleEdit={handleEdit}
+            handleEdit={handleEdit}
             deleteUser={() => handleDelete(selectedUser.id)}
           />
         )}

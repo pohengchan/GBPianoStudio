@@ -70,8 +70,8 @@ Swal.fire({
 return (
     <>
     <Navbar/>
-      {id && <h1>Update User: {user.contact_name}</h1>}
-      {!id && <h1>New User</h1>}
+      {id && <h2 className='user'>Update User: {user.contact_name}</h2>}
+      {!id && <h1 className='user'>New User</h1>}
       <div className="card animated fadeInDown">
         {loading && (
           <div className="text-center">
@@ -86,19 +86,23 @@ return (
           </div>
         )}
         {!loading && (
-          <form>
-            <input value={user.contact_name} onChange={ev => setUser({...user, contact_name: ev.target.value})} placeholder="Name"/>
-            <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
-            <input value={user.student_name} onChange={ev => setUser({...user, student_name: ev.target.value})} placeholder="Student's name"/>
-            <input onChange={ev => setUser({...user, candidate_number: ev.target.value})} placeholder="Candidate's number"/>
-            <input value={user.phone_number} onChange={ev => setUser({...user, phone_number: ev.target.value})} placeholder="Phone number"/>
-            <input value={user.date_of_birth} onChange={ev => setUser({...user, date_of_birth: ev.target.value})} placeholder="Date of birth"/>
-            <button className="button" type="button" onClick={handleUpdateUser}>Save
+          <form className='form-react'>
+            <div className='form-control'>
+            <input className='form-edit' value={user.contact_name} onChange={ev => setUser({...user, contact_name: ev.target.value})} placeholder="Name"/>
+            <input className='form-edit' value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
+            <input className='form-edit' value={user.student_name} onChange={ev => setUser({...user, student_name: ev.target.value})} placeholder="Student's name"/>
+            <input  className='form-edit'onChange={ev => setUser({...user, candidate_number: ev.target.value})} placeholder="Candidate's number"/>
+            <input className='form-edit' value={user.phone_number} onChange={ev => setUser({...user, phone_number: ev.target.value})} placeholder="Phone number"/>
+            <input className='form-edit' value={user.date_of_birth} onChange={ev => setUser({...user, date_of_birth: ev.target.value})} placeholder="Date of birth"/>
+            </div>
+            <div className='set-buttons'>
+            <button className="save" type="button" onClick={handleUpdateUser}>SAVE
               </button>
-              <button className="button" type="button" onClick={() => window.history.back()}>
-  Cancel
+              <button className="cancel" type="button" onClick={() => window.history.back()}>
+  CANCEL
 </button>
-          </form>
+</div>
+   </form>
         )}
       </div>
       <Footer/>
