@@ -10,7 +10,7 @@ import '../../src/styles/showUsers.css';
 var instance = getAxiosInstance();
 const ShowUsers = () => {
   const [users, setUsers] = useState([]);
-  // const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
   // const [isChecked, setIsChecked] = useState(false);
@@ -47,8 +47,8 @@ const ShowUsers = () => {
       text: "Are you sure you want to delete this user?", 
       showCancelButton: true, 
       // confirmButton: 'true', 
-      cancelButtonText: 'No, cancel.',
-      confirmButtonText: 'Yes, delete!',
+      cancelButtonText: 'NO, CANCEL',
+      confirmButtonText: 'YES, DELETE!',
       color: 'white', 
       background: '#676060', 
       confirmButtonColor: 'black', 
@@ -91,8 +91,8 @@ const handleCheckboxChange = async(id) => {
         text: "Are you sure you want to authorise this user?", 
         showCancelButton: true, 
         // confirmButton: 'true', 
-        cancelButtonText: 'No, cancel.',
-        confirmButtonText: 'Yes, authorise!',
+        cancelButtonText: 'NO, CANCEL',
+        confirmButtonText: 'YES, AUTHORISE!',
         color: 'white', 
         background: '#676060', 
         confirmButtonColor: 'black', 
@@ -158,28 +158,11 @@ const handleCheckboxChange = async(id) => {
                 <td>{user.student_name}</td>
                 <td>{user.email}</td>
                  <td>
-                    {/* <Authorizer user={user} /> */}
-                { user.is_authorised === 1 ?
-                // <input 
-                // type="checkbox" 
-                // className="Checkbox" 
-                // value={user.is_authorised}
-                // id={user.id} 
-                // defaultChecked={true}
-                // disabled={true}
-                // />
-                <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckCheckedDisabled" checked disabled />
-                :
-                // <input 
-                // type="checkbox" 
-                // className="Checkbox" 
-                // value="0"
-                // id={user.id} 
-                // onChange={e=>handleCheckboxChange(user.id)} 
-                // />
-                <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckDefault" onChange={e=>handleCheckboxChange(user.id)} ></input>
-                }
-              
+                    { user.is_authorised === 1 ?
+                    <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckCheckedDisabled" checked disabled />
+                    :
+                    <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckDefault" onChange={e=>handleCheckboxChange(user.id)} ></input>
+                    }
                   </td>
                   <td>
                   <ModalButton onClick={() => getUserDetails(user.id)}>Details</ModalButton>
@@ -198,6 +181,7 @@ const handleCheckboxChange = async(id) => {
           />
         )}
       </div>
+      {errors && <p>{errors}</p>}
     </div>
   );
 };

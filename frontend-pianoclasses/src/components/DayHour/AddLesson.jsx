@@ -83,10 +83,10 @@ export default function AddLesson ({isOpen, onClose, onEventAdded, calValues}) {
         // <Modal show={show} style={customStyles} isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} >
     <div className="modal">
         <div className="modal-content">
-          <span className="close" onClick={handleClose}>&times;</span>
+          <span className="span-modal-close" onClick={handleClose}>&times;</span>
             <h2>Add a new lesson</h2>
             <form  className="add-event-modal" onSubmit={onSubmit}>
-                <label>Student's name</label>
+                <label>Student / Title</label>
                 <input className="lesson-input" placeholder="Student's name" value={title} onChange={e => setTitle(e.target.value)} />
                 <div> 
                     <label>Start Date and Time</label>
@@ -113,9 +113,9 @@ export default function AddLesson ({isOpen, onClose, onEventAdded, calValues}) {
                     <label>End Time</label>
                     {end && <input placeholder="" className="lesson-input"  value={end} onChange={e => setEnd(e.target.value)} />}
                 </div>
-                <div className="btnmodal">             
-                    <button className="btnNav" type="submit" >Add Lesson</button>
-                    <button className="btnNav" type="reset" onClick={handleClose}>Cancel</button>
+                <div className="modal-button-container">             
+                    <button className="btn-modal" type="submit" >ADD</button>
+                    <button className="btn-modal btn-cancel" type="reset" onClick={handleClose}>CANCEL</button>
                 </div>
             </form>
 

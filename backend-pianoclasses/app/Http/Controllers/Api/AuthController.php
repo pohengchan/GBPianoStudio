@@ -1,33 +1,30 @@
 <?php
-
 namespace App\Http\Controllers\Api;
-
-use App\Models\User; 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash; 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers;
 
 
 class AuthController extends Controller
 {
-   public function register(Request $request)
-   {
-    $validator = Validator::make($request->all(),[
-        'contact_name' => 'required',
-        'email' => 'required| max:191 |unique:users,email',
-        'phone_number' => 'required',
-        'student_name' => 'required',
-        'date_of_birth' => 'required',
-        'password' => 'required| min: 8',
-       
-    ]);
+  public function register(Request $request)
+  {
+  $validator = Validator::make($request->all(),[
+    'contact_name' => 'required',
+    'email' => 'required| max:191 |unique:users,email',
+    'phone_number' => 'required',
+    'student_name' => 'required',
+    'date_of_birth' => 'required',
+    'password' => 'required| min: 8',
+  ]);
  if($validator->fails())
  {
-    return response()->json([
-    'validation_errors'=>$validator->messages(),
-    ]);
+  return response()->json([
+  'validation_errors'=>$validator->messages(),
+  ]);
  }
  else {
     $user = User::create([
@@ -50,20 +47,17 @@ class AuthController extends Controller
         ]);
  }  
 }
-
-
-public function login(Request $request) 
+public function login(Request $request)
 {
-    $validator = Validator::make($request->all(), [
-        'email'=>'required|email|max:191',
-        'password'=>'required',
-    ]);
-
-    if($validator->fails())
+  $validator = Validator::make($request->all(), [
+    'email'=>'required|email|max:191',
+    'password'=>'required',
+  ]);
+  if($validator->fails())
  {
-    return response()->json([
-    'validation_errors'=>$validator->messages(),
-    ]);
+  return response()->json([
+  'validation_errors'=>$validator->messages(),
+  ]);
  }
  else {
 
@@ -127,3 +121,15 @@ public function logout()
     ]);
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
