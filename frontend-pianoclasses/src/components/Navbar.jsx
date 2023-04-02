@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/navbarStyle.css";
+import "../styles/NavbarStyle.css";
 import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
@@ -12,13 +12,32 @@ var instance = getAxiosInstance();
 
 const logoutSubmit = (e) =>{
     e.preventDefault();
-    instance.post('http://localhost:8000/api/logout').then(res=> {
+    instance.post(`/api/logout`).then(res=> {
         if(res.data.status === 200){
         localStorage.removeItem('auth_token');
         localStorage.removeItem('auth_name');
         localStorage.clear();
-        Swal.fire({ text: res.data.message,color: 'white', background: '#676060', confirmButton: 'true', confirmButtonColor: '#01FDFD', });
-        window.location = "/";
+
+        Swal.fire({  
+          confirmButton: true, 
+          text: res.data.message, 
+          color: 'white', 
+          background: '#676060', 
+          position: 'center',
+          title: 'Logout',
+          confirmButtonText: 'OK',
+          confirmButtonColor: 'black', 
+          customClass: {
+            confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
+        })
+        .then(async (result) => {
+          if (result.isConfirmed) {
+            window.location = "/";
+            }
+          }
+        );
         }
       });
 }
@@ -32,33 +51,26 @@ const logoutSubmit = (e) =>{
       Calendar = '';
 
       AuthButtons = (
-        
-      <div className="login-out">
-       
-        <NavLink to="/Login" className="link" activeclassname="active"><li>LOGIN</li></NavLink>
-      
-        <NavLink to="/Register" className="link" activeclassname="active"><li>REGISTER</li></NavLink>
+        <div className="login-out">
+          <NavLink to="/Login" className="link" activeclassname="active"><li>LOGIN</li></NavLink>
+          <NavLink to="/Register" className="link" activeclassname="active"><li>REGISTER</li></NavLink>
         </div> 
-     );
+      );
     } else{
       if(localStorage.getItem('role')==='admin') {
         ManageUsers =  (
           <>  
-            {/* <ul className="links"> */}
              <NavLink to="/Users" className="link" activeclassname="active">
-            <li>MANAGE USERS</li>
-          </NavLink>
-          {/* </ul> */}
+             <li>MANAGE USERS</li>
+             </NavLink>
           </>
         );
-       }
+      }
       Calendar =  (
         <>  
-        {/* <ul className="links"> */}
            <NavLink to="/Calendar" className="link" activeclassname="active">
-          <li>BOOK A CLASS</li>
-        </NavLink>
-        {/* </ul> */}
+           <li>BOOK A CLASS</li>
+           </NavLink>
         </>
       );
 
@@ -68,17 +80,16 @@ const logoutSubmit = (e) =>{
       </li>
     )}
 
-  const [toggle, setToggle] = useState();
-  const toggleIcon = toggle ? (
-    <Icon icon={x} size={26} />
-  ) : (
-    <Icon icon={menu} size={26} />
+    const [toggle, setToggle] = useState();
+    const toggleIcon = toggle ? (
+      <Icon icon={x} size={26} />
+    ) : (
+      <Icon icon={menu} size={26} />
     );
 
-  const handleToggle = () => {
-    setToggle(!toggle);
-
-  };
+    const handleToggle = () => {
+      setToggle(!toggle);
+    };
 
   return (
 

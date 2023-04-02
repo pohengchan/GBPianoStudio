@@ -81,9 +81,19 @@ table, th, td {
     padding: 0;
 }
 .btnNav{
-    padding: 0.4rem;
-    font-size: 0.7rem;
-    width: 4rem;    
+    /* font-size: 0.7rem; */
+    font-size: 14px;
+    width: 5rem;
+    height: 2rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    position: relative;
+    margin: 0.5rem;
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    border-radius: 25px;
+    box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
 }
 
 h2{
@@ -91,9 +101,6 @@ h2{
     font-size: 2rem;
     color: rgb(237, 160, 173);
     text-shadow:
-    /* 0 0 5px var(--dark-pink),
-    0 0 10px var(--dark-pink), */
-    /* 0 0 20px var(--dark-pink), */
     0 0 40px var(--dark-pink),
     0 0 80px var(--dark-pink),
     0 0 90px var(--dark-pink),
@@ -144,13 +151,16 @@ p{
 /* .Mgn {
     align-items: center;
 } */
-
+.btnmodal{
+    display: flex;
+    justify-content: space-between;
+}
 
 
 @media(max-width: 768px){
     button{
         padding: 1%;
-        font-size: 7px;
+        font-size: 14px;
         height: auto;
         width: 2rem;
         
@@ -186,7 +196,7 @@ Si tienes que tocarlo, pon un class!
 Si no, va a romper el calendario
 */
     p{
-        font-size: 8px;
+        font-size: 14px;
     }
     
 .container{
@@ -194,7 +204,7 @@ Si no, va a romper el calendario
     margin-left: 1%;
     margin-right: 0%;
 }
-btn-edit{
+.btn-edit{
     margin-left: 60%;
 }
 .modal {
@@ -222,6 +232,8 @@ btn-edit{
     border-radius: 0.313rem;
     background-color: var(--background);
 }
+
+
 }
 
 /* .button-group {

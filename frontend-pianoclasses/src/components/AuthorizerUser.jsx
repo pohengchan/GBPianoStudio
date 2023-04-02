@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/authorizerUsers.css'
 import { useState } from "react";
-import DayHour from './DayHour/DayHour';
 import { getAxiosInstance } from '../services/functions';
 var instance = getAxiosInstance();
 
@@ -21,33 +20,25 @@ function Authorizer({ user }) {
             console.log(instance);
           } catch (error) {
             console.error(error);
-          }
-
+        }
     };
 
-    if (!user) {
+if (!user) {
     return null; 
-    }
+}
 
-    return (
+return (
     <div>
-        <input 
+    <input 
         type="checkbox" 
         className="Checkbox" 
         id={`user-${user.id}`} 
+        checked={isChecked}
         onChange={handleCheckboxChange} 
-        />
-        {isChecked && <AccessDayHour />}
+    />
+    {/* {showLogin && <p></p>} */}
     </div>
-  );
-}
-
-function AccessDayHour() {
-    const grantAccess = () => {
-        return <DayHour />;
-    }
-return grantAccess;
-
+);
 }
 
 export default Authorizer;
