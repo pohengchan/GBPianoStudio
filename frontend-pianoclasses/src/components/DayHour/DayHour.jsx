@@ -28,6 +28,83 @@ function DayHour () {
     const [isUpdateOpen, setIsUpdateOpen] = useState(false); //update modal
     const [loadCalendar, setLoadCalendar] = useState(true);
    
+    async function handleDatesSet() {
+      if (loadCalendar===true) {
+        const response = await instance.get(`/api/lessons`);
+        setEvents(response.data);
+        eventState(events);
+        setLoadCalendar(false);
+      }
+      eventState(events);
+    }
+
+    //set event colours and editable
+    function eventState (events) {
+
+      for (let i = 0; i < events.length; i++) {
+        //set default values on initializing
+        events[i].editable=false;
+        events[i].durationEditable=false;
+
+        if (localStorage.role==="admin" || events[i].user_id===parseInt(localStorage.id)) {
+          if (events[i].is_confirmed===1) {
+            events[i].editable=true;
+            events[i].durationEditable=false;
+            events[i].backgroundColor='rgb(71, 71, 251)';//dark blue
+          };
+          if (events[i].is_confirmed===0) {
+            events[i].editable=true;
+            events[i].durationEditable=false;
+            events[i].backgroundColor='#FA1E9A';  // pink
+          };
+        } else {
+          events[i].title=""; //hide other user info from current user unless admin
+          events[i].backgroundColor='#676060'; //grey
+        };
+
+      }
+    }
+
+    //this function opens the modal to add the lesson
+    const openModal  = (info) => {
+      const { start, end } = info;
+      setEvents([
+        ...events,
+        {
+          start,
+          end,
+        },
+      ]);
+      // check if the lesson is after 24hrs 
+      if (moment(start).format("YYYY-MM-DD HH:mm:ss") > minStart) {
+
+        setIsAddOpen(true);
+        passArray= {
+          id: localStorage.getItem('id'), 
+          title: localStorage.getItem('sname'), 
+          start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), 
+          end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")
+        }
+
+        setLoadCalendar(true);
+        setIsAddOpen(true)
+      } else {
+
+      Swal.fire({
+        position: 'center',
+        title: 'Lesson not booked',
+        text: 'Sorry! You cannot book a lesson with less than 24hr notice.',
+        confirmButtonText: 'OK',
+        color: 'white', 
+        background: '#676060', 
+        confirmButtonColor: 'black', 
+        customClass: {
+          confirmButton: 'custom-button-class confirm-button'
+        },
+        buttonsStyling: false,
+      }) 
+      }
+    }
     const onEventAdded = event => {
 
       event.start=moment(event.start).format("YYYY-MM-DD HH:mm:ss");
@@ -63,111 +140,36 @@ function DayHour () {
       setLoadCalendar(true);
       passArray={id:0, title: "", start:"", end:""};
 
-  };
-
- 
-async function handleDatesSet() {
-  if (loadCalendar===true) {
-    const response = await instance.get(`/api/lessons`);
-    setEvents(response.data);
-    eventState(events);
-    setLoadCalendar(false);
-  }
-  eventState(events);
-}
-//set event colours and editable
-function eventState (events) {
-
-  for (let i = 0; i < events.length; i++) {
-    //set default values on initializing
-    events[i].editable=false;
-    events[i].durationEditable=false;
-
-    if (localStorage.role==="admin" || events[i].user_id===parseInt(localStorage.id)) {
-      if (events[i].is_confirmed===1) {
-        events[i].editable=true;
-        events[i].durationEditable=false;
-        events[i].backgroundColor='rgb(71, 71, 251)';//dark blue
-      };
-      if (events[i].is_confirmed===0) {
-        events[i].editable=true;
-        events[i].durationEditable=false;
-        events[i].backgroundColor='#FA1E9A';  // pink
-      };
-    } else {
-      events[i].title=""; //hide other user info from current user unless admin
-      events[i].backgroundColor='#676060'; //grey
     };
 
-  }
-}
-//shows lesson details, allows teacher to confirm classes
-const handleSelect = (info) => {
-  passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
-  setIsConfirmOpen(true);
-  setLoadCalendar(true);
-};
+    
+        
+    //shows lesson details, allows teacher to confirm classes
+    const handleSelect = (info) => {
+      passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
+      setIsConfirmOpen(true);
+      setLoadCalendar(true);
+    };
 
-//shows update modal for user to change their lesson time
-const changeLesson = (info) => {
-  passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
-  setIsUpdateOpen(true);
-  setLoadCalendar(true);
-};
+    //shows update modal for user to change their lesson time
+    const changeLesson = (info) => {
+      passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
+      setIsUpdateOpen(true);
+      setLoadCalendar(true);
+    };
 
-//this function opens the modal to add the lesson
-const openModal  = (info) => {
-  const { start, end } = info;
-  setEvents([
-    ...events,
-    {
-      start,
-      end,
-    },
-  ]);
-  // check if the lesson is after 24hrs 
-  if (moment(start).format("YYYY-MM-DD HH:mm:ss") > minStart) {
-
-    setIsAddOpen(true);
-    passArray= {
-      id: localStorage.getItem('id'), 
-      title: localStorage.getItem('sname'), 
-      start: moment(info.start).format("YYYY-MM-DD HH:mm:ss"), 
-      end: moment(info.end).format("YYYY-MM-DD HH:mm:ss")
+    function onUpdateClose () {
+      setLoadCalendar(true);
+      setIsUpdateOpen(false);
     }
-
-    setLoadCalendar(true);
-    setIsAddOpen(true)
-  } else {
-
-  Swal.fire({
-    position: 'center',
-    title: 'Lesson not booked',
-    text: 'Sorry! You cannot book a lesson with less than 24hr notice.',
-    confirmButtonText: 'OK',
-    color: 'white', 
-    background: '#676060', 
-    confirmButtonColor: 'black', 
-    customClass: {
-      confirmButton: 'custom-button-class confirm-button'
-    },
-    buttonsStyling: false,
-  }) 
-  }
-}
-
-function onUpdateClose () {
-  setLoadCalendar(true);
-  setIsUpdateOpen(false);
-}
-function onConfirmClose () {
-  setLoadCalendar(true);
-  setIsConfirmOpen(false);
-}
-function onAddClose () {
-  setLoadCalendar(true);
-  setIsAddOpen(false);
-}
+    function onConfirmClose () {
+      setLoadCalendar(true);
+      setIsConfirmOpen(false);
+    }
+    function onAddClose () {
+      setLoadCalendar(true);
+      setIsAddOpen(false);
+    }
 
         return (
           <div className='calendar-container'>
