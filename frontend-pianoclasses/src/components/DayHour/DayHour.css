@@ -1,5 +1,12 @@
- .row {
+.row {
     display: flex;
+}
+
+span.fc-icon-chevron-left {
+    padding-top:0;
+}
+span.fc-icon-chevron-right {
+    padding-top:0;
 }
 
 .col {
@@ -22,7 +29,7 @@
 }
 
 .add-event-modal {
-    background-color: black;
+    background-color: var(--background);
     padding: 5%;
     
 }
@@ -129,4 +136,7 @@
 .legend-p {
     font-size: 14px;
     padding-right: 1em;
+}
+.label-duration {
+    padding-right: 5px;
 }

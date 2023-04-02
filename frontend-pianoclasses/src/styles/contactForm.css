@@ -1,4 +1,4 @@
-contact-label {
+.contact-label {
   display: inline-block;
   margin-bottom: 5px;
   font-family: 'Lexend', sans-serif;
@@ -111,7 +111,7 @@ inset 0 0 7px 1px var(--light-pink);
       background: transparent;
       cursor: pointer;
       color: var(--light-blue);
-      width: 15%;
+      width: 125px;
       padding: 1rem 2.5rem;
       font-size: 1rem;
       border: 2px solid var(--light-blue);
@@ -125,16 +125,14 @@ inset 0 0 7px 1px var(--light-pink);
       color:black;
     }
 
-    #btn-cancel {
+    .btn-cancel {
       color:#F15A5A;
       border: 2px solid #F15A5A;
       border-radius: 20px;
       box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
     }
 
-    #btn-cancel:hover {
+    .btn-cancel:hover {
       background-color:#F15A5A;
       color: black;
     }
-
-    
