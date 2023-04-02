@@ -6,6 +6,7 @@ import Contactbutton from './components/Contactbutton';
 import Textborder from './components/Textborder';
 import Piano from './components/Piano';
 import Play from './components/Play';
+import Arrow from './components/Arrow';
 
 
 function App() {
@@ -14,7 +15,10 @@ function App() {
     <Navbar/>
     <Piano/>
     <Textborder/>
-    <Contactbutton/>
+    <div id="arrow-container">
+      <Arrow/>
+      <Contactbutton/>
+    </div>
     <h1 className='h1-play'>GIVE IT A TRY A CLICK ON THE KEYS</h1>
     <Play/>
     <Footer/>

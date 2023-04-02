@@ -12,13 +12,15 @@
 @import './styles/tipstext.css';
 @import './styles/examsText.css';
 @import './styles/play.css';
-
+@import './styles/arrow.css';
 
 
   *{
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
+      
   }
   
   :root {
@@ -105,3 +107,11 @@
   background-color:#F15A5A;
   color: black;
 }
+
+
+  #arrow-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+  }
