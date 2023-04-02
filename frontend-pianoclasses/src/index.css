@@ -73,7 +73,8 @@
       0 0 150px rgb(182, 25, 190);
   
   }
-  
+
+/* sweetalerts for website */  
 .swal2-confirm, .swal2-cancel {
     width: 100px;
 }
