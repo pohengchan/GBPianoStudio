@@ -78,6 +78,7 @@ const ShowUsers = () => {
           });
           // setErrors('');
           loadUsers();
+          closeModal();
         }
       }
     });
