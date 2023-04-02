@@ -18,7 +18,7 @@ const UserDetails = ({ user, closeModal, handleEdit, deleteUser }) => {
           <p>Date of birth: {date_of_birth}</p>
           <p>Candidate number: {candidate_number}</p>
         </div>
-        <div className='btnmodel'>
+        <div className='btnmodal'>
           <button className='btnNav' onClick={handleEdit}>Edit</button>
           <button className='btnNav' onClick={deleteUser}>Delete</button>
         </div>

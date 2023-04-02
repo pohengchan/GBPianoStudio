@@ -5,7 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from "@fullcalendar/interaction";
 import { useState } from "react";
-import AddEventModal from './AddEventModal';
+import AddLesson from './AddLesson';
 import ConfirmLesson from './ConfirmLesson';
 import UpdateLesson from './UpdateLesson';
 import { useRef } from 'react';
@@ -23,11 +23,11 @@ minStart = moment(minStart).format("YYYY-MM-DD HH:mm:ss");
 
 
 function DayHour () {
-    const [modalOpen, setModalOpen] = useState(false);
+    const [isAddOpen, setIsAddOpen] = useState(false);
     const calendarRef = useRef(null);
     const [events, setEvents] = useState([]);
-    const [isOpen, setIsOpen] = useState(false); //confirm pop up
-    const [isUpdateOpen, setIsUpdateOpen] = useState(false); //confirm pop up
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false); //confirm modal
+    const [isUpdateOpen, setIsUpdateOpen] = useState(false); //update modal
     const [loadCalendar, setLoadCalendar] = useState(true);
    
     const onEventAdded = event => {
@@ -106,7 +106,7 @@ function eventState (events) {
 //shows lesson details, allows teacher to confirm classes
 const handleSelect = (info) => {
   passArray= {id: info.event.id, title: info.event.title, start: moment(info.event.start).format("YYYY-MM-DD HH:mm:ss"), end: moment(info.event.end).format("YYYY-MM-DD HH:mm:ss")};
-  setIsOpen(true);
+  setIsConfirmOpen(true);
   setLoadCalendar(true);
 };
 
@@ -130,7 +130,7 @@ const openModal  = (info) => {
   // check if the lesson is after 24hrs 
   if (moment(start).format("YYYY-MM-DD HH:mm:ss") > minStart) {
 
-    setModalOpen(true);
+    setIsAddOpen(true);
     passArray= {
       id: localStorage.getItem('id'), 
       title: localStorage.getItem('sname'), 
@@ -139,6 +139,7 @@ const openModal  = (info) => {
     }
 
     setLoadCalendar(true);
+    setIsAddOpen(true)
   } else {
 
   Swal.fire({
@@ -195,11 +196,11 @@ function onUpdateClose () {
               
             />
             </div>
-            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
-
-            {/** show details of selected event */}
-            {isOpen && (           
-              <ConfirmLesson isOpen={isOpen} onClose={() => setIsOpen(false)} eValues={passArray} />
+            {isAddOpen && (
+              <AddLesson isOpen={isAddOpen} onClose={() => setIsAddOpen(false)} onEventAdded={event => onEventAdded(event)} calValues={passArray} />
+            )}
+            {isConfirmOpen && (           
+              <ConfirmLesson isOpen={isConfirmOpen} onClose={() => setIsConfirmOpen(false)} eValues={passArray} />
             )}
             {isUpdateOpen && (
               <UpdateLesson isOpen={isUpdateOpen} onClose={() => onUpdateClose()} eValues={passArray} />

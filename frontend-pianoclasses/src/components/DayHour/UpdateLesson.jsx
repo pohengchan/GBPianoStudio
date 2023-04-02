@@ -62,16 +62,19 @@ export default function UpdateLesson ({isUpdateOpen, onClose, eValues}) {
     
         <div className="modal">
             <div className="modal-content">
-              <h1>Lesson details</h1>
-              <div>Student: {eValues.title}</div>
-              <div>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")} </div>
-              <div>Start Time: {moment(eValues.start).format("HH:mm")}</div>
-              <div>End Time: {moment(eValues.end).format("HH:mm")}</div>
+              <span className="close" onClick={handleClose}>&times;</span>
+              <h2>Lesson details</h2>
               <div>
-                <div className="modal-buttons">Are you sure you want to change this lesson? </div>
-                <div className="modal-buttons">
-                  <button  className="confirm-buttons" onClick={handleClose}>CANCEL</button>
-                  <button className="confirm-buttons" onClick={handleUpdate}>CONFIRM</button> 
+                <p>Student: {eValues.title}</p>
+                <p>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")}</p> 
+                <p>Start Time: {moment(eValues.start).format("HH:mm")}</p>
+                <p>End Time: {moment(eValues.end).format("HH:mm")}</p>
+              </div>
+              <div>
+                <p>Are you sure you want to change this lesson? </p>
+                <div className="btnmodal">
+                  <button className="btnNav" onClick={handleUpdate}>CONFIRM</button> 
+                  <button  className="btnNav" onClick={handleClose}>CANCEL</button>
                 </div>
               </div>
             </div>

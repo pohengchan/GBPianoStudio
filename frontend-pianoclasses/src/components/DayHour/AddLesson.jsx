@@ -1,5 +1,6 @@
+/* eslint-disable no-lone-blocks */
 import React, {useState, useEffect} from "react";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 import '../../index.css';
 import moment from "moment";
 import Swal from "sweetalert2";
@@ -8,12 +9,12 @@ const today = Date.now();
 var minStart = moment(today).add(24, 'HH').toDate();
 minStart = moment(minStart).format("YYYY-MM-DDTHH:mm");
 
-export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues}) {
+export default function AddLesson ({isOpen, onClose, onEventAdded, calValues}) {
     
     const [title, setTitle] = useState('');
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
-    const [show, setShow] = useState();
+    // const [show, setShow] = useState();
 
     useEffect(() => {
         // simulate async api call with set timeout
@@ -53,9 +54,9 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
         }
     }
 
-    const customStyles = {
-        overlay: {zIndex: 1000}
-    };
+    // const customStyles = {
+    //     overlay: {zIndex: 1000}
+    // };
 
     const changeStart = (event) => {
         console.log(event);
@@ -74,30 +75,34 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
     };
 
     const handleClose = () => {
-        setShow(false);
+        // setShow(false);
         onClose(true);
     };
 
     return (
-        <Modal show={show} style={customStyles} isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} >
+        // <Modal show={show} style={customStyles} isOpen={isOpen} onRequestClose={onClose} ariaHideApp={false} >
+    <div className="modal">
+        <div className="modal-content">
+          <span className="close" onClick={handleClose}>&times;</span>
+            <h2>Add a new lesson</h2>
             <form  className="add-event-modal" onSubmit={onSubmit}>
                 <label>Student's name</label>
                 <input className="lesson-input" placeholder="Student's name" value={title} onChange={e => setTitle(e.target.value)} />
                 <div> 
-                    <label>Start Date</label>
+                    <label>Start Date and Time</label>
                     <input type="hidden" input className="lesson-input" value={ moment(start).format("YYYY-MM-DD HH:mm:ss")} onChange={e => setStart(e.target.value)} />
-                <input
-                    id="studentsName"
-                    type="datetime-local"
-                    name="studentsName"
-                    min={minStart}
-                    className="lesson-input" 
-                    value={start} 
-                    step="60"
-                    onChange={e => changeStart(e.target.value)} />
+                    <input
+                        id="studentsName"
+                        type="datetime-local"
+                        name="studentsName"
+                        min={minStart}
+                        className="lesson-input" 
+                        value={start} 
+                        step="60"
+                        onChange={e => changeStart(e.target.value)} />
                 </div>
                 <div>
-                    <label>Change the class duration: </label>
+                    <label className="label-duration">Change the class duration: </label>
                     <select name="duration" id="duration" onChange={onChange} >
                         <option value="30">30 mins</option>
                         <option value="45">45 mins</option>
@@ -108,11 +113,14 @@ export default function AddEventModal ({isOpen, onClose, onEventAdded, calValues
                     <label>End Time</label>
                     {end && <input placeholder="" className="lesson-input"  value={end} onChange={e => setEnd(e.target.value)} />}
                 </div>
-                <div className="modal-buttons">
-                    <button type="reset" onClick={handleClose}>Cancel❌</button>
-                    <button type="submit" >Add Lesson</button>
+                <div className="btnmodal">             
+                    <button className="btnNav" type="submit" >Add Lesson</button>
+                    <button className="btnNav" type="reset" onClick={handleClose}>Cancel</button>
                 </div>
             </form>
-        </Modal>
+
+        </div>
+    </div>    
+    //  </Modal> 
     )
 }

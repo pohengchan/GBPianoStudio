@@ -4,9 +4,9 @@ import moment from "moment";
 import { getAxiosInstance } from '../../services/functions';
 import Swal from "sweetalert2";
 
-var instance = getAxiosInstance();
-var showConfirmed = 0;
-var userID = 0;
+let instance = getAxiosInstance();
+let showConfirmed = 0;
+let userID = 0;
 
 export default function ConfirmLesson ({isOpen, onClose, eValues}) {
 
@@ -17,6 +17,7 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
             const response = await instance.get(`/api/lesson/${eValues.id}`);
             showConfirmed = response.data.is_confirmed;
             userID = response.data.user_id;
+            console.log(response.data.is_confirmed);
         } catch (error) {
             console.error(error);
         }
@@ -80,33 +81,36 @@ export default function ConfirmLesson ({isOpen, onClose, eValues}) {
   return (
         <div className="modal">
             <div className="modal-content">
-              <h1>Lesson details</h1>
-              <div>Student: {eValues.title}</div>
-              <div>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")} </div>
-              <div>Start Time: {moment(eValues.start).format("HH:mm")}</div>
-              <div>End Time: {moment(eValues.end).format("HH:mm")}</div>
-              {showConfirmed === 0 ?
-              <div>Confirmed: No</div>
-              :
-              <div>Confirmed: Yes</div>
-              }
+              <span className="close" onClick={handleClose}>&times;</span>
+              <h2>Lesson details</h2>
+              <div>
+                <p>Student: {eValues.title}</p>
+                <p>Date: {moment(eValues.start).format("ddd")} {moment(eValues.start).format("Do MMM YYYY")}</p>
+                <p>Start Time: {moment(eValues.start).format("HH:mm")}</p>
+                <p>End Time: {moment(eValues.end).format("HH:mm")}</p>
+                {showConfirmed === 0 ?
+                <p>Confirmed: No</p>
+                :
+                <p>Confirmed: Yes</p>
+                }
+              </div>             
+
               {localStorage.role === 'admin' && showConfirmed === 0 ?
 
                 <div>
-                  <div className="modal-buttons">Do you want to confirm or delete this lesson? </div>
-                  <div className="modal-buttons">
-                    <button className="confirm-buttons" onClick={deleteLesson}>DELETE</button> 
-                    <button  className="confirm-buttons" onClick={handleClose}>CANCEL</button>
-                    <button className="confirm-buttons" onClick={handleConfirm}>CONFIRM</button> 
+                  <p>Do you want to confirm or delete this lesson? </p>
+                  <div className="btnmodal">
+                    <button className="btnNav" onClick={handleConfirm}>CONFIRM</button> 
+                    <button className="btnNav" onClick={deleteLesson}>DELETE</button> 
                   </div>
                 </div> 
                 :
-                <div className="modal-buttons">
-                  <button className="confirm-buttons" onClick={handleClose}>OK</button> 
+                <div className="btnmodal">
+                  <button className="btnNav" onClick={handleClose}>OK</button> 
                 </div>
               }
 
             </div>
-            </div>
+        </div>
   )
 }

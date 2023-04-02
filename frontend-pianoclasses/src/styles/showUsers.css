@@ -151,7 +151,7 @@ p{
 /* .Mgn {
     align-items: center;
 } */
-.btnmodel{
+.btnmodal{
     display: flex;
     justify-content: space-between;
 }
