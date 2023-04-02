@@ -80,7 +80,7 @@ function Login() {
     <div>
         
         <h1 className='h1-register'>LOGIN</h1>
-        <form onSubmit={loginSubmit}className='form-react'>    
+        <form onSubmit={loginSubmit}className='form-react-login'>    
             <div className='form-control'>
                 <label>Email *</label>
                 <input type="email" name="email" onChange={handleInput} value={loginInput.email}placeholder="emailExample@example.com" />
