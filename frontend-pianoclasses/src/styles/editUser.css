@@ -3,17 +3,16 @@
 }
 .form-edit{
     border-radius: 6px; 
-      background-color: #f0f0f0;
-      display: block;
-      font-family: inherit;
-      font-size: 14px;
-      padding: 10px;
-      border: 1px solid var(--light-pink);
-      box-shadow: 0 0 3px 0 var(--light-pink),
+    background-color: #f0f0f0;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid var(--light-pink);
+    box-shadow: 0 0 3px 0 var(--light-pink),
     inset 0 0 3px 0 var(--light-pink),
     0 0 7px 0 var(--light-pink),
     inset 0 0 3px 0 var(--light-pink),
-
     0 0 7px 1px var(--light-pink),
     inset 0 0 7px 1px var(--light-pink);
     margin-bottom: 1rem;

@@ -6,10 +6,11 @@ import Footer from '../components/Footer';
 function ToUpdate() {
     return (
         <>
-        <Navbar/>
-        <EditUser/>
-        <Footer/>
+            <Navbar/>
+            <EditUser/>
+            <Footer/>
         </>
     )
 }
 export default ToUpdate
+

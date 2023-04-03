@@ -2,12 +2,10 @@ import React from 'react';
 import {useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { updateUser, getUser, } from '../services/Api';
-import Navbar from './Navbar';
-import Footer from './Footer';
 import Swal from 'sweetalert2';
 import '../index.css';
 
-  const UpdateUser = () => {
+function EditUser() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState('');
   const [user, setUser] = useState([{
@@ -82,11 +80,10 @@ import '../index.css';
     }
   };
 return (
-    <>
-    <Navbar/>
-      {id && <h2 className='user'>Update User: {user.contact_name}</h2>}
-      {!id && <h1 className='user'>New User</h1>}
-      <div className="card animated fadeInDown">
+    <div>
+      {id && <h2>Update User: {user.contact_name}</h2>}
+      {!id && <h1 className='users'>New User</h1>}
+      {/* <div className="card animated fadeInDown"> */}
         {loading && (
           <div className="text-center">
             Loading...
@@ -100,30 +97,42 @@ return (
           </div>
         )}
         {!loading && (
+        // <div className="container">
           <form className='form-react'>
             <div className='form-control'>
-            <input className='form-edit' value={user.contact_name} onChange={ev => setUser({...user, contact_name: ev.target.value})} placeholder="Name"/>
-            <input className='form-edit' value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
-            <input className='form-edit' value={user.student_name} onChange={ev => setUser({...user, student_name: ev.target.value})} placeholder="Student's name"/>
-            <input  className='form-edit'onChange={ev => setUser({...user, candidate_number: ev.target.value})} placeholder="Candidate's number"/>
-            <input className='form-edit' value={user.phone_number} onChange={ev => setUser({...user, phone_number: ev.target.value})} placeholder="Phone number"/>
-            <input className='form-edit' value={user.date_of_birth} onChange={ev => setUser({...user, date_of_birth: ev.target.value})} placeholder="Date of birth"/>
+              <input value={user.contact_name} onChange={ev => setUser({...user, contact_name: ev.target.value})} placeholder="Name"/>
             </div>
+            <div className='form-control'>
+              <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
+            </div>
+            <div className='form-control'>
+              <input value={user.student_name} onChange={ev => setUser({...user, student_name: ev.target.value})} placeholder="Student's name"/>
+            </div>
+            <div className='form-control'>
+              <input  onChange={ev => setUser({...user, candidate_number: ev.target.value})} placeholder="Candidate's number"/>
+            </div>
+            <div className='form-control'>
+              <input value={user.phone_number} onChange={ev => setUser({...user, phone_number: ev.target.value})} placeholder="Phone number"/>
+            </div>
+            <div className='form-control'>
+              <input value={user.date_of_birth} onChange={ev => setUser({...user, date_of_birth: ev.target.value})} placeholder="Date of birth"/>
+            </div>
+            {/* </div> */}
             <div className='set-buttons'>
-            <button className="save" type="button" onClick={handleUpdateUser}>SAVE
-              </button>
-              <button className="cancel" type="button" onClick={() => window.history.back()}>
-  CANCEL
-</button>
-</div>
-   </form>
+              {/* <button className="save" type="button" onClick={handleUpdateUser}>SAVE</button>
+              <button className="cancel" type="button" onClick={() => window.history.back()}>CANCEL</button> */}
+              <button className="contact-form-button" type="button" onClick={handleUpdateUser}>SAVE</button>
+              <button className="contact-form-button btn-cancel" type="button" onClick={() => window.history.back()}>CANCEL</button>
+
+            </div>
+          </form>
+          // </div>
         )}
-      </div>
-      <Footer/>
-    </>
+      {/* </div> */}
+    </div>
   );
 };
-export default UpdateUser;
+export default EditUser;
 
 
 
