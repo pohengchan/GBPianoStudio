@@ -1,5 +1,12 @@
- .row {
+.row {
     display: flex;
+}
+
+span.fc-icon-chevron-left {
+    padding-top:0;
+}
+span.fc-icon-chevron-right {
+    padding-top:0;
 }
 
 .col {
@@ -8,7 +15,7 @@
     max-width: 100%;
 }
 .calendar_default_event_inner {
-    background: #2e78d6;
+    background: var(--light-blue);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -22,7 +29,7 @@
 }
 
 .add-event-modal {
-    background-color: black;
+    background-color: var(--background);
     padding: 5%;
     
 }
@@ -89,11 +96,47 @@
 } */
 
 .fc-day-today {
-    background-color: var(--grey);;
+    background-color: var(--grey);
   }
 
   /* // 1.5em by default */
 .fc-timegrid-slot {
     height: 15em; 
     border-bottom: 0 !important;
+}
+
+.legend-title {
+    font-size: 16px;
+    padding-left: 1em;
+    margin:0 auto;
+}
+.legend {
+    display: flex;
+    justify-content: left;
+    padding-left: 0.5em;
+}
+.legend-icon {
+    margin:0.3em 0.3em 0 0;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    border-width: 1px;
+    border-style: solid;
+    border-color:white;
+    border-radius: 0.5em; 
+
+}
+.i-pink {
+    background-color: var(--dark-pink);
+}
+.i-blue {
+    background-color: var(--dark-blue);
+}
+.i-grey {
+    background-color: var(--grey);
+}
+.legend-p {
+    font-size: 14px;
+    padding-right: 1em;
+}
+.label-duration {
+    padding-right: 5px;
 }

@@ -4,7 +4,7 @@ import { Icon } from "react-icons-kit";
 import { menu } from "react-icons-kit/feather/menu";
 import { x } from "react-icons-kit/feather/x";
 import logo from "../assets/images/Logo3.png";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { getAxiosInstance } from "../services/functions";
 import Swal from 'sweetalert2';
 
@@ -12,13 +12,32 @@ var instance = getAxiosInstance();
 
 const logoutSubmit = (e) =>{
     e.preventDefault();
-    instance.post('http://localhost:8000/api/logout').then(res=> {
+    instance.post(`/api/logout`).then(res=> {
         if(res.data.status === 200){
         localStorage.removeItem('auth_token');
         localStorage.removeItem('auth_name');
         localStorage.clear();
-        Swal.fire({ text: res.data.message,color: 'white', background: '#676060', confirmButton: 'true', confirmButtonColor: '#01FDFD', });
-        window.location = "/";
+
+        Swal.fire({  
+          confirmButton: true, 
+          text: res.data.message, 
+          color: 'white', 
+          background: '#676060', 
+          position: 'center',
+          title: 'Logout',
+          confirmButtonText: 'OK',
+          confirmButtonColor: 'black', 
+          customClass: {
+            confirmButton: 'custom-button-class confirm-button'
+          },
+          buttonsStyling: false,
+        })
+        .then(async (result) => {
+          if (result.isConfirmed) {
+            window.location = "/";
+            }
+          }
+        );
         }
       });
 }
@@ -32,30 +51,27 @@ const logoutSubmit = (e) =>{
       Calendar = '';
 
       AuthButtons = (
-        
-      <div className="login-out">
-       
-        <Link to="/Login" className="link"><li>LOGIN</li></Link>
-      
-        <Link to="/Register" className="link"><li>REGISTER</li></Link>
+        <div className="login-out">
+          <NavLink to="/Login" className="link" activeclassname="active"><li>LOGIN</li></NavLink>
+          <NavLink to="/Register" className="link" activeclassname="active"><li>REGISTER</li></NavLink>
         </div> 
-     );
+      );
     } else{
       if(localStorage.getItem('role')==='admin') {
         ManageUsers =  (
-          <div>
-             <Link to="/Users" className="link">
-            <li>MANAGE USERS</li>
-          </Link>
-          </div>
+          <>  
+             <NavLink to="/Users" className="link" activeclassname="active">
+             <li>MANAGE USERS</li>
+             </NavLink>
+          </>
         );
-       }
+      }
       Calendar =  (
-        <div className="calendar-navbar">
-           <Link to="/Calendar" className="link">
-          <li>BOOK A CLASS</li>
-        </Link>
-        </div>
+        <>  
+           <NavLink to="/Calendar" className="link" activeclassname="active">
+           <li>BOOK A CLASS</li>
+           </NavLink>
+        </>
       );
 
       AuthButtons = (
@@ -64,17 +80,16 @@ const logoutSubmit = (e) =>{
       </li>
     )}
 
-  const [toggle, setToggle] = useState();
-  const toggleIcon = toggle ? (
-    <Icon icon={x} size={26} />
-  ) : (
-    <Icon icon={menu} size={26} />
+    const [toggle, setToggle] = useState();
+    const toggleIcon = toggle ? (
+      <Icon icon={x} size={26} />
+    ) : (
+      <Icon icon={menu} size={26} />
     );
 
-  const handleToggle = () => {
-    setToggle(!toggle);
-
-  };
+    const handleToggle = () => {
+      setToggle(!toggle);
+    };
 
   return (
 
@@ -95,18 +110,18 @@ const logoutSubmit = (e) =>{
         {ManageUsers}
         {Calendar}
 
-        <Link to="/Tips" className="link">
+        <NavLink to="/Tips" className="link" activeclassname="active">
           <li>TEACHING TIPS</li>
-        </Link>
-        <Link to="/Exams" className="link">
+        </NavLink>
+        <NavLink to="/Exams" className="link" activeclassname="active">
           <li>EXAMS</li>
-        </Link>
-        <Link to="/About" className="link">
+        </NavLink>
+        <NavLink to="/About" className="link" activeclassname="active">
           <li>ABOUT</li>
-        </Link>
-        <Link to="/Contact" className="link">
+        </NavLink>
+        <NavLink to="/Contact" className="link" activeclassname="active">
           <li>CONTACT</li>
-        </Link>
+        </NavLink>
         {AuthButtons}
       </ul>
     </nav>

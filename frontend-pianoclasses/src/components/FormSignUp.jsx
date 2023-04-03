@@ -3,11 +3,10 @@ import '../index.css';
 import Swal from 'sweetalert2';
 import {useNavigate} from 'react-router-dom';
 import { getAxiosInstance } from '../services/functions';
-// import axios from 'axios';
 
 
 
-    function Form() {
+function Form() {
    const instance = getAxiosInstance();
    const navigate = useNavigate()
    const [registerInput,setRegisterInput] = useState({
@@ -18,8 +17,6 @@ import { getAxiosInstance } from '../services/functions';
     phone_number: '', 
     password: '', 
     error_list: [],
-   
-
    });
 
    const handleInput = (e) => {
@@ -37,28 +34,38 @@ import { getAxiosInstance } from '../services/functions';
             email: registerInput.email,
             phone_number: registerInput.phone_number, 
             password: registerInput.password, 
-           
-        
         }
         console.log(data);
         
         instance.get('/sanctum/csrf-cookie').then(response => { 
-        instance.post('http://localhost:8000/api/register', data).then(res => {
+        instance.post(`/api/register`, data).then(res => {
             console.log(res.data.status);  
             if(res.data.status === 200)
             {
                 console.log(res.data);
             
-                localStorage.setItem('auth_token', res.data.token);
+        
                 localStorage.setItem('auth_name', res.data.contact_name);
-                Swal.fire({   confirmButton: 'true',  text: res.data.message, color: 'white', background: '#676060', confirmButtonColor: '#01FDFD', });
+                Swal.fire({   
+                    confirmButton: true,  
+                    text: res.data.message, 
+                    color: 'white', 
+                    background: '#676060', 
+                    position: 'center',
+                    title: 'Register',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: 'black', 
+                    customClass: {
+                      confirmButton: 'custom-button-class confirm-button'
+                    },
+                    buttonsStyling: false,
+                });
                 navigate('/');
             }
             else
             { 
                 console.log(res.data.validation_errors);
-                setRegisterInput({...registerInput, error_list: res.data.validation_errors});
-                
+                setRegisterInput({...registerInput, error_list: res.data.validation_errors});   
             }
 
         });
@@ -102,11 +109,6 @@ import { getAxiosInstance } from '../services/functions';
                 <span>{registerInput.error_list.password}</span>
                
             </div>
-            {/* <div className = 'form-control'>
-                <label>Confirm password *</label>
-                <input type = "password" name="password2" onChange={handleInput} value={registerInput.password2} placeholder = ".............." />
-                
-            </div> */}
             <div className="buttons">
             <button type='submit' className='button-save'>SAVE</button>
             </div>
