@@ -211,7 +211,6 @@ function DayHour () {
             {isUpdateOpen && (
               <UpdateLesson isOpen={isUpdateOpen} onClose={() => onUpdateClose()} eValues={passArray} />
             )}
-
           </div>
         );
       };
