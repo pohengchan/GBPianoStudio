@@ -60,10 +60,8 @@ function EditUser() {
     text: 'User has been updated.',
     icon: 'success',
     confirmButtonText: 'OK',
-    // iconColor:'white',
     color: 'white',
     background: '#676060',
-    // confirmButtonColor: '#01FDFD',
     position: 'center',
     confirmButtonColor: 'black', 
     customClass: {
@@ -75,7 +73,6 @@ function EditUser() {
     if (response.errors) {
       setErrors(response.errors);
     } else {
-      // setUser(response.user);
       setErrors('');
     }
   };
@@ -83,7 +80,6 @@ return (
     <div>
       {id && <h2>Update User: {user.contact_name}</h2>}
       {!id && <h1 className='users'>New User</h1>}
-      {/* <div className="card animated fadeInDown"> */}
         {loading && (
           <div className="text-center">
             Loading...
@@ -97,7 +93,6 @@ return (
           </div>
         )}
         {!loading && (
-        // <div className="container">
           <form className='form-react'>
             <div className='form-control'>
               <input value={user.contact_name} onChange={ev => setUser({...user, contact_name: ev.target.value})} placeholder="Name"/>
@@ -117,18 +112,17 @@ return (
             <div className='form-control'>
               <input value={user.date_of_birth} onChange={ev => setUser({...user, date_of_birth: ev.target.value})} placeholder="Date of birth"/>
             </div>
-            {/* </div> */}
+          
             <div className='set-buttons'>
-              {/* <button className="save" type="button" onClick={handleUpdateUser}>SAVE</button>
-              <button className="cancel" type="button" onClick={() => window.history.back()}>CANCEL</button> */}
+              
               <button className="contact-form-button" type="button" onClick={handleUpdateUser}>SAVE</button>
               <button className="contact-form-button btn-cancel" type="button" onClick={() => window.history.back()}>CANCEL</button>
 
             </div>
           </form>
-          // </div>
+      
         )}
-      {/* </div> */}
+
     </div>
   );
 };

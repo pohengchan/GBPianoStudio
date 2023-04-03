@@ -76,22 +76,22 @@ public function login(Request $request)
             {
 
 
-                if($user->is_authorised === 0) //checks if user is authorised
+                if($user->is_authorised === 0) 
                 {
-                    // auth()->user()->tokens()->delete();
+                  
                     return response()->json([
                         'status'=>401,
                         'message'=>'You are not an authorised user yet. Please wait for the teacher to authorise your permissions.',
                     ]);     
                 } 
 
-                if($user->is_authorised ===1) //checks if user is authorised
+                if($user->is_authorised ===1) 
                 {
                     $role = 'authorised';
                     $token = $user->createToken($user->email.'_Token', [''])->plainTextToken;
                 }
 
-                if($user->is_admin === 1) //1= Admin
+                if($user->is_admin === 1) 
                 {
                     $role = 'admin';
                     $token = $user->createToken($user->email.'_AdminToken', ['server:admin'])->plainTextToken;
@@ -106,7 +106,7 @@ public function login(Request $request)
                     'studentname'=>$user->student_name,
                     'userid'=>$user->id,
                 ]);
-                //{status: 200, username: null, token: '24|ytQkhsMsgxyg0I56wMDXALAVVWFyRXQb9Mzo6Voe', message: 'Logged In Successfully', role: ''}
+                
             }
          }
       
