@@ -6,11 +6,13 @@
 1. [Description](#description)
 2. [Team Members](#team-members) 
 3. [Design](#design)
-4. [Technologies](#technologies)
-5. [Libraries and Plugins](#libraries-and-plugins)
-6. [Tools](#tools)
-7. [Installation](#installation)
-8. [Tests](#tests)
+4. [Demo](#demo)
+5. [Prototype](#prototype)
+6. [Technologies](#technologies)
+7. [Libraries and Plugins](#libraries-and-plugins)
+8. [Tools](#tools)
+9. [Installation](#installation)
+10. [Tests](#tests)
 
 
 ## :musical_keyboard: Description
@@ -45,6 +47,15 @@ This README will give details of the front-end side of the project. To view the 
 <img src="https://user-images.githubusercontent.com/116795553/229557499-a272f94f-4e34-42a7-b17e-1d818469b2dc.JPG" height="200px">
 </p>
 
+
+## :tv: Demo
+
+* [Demo]() coming soon!
+
+
+## :loop: Prototype
+
+* [mobile version](https://www.figma.com/proto/pzQyEnD8Aon3GMWp1vDkoR/Piano-classes-Gillian-Beckwith?node-id=1-4&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A4&show-proto-sidebar=1)
 
 ## :computer: Technologies
 
@@ -83,17 +94,25 @@ This will explain how you can install the frontend.
 
 First of all, you will need to clone this repository.
 
-* Clone git https://github.com/GBPianoStudio/piano-classes
+* git clone https://github.com/GBPianoStudio/piano-classes
 
-Then run 
+Then navigate to the frontend folder and run 
 
 * npm install
 
-Also run the following in the front end:
+Also run the following in the front end to view the result in the browser:
 
 * npm start
 
 
 ##	:mag: Tests 
 
-* npm test
+We used Cypress as a tool to test that everything renders in the web browser. 
+
+Run the following to install Cypress.
+
+* npm install cypress --save-dev
+
+Then run the following to open the program
+
+* npx cypress open
