@@ -3,7 +3,7 @@
 
 
 ## Table of Contents
-1. [:page_with_curl: Description](#description) 
+1. [Description](#description) 
 2. [Team members](#team-members) 
 3. [Design](#design)
 4. [Technologies](#technologies)
