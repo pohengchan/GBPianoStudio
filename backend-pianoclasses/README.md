@@ -1,78 +1,78 @@
-<p align="center"><img src="https://github.com/GBPianoStudio/piano-classes/blob/dev/frontend-pianoclasses/src/assets/images/Title.png" width="400" alt=""></p>
+# Gillian Beckwith Piano Studio - BackEnd
+<p align="center"><img src="https://user-images.githubusercontent.com/116795553/229541862-1789a445-d53c-4031-b11e-d65990bec8d3.JPG" width="300px" alt="logo of Gillian Beckwith piano studio"></p>
 
 
-## Table of Contents
+## :notes: Table of Contents
 1. [Description](#description)
-2. [Members](#members) 
-3. [Desing](#desing)
-4. [Technologies](#technologies)
-5. [Tools](#tools)
-6. [To-install-project](#to-install-project)
-7. [Tests](#tests)
-8. [Methodology](#methodology)
-9. [Core-skills](#core-skills)
- 
-## Description  
+2. [Team Members](#team-members) 
+3. [Technologies](#technologies)
+4. [Tools](#tools)
+5. [Installation](#installation)
+6. [Tests](#tests)
 
-<p>
-GILLIAN BECKWITH Piano Studio is a project adapted to the needs of renowned piano teacher GILLIAN BECKWITH. Gillian manages the studio from her mobile device  or PC, allowing her to grant her students access to the calendar to book their lessons. Within 24 hours, she commits to confirming or rejecting the request,  and the student is notified by email. Gillian also has full control of the calendar, allowing her to decide which days and hours are available for her      students to book their classes.
-The administrative part is designed for easy management of student data, where she can give them access to book their classes, edit user information, and delete it..
+
+## :musical_keyboard: Description
+
+<p>GILLIAN BECKWITH Piano Studio is a project adapted to the needs of experienced and in-demand piano teacher, Gillian Beckwith. With the help of this app Gillian's students and students' parents can automatically book their classes with Gillian. Gillian, acting as the administrator from her mobile or PC, can grant her students access to the calendar to reserve their lessons. Within 24 hours, she confirms or declines the request on the app. She also has complete control of the calendar, being able to decide which days and hours are available for her students to book their classes.
+
+The website is designed with easy and intuitive navigation for the user, with soft neon colors intended to make users feel as though they are in a studio. We have created a small piano where users can interact with it. All users have access to the entire website, except for the calendar, whose access is given by the teacher.
+
+This README will give details of the backend side of the project. To view the general README, please go to the [main repository](https://github.com/GBPianoStudio/piano-classes/tree/main#readme). To view the frontend README, please go to the [frontend repository](https://github.com/GBPianoStudio/piano-classes/tree/main/frontend-pianoclasses#readme). 
 </p>
 
- ## Members  
+
+## :handshake: Team members  
   
-- [Magda Wernik](https://github.com/magswer) - SCRUM Master
-
-- [Po Heng Chan](https://github.com/pohengchan) - Product Owner
-
-- [Natalia Vorobyeva](https://github.com/NataliaVorobyeva) - Developer
-
-- [Silvina Lucero](https://github.com/SILLUCERO) - Developer
-
-- [Jasmina Marín](https://github.com/JasMarin) - Developer
+| Name | Role | |
+| :--- | :---: | :---: |
+| [Magda Wernik](https://github.com/magswer) | Scrum Master, Developer | https://github.com/magswer |
+| [Po Heng Chan](https://github.com/pohengchan) | Product Owner, Developer | https://github.com/pohengchan |
+| [Natalia Vorobyeva](https://github.com/NataliaVorobyeva) | Developer | https://github.com/NataliaVorobyeva |
+| [Silvina Lucero](https://github.com/SILLUCERO) | Developer | https://github.com/SILLUCERO |
+| [Jasmina Marín](https://github.com/JasMarin) | Developer | https://github.com/JasMarin |
 
 
-## Desing
-	
+## :computer: Technologies
+
+These are the backend technologies that were used.
+
+- PHP (v8.1) 
+- MySQL (v10.4.27-MariaDB)
+- Composer (v2.5.1)
+- Node js (v18.12.1)
+- Laravel (v9)
+- Laravel/Ui (v4.2.1)
+- Laravel/sanctum (v3.2)
+- Laravel/ui (v4.2)
+- axios (v1.3.4)
 
 
-## Technologies
+## :hammer: Tools
 
- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)   ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) 
-![fullcalendar](https://img.shields.io/badge/fullcalendar-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
-<img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
-	
-## Tools
-
-![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)  ![visualstudiocode](https://img.shields.io/badge/VSC-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) <a href=""><img src= "https://img.shields.io/badge/Github-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white"></a> 
+![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)  ![visualstudiocode](https://img.shields.io/badge/VSC-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)  ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)  ![Xampp](https://img.shields.io/badge/Xampp-F37623?style=for-the-badge&logo=xampp&logoColor=white)
 
 
-## To-install-project
+## :link: Installation
 
-* Clone git https://github.com/GBPianoStudio/piano-classes
+This will explain how you can install the backend.
 
+First of all, you will need to clone this repository.
+
+* Clone github repository https://github.com/GBPianoStudio/piano-classes
 Backend
 
-* axios: "1.3.4"
-* laravel-vite-plugin: "0.7.2"
-* vite: "4.0.0"
+You will also need to have composer installed to run the following code
+
+* composer create-project --prefer-dist laravel/laravel my-laravel-app
+
+You will also need to create a new database called **gbpianostudio** and use this in your .env file.
+
+Run the following commands in the terminal for the backend:
+- php artisan migrate:fresh --seed
+- php artisan serve
+- npm run dev
 
 
 ## Tests 
 
 * php unit test
-
-Backend
-* composer create-project --prefer-dist laravel/laravel my-laravel-app
-
-MySQL - 
-Create a database called GBPianoStudio
-
-Terminal - 
-Run the following commands for the backend:
-- $ php artisan migrate:fresh --seed
-- $ php artisan serve
-- $ npm run dev
-	
-</div>
-
