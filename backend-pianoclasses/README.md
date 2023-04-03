@@ -1,17 +1,16 @@
-<p align="center"><img src="![Captura de pantalla (174)](https://user-images.githubusercontent.com/116794919/229284925-8a0ca4df-5b49-41fb-885e-4b22ff19e6e8.png)
-" width="400" alt=""></p>
+<p align="center"><img src="https://github.com/GBPianoStudio/piano-classes/blob/dev/frontend-pianoclasses/src/assets/images/Title.png" width="400" alt=""></p>
 
 
 ## Table of Contents
 1. [Description](#description)
 2. [Members](#members) 
-3. [Technologies](#technologies)
-4. [Tools](#tools)
-5. [To-install-project](#to-install-project)
-6. [Tests](#tests)
-7. [Methodology](#methodology)
-8. [Core-skills](#core-skills)
-
+3. [Desing](#desing)
+4. [Technologies](#technologies)
+5. [Tools](#tools)
+6. [To-install-project](#to-install-project)
+7. [Tests](#tests)
+8. [Methodology](#methodology)
+9. [Core-skills](#core-skills)
  
 ## Description  
 
@@ -31,6 +30,9 @@ The administrative part is designed for easy management of student data, where s
 - [Silvina Lucero](https://github.com/SILLUCERO) - Developer
 
 - [Jasmina Marín](https://github.com/JasMarin) - Developer
+
+
+## Desing
 	
 
 
@@ -51,12 +53,14 @@ The administrative part is designed for easy management of student data, where s
 
 Backend
 
-*composer create-project --prefer-dist laravel/laravel my-laravel-app
+* axios: "1.3.4"
+* laravel-vite-plugin: "0.7.2"
+* vite: "4.0.0"
 
 
 ## Tests 
 
-* php artisan test
+* php unit test
 
 ## Methodology
 
