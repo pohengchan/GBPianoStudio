@@ -1,79 +1,118 @@
-<p align="center"><img src="![Captura de pantalla (174)](https://user-images.githubusercontent.com/116794919/229284925-8a0ca4df-5b49-41fb-885e-4b22ff19e6e8.png)
-" width="400" alt=""></p>
+# Gillian Beckwith Piano Studio - FrontEnd
+<p align="center"><img src="https://user-images.githubusercontent.com/116795553/229541862-1789a445-d53c-4031-b11e-d65990bec8d3.JPG" width="300px" alt="logo of Gillian Beckwith piano studio"></p>
 
 
-## 🎶 Table of Contents
+## :notes: Table of Contents
 1. [Description](#description)
-2. [Members](#members) 
+2. [Team Members](#team-members) 
 3. [Design](#design)
-4. [Technologies](#technologies)
-5. [Tools](#tools)
-6. [To-install-project](#to-install-project)
-7. [Tests](#tests)
-8. [Methodology](#methodology)
-9. [Core-skills](#core-skills)
+4. [Demo](#demo)
+5. [Prototype](#prototype)
+6. [Technologies](#technologies)
+7. [Libraries and Plugins](#libraries-and-plugins)
+8. [Tools](#tools)
+9. [Installation](#installation)
+10. [Tests](#tests)
 
- 
-## 🎹 Description  
 
-<p>GILLIAN BECKWITH Piano Studio is a project adapted to the needs of renowned piano teacher GILLIAN BECKWITH. On this website, available for mobile and desktop devices, her students can book their classes and select the desired duration based on availability reflected on the calendar. Within 24 hours, the request is confirmed or declined.
+## :musical_keyboard: Description
 
-The website is designed to give users a feeling of being in a study, with a dark background and highlighted elements in neon colors. To provide a complete experience, the main page features a piano that users can play to start practicing..</p>
+<p>GILLIAN BECKWITH Piano Studio is a project adapted to the needs of experienced and in-demand piano teacher, Gillian Beckwith. With the help of this app Gillian's students and students' parents can automatically book their classes with Gillian. Gillian, acting as the administrator from her mobile or PC, can grant her students access to the calendar to reserve their lessons. Within 24 hours, she confirms or declines the request on the app. She also has complete control of the calendar, being able to decide which days and hours are available for her students to book their classes.
 
- ## 👯 Members  
+The website is designed with easy and intuitive navigation for the user, with soft neon colors intended to make users feel as though they are in a studio. We have created a small piano where users can interact with it. All users have access to the entire website, except for the calendar, whose access is given by the teacher.
+
+This README will give details of the front-end side of the project. To view the general README, please go to the [main repository](https://github.com/GBPianoStudio/piano-classes/tree/main#readme). To view the backend README, please go to the [backend repository](https://github.com/GBPianoStudio/piano-classes/tree/main/backend-pianoclasses#readme). 
+</p>
+
+
+## :handshake: Team members  
   
-- [Magda Wernik](https://github.com/magswer) - SCRUM Master
-
-- [Po Heng Chan](https://github.com/pohengchan) - Product Owner
-
-- [Natalia Vorobyeva](https://github.com/NataliaVorobyeva) - Developer
-
-- [Silvina Lucero](https://github.com/SILLUCERO) - Developer
-
-- [Jasmina Marín](https://github.com/JasMarin) - Developer
-	
-## 🎨 Design
+| Name | Role | |
+| :--- | :---: | :---: |
+| [Magda Wernik](https://github.com/magswer) | Scrum Master, Developer | https://github.com/magswer |
+| [Po Heng Chan](https://github.com/pohengchan) | Product Owner, Developer | https://github.com/pohengchan |
+| [Natalia Vorobyeva](https://github.com/NataliaVorobyeva) | Developer | https://github.com/NataliaVorobyeva |
+| [Silvina Lucero](https://github.com/SILLUCERO) | Developer | https://github.com/SILLUCERO |
+| [Jasmina Marín](https://github.com/JasMarin) | Developer | https://github.com/JasMarin |
 
 
- <p align="center">
- 
- <img src= ""></img>
- <img src= ""></img>
- <img src= ""></img>
+## :art: Design
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/116795553/229556410-0b04e913-6411-416a-8bc5-c24053bd0642.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229556643-01b6d3a6-c573-4f11-814d-356c4b845bc6.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229556828-27652416-3f21-45d7-bdfb-607be3844ca0.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229557082-9b1cd85f-cd60-4601-80ad-bc1723e8a55c.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229557232-61f0c7fb-31dc-4383-b85a-79c8b81c1be0.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229557499-a272f94f-4e34-42a7-b17e-1d818469b2dc.JPG" height="200px">
+</p>
 
 
-## :Computer Technologies
+## :tv: Demo
 
- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  <img src= "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"></img>
-  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) 
-![fullcalendar](https://img.shields.io/badge/fullcalendar-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
-
-🔧 ##  Tools
-
-![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) <img src= "https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white"> 
-![visualstudiocode](https://img.shields.io/badge/VSC-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) <img src= "https://img.shields.io/badge/Github-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white"> 
+* [Demo]() coming soon!
 
 
-## ⬇️ To-install-project
+## :loop: Prototype
 
-* Clone git https://github.com/GBPianoStudio/piano-classes
+* [mobile version](https://www.figma.com/proto/pzQyEnD8Aon3GMWp1vDkoR/Piano-classes-Gillian-Beckwith?node-id=1-4&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A4&show-proto-sidebar=1)
+
+## :computer: Technologies
+
+These are the frontend technologies that were used.
+
+- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
+- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  
+- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
+- ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)  NPM (v9.6.3)
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  React (v18.2.0)
 
 
-*
+## :books: Libraries and plugins
+- Bootstrap (v5.2.3)
+- fullcalendar (v6.1.5)
+- Formspree/React (v2.4.1)
+- React datetime (v3.2.0)
+- React modal (v3.16.1)
+- React icons (v4.8.0)
+- Axios (v1.3.4)
+- moment (v2.29.4)
+- sweetalert2 (v11.7.3)
+- React Router Dom (v6.8.2)
 
 
-## ✔️ Tests 
+ ## :hammer: Tools
 
-* npm test
+ These are the frontend tools that were used.
 
-## Methodology
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) ![visualstudiocode](https://img.shields.io/badge/VSC-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)  ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) 
 
-* Agile and SCRUM.
-* Mob programming.
-* Pair programming.
 
-## 💪 Core skills
-* Client server view
-* Git version control system.
-* User stories and tasks implementation (Trello).
+## :link: Installation
 
+This will explain how you can install the frontend.
+
+First of all, you will need to clone this repository.
+
+* git clone https://github.com/GBPianoStudio/piano-classes
+
+Then navigate to the frontend folder and run 
+
+* npm install
+
+Also run the following in the front end to view the result in the browser:
+
+* npm start
+
+
+##	:mag: Tests 
+
+We used Cypress as a tool to test that everything renders in the web browser. 
+
+Run the following to install Cypress.
+
+* npm install cypress --save-dev
+
+Then run the following to open the program
+
+* npx cypress open
