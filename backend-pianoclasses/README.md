@@ -62,16 +62,17 @@ Backend
 
 * php unit test
 
-## Methodology
+Backend
+* composer create-project --prefer-dist laravel/laravel my-laravel-app
 
-* Agile and SCRUM.
-* Mob programming.
-* Pair programming.
+MySQL - 
+Create a database called GBPianoStudio
 
-## Core skills
-* Api rest.
-* Git version control system.
-* User stories and tasks implementation (Trello).
+Terminal - 
+Run the following commands for the backend:
+- $ php artisan migrate:fresh --seed
+- $ php artisan serve
+- $ npm run dev
 	
 </div>
 
