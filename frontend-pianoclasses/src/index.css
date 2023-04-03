@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300&family=Oswald&display=swap');
 @import './styles/footer.css';
-@import './styles/contactbutton.css';
+@import './styles/contactButton.css';
 @import './styles/textborder.css';
 @import './styles/piano.css';
 @import './components/DayHour/DayHour.css';
@@ -14,15 +14,12 @@
 @import './styles/play.css';
 @import './styles/arrow.css';
 
-
   *{
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
-      
+      scroll-behavior: smooth;   
   }
-  
   :root {
       --light-pink:#F9A9FD;
       --dark-pink: #FA1E9A;
@@ -30,9 +27,8 @@
       --dark-blue: rgb(71, 71, 251);
       --background: #302D2D ;
       --grey: #676060;
-
+      --btn-red:#F15A5A;
   }
-  
   body {  
     margin: 0;
     padding: 0;
@@ -42,26 +38,19 @@
     font-size: 82.5%;
     background-color: var(--background);
   }
-
-
   p {
     font-family: 'Lexend', sans-serif;
   }
-
- 
   h1, h2{
     font-family: 'Oswald', sans-serif;
   }
-
   table {
     color: var(--light-pink);
     font-family: 'Lexend', sans-serif;
   }
   td {
     color: var(--light-pink);
-  }
- 
- 
+  } 
   .h1-play {
  
       margin: 2rem; 
@@ -73,7 +62,6 @@
       0 0 80px rgb(182, 25, 190),
       0 0 100px rgb(182, 25, 190),
       0 0 150px rgb(182, 25, 190);
-  
   }
 
 /* sweetalerts for website */  
@@ -95,23 +83,21 @@
   box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
 }
 .cancel-button {
-  color:#F15A5A;
-  border: 2px solid #F15A5A;
-  box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
+  color: var(--btn-red);
+  border: 2px solid var(--btn-red);
+  box-shadow: 0 0 5px var(--btn-red), 0 0 5px var(--btn-red) inset;
 }
 .confirm-button:hover {
   background-color: var(--light-blue);
   color:black;
 }
 .cancel-button:hover {
-  background-color:#F15A5A;
+  background-color:var(--btn-red);
   color: black;
 }
 
-
-  #arrow-container {
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-  }
+#arrow-container {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

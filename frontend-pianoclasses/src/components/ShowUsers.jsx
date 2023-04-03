@@ -40,13 +40,11 @@ const ShowUsers = () => {
     };
 
   const handleDelete = async (id) => {
-    // await deleteUser(id);
     Swal.fire({
 
       title: 'Delete User',
       text: "Are you sure you want to delete this user?", 
       showCancelButton: true, 
-      // confirmButton: 'true', 
       cancelButtonText: 'NO, CANCEL',
       confirmButtonText: 'YES, DELETE!',
       color: 'white', 
@@ -62,7 +60,7 @@ const ShowUsers = () => {
       if (result.isConfirmed) {
         const response = await deleteUser(id);
         if (response.errors) {
-          // setErrors(response.errors);
+          setErrors(response.errors);
         } else {
           Swal.fire({
             title: 'Success!',
@@ -142,7 +140,7 @@ const handleCheckboxChange = async(id) => {
         <div className="tableUsers">
           <table className="table">
             <thead className="head">
-              <tr>
+              <tr className="tr-user-table">
                 <th>Student</th>
                 <th>Contact</th>
                 <th className='AU'>AU</th>
@@ -151,7 +149,7 @@ const handleCheckboxChange = async(id) => {
             </thead>
             <tbody>
             {users.map((user) => (
-              <tr key={user.id}>
+              <tr className="tr-user-table" key={user.id}>
                 <td>{user.student_name}</td>
                 <td>{user.email}</td>
                  <td>

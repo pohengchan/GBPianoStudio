@@ -11,7 +11,8 @@ import Tips from '../pages/Tips';
 import Users from '../pages/Users';
 import Login from '../pages/Login';
 import ShowUsers from '../components/ShowUsers';
-import EditUser from '../components/EditUser';
+// import EditUser from '../components/EditUser';
+import ToUpdate from '../pages/ToUpdate';
 
 function Router() { 
 
@@ -33,7 +34,7 @@ function Router() {
             <Route path= '/Tips' element={<Tips/>}/>
             <Route path= '/Users' element={localStorage.getItem('role')==='admin' ? <Users/> : <Navigate to="/" />} />
             <Route path= '/show' element={<ShowUsers/>}/>
-            <Route path= '/ToUpdate/:id' element={<EditUser/>}/>
+            <Route path= '/ToUpdate/:id' element={<ToUpdate/>}/>
             
         </Routes>
     </BrowserRouter>   
