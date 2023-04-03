@@ -1,10 +1,9 @@
 # Gillian Beckwith Piano Studio
 <p align="center"><img src="https://user-images.githubusercontent.com/116795553/229541862-1789a445-d53c-4031-b11e-d65990bec8d3.JPG" width="300px"></p>
-<p align="center">
 
 
 ## Table of Contents
-1. [Description](#description) 
+1. [:page_with_curl: Description](#description) 
 2. [Team members](#team-members) 
 3. [Design](#design)
 4. [Technologies](#technologies)
@@ -17,7 +16,7 @@
 
 ## :page_with_curl: Description
 
-<p>GILLIAN BECKWITH Piano Studio is a project adapted to the needs of experienced and in-demand piano teacher, GILLIAN BECKWITH. With the help of this app Gillian's students and students' parents can automatically book their classes with Gillian. Gillian, acting as the administrator from her mobile or PC, can grant her students access to the calendar to reserve their lessons. Within 24 hours, she confirms or declines the request on the app. She also has complete control of the calendar, being able to decide which days and hours are available for her students to book their classes.
+<p>GILLIAN BECKWITH Piano Studio is a project adapted to the needs of experienced and in-demand piano teacher, Gillian Beckwith. With the help of this app Gillian's students and students' parents can automatically book their classes with Gillian. Gillian, acting as the administrator from her mobile or PC, can grant her students access to the calendar to reserve their lessons. Within 24 hours, she confirms or declines the request on the app. She also has complete control of the calendar, being able to decide which days and hours are available for her students to book their classes.
 
 The website is designed with easy and intuitive navigation for the user, with soft neon colors intended to make users feel as though they are in a studio. We have created a small piano where users can interact with it. All users have access to the entire website, except for the calendar, whose access is given by the teacher.</p>
 
