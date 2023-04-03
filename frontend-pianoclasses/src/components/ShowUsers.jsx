@@ -40,13 +40,11 @@ const ShowUsers = () => {
     };
 
   const handleDelete = async (id) => {
-    // await deleteUser(id);
     Swal.fire({
 
       title: 'Delete User',
       text: "Are you sure you want to delete this user?", 
       showCancelButton: true, 
-      // confirmButton: 'true', 
       cancelButtonText: 'NO, CANCEL',
       confirmButtonText: 'YES, DELETE!',
       color: 'white', 
@@ -62,7 +60,7 @@ const ShowUsers = () => {
       if (result.isConfirmed) {
         const response = await deleteUser(id);
         if (response.errors) {
-          // setErrors(response.errors);
+          setErrors(response.errors);
         } else {
           Swal.fire({
             title: 'Success!',

@@ -106,7 +106,7 @@ inset 0 0 7px 1px var(--light-pink);
       cursor: pointer;
       color: var(--light-blue);
       width: 125px;
-      padding: 1rem 2.5rem;
+      padding: 1rem 2rem;
       font-size: 1rem;
       border: 2px solid var(--light-blue);
       border-radius: 20px;
