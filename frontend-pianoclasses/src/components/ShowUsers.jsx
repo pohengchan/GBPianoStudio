@@ -89,7 +89,6 @@ const handleCheckboxChange = async(id) => {
         title: 'Authorise User',
         text: "Are you sure you want to authorise this user?", 
         showCancelButton: true, 
-        // confirmButton: 'true', 
         cancelButtonText: 'NO, CANCEL',
         confirmButtonText: 'YES, AUTHORISE!',
         color: 'white', 
@@ -134,24 +133,25 @@ const handleCheckboxChange = async(id) => {
 }
   loadUsers();
  return ( 
-    <div>
+    <>
       <h1 className="users">USERS</h1>
+      <div id='container-father'>
       <div className="container">
         <div className="tableUsers">
           <table className="table">
             <thead className="head">
               <tr className="tr-user-table">
                 <th>Student</th>
-                <th>Contact</th>
+                {/* <th>Contact</th> */}
                 <th className='AU'>AU</th>
-                <th className='Mgn'>Manage</th>
+                <th className='Mgn'></th>
               </tr>
             </thead>
             <tbody>
             {users.map((user) => (
               <tr className="tr-user-table" key={user.id}>
                 <td>{user.student_name}</td>
-                <td>{user.email}</td>
+                {/* <td>{user.email}</td> */}
                  <td>
                     { user.is_authorised === 1 ?
                     <input className="form-check-input" type="checkbox" value={user.id} id="flexCheckCheckedDisabled" checked disabled />
@@ -167,6 +167,8 @@ const handleCheckboxChange = async(id) => {
             </tbody>
           </table>
         </div>
+        </div>
+        
         {selectedUser && showModal && (
           <UserDetails
             user={selectedUser}
@@ -176,8 +178,9 @@ const handleCheckboxChange = async(id) => {
           />
         )}
       </div>
+
       {errors && <p>{errors}</p>}
-    </div>
+    </>
   );
 };
 
