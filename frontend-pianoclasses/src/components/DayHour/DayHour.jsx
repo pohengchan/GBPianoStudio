@@ -89,7 +89,7 @@ function DayHour () {
         setLoadCalendar(true);
         setIsAddOpen(true)
       } else {
-
+        setLoadCalendar(true);
       Swal.fire({
         position: 'center',
         title: 'Lesson not booked',
@@ -183,7 +183,7 @@ function DayHour () {
             plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
             defaultView= 'timeGridWeek'
             allDaySlot={false}
-            contentHeight={1000}
+            contentHeight={650} //set for mobile view
             slotMinTime={"09:00:00"}
             slotMaxTime={"21:00:00"}
             slotDuration={"00:30:00"}
@@ -200,8 +200,6 @@ function DayHour () {
               datesSet={() => handleDatesSet()}
               eventDrop={(info) => changeLesson((info))}
               updateSize={true}
-              
-              
             />
             </div>
             {isAddOpen && (
