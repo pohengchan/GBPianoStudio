@@ -140,7 +140,7 @@ const handleCheckboxChange = async(id) => {
         <div className="tableUsers">
           <table className="table">
             <thead className="head">
-              <tr>
+              <tr className="tr-user-table">
                 <th>Student</th>
                 <th>Contact</th>
                 <th className='AU'>AU</th>
@@ -149,7 +149,7 @@ const handleCheckboxChange = async(id) => {
             </thead>
             <tbody>
             {users.map((user) => (
-              <tr key={user.id}>
+              <tr className="tr-user-table" key={user.id}>
                 <td>{user.student_name}</td>
                 <td>{user.email}</td>
                  <td>

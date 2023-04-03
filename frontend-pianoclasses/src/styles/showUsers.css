@@ -1,6 +1,3 @@
-/* body{
-    background-color: rgb(68, 142, 207);
-} */
 .tableUsers {
     margin-top: 2rem;
     display: flex;
@@ -58,24 +55,16 @@ th {
 }
 .AU {
     text-align: center;
-
 }
 
 td {
     font-size: 1rem;
     border-bottom: 1px solid #ddd;
 }
-tr:hover {
-    background-color: #125244;
-    /* background-color: #f5f5f5; */
-  }
-  
-  
-  
-
-/* tbody{
-margin: 0%; 
-} */
+.tr-user-table:hover {
+    /* background-color: #125244; */
+    background-color: var(--grey);
+}
 
 .table{
     /* display: flex;
@@ -83,7 +72,6 @@ margin: 0%;
     width: 90%;
     height: 90%;
     border-radius: 50%;
-    
 }
 table, th, td {
     border: none;
@@ -110,47 +98,23 @@ table, th, td {
     color:black;
   }
 .btn-delete{
-    color:#F15A5A;
-      border: 2px solid #F15A5A;
+    color: var(--btn-red);
+      border: 2px solid var(--btn-red);
       border-radius: 20px;
-      box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
+      box-shadow: 0 0 5px var(--btn-red), 0 0 5px var(--btn-red) inset;
 }
 .btn-delete:hover {
-    background-color:#F15A5A;
+    background-color: var(--btn-red);
     color: black;
 }
 .btn-cancel{
-    color:#F15A5A;
-      border: 2px solid #F15A5A;
+    color:var(--btn-red);
+      border: 2px solid var(--btn-red);
       border-radius: 20px;
-      box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
+      box-shadow: 0 0 5px var(--btn-red), 0 0 5px var(--btn-red) inset;
 }
 .btn-cancel:hover {
-    background-color:#F15A5A;
-    color: black;
-}
-.btn-modal:hover {
-    background-color: var(--light-blue);
-    color:black;
-  }
-.btn-delete{
-    color:#F15A5A;
-      border: 2px solid #F15A5A;
-      border-radius: 20px;
-      box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
-}
-.btn-delete:hover {
-    background-color:#F15A5A;
-    color: black;
-}
-.btn-cancel{
-    color:#F15A5A;
-      border: 2px solid #F15A5A;
-      border-radius: 20px;
-      box-shadow: 0 0 5px #F15A5A, 0 0 5px #F15A5A inset;
-}
-.btn-cancel:hover {
-    background-color:#F15A5A;
+    background-color:var(--btn-red);
     color: black;
 }
 
@@ -165,8 +129,6 @@ h2{
     0 0 100px var(--dark-pink),
     0 0 150px var(--dark-pink);
 }
-
-
 .modal {
     display: flex;
     justify-content: center;
@@ -206,9 +168,6 @@ p{
     font-size: 1rem;
     color: white;
 } 
-/* .Mgn {
-    align-items: center;
-} */
 .modal-button-container{
     display: flex;
     justify-content: space-between;
@@ -221,6 +180,9 @@ p{
     width:125px;
     gap: 4rem;
 }
+input[type="checkbox"] {
+    cursor: pointer;
+}
 
 @media(max-width: 768px){
     button{
@@ -228,78 +190,50 @@ p{
         font-size: 14px;
         height: auto;
         width: 2rem;
-        
     }
     table thead {
-    
     padding: 0%;
     margin: 0%;
-      }
-      
-
-/* 
-POR FAVOR, no toques th ni td - 
-Si tienes que tocarlo, pon un class!
-Si no, va a romper el calendario
-*/
-
-/* th:first-child, td:first-child {
-      display: flex;
-} */
-/*    
-th, td { */
-      
-      /* width: 100%; */
-/* text-align: center;
-      font-size: 8px;
-      padding: 0%;
-      margin: 0%;
-}  */
-
-/* 
-POR FAVOR, no toques th ni td - 
-Si tienes que tocarlo, pon un class!
-Si no, va a romper el calendario
-*/
+    }
     p{
         font-size: 14px;
     }
-    
-.container{
-    width: 98%;
-    margin-left: 1%;
-    margin-right: 0%;
-}
-.btn-edit{
-    margin-left: 60%;
-}
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-}
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 150%;
-    align-items: center;
-    max-width: 20rem;
-    padding: 1.25rem;
-    border-radius: 0.313rem;
-    background-color: var(--background);
-}
-.table{
-    width: 40%;
-}
+        
+    .container{
+        width: 98%;
+        margin-left: 1%;
+        margin-right: 0%;
+    }
+    .btn-edit{
+        margin-left: 60%;
+    }
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 150%;
+        align-items: center;
+        max-width: 20rem;
+        padding: 1.25rem;
+        border-radius: 0.313rem;
+        background-color: var(--background);
+    }
+    .table{
+        width: 40%;
+    }
 
 }
