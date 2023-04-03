@@ -1,0 +1,11 @@
+.p-about{
+    padding: 0rem 2rem 1rem 2rem; 
+    font-size: 1.2rem;
+}
+.p-top-padding{
+    padding: 2rem; 
+}
+.p-bottom-padding {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}

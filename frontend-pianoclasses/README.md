@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Gillian Beckwith Piano Studio - FrontEnd
+<p align="center"><img src="https://user-images.githubusercontent.com/116795553/229541862-1789a445-d53c-4031-b11e-d65990bec8d3.JPG" width="300px" alt="logo of Gillian Beckwith piano studio"></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## :notes: Table of Contents
+1. [Description](#description)
+2. [Team Members](#team-members) 
+3. [Design](#design)
+4. [Demo](#demo)
+5. [Prototype](#prototype)
+6. [Technologies](#technologies)
+7. [Libraries and Plugins](#libraries-and-plugins)
+8. [Tools](#tools)
+9. [Installation](#installation)
+10. [Tests](#tests)
 
-In the project directory, you can run:
 
-### `npm start`
+## :musical_keyboard: Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p>GILLIAN BECKWITH Piano Studio is a project adapted to the needs of experienced and in-demand piano teacher, Gillian Beckwith. With the help of this app Gillian's students and students' parents can automatically book their classes with Gillian. Gillian, acting as the administrator from her mobile or PC, can grant her students access to the calendar to reserve their lessons. Within 24 hours, she confirms or declines the request on the app. She also has complete control of the calendar, being able to decide which days and hours are available for her students to book their classes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The website is designed with easy and intuitive navigation for the user, with soft neon colors intended to make users feel as though they are in a studio. We have created a small piano where users can interact with it. All users have access to the entire website, except for the calendar, whose access is given by the teacher.
 
-### `npm test`
+This README will give details of the front-end side of the project. To view the general README, please go to the [main repository](https://github.com/GBPianoStudio/piano-classes/tree/main#readme). To view the backend README, please go to the [backend repository](https://github.com/GBPianoStudio/piano-classes/tree/main/backend-pianoclasses#readme). 
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## :handshake: Team members  
+  
+| Name | Role | |
+| :--- | :---: | :---: |
+| [Magda Wernik](https://github.com/magswer) | Scrum Master, Developer | https://github.com/magswer |
+| [Po Heng Chan](https://github.com/pohengchan) | Product Owner, Developer | https://github.com/pohengchan |
+| [Natalia Vorobyeva](https://github.com/NataliaVorobyeva) | Developer | https://github.com/NataliaVorobyeva |
+| [Silvina Lucero](https://github.com/SILLUCERO) | Developer | https://github.com/SILLUCERO |
+| [Jasmina Marín](https://github.com/JasMarin) | Developer | https://github.com/JasMarin |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## :art: Design
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/116795553/229556410-0b04e913-6411-416a-8bc5-c24053bd0642.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229556643-01b6d3a6-c573-4f11-814d-356c4b845bc6.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229556828-27652416-3f21-45d7-bdfb-607be3844ca0.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229557082-9b1cd85f-cd60-4601-80ad-bc1723e8a55c.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229557232-61f0c7fb-31dc-4383-b85a-79c8b81c1be0.JPG" height="200px">
+<img src="https://user-images.githubusercontent.com/116795553/229557499-a272f94f-4e34-42a7-b17e-1d818469b2dc.JPG" height="200px">
+</p>
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## :tv: Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [Demo]() coming soon!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## :loop: Prototype
 
-## Learn More
+* [mobile version](https://www.figma.com/proto/pzQyEnD8Aon3GMWp1vDkoR/Piano-classes-Gillian-Beckwith?node-id=1-4&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A4&show-proto-sidebar=1)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## :computer: Technologies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+These are the frontend technologies that were used.
 
-### Code Splitting
+- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) 
+- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)  
+- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
+- ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)  NPM (v9.6.3)
+- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)  React (v18.2.0)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## :books: Libraries and plugins
+- Bootstrap (v5.2.3)
+- fullcalendar (v6.1.5)
+- Formspree/React (v2.4.1)
+- React datetime (v3.2.0)
+- React modal (v3.16.1)
+- React icons (v4.8.0)
+- Axios (v1.3.4)
+- moment (v2.29.4)
+- sweetalert2 (v11.7.3)
+- React Router Dom (v6.8.2)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+ ## :hammer: Tools
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ These are the frontend tools that were used.
 
-### Advanced Configuration
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white) ![visualstudiocode](https://img.shields.io/badge/VSC-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)  ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## :link: Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This will explain how you can install the frontend.
 
-### `npm run build` fails to minify
+First of all, you will need to clone this repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* git clone https://github.com/GBPianoStudio/piano-classes
+
+Then navigate to the frontend folder and run 
+
+* npm install
+
+Also run the following in the front end to view the result in the browser:
+
+* npm start
+
+
+##	:mag: Tests 
+
+We used Cypress as a tool to test that everything renders in the web browser. 
+
+Run the following to install Cypress.
+
+* npm install cypress --save-dev
+
+Then run the following to open the program
+
+* npx cypress open

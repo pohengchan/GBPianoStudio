@@ -1,0 +1,263 @@
+.tableUsers {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: center;
+    width: 80%
+      
+}
+#container-father {
+    display: flex; 
+    justify-content: center;
+    
+}
+
+.container {
+
+    border: 1px solid var(--dark-pink);
+    border-radius: 25px;
+    width: 60%;
+    display: flex; 
+    justify-content: center;
+    margin: 2rem;
+   
+    box-shadow: 0 0 5px 0 var(--dark-pink),
+    inset 0 0 5px 0 var(--dark-pink),
+    0 0 20px 0 var(--dark-pink),
+    inset 0 0 5px 0 var(--dark-pink),
+    0 0 20px 2px var(--dark-pink),
+    inset 0 0 20px 2px var(--dark-pink);
+}
+.users{
+    margin: 3rem; 
+    font-size: 2rem;
+    color: rgb(237, 160, 173);
+    text-shadow:
+    0 0 5px var(--dark-pink),
+    0 0 10px var(--dark-pink),
+    0 0 20px var(--dark-pink),
+    0 0 40px var(--dark-pink),
+    0 0 80px var(--dark-pink),
+    0 0 90px var(--dark-pink),
+    0 0 100px var(--dark-pink),
+    0 0 150px var(--dark-pink);
+}
+
+th {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+    color: white;
+    align-items: center;
+    /* text-align: center ; */
+}
+.AU:hover::before {
+    content: "Authorizer User";
+    position: absolute;
+    top: 20px;
+    margin-top: 13rem;
+    background-color: var(--background);
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    border-radius: 25px;
+    box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
+}
+.AU {
+    text-align: center;
+}
+
+td {
+    font-size: 0.7rem;
+    border-bottom: 1px solid #ddd;
+}
+.tr-user-table:hover {
+
+    background-color: var(--grey);
+}
+
+.table{
+    width: 80%;
+    height: 90%;
+    border-radius: 50%;
+}
+table, th, td {
+    border: none;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+}
+.btn-modal{
+    /* font-size: 0.7rem; */
+    font-size: 14px;
+    width: 4rem;
+    height: 1.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    position: relative;
+    margin: 0,5rem;
+    color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    border-radius: 25px;
+    box-shadow: 0 0 5px var(--light-blue), 0 0 5px var(--light-blue) inset;
+}
+.btn-modal:hover {
+    background-color: var(--light-blue);
+    color:black;
+  }
+.btn-delete{
+    color: var(--btn-red);
+      border: 2px solid var(--btn-red);
+      border-radius: 20px;
+      box-shadow: 0 0 5px var(--btn-red), 0 0 5px var(--btn-red) inset;
+}
+.btn-delete:hover {
+    background-color: var(--btn-red);
+    color: black;
+}
+.btn-cancel{
+    color:var(--btn-red);
+      border: 2px solid var(--btn-red);
+      border-radius: 20px;
+      box-shadow: 0 0 5px var(--btn-red), 0 0 5px var(--btn-red) inset;
+}
+.btn-cancel:hover {
+    background-color:var(--btn-red);
+    color: black;
+}
+
+h2{
+    margin: 4rem; 
+    font-size: 2rem;
+    color: rgb(237, 160, 173);
+    text-shadow:
+    0 0 40px var(--dark-pink),
+    0 0 80px var(--dark-pink),
+    0 0 90px var(--dark-pink),
+    0 0 100px var(--dark-pink),
+    0 0 150px var(--dark-pink);
+}
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 85%;
+    max-width: 40rem;
+    padding: 1.25rem;
+    background-color: var(--background); 
+    border-radius: 0.313rem;
+}
+
+.span-modal-close {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--dark-pink);
+    cursor: pointer;
+    padding: 3px;
+}
+p{
+    font-size: 1rem;
+    color: white;
+} 
+.modal-button-container{
+    display: flex;
+    justify-content: space-between;
+    width:90%;
+}
+.div-modal-text {
+    display: flex;
+}
+.p-modal-text {
+    width:125px;
+    gap: 4rem;
+}
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+@media(max-width: 768px){
+    button{
+        padding: 1%;
+        font-size: 14px;
+        height: auto;
+        width: 2rem;
+    }
+    table thead {
+    padding: 0%;
+    margin: 0%;
+    }
+    p{
+        font-size: 0.7rem;
+    }
+  
+    .btn-edit{
+        margin-left: 60%;
+    }
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 150%;
+        align-items: center;
+        max-width: 20rem;
+        padding: 1.25rem;
+        border-radius: 0.313rem;
+        background-color: var(--background);
+    }
+    .table{
+        width: 100%;
+        padding: 0;
+    }
+
+    .tableUsers {
+    
+        overflow-x:auto;
+    }
+    
+.container {
+
+    border: 1px solid var(--dark-pink);
+    border-radius: 25px;
+    width: 80%;
+    display: flex; 
+    justify-content: center;
+    margin: 2rem;
+    margin-left: 0%;
+    margin-right: 0%;
+
+}
+
+
+}
