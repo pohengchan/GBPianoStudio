@@ -144,7 +144,7 @@ const handleCheckboxChange = async(id) => {
                 <th>Student</th>
                 <th>Contact</th>
                 <th className='AU'>AU</th>
-                <th className='Mgn'>Management</th>
+                <th className='Mgn'>Manage</th>
               </tr>
             </thead>
             <tbody>

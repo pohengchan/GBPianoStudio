@@ -1,4 +1,4 @@
-<p align="center"><img src="![Captura de pantalla (174)](https://user-images.githubusercontent.com/116794919/229284925-8a0ca4df-5b49-41fb-885e-4b22ff19e6e8.png)
+<p align="center"><img src="![Captura de pantalla (174)](https://user-images.githubusercontent.com/116795553/229541862-1789a445-d53c-4031-b11e-d65990bec8d3.JPG)
 " width="400" alt=""></p>
 
 
@@ -65,7 +65,9 @@ The website is designed to give users a feeling of being in a study, with a dark
 ## ✔️ Tests 
 
 * npm test
+##	:mag: Tests 
 
+* npm test
 ## Methodology
 
 * Agile and SCRUM.
@@ -77,3 +79,25 @@ The website is designed to give users a feeling of being in a study, with a dark
 * Git version control system.
 * User stories and tasks implementation (Trello).
 
+Front
+* npm install
+
+Backend
+* composer create-project --prefer-dist laravel/laravel my-laravel-app
+
+MySQL - 
+Create a database called GBPianoStudio
+
+Terminal - 
+Run the following commands for the backend:
+- $ php artisan migrate:fresh --seed
+- $ php artisan serve
+- $ npm run dev
+
+Also run the following in the front end:
+- $ npm start
+
+
+##	:mag: Tests 
+
+* npm test

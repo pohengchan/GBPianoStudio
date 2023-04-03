@@ -83,7 +83,7 @@ function Login() {
         <form onSubmit={loginSubmit}className='form-react-login'>    
             <div className='form-control'>
                 <label>Email *</label>
-                <input type="email" name="email" onChange={handleInput} value={loginInput.email}placeholder="emailExample@example.com" />
+                <input type="email" name="email" onChange={handleInput} value={loginInput.email}placeholder="email: Example@example.com" />
                 <span>{loginInput.error_list.email}</span>
             </div>
     
