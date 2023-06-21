@@ -37,6 +37,7 @@
     "sweetalert2": "^11.7.3",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://pohengchan.github.io/GBPianoStudio/",
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "predeploy" : "npm run build",
